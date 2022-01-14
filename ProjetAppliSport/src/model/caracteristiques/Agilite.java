@@ -8,8 +8,8 @@ public class Agilite extends Physique {
 		
 	}
 
-	public Agilite(int valeur, int avgMental) {
-		super(valeur, avgMental);
+	public Agilite(int valeur, int avgPhysique) {
+		super(valeur, avgPhysique);
 
 	}
 

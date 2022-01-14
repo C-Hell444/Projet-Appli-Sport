@@ -8,8 +8,8 @@ public class Endurance extends Physique {
 		
 	}
 
-	public Endurance(int valeur, int avgMental) {
-		super(valeur, avgMental);
+	public Endurance(int valeur, int avgPhysique) {
+		super(valeur, avgPhysique);
 
 	}
 

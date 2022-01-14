@@ -9,18 +9,18 @@ public abstract class Physique extends Caracteristique {
 	public Physique() {
 	}
 
-	public Physique(int valeur,int avgMental) {
+	public Physique(int valeur,int avgPhysique) {
 		super(valeur);
-		this.avgPhysique=avgMental;
+		this.avgPhysique=avgPhysique;
 		
 	}
 
-	public int getAvgMental() {
+	public int getAvgPhysique() {
 		return avgPhysique;
 	}
 
-	public void setAvgMental(int avgMental) {
-		this.avgPhysique = avgMental;
+	public void setAvgPhysique(int avgPhysique) {
+		this.avgPhysique = avgPhysique;
 	}
 
 	@Override

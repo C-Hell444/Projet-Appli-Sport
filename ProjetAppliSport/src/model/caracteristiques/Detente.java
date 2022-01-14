@@ -8,8 +8,8 @@ public class Detente extends Physique {
 		
 	}
 
-	public Detente(int valeur, int avgMental) {
-		super(valeur, avgMental);
+	public Detente(int valeur, int avgPhysique) {
+		super(valeur, avgPhysique);
 
 	}
 
