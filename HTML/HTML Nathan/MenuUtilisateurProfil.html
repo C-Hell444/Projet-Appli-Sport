@@ -11,9 +11,13 @@
     display : flex;
     align-item : center;
     justify-content : center;
-
 }
 
+#DivContenuMenuUtilisateurContenu{
+  display : flex;
+  align-item : space-around;
+  justify-content : space-evenly;
+}
 
   #DivTop {
     display : flex;
@@ -33,6 +37,7 @@
   #DivBottom {
     display : flex;
     justify-content : space-between;
+
   }
 
 </style>
@@ -116,19 +121,23 @@
     <div id="DivContenu">
       <div id="DivContenuMenuUtilisateur">
 
-        <ul class="nav flex-column w-25 p-3 mx-auto">
+        <ul class="nav flex-column ">
           <br><br><br>
           <li class="nav-item">
-            <a class="nav-link active h3" href="MenuUtilisateurProfil.html">Profil</a>
+            <a class="nav-link active h3" href="MenuUtilisateurProfil.html">Profil </a>
+            <hr>
           </li>
           <li class="nav-item">
             <a class="nav-link h3" href="MenuUtilisateurClub.html">Club</a>
+            <hr>
           </li>
           <li class="nav-item">
             <a class="nav-link h3" href="MenuUtilisateurEquipe.html">Equipe</a>
+            <hr>
           </li>
           <li class="nav-item">
             <a class="nav-link h3" href="MenuUtilisateurHistorique.html">Historique</a>
+            <hr>
           </li>
         </ul>
       </div>
@@ -136,12 +145,13 @@
 
       <div id="DivContenuMenuUtilisateurContenu">
 
+        <div>
         <ul>
         <li class="media">
-          <img src="assets/img/MisterJ.jpg" width="150" height="150" class="mr-3" alt="profil">
+          <img src="assets/img/MisterJ.jpg" width="140" height="150" class="mr-3" alt="profil">
           <div class="media-body">
             <h3>Profil de Mister J</h3>
-
+            <hr>
               <ul>
                 <li class="ml-5">info random</li>
                 <li class="ml-5">info random</li>
@@ -149,11 +159,78 @@
                 <li class="ml-5">info random</li>
                 <li class="ml-5">info random</li>
               </ul>
-
-            </li>
+          </li>
           </ul>
           </div>
+
+
+          <div>
+          <ul>
+            <li><h4>Caractéristiques physiques</h4></li>
+            <hr>
+            <li class="ml-5">Détente</li>
+            <li><div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </li>
+            <li class="ml-5">Agilité</li>
+            <li>
+              <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </li>
+            <li class="ml-5">Puissance</li>
+            <li>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </li>
+            <li class="ml-5">Vitesse</li>
+            <li>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </li>
+            <li class="ml-5">Endurance</li>
+            <li>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </li>
+          </ul>
+          </div>
+          <div>
+          <ul>
+            <li><h4>Caractéristiques Mentales</h4></li>
+            <hr>
+            <li class="ml-5">Créativité</li>
+            <li>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </li>
+            <li class="ml-5">Collectif</li>
+            <li>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </li>
+            <li class="ml-5">Patience</li>
+            <li>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </li>
+            <li class="ml-5">Détermination</li>
+            <li>
+              <div class="progress">
+                <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </li>
+          </ul>
+
+            </div>
+
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="DivEspace3">
+    <br>
+    <br>
+    <hr>
     </div>
 
     <div id="DivBottom">
