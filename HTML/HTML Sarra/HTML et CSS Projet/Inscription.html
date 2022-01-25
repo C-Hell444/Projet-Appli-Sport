@@ -1,0 +1,260 @@
+<style media="screen">
+
+
+#DivContenu{
+height : 100%;
+}
+
+  #DivTop {
+    background-color : lightgrey;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    height : 10%;
+  }
+
+  #DivTopLogo {
+    display : flex;
+    flex-direction : row;
+  }
+
+  /*#DivTopMenus {
+    display : flex;
+    flex-direction : row;
+  }*/
+
+  #DivBottom {
+    display : flex;
+    justify-content : space-between;
+  }
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="icon" type="image/png" href="assets/img/Logo3.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="DivTop">
+      <!--<div id="DivTopLogo">
+        <img width=120 height=120 src="assets/img/Logo3.png" alt="logo">
+      </div>-->
+      <div id="DivTopCo">
+        <h2>Inscription</h2>
+      </div>
+
+      <!--<div id="DivTopMenus">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span>Menu</span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link h5" href="MenuPrincipale.html">Accueil<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link h5" href="#">Nos Clubs</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Nos Sports
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Sport1</a>
+                  <a class="dropdown-item" href="#">Sport2</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Nos événements
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Evénement1</a>
+                  <a class="dropdown-item" href="#">Evénement2</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link h5" href="Actu.html">Actualités</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+            </form>
+          </div>
+        </nav>
+
+      </div>
+      <div id="DivTopInscriConnection">
+        <nav class="navbar navbar-light">
+          <a class="navbar-brand h6" href="#">
+            <img src="assets/img/person-circle.svg" width="30" height="30" class="d-inline-block align-top" alt="SeConnecter">
+              Se connecter / S'inscrire
+          </a>
+        </nav>
+      </div>-->
+    </div>
+
+    <div id="DivContenu">
+      <br><br><br>
+      <ul class="list-unstyled w-75 p-3 mx-auto">
+      <li class="media">
+        <img width=480 height=480 src="assets/img/Logo3.png" class="align-self-center mr-3" alt="logo">
+        <div class="media-body">
+          <h3 class="mt-0 w-75 p-3 mx-auto">Création de votre compte</h3>
+
+
+      <form class= "w-75 p-3 mx-auto">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Vous créez un compte en tant que : </label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" onclick="Inputclub()" required type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="form-check-label" for="inlineRadio1">Club</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input checked class="form-check-input" onclick="InputUtilisateur()" required type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Utilisateur</label>
+    </div>
+    <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1" id="LabelNom">Nom</label>
+    <input type="text" required placeholder="Nom" id="Nom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1" id="LabelPrenom">Prenom</label>
+    <input type="text" required placeholder="Prenom" id="Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1" id="LabelNaissance">Date de naissance</label>
+    <input type="date" required placeholder="aaaa/mm/jj" id="Naissance">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1" id="LabelSiret">N° de SIRET</label>
+    <input type="text" required placeholder="N° de SIRET" id="Siret">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1" id="LabelNomClub">Nom du club</label>
+    <input type="text" required placeholder="Nom du club" id="NomClub">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">E-mail</label>
+    <input type="email" required placeholder="E-mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Mot de passe</label>
+    <input type="password" required placeholder="Mot de passe" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Confirmation de votre mot de passe</label>
+    <input type="password" required placeholder="Veuillez saisir de nouveau votre mot de passe" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <button type="submit" class="btn btn-primary">valider</button>
+</form>
+
+</div>
+</li>
+</ul>
+      </div>
+
+
+      <div class="DivEspace3">
+      <br>
+      <br>
+      <hr>
+      </div>
+
+
+
+
+    <div id="DivBottom">
+
+      <div class="DivBottomFAQ">
+        <nav class="navbar navbar-light">
+          <a class="navbar-brand" href="FAQ.html"> Vous avez des questions?
+            <img src="assets/img/faq.png" width="30" height="30" class="d-inline-block align-top" alt="fb">
+          </a>
+        </nav>
+      </div>
+
+      <div class="DivBottomMensionLegal">
+        <nav class="navbar navbar-light">
+          <a class="navbar-brand" href="#">A propos</a>
+          <a class="navbar-brand" href="MenuPrincipale.html">Accueil</a>
+          <a class="navbar-brand" href="#">Plan de site</a>
+          <a class="navbar-brand" href="MentionLegale.html">Mentions légales</a>
+      </nav>
+      </div>
+
+      <div class="DivBottomRS">
+        <nav class="navbar navbar-light">
+          <a class="navbar-brand" href="#"> Suivez-nous
+            <img src="assets/img/fb.png" width="30" height="30" class="d-inline-block align-top" alt="fb">
+            <img src="assets/img/tweeter.png" width="30" height="30" class="d-inline-block align-top" alt="tweeter">
+            <img src="assets/img/linkedin.png" width="30" height="30" class="d-inline-block align-top" alt="linkedin">
+          </a>
+        </nav>
+      </div>
+      </div>
+  </body>
+</html>
+
+
+<script>
+
+  InputUtilisateur();
+
+  function Inputclub()
+  {
+    Nom.style.display="none";
+    LabelNom.style.display="none";
+    LabelPrenom.style.display="none";
+    Prenom.style.display="none";
+    LabelNaissance.style.display="none";
+    Naissance.style.display="none";
+
+    LabelSiret.style.display="inline-block";
+    Siret.style.display="inline-block";
+    LabelNomClub.style.display="inline-block";
+    NomClub.style.display="inline-block";
+  }
+
+  function InputUtilisateur()
+  {
+    LabelSiret.style.display="none";
+    Siret.style.display="none";
+    LabelNomClub.style.display="none";
+    NomClub.style.display="none";
+
+    Nom.style.display="inline-block";
+    LabelNom.style.display="inline-block";
+    LabelPrenom.style.display="inline-block";
+    Prenom.style.display="inline-block";
+    LabelNaissance.style.display="inline-block";
+    Naissance.style.display="inline-block";
+  }
+</script>
