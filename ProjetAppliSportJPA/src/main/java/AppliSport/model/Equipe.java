@@ -2,20 +2,60 @@ package AppliSport.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Equipe extends Club {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="equipe")
+@SequenceGenerator(name = "seqEquipe", sequenceName = "seq_equipe", initialValue = 100, allocationSize = 1)
+public class Equipe {
 
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEquipe")
+	@Column(name="id_equipe")
+	private Long id;
 	
-	protected List<Utilisateur> equipe = new ArrayList();
+	@Transient
+//	@Column(name="liste_membre_equipe")
+//	@OneToMany(mappedBy = "?")
+	private List<Utilisateur> equipe = new ArrayList();
 	
 	public Equipe() {
-		super();	
+			
 	}
 
-	public Equipe(String identifiant, String mdp, String mail, String adresse, String numTel, Sport sportClub) {
-		super(identifiant, mdp, mail, adresse, numTel, sportClub);	
+	
+
+	public Equipe(Long id, List<Utilisateur> equipe) {
+		this.id = id;
+		this.equipe = equipe;
 	}
+
+
+
+
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 
 	public List<Utilisateur> getEquipe() {
@@ -27,12 +67,28 @@ public class Equipe extends Club {
 		this.equipe = equipe;
 	}
 
+
+
 	@Override
-	public String toString() {
-		return "Equipe [equipe=" + equipe + ", adresse=" + adresse + ", numTel=" + numTel + ", sportClub=" + sportClub
-				+ ", identifiant=" + identifiant + ", mdp=" + mdp + ", mail=" + mail + "]";
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Equipe other = (Equipe) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	
 	
 
 	
