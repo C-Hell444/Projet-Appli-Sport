@@ -9,7 +9,7 @@ public class Context {
 	
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if (emf == null) {
-			emf = Persistence.createEntityManagerFactory("safari");
+			emf = Persistence.createEntityManagerFactory("bdd_sport");
 		}
 		return emf;
 	}
