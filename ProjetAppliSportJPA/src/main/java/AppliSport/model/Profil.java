@@ -6,6 +6,7 @@ import java.util.List;
 
 import AppliSport.model.caracteristiques.Caracteristique;
 
+
 public class Profil {
 
 	protected double poids;
@@ -17,6 +18,7 @@ public class Profil {
 	
 	
 	public Profil() {
+		
 	}
 	
 	public Profil(double poids, double taille, LocalDate dateNaissance, Sexe sexe,

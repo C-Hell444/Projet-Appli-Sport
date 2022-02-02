@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 @Entity
 @SequenceGenerator(name = "seqSport", sequenceName = "seq_sport", initialValue = 10, allocationSize = 1)
@@ -22,11 +23,13 @@ public class Sport {
 	private String nom;
 	//@ManyToOne
 	//@JoinColumn(name = "profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
+	@Transient
 	private Profil profilSport;
 
 	
 	
 	public Sport() {
+		
 	}
 	
 	public Sport(String nom, Profil profilSport) {

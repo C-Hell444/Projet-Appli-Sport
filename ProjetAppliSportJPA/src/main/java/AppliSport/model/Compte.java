@@ -20,11 +20,11 @@ public abstract class Compte {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@Column(name = "compte_appli")
 	private Long id;
-	@Column(name = "compte_identifiant", length = 200)
+	@Column(name = "compte_identifiant", length = 200, nullable = false)
 	private String identifiant;
-	@Column(name = "compte_mdp", length = 200)
+	@Column(name = "compte_mdp", length = 200, nullable = false)
 	private String mdp;
-	@Column(name = "compte_mail", length = 200)
+	@Column(name = "compte_mail", length = 200, nullable = false)
 	private String mail;
 	
 	

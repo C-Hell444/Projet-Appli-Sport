@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "club", uniqueConstraints = { @UniqueConstraint(columnNames = "identifiant", name = "club_identifiant_uk"), @UniqueConstraint(columnNames = "mail", name = "club_mail_uk") })
+@Table(name = "club", uniqueConstraints = { @UniqueConstraint(columnNames = "compte_identifiant", name = "club_identifiant_uk"), @UniqueConstraint(columnNames = "compte_mail", name = "club_mail_uk") })
 public class Club extends Compte {
 
 	@Embedded
