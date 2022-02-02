@@ -1,8 +1,27 @@
 package AppliSport.model;
 
-public class Sport {
+import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+@SequenceGenerator(name = "seqSport", sequenceName = "seq_sport", initialValue = 10, allocationSize = 1)
+public class Sport {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSport")
+	private Long Id_sport;
+	@Column(name = "nom", length = 150)
 	private String nom;
+	//@ManyToOne
+	//@JoinColumn(name = "profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
 	private Profil profilSport;
 
 	
@@ -32,9 +51,22 @@ public class Sport {
 	}
 
 	@Override
-	public String toString() {
-		return "Sport [nom=" + nom + ", profilSport=" + profilSport + "]";
+	public int hashCode() {
+		return Objects.hash(Id_sport);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sport other = (Sport) obj;
+		return Objects.equals(Id_sport, other.Id_sport);
+	}
+
 
 	
 	
