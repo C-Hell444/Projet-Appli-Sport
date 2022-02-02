@@ -28,6 +28,8 @@ public class Sport {
 	private Profil profilSport;
 	@OneToMany(mappedBy = "sportClub")
 	private Set<Club> clubs;
+	@OneToMany(mappedBy = "sport")
+	private Set<Interet> interets;
 
 	
 	
@@ -37,12 +39,6 @@ public class Sport {
 	
 	
 
-	public Sport(Long id_sport, String nom, Profil profilSport, Set<Club> clubs) {
-		Id_sport = id_sport;
-		this.nom = nom;
-		this.profilSport = profilSport;
-		this.clubs = clubs;
-	}
 
 
 
@@ -80,6 +76,24 @@ public class Sport {
 	public void setClubs(Set<Club> clubs) {
 		this.clubs = clubs;
 	}
+
+	public Set<Interet> getInterets() {
+		return interets;
+	}
+
+
+
+
+
+
+	public void setInterets(Set<Interet> interets) {
+		this.interets = interets;
+	}
+
+
+
+
+
 
 	@Override
 	public int hashCode() {

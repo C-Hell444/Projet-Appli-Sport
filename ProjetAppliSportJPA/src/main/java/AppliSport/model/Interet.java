@@ -2,12 +2,13 @@ package AppliSport.model;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -16,36 +17,53 @@ public class Interet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqInteret")
 	private Long Id_interet;
-	@Column(name = "utilisateur", length = 150)
-	//@OneToOne
-	private String utilisateur;
-	//@OneToMany(mappedBy = "Interet")
-	private String sport;
+	@ManyToOne
+	@JoinColumn(name = "interet_utilisateur", foreignKey = @ForeignKey(name = "interet_utilisateur_fk"))
+	private Utilisateur utilisateur;
+	@ManyToOne
+	@JoinColumn(name = "interet_sport", foreignKey = @ForeignKey(name = "interet_sport_fk"))
+	private Sport sport;
 	
 	
 	public Interet() {
 	}
 	
-	public Interet(String utilisateur, String sport) {
-		this.utilisateur = utilisateur;
-		this.sport = sport;
+	
+	public Long getId_interet() {
+		return Id_interet;
 	}
 
-	public String getUtilisateur() {
+
+
+	public void setId_interet(Long id_interet) {
+		Id_interet = id_interet;
+	}
+
+
+
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-	public String getSport() {
-		return sport;
-	}
 
-	public void setUtilisateur(String utilisateur) {
+
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
-	public void setSport(String sport) {
+
+
+	public Sport getSport() {
+		return sport;
+	}
+
+
+
+	public void setSport(Sport sport) {
 		this.sport = sport;
 	}
+
+
 
 	@Override
 	public int hashCode() {

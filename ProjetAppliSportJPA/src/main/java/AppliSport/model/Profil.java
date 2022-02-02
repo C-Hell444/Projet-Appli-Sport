@@ -1,8 +1,6 @@
 package AppliSport.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,20 +8,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import AppliSport.model.caracteristiques.Caracteristique;
 
 
 @Entity
 @Table(name="profil")
-@SequenceGenerator(name="seqProfil", sequenceName = "seq_profil",initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name="seqProfil", sequenceName = "seq_profil",initialValue = 100, allocationSize = 1)
 public class Profil {
 
 	@Id
@@ -39,10 +38,13 @@ public class Profil {
 	@Column(name="profil_sexe")
 	@Enumerated (EnumType.STRING)
 	private Sexe sexe;
-	@Transient
-	private Set<Caracteristique> caracteristiques;
+	@OneToOne
+	@JoinColumn(name = "profil_caracteristique", foreignKey = @ForeignKey(name = "profil_caracteristique_fk"))
+	private Caracteristique caracteristique;
 	@OneToMany(mappedBy = "profilSport")
 	private Set<Sport> sports;
+	@OneToOne(mappedBy = "profilUtilisateur")
+	private Utilisateur utilisateur;
 	
 	
 	
@@ -50,17 +52,25 @@ public class Profil {
 		
 	}
 	
-	public Profil(double poids, double taille, LocalDate dateNaissance, Sexe sexe,
-			Set<Caracteristique> caracteristiques) {
+	
+
+	
+	
+	public Profil(Long id, double poids, double taille, LocalDate dateNaissance, Sexe sexe,
+			Caracteristique caracteristique, Set<Sport> sports) {
+		this.id = id;
 		this.poids = poids;
 		this.taille = taille;
 		this.dateNaissance = dateNaissance;
 		this.sexe = sexe;
-		this.caracteristiques = caracteristiques;
+		this.caracteristique = caracteristique;
+		this.sports = sports;
 	}
 
-	
-	
+
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -85,9 +95,7 @@ public class Profil {
 		return sexe;
 	}
 
-	public Set<Caracteristique> getCaracteristiques() {
-		return caracteristiques;
-	}
+	
 
 	public void setPoids(double poids) {
 		this.poids = poids;
@@ -105,9 +113,39 @@ public class Profil {
 		this.sexe = sexe;
 	}
 
-	public void setListeCaracteristiques(Set<Caracteristique> caracteristiques) {
-		this.caracteristiques = caracteristiques;
+	
+
+
+
+	public Caracteristique getCaracteristique() {
+		return caracteristique;
 	}
+
+
+
+
+
+	public void setCaracteristique(Caracteristique caracteristique) {
+		this.caracteristique = caracteristique;
+	}
+
+
+
+
+
+	public Set<Sport> getSports() {
+		return sports;
+	}
+
+
+
+
+
+	public void setSports(Set<Sport> sports) {
+		this.sports = sports;
+	}
+
+
 
 
 

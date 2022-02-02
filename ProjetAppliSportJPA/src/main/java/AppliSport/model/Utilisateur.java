@@ -2,13 +2,18 @@ package AppliSport.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -25,16 +30,19 @@ public class Utilisateur extends Compte {
 	private Adresse adresse;
 	@Column(name = "utilisateur_tel", length = 30)
 	private String numTel;
-	@Transient
-	private List<Sport> sportsUtilisateur = new ArrayList();
-	@Transient
+	@OneToMany(mappedBy = "utilisateur")
+	private Set<Interet> interets;
+	@OneToOne
+	@JoinColumn(name = "utilisateur_profil", foreignKey = @ForeignKey(name = "utilisateur_profil_fk"))
 	private Profil profilUtilisateur;
 	@Transient
-	private List<Historique> historiqueUtilisateur = new ArrayList();
+	private List<Historique> historiqueUtilisateur;
 	@Transient
 	private List<Equipe> equipes;
 	@Transient
 	private List<Evenement> evenements;
+	@Transient
+	private List<Club> clubs;
 	
 
 	public Utilisateur() {
@@ -42,16 +50,7 @@ public class Utilisateur extends Compte {
 	}
 
 
-	public Utilisateur(String identifiant, String mdp, String mail, Adresse adresse, String numTel,
-			List<Sport> sportsUtilisateur, Profil profilUtilisateur, List<Historique> historiqueUtilisateur) {
-		super(identifiant, mdp, mail);
-		this.adresse = adresse;
-		this.numTel = numTel;
-		this.sportsUtilisateur = sportsUtilisateur;
-		this.profilUtilisateur = profilUtilisateur;
-		this.historiqueUtilisateur = historiqueUtilisateur;
-	}
-
+	
 
 	public Adresse getAdresse() {
 		return adresse;
@@ -73,14 +72,48 @@ public class Utilisateur extends Compte {
 	}
 
 
-	public List<Sport> getSportsUtilisateur() {
-		return sportsUtilisateur;
+	
+
+	public Set<Interet> getInterets() {
+		return interets;
 	}
 
 
-	public void setSportsUtilisateur(List<Sport> sportsUtilisateur) {
-		this.sportsUtilisateur = sportsUtilisateur;
+
+
+	public void setInterets(Set<Interet> interets) {
+		this.interets = interets;
 	}
+
+
+
+
+	public List<Equipe> getEquipes() {
+		return equipes;
+	}
+
+
+
+
+	public void setEquipes(List<Equipe> equipes) {
+		this.equipes = equipes;
+	}
+
+
+
+
+	public List<Evenement> getEvenements() {
+		return evenements;
+	}
+
+
+
+
+	public void setEvenements(List<Evenement> evenements) {
+		this.evenements = evenements;
+	}
+
+
 
 
 	public Profil getProfilUtilisateur() {
