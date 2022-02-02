@@ -3,14 +3,26 @@ package AppliSport.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "utilisateur")
 public class Utilisateur extends Compte {
 	
-	
-	protected String adresse;
-	protected String numTel;
-	protected List<Sport> sportsUtilisateur = new ArrayList();
-	protected Profil profilUtilisateur;
-	protected List<Historique> historiqueUtilisateur = new ArrayList();
+	@Transient
+	private String adresse;
+	@Column(name = "utilisateur_tel", length = 30)
+	private String numTel;
+	@Transient
+	private List<Sport> sportsUtilisateur = new ArrayList();
+	@Transient
+	private Profil profilUtilisateur;
+	@Transient
+	private List<Historique> historiqueUtilisateur = new ArrayList();
 	
 
 	public Utilisateur() {
@@ -58,12 +70,7 @@ public class Utilisateur extends Compte {
 		this.profilUtilisateur = profilUtilisateur;
 	}
 
-	@Override
-	public String toString() {
-		return "Utilisateur [adresse=" + adresse + ", numTel=" + numTel + ", sportsUtilisateur=" + sportsUtilisateur
-				+ ", profilUtilisateur=" + profilUtilisateur + ", identifiant=" + identifiant + ", mdp=" + mdp
-				+ ", mail=" + mail + "]";
-	}
+	
 
 	
 	

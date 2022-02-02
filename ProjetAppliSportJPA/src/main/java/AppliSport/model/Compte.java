@@ -1,13 +1,35 @@
 package AppliSport.model;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte", initialValue = 100, allocationSize = 1)
 public abstract class Compte {
 
-	protected String identifiant;
-	protected String mdp;
-	protected String mail;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
+	@Column(name = "compte_appli")
+	private Long id;
+	@Column(name = "compte_identifiant", length = 200)
+	private String identifiant;
+	@Column(name = "compte_mdp", length = 200)
+	private String mdp;
+	@Column(name = "compte_mail", length = 200)
+	private String mail;
 	
 	
 	public Compte() {
+		
 	}
 	
 	public Compte(String identifiant, String mdp, String mail) {
@@ -16,24 +38,32 @@ public abstract class Compte {
 		this.mail = mail;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getIdentifiant() {
 		return identifiant;
-	}
-
-	public String getMdp() {
-		return mdp;
-	}
-
-	public String getMail() {
-		return mail;
 	}
 
 	public void setIdentifiant(String identifiant) {
 		this.identifiant = identifiant;
 	}
 
+	public String getMdp() {
+		return mdp;
+	}
+
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public String getMail() {
+		return mail;
 	}
 
 	public void setMail(String mail) {
@@ -41,9 +71,23 @@ public abstract class Compte {
 	}
 
 	@Override
-	public String toString() {
-		return "Compte [identifiant=" + identifiant + ", mdp=" + mdp + ", mail=" + mail + "]";
+	public int hashCode() {
+		return Objects.hash(id);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	
 	
 	
 	

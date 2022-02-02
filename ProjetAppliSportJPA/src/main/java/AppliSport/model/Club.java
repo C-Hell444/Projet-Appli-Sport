@@ -3,17 +3,30 @@ package AppliSport.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
+
+@Entity
+@Table(name = "club", uniqueConstraints = { @UniqueConstraint(columnNames = "identifiant", name = "club_identifiant_uk"), @UniqueConstraint(columnNames = "mail", name = "club_mail_uk") })
 public class Club extends Compte {
 
-	protected String adresse;
-	protected String numTel;
-	protected Sport sportClub;
-	private List<Utilisateur> listeMembresActif = new ArrayList();
-	private List<Utilisateur> listeMembresInactif = new ArrayList();
+	@Transient
+	private String adresse;
+	@Column(name = "club_tel", length = 30)
+	private String numTel;
+	@Transient
+	private Sport sportClub;
+	@Transient
+	private List<Utilisateur> listeMembresActif = new ArrayList<Utilisateur>();
+	@Transient
+	private List<Utilisateur> listeMembresInactif = new ArrayList<Utilisateur>();
 	
 	
 	public Club() {
-		super();
+		
 	}
 	
 	public Club(String identifiant, String mdp, String mail,String adresse,String numTel,Sport sportClub) {
@@ -65,12 +78,7 @@ public class Club extends Compte {
 		this.listeMembresInactif = listeMembresInactif;
 	}
 
-	@Override
-	public String toString() {
-		return "Club [adresse=" + adresse + ", numTel=" + numTel + ", sportClub=" + sportClub + ", listeMembresActif="
-				+ listeMembresActif + ", listeMembresInactif=" + listeMembresInactif + ", identifiant=" + identifiant
-				+ ", mdp=" + mdp + ", mail=" + mail + "]";
-	}
+	
 	
 	
 	
