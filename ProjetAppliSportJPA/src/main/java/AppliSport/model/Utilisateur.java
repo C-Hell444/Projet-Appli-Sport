@@ -31,6 +31,10 @@ public class Utilisateur extends Compte {
 	private Profil profilUtilisateur;
 	@Transient
 	private List<Historique> historiqueUtilisateur = new ArrayList();
+	@Transient
+	private List<Equipe> equipes;
+	@Transient
+	private List<Evenement> evenements;
 	
 
 	public Utilisateur() {

@@ -8,6 +8,9 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -24,7 +27,8 @@ public class Club extends Compte {
 	private Adresse adresse;
 	@Column(name = "club_tel", length = 30)
 	private String numTel;
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
 	private Sport sportClub;
 	@Transient
 	private List<Utilisateur> listeMembresActif = new ArrayList<Utilisateur>();

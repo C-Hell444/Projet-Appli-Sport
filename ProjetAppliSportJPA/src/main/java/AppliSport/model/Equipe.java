@@ -28,7 +28,7 @@ public class Equipe {
 	@Transient
 //	@Column(name="liste_membre_equipe")
 //	@OneToMany(mappedBy = "?")
-	private List<Utilisateur> equipe = new ArrayList();
+	private List<Utilisateur> equipe;
 	
 	public Equipe() {
 			

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,12 +13,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import AppliSport.model.caracteristiques.Caracteristique;
-
 
 
 @Entity
@@ -39,7 +40,9 @@ public class Profil {
 	@Enumerated (EnumType.STRING)
 	private Sexe sexe;
 	@Transient
-	private List<Caracteristique> listeCaracteristiques = new ArrayList();
+	private Set<Caracteristique> caracteristiques;
+	@OneToMany(mappedBy = "profilSport")
+	private Set<Sport> sports;
 	
 	
 	
@@ -48,12 +51,12 @@ public class Profil {
 	}
 	
 	public Profil(double poids, double taille, LocalDate dateNaissance, Sexe sexe,
-			List<Caracteristique> listeCaracteristiques) {
+			Set<Caracteristique> caracteristiques) {
 		this.poids = poids;
 		this.taille = taille;
 		this.dateNaissance = dateNaissance;
 		this.sexe = sexe;
-		this.listeCaracteristiques = listeCaracteristiques;
+		this.caracteristiques = caracteristiques;
 	}
 
 	
@@ -82,8 +85,8 @@ public class Profil {
 		return sexe;
 	}
 
-	public List<Caracteristique> getListeCaracteristiques() {
-		return listeCaracteristiques;
+	public Set<Caracteristique> getCaracteristiques() {
+		return caracteristiques;
 	}
 
 	public void setPoids(double poids) {
@@ -102,8 +105,8 @@ public class Profil {
 		this.sexe = sexe;
 	}
 
-	public void setListeCaracteristiques(List<Caracteristique> listeCaracteristiques) {
-		this.listeCaracteristiques = listeCaracteristiques;
+	public void setListeCaracteristiques(Set<Caracteristique> caracteristiques) {
+		this.caracteristiques = caracteristiques;
 	}
 
 

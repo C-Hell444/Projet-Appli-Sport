@@ -1,6 +1,7 @@
 package AppliSport.model;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
@@ -21,10 +23,11 @@ public class Sport {
 	private Long Id_sport;
 	@Column(name = "nom", length = 150)
 	private String nom;
-	//@ManyToOne
-	//@JoinColumn(name = "profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "sport_profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
 	private Profil profilSport;
+	@OneToMany(mappedBy = "sportClub")
+	private Set<Club> clubs;
 
 	
 	
@@ -32,10 +35,16 @@ public class Sport {
 		
 	}
 	
-	public Sport(String nom, Profil profilSport) {
+	
+
+	public Sport(Long id_sport, String nom, Profil profilSport, Set<Club> clubs) {
+		Id_sport = id_sport;
 		this.nom = nom;
-		this.profilSport=profilSport;
+		this.profilSport = profilSport;
+		this.clubs = clubs;
 	}
+
+
 
 	public String getNom() {
 		return nom;
@@ -53,10 +62,30 @@ public class Sport {
 		this.profilSport = profilSport;
 	}
 
+	
+	
+	
+	public Long getId_sport() {
+		return Id_sport;
+	}
+
+	public void setId_sport(Long id_sport) {
+		Id_sport = id_sport;
+	}
+
+	public Set<Club> getClubs() {
+		return clubs;
+	}
+
+	public void setClubs(Set<Club> clubs) {
+		this.clubs = clubs;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(Id_sport);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
