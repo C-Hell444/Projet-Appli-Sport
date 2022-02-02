@@ -1,4 +1,4 @@
-package model.caracteristiques;
+package AppliSport.model.caracteristiques;
 
 public class Determination extends Mental {
 

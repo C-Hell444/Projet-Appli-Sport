@@ -1,10 +1,10 @@
-package model;
+package AppliSport.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.caracteristiques.Caracteristique;
+import AppliSport.model.caracteristiques.Caracteristique;
 
 public class Profil {
 

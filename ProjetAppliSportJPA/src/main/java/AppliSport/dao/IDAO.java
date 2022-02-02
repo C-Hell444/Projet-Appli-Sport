@@ -1,4 +1,4 @@
-package dao;
+package AppliSport.dao;
 
 import java.util.List;
 

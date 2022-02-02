@@ -1,4 +1,4 @@
-package model;
+package AppliSport.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

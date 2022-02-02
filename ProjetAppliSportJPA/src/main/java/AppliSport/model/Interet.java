@@ -1,4 +1,4 @@
-package model;
+package AppliSport.model;
 
 public class Interet {
 
