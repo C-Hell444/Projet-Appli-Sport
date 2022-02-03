@@ -7,9 +7,12 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -37,6 +40,10 @@ public class Evenement {
 	
 	@Column(name="dateFin_evenement")
 	private LocalDate dateFin;
+	
+	@ManyToOne
+	@JoinColumn(name = "evenement_club", foreignKey = @ForeignKey(name = "evenement_club_fk"))
+	private Club club;
 	
 
 
@@ -104,6 +111,23 @@ public class Evenement {
 
 	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
+	}
+
+
+	
+
+
+
+	public Club getClub() {
+		return club;
+	}
+
+
+
+
+
+	public void setClub(Club club) {
+		this.club = club;
 	}
 
 

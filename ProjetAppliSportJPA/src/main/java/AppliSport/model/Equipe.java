@@ -6,9 +6,12 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,6 +32,11 @@ public class Equipe {
 //	@Column(name="liste_membre_equipe")
 //	@OneToMany(mappedBy = "?")
 	private List<Utilisateur> equipe;
+	
+	@ManyToOne
+	@JoinColumn(name = "equipe_club", foreignKey = @ForeignKey(name = "equipe_club_fk"))
+	private Club club;
+	
 	
 	public Equipe() {
 			
@@ -65,6 +73,21 @@ public class Equipe {
 
 	public void setEquipe(List<Utilisateur> equipe) {
 		this.equipe = equipe;
+	}
+
+	
+	
+	
+
+
+	public Club getClub() {
+		return club;
+	}
+
+
+
+	public void setClub(Club club) {
+		this.club = club;
 	}
 
 

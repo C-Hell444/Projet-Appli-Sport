@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -34,6 +35,14 @@ public class Club extends Compte {
 	private List<Utilisateur> listeMembresActif = new ArrayList<Utilisateur>();
 	@Transient
 	private List<Utilisateur> listeMembresInactif = new ArrayList<Utilisateur>();
+	
+	@OneToMany(mappedBy = "club")
+	private List<Equipe> equipes;
+	
+	@OneToMany(mappedBy = "club")
+	private List<Evenement> evenements;
+	
+	
 	
 	
 	public Club() {
@@ -104,6 +113,35 @@ public class Club extends Compte {
 	public void setListeMembresInactif(List<Utilisateur> listeMembresInactif) {
 		this.listeMembresInactif = listeMembresInactif;
 	}
+
+
+
+
+	public List<Equipe> getEquipes() {
+		return equipes;
+	}
+
+
+
+
+	public void setEquipes(List<Equipe> equipes) {
+		this.equipes = equipes;
+	}
+
+
+
+
+	public List<Evenement> getEvenements() {
+		return evenements;
+	}
+
+
+
+
+	public void setEvenements(List<Evenement> evenements) {
+		this.evenements = evenements;
+	}
+	
 	
 	
 
