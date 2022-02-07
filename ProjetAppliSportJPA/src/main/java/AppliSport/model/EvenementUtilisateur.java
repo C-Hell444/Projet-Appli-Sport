@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class EvenementUtilisateur {
 
 	@EmbeddedId
-	private EvenementUtilisateurKey evenementUtilisateurKey;
+	private EvenementUtilisateurKey id;
 	@Column(name = "evenementutilisateur_date_debut")
 	private LocalDate dateDebut;
 	@Column(name = "evenementutilisateur_date_fin")
@@ -23,34 +23,50 @@ public class EvenementUtilisateur {
 		
 	}
 
-	public EvenementUtilisateurKey getEvenementUtilisateurKey() {
-		return evenementUtilisateurKey;
+	
+
+	public EvenementUtilisateurKey getId() {
+		return id;
 	}
 
-	public void setEvenementUtilisateurKey(EvenementUtilisateurKey evenementUtilisateurKey) {
-		this.evenementUtilisateurKey = evenementUtilisateurKey;
+
+
+	public void setId(EvenementUtilisateurKey id) {
+		this.id = id;
 	}
+
+
 
 	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
 
+
+
 	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
+
+
 
 	public LocalDate getDateFin() {
 		return dateFin;
 	}
 
+
+
 	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
 
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(evenementUtilisateurKey);
+		return Objects.hash(id);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -61,8 +77,11 @@ public class EvenementUtilisateur {
 		if (getClass() != obj.getClass())
 			return false;
 		EvenementUtilisateur other = (EvenementUtilisateur) obj;
-		return Objects.equals(evenementUtilisateurKey, other.evenementUtilisateurKey);
+		return Objects.equals(id, other.id);
 	}
+
+
+
 	
 	
 	

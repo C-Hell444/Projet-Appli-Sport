@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class ClubUtilisateur {
 
 	@EmbeddedId
-	private ClubUtilisateurKey clubUtilisateurKey;
+	private ClubUtilisateurKey id;
 	@Column(name = "clubutilisateur_date_debut")
 	private LocalDate dateDebut;
 	@Column(name = "clubutilisateur_date_fin")
@@ -24,11 +24,11 @@ public class ClubUtilisateur {
 	}
 
 	public ClubUtilisateurKey getClubUtilisateurKey() {
-		return clubUtilisateurKey;
+		return id;
 	}
 
-	public void setClubUtilisateurKey(ClubUtilisateurKey clubUtilisateurKey) {
-		this.clubUtilisateurKey = clubUtilisateurKey;
+	public void setClubUtilisateurKey(ClubUtilisateurKey id) {
+		this.id = id;
 	}
 
 	public LocalDate getDateDebut() {
@@ -49,7 +49,7 @@ public class ClubUtilisateur {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(clubUtilisateurKey);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class ClubUtilisateur {
 		if (getClass() != obj.getClass())
 			return false;
 		ClubUtilisateur other = (ClubUtilisateur) obj;
-		return Objects.equals(clubUtilisateurKey, other.clubUtilisateurKey);
+		return Objects.equals(id, other.id);
 	}
 	
 	

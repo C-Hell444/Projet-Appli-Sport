@@ -35,12 +35,13 @@ public class Utilisateur extends Compte {
 	@OneToOne
 	@JoinColumn(name = "utilisateur_profil", foreignKey = @ForeignKey(name = "utilisateur_profil_fk"))
 	private Profil profilUtilisateur;
-	@OneToMany(mappedBy = "id.utilisateur")
-	private List<Equipe> equipes;
-	@OneToMany(mappedBy = "id.utilisateur")
-	private List<Evenement> evenements;
-	@OneToMany(mappedBy = "id.utilisateur")
-	private List<Club> clubs;
+	
+	@OneToMany(mappedBy = "id.equipe")	
+	private List<EquipeUtilisateur> equipes;
+	@OneToMany(mappedBy = "id.evenement")
+	private List<EvenementUtilisateur> evenements;
+	@OneToMany(mappedBy = "id.club")
+	private List<ClubUtilisateur> clubs;
 	
 
 	public Utilisateur() {
@@ -124,14 +125,7 @@ public class Utilisateur extends Compte {
 	}
 
 
-	public List<Historique> getHistoriqueUtilisateur() {
-		return historiqueUtilisateur;
-	}
-
-
-	public void setHistoriqueUtilisateur(List<Historique> historiqueUtilisateur) {
-		this.historiqueUtilisateur = historiqueUtilisateur;
-	}
+	
 	
 	
 	

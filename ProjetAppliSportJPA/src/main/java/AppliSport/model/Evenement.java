@@ -29,8 +29,8 @@ public class Evenement {
 	@Column(name="id_evenement")
 	private Long id;
 	
-	@OneToMany(mappedBy = "id.evenement")
-	private List<Utilisateur> participants;
+	@OneToMany(mappedBy = "id.utilisateur")
+	private List<EvenementUtilisateur> participants;
 	
 	@Column(name="dateDebut_evenement")
 	private LocalDate dateDebut;

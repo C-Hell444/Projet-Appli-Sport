@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class EquipeUtilisateur {
 
 	@EmbeddedId
-	private EquipeUtilisateurKey equipeUtilisateurKey;
+	private EquipeUtilisateurKey id;
 	@Column(name = "equipeutilisateur_date_debut")
 	private LocalDate dateDebut;
 	@Column(name = "equipeutilisateur_date_fin")
@@ -24,11 +24,11 @@ public class EquipeUtilisateur {
 	}
 
 	public EquipeUtilisateurKey getEquipeUtilisateurKey() {
-		return equipeUtilisateurKey;
+		return id;
 	}
 
-	public void setEquipeUtilisateurKey(EquipeUtilisateurKey equipeUtilisateurKey) {
-		this.equipeUtilisateurKey = equipeUtilisateurKey;
+	public void setEquipeUtilisateurKey(EquipeUtilisateurKey id) {
+		this.id = id;
 	}
 
 	public LocalDate getDateDebut() {
@@ -49,7 +49,7 @@ public class EquipeUtilisateur {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(equipeUtilisateurKey);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class EquipeUtilisateur {
 		if (getClass() != obj.getClass())
 			return false;
 		EquipeUtilisateur other = (EquipeUtilisateur) obj;
-		return Objects.equals(equipeUtilisateurKey, other.equipeUtilisateurKey);
+		return Objects.equals(id, other.id);
 	}
 	
 	

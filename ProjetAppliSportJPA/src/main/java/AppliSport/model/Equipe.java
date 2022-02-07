@@ -28,9 +28,8 @@ public class Equipe {
 	@Column(name="id_equipe")
 	private Long id;
 	
-	
-	@OneToMany(mappedBy = "id.equipe")
-	private List<Utilisateur> equipe;
+	@OneToMany(mappedBy = "id.utilisateur")
+	private List<EquipeUtilisateur> equipe;
 	
 	@ManyToOne
 	@JoinColumn(name = "equipe_club", foreignKey = @ForeignKey(name = "equipe_club_fk"))
