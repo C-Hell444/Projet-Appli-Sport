@@ -28,6 +28,10 @@ public class Utilisateur extends Compte {
 			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
 			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
 	private Adresse adresse;
+	@Column(name = "utilisateur_nom", length = 100)
+	private String nom;
+	@Column(name = "utilisateur_prenom", length = 100)
+	private String prenom;
 	@Column(name = "utilisateur_tel", length = 30)
 	private String numTel;
 	@OneToMany(mappedBy = "utilisateur")
