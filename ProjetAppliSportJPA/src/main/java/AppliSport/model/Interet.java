@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
 public class Interet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqInteret")
-	private Long Id_interet;
+	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "interet_utilisateur", foreignKey = @ForeignKey(name = "interet_utilisateur_fk"))
 	private Utilisateur utilisateur;
@@ -29,14 +29,14 @@ public class Interet {
 	}
 	
 	
-	public Long getId_interet() {
-		return Id_interet;
+	public Long getid() {
+		return id;
 	}
 
 
 
-	public void setId_interet(Long id_interet) {
-		Id_interet = id_interet;
+	public void setid(Long id_interet) {
+		id = id_interet;
 	}
 
 
@@ -67,7 +67,7 @@ public class Interet {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id_interet);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class Interet {
 		if (getClass() != obj.getClass())
 			return false;
 		Interet other = (Interet) obj;
-		return Objects.equals(Id_interet, other.Id_interet);
+		return Objects.equals(id, other.id);
 	}
 
 
