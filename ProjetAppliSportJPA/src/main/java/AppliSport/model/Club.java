@@ -28,6 +28,8 @@ public class Club extends Compte {
 	private Adresse adresse;
 	@Column(name = "club_tel", length = 30)
 	private String numTel;
+	@Column(name = "club_nom", length = 30)
+	private String clubNom;
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
 	private Sport sportClub;
@@ -57,8 +59,7 @@ public class Club extends Compte {
 		this.adresse = adresse;
 		this.numTel = numTel;
 		this.sportClub = sportClub;
-		this.listeMembresActif = listeMembresActif;
-		this.listeMembresInactif = listeMembresInactif;
+
 	}
 
 
@@ -94,26 +95,6 @@ public class Club extends Compte {
 	}
 
 
-	public List<Utilisateur> getListeMembresActif() {
-		return listeMembresActif;
-	}
-
-
-	public void setListeMembresActif(List<Utilisateur> listeMembresActif) {
-		this.listeMembresActif = listeMembresActif;
-	}
-
-
-	public List<Utilisateur> getListeMembresInactif() {
-		return listeMembresInactif;
-	}
-
-
-	public void setListeMembresInactif(List<Utilisateur> listeMembresInactif) {
-		this.listeMembresInactif = listeMembresInactif;
-	}
-
-
 
 
 	public List<Equipe> getEquipes() {
@@ -143,7 +124,30 @@ public class Club extends Compte {
 	
 	
 	
+	public String getClubNom() {
+		return clubNom;
+	}
 
+
+
+
+	public void setClubNom(String clubNom) {
+		this.clubNom = clubNom;
+	}
+
+
+
+
+	public List<ClubUtilisateur> getListeMembres() {
+		return listeMembres;
+	}
+
+
+
+
+	public void setListeMembres(List<ClubUtilisateur> listeMembres) {
+		this.listeMembres = listeMembres;
+	}
 	
 	
 	
