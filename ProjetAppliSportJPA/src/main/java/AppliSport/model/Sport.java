@@ -23,9 +23,9 @@ public class Sport {
 	private Long Id_sport;
 	@Column(name = "nom", length = 150)
 	private String nom;
-	@ManyToOne
-	@JoinColumn(name = "sport_profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
-	private Profil profilSport;
+	//@ManyToOne
+	//@JoinColumn(name = "sport_profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
+	//private Profil profilSport;
 	@OneToMany(mappedBy = "sportClub")
 	private Set<Club> clubs;
 	@OneToMany(mappedBy = "sport")

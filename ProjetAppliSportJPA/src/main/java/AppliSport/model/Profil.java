@@ -41,8 +41,8 @@ public class Profil {
 	@OneToOne
 	@JoinColumn(name = "profil_caracteristique", foreignKey = @ForeignKey(name = "profil_caracteristique_fk"))
 	private Caracteristique caracteristique;
-	@OneToMany(mappedBy = "profilSport")
-	private Set<Sport> sports;
+	//@OneToMany(mappedBy = "profilSport")
+	//private Set<Sport> sports;
 	@OneToOne(mappedBy = "profilUtilisateur")
 	private Utilisateur utilisateur;
 	
