@@ -20,7 +20,7 @@ import javax.persistence.Transient;
 public class Sport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSport")
-	private Long Id_sport;
+	private Long id;
 	@Column(name = "nom", length = 150)
 	private String nom;
 	//@ManyToOne
@@ -57,12 +57,12 @@ public class Sport {
 	
 	
 	
-	public Long getId_sport() {
-		return Id_sport;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId_sport(Long id_sport) {
-		Id_sport = id_sport;
+	public void setId_sport(Long id) {
+		this.id = id;
 	}
 
 	public Set<Club> getClubs() {
@@ -93,7 +93,7 @@ public class Sport {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id_sport);
+		return Objects.hash(id);
 	}
 
 
@@ -106,7 +106,7 @@ public class Sport {
 		if (getClass() != obj.getClass())
 			return false;
 		Sport other = (Sport) obj;
-		return Objects.equals(Id_sport, other.Id_sport);
+		return Objects.equals(id, other.id);
 	}
 
 
