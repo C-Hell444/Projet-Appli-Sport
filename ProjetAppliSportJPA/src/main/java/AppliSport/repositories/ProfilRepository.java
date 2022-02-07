@@ -17,18 +17,18 @@ public interface ProfilRepository extends JpaRepository<Profil, Long>{
 
 	// ===================  Attribut poids ======================== //
 	List<Profil> findByPoids(double poids);
-	List<Profil> findByGreaterThanEqualsValeurPoids(double poids);
-	List<Profil> findByLesserThanValeurPoids(double poids);
+	List<Profil> findByPoidsGreaterThanEqual(double poids);
+	List<Profil> findByPoidsLessThan(double poids);
 	
 	// ===================  Attribut taille ======================== //
 	List<Profil> findByTaille(double taille);
-	List<Profil> findByGreaterThanEqualsValeurTaille(double taille);
-	List<Profil> findByLesserThanValeurTaille(double taille);
+	List<Profil> findByTailleGreaterThanEqual(double taille);
+	List<Profil> findByTailleLessThan(double taille);
 	
 	// ===================  Attribut date de naissance ======================== //
-	List<Profil> findByNaissance (LocalDate dateNaissance);
-	List<Profil> findByGreaterThanEqualsValeurDateNaissance(LocalDate dateNaissance);
-	List<Profil> findByLesserThanValeurDateNaissance(LocalDate dateNaissance);
+	List<Profil> findByDateNaissance (LocalDate dateNaissance);
+	List<Profil> findByDateNaissanceGreaterThanEqual(LocalDate dateNaissance);
+	List<Profil> findByDateNaissanceLessThan(LocalDate dateNaissance);
 	
 	// ===================  Attribut sexe ======================== //
 	List<Profil> findBySexe(Sexe sexe);
