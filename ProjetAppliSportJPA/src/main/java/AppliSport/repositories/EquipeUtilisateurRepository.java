@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import AppliSport.model.ClubUtilisateur;
 import AppliSport.model.EquipeUtilisateur;
@@ -14,7 +16,8 @@ public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisa
 	List<EquipeUtilisateur> findByDateDebut(LocalDate dateDebut);
 	List<EquipeUtilisateur> findByDateFin(LocalDate dateFin);
 	Optional<EquipeUtilisateur> findById(EquipeUtilisateurKey id);
-	List<EquipeUtilisateur> findAll();
-	List<EquipeUtilisateur> findByUtilisateurAndEquipe(Long id);
+	@Query("select u from Utilisateur u left join fetch u.Equipe where u.id=:id")
+	Optional<EquipeUtilisateur> findByIdWithEquipe(@Param("id") Long id);
+	Optional<EquipeUtilisateur> findByEquipeAndUtilisateur(Long id1,Long id2);
 
 }
