@@ -14,49 +14,49 @@ import AppliSport.model.Caracteristique;
 public interface CaracteristiqueRepository extends JpaRepository<Caracteristique, Long> {
 
 	// =================== Attribut collectif ======================== //
-	List<Caracteristique> findByValeurCollectif(int collectif);
-	List<Caracteristique> findByGreaterThanEqualsValeurCollectif(int collectif);
-	List<Caracteristique> findByLesserThanValeurCollectif(int collectif);
+	List<Caracteristique> findByCollectif(int collectif);
+	List<Caracteristique> findByCollectifGreaterThanEqual(int collectif);
+	List<Caracteristique> findByCollectifLessThan(int collectif);
 	
 	// =================== Attribut creativite ======================== //
-	List<Caracteristique> findByValeurCreativite(int creativite);
-	List<Caracteristique> findByGreaterThanEqualsValeurCreativite(int creativite);
-	List<Caracteristique> findByLesserThanValeurCreativite(int creativite);
+	List<Caracteristique> findByCreativite(int creativite);
+	List<Caracteristique> findByCreativiteGreaterThanEqual(int creativite);
+	List<Caracteristique> findByCreativiteLessThan(int creativite);
 	
 	// =================== Attribut determination ======================== //
-	List<Caracteristique> findByValeurDetermination(int determination);
-	List<Caracteristique> findByGreaterThanEqualsValeurDetermination(int determination);
-	List<Caracteristique> findByLesserThanValeurDetermination(int determination);
+	List<Caracteristique> findByDetermination(int determination);
+	List<Caracteristique> findByDeterminationGreaterThanEqual(int determination);
+	List<Caracteristique> findByDeterminationLessThan(int determination);
 
 	// =================== Attribut patience ======================== //
-	List<Caracteristique> findByValeurPatience(int patience);
-	List<Caracteristique> findByGreaterThanEqualsValeurPatience(int patience);
-	List<Caracteristique> findByLesserThanValeurPatience(int patience);
+	List<Caracteristique> findByPatience(int patience);
+	List<Caracteristique> findByPatienceGreaterThanEqual(int patience);
+	List<Caracteristique> findByPatienceLessThan(int patience);
 
 	// =================== Attribut detente ======================== //
-	List<Caracteristique> findByValeurDetente(int detente);
-	List<Caracteristique> findByGreaterThanEqualsValeurDetente(int detente);
-	List<Caracteristique> findByLesserThanValeurDetente(int detente);
+	List<Caracteristique> findByDetente(int detente);
+	List<Caracteristique> findByDetenteGreaterThanEqual(int detente);
+	List<Caracteristique> findByDetenteLessThan(int detente);
 
 	// =================== Attribut agilite ======================== //
-	List<Caracteristique> findByValeurAgilite(int agilite);
-	List<Caracteristique> findByGreaterThanEqualsValeurAgilite(int agilite);
-	List<Caracteristique> findByLesserThanValeurAgilite(int agilite);
+	List<Caracteristique> findByAgilite(int agilite);
+	List<Caracteristique> findByAgiliteGreaterThanEqual(int agilite);
+	List<Caracteristique> findByAgiliteLessThan(int agilite);
 
 	// =================== Attribut puissance ======================== //
-	List<Caracteristique> findByValeurPuissance(int puissance);
-	List<Caracteristique> findByGreaterThanEqualsValeurPuissance(int puissance);
-	List<Caracteristique> findByLesserThanValeurPuissance(int puissance);
+	List<Caracteristique> findByPuissance(int puissance);
+	List<Caracteristique> findByPuissanceGreaterThanEqual(int puissance);
+	List<Caracteristique> findByPuissanceLessThan(int puissance);
 
 	// =================== Attribut vitesse ======================== //
-	List<Caracteristique> findByValeurVitesse(int vitesse);
-	List<Caracteristique> findByGreaterThanEqualsValeurVitesse(int vitesse);
-	List<Caracteristique> findByLesserThanValeurVitesse(int vitesse);
+	List<Caracteristique> findByVitesse(int vitesse);
+	List<Caracteristique> findByVitesseGreaterThanEqual(int vitesse);
+	List<Caracteristique> findByVitesseLessThan(int vitesse);
 
 	// =================== Attribut endurance ======================== //
-	List<Caracteristique> findByValeurEndurance(int endurance);
-	List<Caracteristique> findByGreaterThanEqualsValeurEndurance(int endurance);
-	List<Caracteristique> findByLesserThanValeurEndurance(int endurance);
+	List<Caracteristique> findByEndurance(int endurance);
+	List<Caracteristique> findByEnduranceGreaterThanEqual(int endurance);
+	List<Caracteristique> findByEnduranceLessThan(int endurance);
 	
 	// =================== Attribut profil ======================== //
 	
