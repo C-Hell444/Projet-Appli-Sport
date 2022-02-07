@@ -29,6 +29,9 @@ public class Evenement {
 	@Column(name="id_evenement")
 	private Long id;
 	
+	@Column(name="nom_evenement")
+	private String nom;
+	
 	@OneToMany(mappedBy = "id.utilisateur")
 	private List<EvenementUtilisateur> participants;
 	

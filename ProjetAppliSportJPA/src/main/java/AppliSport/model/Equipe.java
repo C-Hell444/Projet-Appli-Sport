@@ -28,6 +28,9 @@ public class Equipe {
 	@Column(name="id_equipe")
 	private Long id;
 	
+	@Column(name="nom_equipe")
+	private String nom;
+	
 	@OneToMany(mappedBy = "id.utilisateur")
 	private List<EquipeUtilisateur> equipe;
 	
