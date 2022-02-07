@@ -33,6 +33,10 @@ public interface ProfilRepository extends JpaRepository<Profil, Long>{
 	// ===================  Attribut sexe ======================== //
 	List<Profil> findBySexe(Sexe sexe);
 	
+	// ===================  Attribut caracteristique ======================== //
+	@Query("select p from Profil p left join fetch p.caracteristique where p.id=:id")
+	Optional<Profil> findByIdCaracteristique(@Param("id") Long id);
+	
 	// ===================  Attribut utilisateur ======================== //
 	@Query("select p from Profil p left join fetch p.utilisateur where p.id=:id")
 	Optional<Profil> findByIdUtilisateur(@Param("id") Long id);

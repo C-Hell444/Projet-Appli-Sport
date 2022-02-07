@@ -1,12 +1,15 @@
 package AppliSport.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import AppliSport.model.Admin;
+
 import AppliSport.model.Caracteristique;
-import AppliSport.model.Profil;
+
 
 public interface CaracteristiqueRepository extends JpaRepository<Caracteristique, Long> {
 
@@ -54,5 +57,10 @@ public interface CaracteristiqueRepository extends JpaRepository<Caracteristique
 	List<Caracteristique> findByValeurEndurance(int endurance);
 	List<Caracteristique> findByGreaterThanEqualsValeurEndurance(int endurance);
 	List<Caracteristique> findByLesserThanValeurEndurance(int endurance);
+	
+	// =================== Attribut profil ======================== //
+	
+	@Query("select c from Caracteristique c left join fetch c.profil where c.id=:id")
+	Optional<Caracteristique> findByIdProfil(@Param("id") Long id);
 
 }

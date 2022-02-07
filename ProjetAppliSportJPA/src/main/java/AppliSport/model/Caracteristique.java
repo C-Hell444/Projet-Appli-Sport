@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -39,7 +40,8 @@ public abstract class Caracteristique {
 	private int vitesse;
 	@Column(name = "carac_physique_endurance")
 	private int endurance;
-
+	@OneToOne(mappedBy ="caracteristique")
+	private Profil profil;
 
 
 	public Caracteristique() {
