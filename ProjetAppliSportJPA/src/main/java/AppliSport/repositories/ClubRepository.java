@@ -1,5 +1,6 @@
 package AppliSport.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,10 +14,10 @@ import AppliSport.model.Sport;
 public interface ClubRepository extends JpaRepository<Club, Long>{
 
 	
-	Club findByAdresse(Adresse adresse);
-	Club findByNumTel(String num);
-	Club findByClubNom(String nom);
-	Club findBySportClub(Sport sport);
+	List<Club> findByAdresse(Adresse adresse);
+	List<Club> findByNumTel(String num);
+	List<Club> findByClubNom(String nom);
+	List<Club> findBySportClub(Sport sport);
 	
 	@Query("select c from Club c left join fetch c.listeMembre where c.id=:id")
 	Optional<Club> findByIdWithListeMembre(@Param("id") Long id);
