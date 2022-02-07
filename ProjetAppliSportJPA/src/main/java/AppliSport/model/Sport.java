@@ -46,17 +46,13 @@ public class Sport {
 		return nom;
 	}
 
-	public Profil getProfilSport() {
-		return profilSport;
-	}
+
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	public void setProfilSport(Profil profilSport) {
-		this.profilSport = profilSport;
-	}
+
 
 	
 	

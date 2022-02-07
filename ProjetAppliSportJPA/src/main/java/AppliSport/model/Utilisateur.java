@@ -91,28 +91,28 @@ public class Utilisateur extends Compte {
 
 
 
-	public List<Equipe> getEquipes() {
+	public List<EquipeUtilisateur> getEquipes() {
 		return equipes;
 	}
 
 
 
 
-	public void setEquipes(List<Equipe> equipes) {
+	public void setEquipes(List<EquipeUtilisateur> equipes) {
 		this.equipes = equipes;
 	}
 
 
 
 
-	public List<Evenement> getEvenements() {
+	public List<EvenementUtilisateur> getEvenements() {
 		return evenements;
 	}
 
 
 
 
-	public void setEvenements(List<Evenement> evenements) {
+	public void setEvenements(List<EvenementUtilisateur> evenements) {
 		this.evenements = evenements;
 	}
 

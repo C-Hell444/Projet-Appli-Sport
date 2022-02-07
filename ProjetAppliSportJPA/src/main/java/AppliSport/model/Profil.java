@@ -57,14 +57,14 @@ public class Profil {
 	
 	
 	public Profil(Long id, double poids, double taille, LocalDate dateNaissance, Sexe sexe,
-			Caracteristique caracteristique, Set<Sport> sports) {
+			Caracteristique caracteristique) {
 		this.id = id;
 		this.poids = poids;
 		this.taille = taille;
 		this.dateNaissance = dateNaissance;
 		this.sexe = sexe;
 		this.caracteristique = caracteristique;
-		this.sports = sports;
+
 	}
 
 
@@ -128,24 +128,6 @@ public class Profil {
 	public void setCaracteristique(Caracteristique caracteristique) {
 		this.caracteristique = caracteristique;
 	}
-
-
-
-
-
-	public Set<Sport> getSports() {
-		return sports;
-	}
-
-
-
-
-
-	public void setSports(Set<Sport> sports) {
-		this.sports = sports;
-	}
-
-
 
 
 

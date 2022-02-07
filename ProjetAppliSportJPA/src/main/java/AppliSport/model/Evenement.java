@@ -55,7 +55,7 @@ public class Evenement {
 
 
 
-	public Evenement(Long id, List<Utilisateur> participants, LocalDate dateDebut, LocalDate dateFin) {
+	public Evenement(Long id, List<EvenementUtilisateur> participants, LocalDate dateDebut, LocalDate dateFin) {
 		this.id = id;
 		this.participants = participants;
 		this.dateDebut = dateDebut;
@@ -83,12 +83,12 @@ public class Evenement {
 
 
 
-	public List<Utilisateur> getParticipants() {
+	public List<EvenementUtilisateur> getParticipants() {
 		return participants;
 	}
 
 
-	public void setParticipants(List<Utilisateur> participants) {
+	public void setParticipants(List<EvenementUtilisateur> participants) {
 		this.participants = participants;
 	}
 

@@ -45,7 +45,7 @@ public class Equipe {
 
 	
 
-	public Equipe(Long id, List<Utilisateur> equipe) {
+	public Equipe(Long id, List<EquipeUtilisateur> equipe) {
 		this.id = id;
 		this.equipe = equipe;
 	}
@@ -67,12 +67,12 @@ public class Equipe {
 
 
 
-	public List<Utilisateur> getEquipe() {
+	public List<EquipeUtilisateur> getEquipe() {
 		return equipe;
 	}
 
 
-	public void setEquipe(List<Utilisateur> equipe) {
+	public void setEquipe(List<EquipeUtilisateur> equipe) {
 		this.equipe = equipe;
 	}
 
