@@ -37,7 +37,10 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	
 	
 	
-	Optional<Utilisateur> findByProfilUtilisateur(Profil profilUtilisateur);	
+	Optional<Utilisateur> findByProfilUtilisateur(Profil profilUtilisateur);
+	
+	@Query("select u from Utilisateur u left join fetch Profil p where p.id=:id")
+	Optional<Utilisateur> findByIdProfilUtilisateur(@Param("id") Long id);
 	
 	
 	
