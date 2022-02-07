@@ -18,6 +18,6 @@ public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisa
 	Optional<EquipeUtilisateur> findById(EquipeUtilisateurKey id);
 	@Query("select u from Utilisateur u left join fetch u.Equipe where u.id=:id")
 	Optional<EquipeUtilisateur> findByIdWithEquipe(@Param("id") Long id);
-	Optional<EquipeUtilisateur> findByEquipeAndUtilisateur(Long id1,Long id2);
+
 
 }

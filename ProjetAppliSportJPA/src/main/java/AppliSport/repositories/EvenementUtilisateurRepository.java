@@ -18,5 +18,5 @@ public interface EvenementUtilisateurRepository extends JpaRepository<EvenementU
 	Optional<EvenementUtilisateur> findById(EvenementUtilisateurKey id);
 	@Query("select u from Utilisateur u left join fetch evenement where u.id=:id")
 	Optional<EvenementUtilisateur> findByIdWithEvenement(@Param("id") Long id);
-	Optional<EvenementUtilisateur> findByEvenementAndUtilisateur(Long id1,Long id2);
+
 }
