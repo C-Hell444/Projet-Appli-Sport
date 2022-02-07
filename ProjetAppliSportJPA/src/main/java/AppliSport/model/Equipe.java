@@ -28,9 +28,8 @@ public class Equipe {
 	@Column(name="id_equipe")
 	private Long id;
 	
-	@Transient
-//	@Column(name="liste_membre_equipe")
-//	@OneToMany(mappedBy = "?")
+	
+	@OneToMany(mappedBy = "id.equipe")
 	private List<Utilisateur> equipe;
 	
 	@ManyToOne

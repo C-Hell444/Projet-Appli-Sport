@@ -29,11 +29,8 @@ public class Evenement {
 	@Column(name="id_evenement")
 	private Long id;
 	
-	
-	@Transient
-//	@Column(name="liste_participants")
-//	@OneToMany(mappedBy = "?")
-	private List<Utilisateur> participants = new ArrayList();
+	@OneToMany(mappedBy = "id.evenement")
+	private List<Utilisateur> participants;
 	
 	@Column(name="dateDebut_evenement")
 	private LocalDate dateDebut;

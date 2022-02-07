@@ -35,13 +35,11 @@ public class Utilisateur extends Compte {
 	@OneToOne
 	@JoinColumn(name = "utilisateur_profil", foreignKey = @ForeignKey(name = "utilisateur_profil_fk"))
 	private Profil profilUtilisateur;
-	@Transient
-	private List<Historique> historiqueUtilisateur;
-	@Transient
+	@OneToMany(mappedBy = "id.utilisateur")
 	private List<Equipe> equipes;
-	@Transient
+	@OneToMany(mappedBy = "id.utilisateur")
 	private List<Evenement> evenements;
-	@Transient
+	@OneToMany(mappedBy = "id.utilisateur")
 	private List<Club> clubs;
 	
 

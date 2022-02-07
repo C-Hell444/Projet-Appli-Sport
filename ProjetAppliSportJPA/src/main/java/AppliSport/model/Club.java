@@ -31,10 +31,8 @@ public class Club extends Compte {
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
 	private Sport sportClub;
-	@Transient
-	private List<Utilisateur> listeMembresActif = new ArrayList<Utilisateur>();
-	@Transient
-	private List<Utilisateur> listeMembresInactif = new ArrayList<Utilisateur>();
+	@OneToMany(mappedBy = "id.club")
+	private List<Utilisateur> listeMembres;
 	
 	@OneToMany(mappedBy = "club")
 	private List<Equipe> equipes;
