@@ -16,7 +16,7 @@ public interface ClubUtilisateurRepository extends JpaRepository<ClubUtilisateur
 	
 	List<ClubUtilisateur> findByDateDebut(LocalDate dateDebut);
 	List<ClubUtilisateur> findByDateFin(LocalDate dateFin);
-	@Query("select u from Utilisateur u left join fetch Club where u.id=:id")
+	@Query("select u from ClubUtilisateur u left join fetch u.id.club where u.id=:id")
 	Optional<ClubUtilisateur> findByIdWithClub(@Param("id") Long id);
 
 	

@@ -16,7 +16,7 @@ public interface EvenementUtilisateurRepository extends JpaRepository<EvenementU
 	List<EvenementUtilisateur> findByDateDebut(LocalDate dateDebut);
 	List<EvenementUtilisateur> findByDateFin(LocalDate dateFin);
 	Optional<EvenementUtilisateur> findById(EvenementUtilisateurKey id);
-	@Query("select u from Utilisateur u left join fetch evenement where u.id=:id")
+	@Query("select u from EvenementUtilisateur u left join fetch u.id.evenement where u.id=:id")
 	Optional<EvenementUtilisateur> findByIdWithEvenement(@Param("id") Long id);
 
 }

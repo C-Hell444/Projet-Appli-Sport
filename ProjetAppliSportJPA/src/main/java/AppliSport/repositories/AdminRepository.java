@@ -12,13 +12,8 @@ import AppliSport.model.Compte;
 public interface AdminRepository extends JpaRepository<Admin, Long>{
 	@Override
 	Optional<Admin> findById(Long id);
-	Optional<Admin> findById(String identifiant);
-<<<<<<< Updated upstream
+	Optional<Admin> findByIdentifiant(String identifiant);
 
-=======
-	
-	List<Admin> findById_sport (Long Id_sport);
->>>>>>> Stashed changes
 	
 	
 

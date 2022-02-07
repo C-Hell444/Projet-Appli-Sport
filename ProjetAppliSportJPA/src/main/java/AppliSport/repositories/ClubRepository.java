@@ -19,12 +19,5 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	List<Club> findByClubNom(String nom);
 	List<Club> findBySportClub(Sport sport);
 	
-	@Query("select c from Club c left join fetch c.listeMembre where c.id=:id")
-	Optional<Club> findByIdWithListeMembre(@Param("id") Long id);
 
-	@Query("select c from Club c left join fetch c.equipes where c.id=:id")
-	Optional<Club> findByIdWithEquipe(@Param("id") Long id);
-
-	@Query("select c from Club c left join fetch c.evenements where c.id=:id")
-	Optional<Club> findByIdWithEvenements(@Param("id") Long id);
 }

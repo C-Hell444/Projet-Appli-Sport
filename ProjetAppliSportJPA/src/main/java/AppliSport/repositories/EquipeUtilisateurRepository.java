@@ -16,7 +16,7 @@ public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisa
 	List<EquipeUtilisateur> findByDateDebut(LocalDate dateDebut);
 	List<EquipeUtilisateur> findByDateFin(LocalDate dateFin);
 	Optional<EquipeUtilisateur> findById(EquipeUtilisateurKey id);
-	@Query("select u from Utilisateur u left join fetch u.Equipe where u.id=:id")
+	@Query("select u from EquipeUtilisateur u left join fetch u.id.equipe where u.id=:id")
 	Optional<EquipeUtilisateur> findByIdWithEquipe(@Param("id") Long id);
 
 
