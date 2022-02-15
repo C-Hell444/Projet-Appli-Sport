@@ -4,13 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import AppliSport.model.ClubUtilisateur;
+import AppliSport.model.Equipe;
 import AppliSport.model.EquipeUtilisateur;
 import AppliSport.model.EquipeUtilisateurKey;
+import AppliSport.model.Utilisateur;
 
 public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisateur, EquipeUtilisateurKey>{
 	List<EquipeUtilisateur> findByDateDebut(LocalDate dateDebut);
@@ -20,4 +24,17 @@ public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisa
 	Optional<EquipeUtilisateur> findByIdWithEquipe(@Param("id") Long id);
 
 
+	
+	@Transactional
+	@Modifying
+	@Query("delete from EquipeUtilisateur e where e.id.utilisateur=:utilisateur")
+	void deleteEquipeUtilisateurByUtilisateur(@Param("utilisateur") Utilisateur utilisateur);
+	
+	
+	@Transactional
+	@Modifying
+	@Query("delete from EquipeUtilisateur e where e.id.equipe=:equipe")
+	void deleteEquipeUtilisateurByEquipe(@Param("equipe") Equipe equipe);
+	
+	
 }
