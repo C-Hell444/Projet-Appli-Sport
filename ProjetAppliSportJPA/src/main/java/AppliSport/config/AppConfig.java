@@ -40,7 +40,7 @@ public class AppConfig {
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		Properties jpaProperties = new Properties();
 		jpaProperties.setProperty("hibernate.dialect","org.hibernate.dialect.PostgreSQL10Dialect");
-		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "validate");
 		jpaProperties.setProperty("hibernate.show_sql", "true");
 		jpaProperties.setProperty("hibernate.format_sql", "true");
 		emf.setJpaProperties(jpaProperties);
