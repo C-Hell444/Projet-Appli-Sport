@@ -11,6 +11,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -21,10 +24,16 @@ public abstract class Compte {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@Column(name = "compte_appli")
 	private Long id;
+	
+	@NotEmpty
 	@Column(name = "compte_identifiant", length = 200, nullable = false)
 	private String identifiant;
+	
+	@NotEmpty
 	@Column(name = "compte_mdp", length = 200, nullable = false)
 	private String mdp;
+	
+	@Email
 	@Column(name = "compte_mail", length = 200, nullable = false)
 	private String mail;
 	@Version

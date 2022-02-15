@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @SequenceGenerator(name = "seqSport", sequenceName = "seq_sport", initialValue = 10, allocationSize = 1)
@@ -22,6 +23,8 @@ public class Sport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSport")
 	private Long id;
+	
+	@NotEmpty
 	@Column(name = "nom", length = 150)
 	private String nom;
 	//@ManyToOne

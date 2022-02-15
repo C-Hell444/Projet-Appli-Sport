@@ -8,6 +8,10 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.PastOrPresent;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "clubutilisateur")
@@ -15,8 +19,12 @@ public class ClubUtilisateur {
 
 	@EmbeddedId
 	private ClubUtilisateurKey id;
+	@PastOrPresent
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "clubutilisateur_date_debut")
 	private LocalDate dateDebut;
+	@FutureOrPresent
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "clubutilisateur_date_fin")
 	private LocalDate dateFin;
 	@Version

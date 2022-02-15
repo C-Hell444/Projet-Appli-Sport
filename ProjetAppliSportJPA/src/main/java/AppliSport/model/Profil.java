@@ -18,6 +18,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -30,15 +36,26 @@ public class Profil {
 	@GeneratedValue (strategy = GenerationType.SEQUENCE,generator = "seqProfil")
 	@Column(name="profil_id")
 	private Long id;
+	
+	@DecimalMin(value = "0")
 	@Column(name="profil_poids")
 	private double poids;
+	
+	@DecimalMin(value = "0.5")
+	@DecimalMax(value = "3.0")
 	@Column(name="profil_taille")
 	private double taille;
+	
+	@Past
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="profil_naissance")
 	private LocalDate dateNaissance;
+	
+	@NotEmpty
 	@Column(name="profil_sexe")
 	@Enumerated (EnumType.STRING)
 	private Sexe sexe;
+	
 	@OneToOne
 	@JoinColumn(name = "profil_caracteristique", foreignKey = @ForeignKey(name = "profil_caracteristique_fk"))
 	private Caracteristique caracteristique;

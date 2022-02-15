@@ -3,12 +3,20 @@ package AppliSport.model;
 import java.util.Objects;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotEmpty;
 
 @Embeddable
 public class Adresse {
+	@NotEmpty
 	private String numero;
+	
+	@NotEmpty
 	private String rue;
+	
+	@NotEmpty
 	private String codePostal;
+	
+	@NotEmpty
 	private String ville;
 
 	public Adresse() {

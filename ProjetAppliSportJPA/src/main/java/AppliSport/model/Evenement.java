@@ -18,6 +18,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -30,15 +35,20 @@ public class Evenement {
 	@Column(name="id_evenement")
 	private Long id;
 	
+	@NotEmpty
 	@Column(name="nom_evenement")
 	private String nom;
 	
 	@OneToMany(mappedBy = "id.utilisateur")
 	private List<EvenementUtilisateur> participants;
 	
+	@PastOrPresent
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dateDebut_evenement")
 	private LocalDate dateDebut;
 	
+	@FutureOrPresent
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dateFin_evenement")
 	private LocalDate dateFin;
 	

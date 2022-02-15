@@ -18,23 +18,37 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "utilisateur", uniqueConstraints = { @UniqueConstraint(columnNames = "compte_identifiant", name = "utilisateur_identifiant_uk"), @UniqueConstraint(columnNames = "compte_mail", name = "utilisateur_mail_uk") })
 public class Utilisateur extends Compte {
 	
+	@Valid
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "client_numero", length = 50)),
 			@AttributeOverride(name = "rue", column = @Column(name = "client_rue", length = 200)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
 			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
 	private Adresse adresse;
+	
+	@NotEmpty
+	@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$")
 	@Column(name = "utilisateur_nom", length = 100)
 	private String nom;
+	
+	@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$")
+	@NotEmpty
 	@Column(name = "utilisateur_prenom", length = 100)
 	private String prenom;
+	
+	@NotEmpty
+	@Pattern(regexp="^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$")
 	@Column(name = "utilisateur_tel", length = 30)
 	private String numTel;
+	
 	@OneToMany(mappedBy = "utilisateur")
 	private Set<Interet> interets;
 	@OneToOne

@@ -15,25 +15,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "club", uniqueConstraints = { @UniqueConstraint(columnNames = "compte_identifiant", name = "club_identifiant_uk"), @UniqueConstraint(columnNames = "compte_mail", name = "club_mail_uk") })
 public class Club extends Compte {
 
+	@Valid
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "client_numero", length = 50)),
 			@AttributeOverride(name = "rue", column = @Column(name = "client_rue", length = 200)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
 			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
 	private Adresse adresse;
+	
+	@NotEmpty
 	@Column(name = "club_tel", length = 30)
 	private String numTel;
+	
+	@NotEmpty
 	@Column(name = "club_nom", length = 30)
 	private String clubNom;
+	
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
 	private Sport sportClub;
-//	@Transient
+
 	@OneToMany(mappedBy = "id.utilisateur")
 	private List<ClubUtilisateur> listeMembres;
 	

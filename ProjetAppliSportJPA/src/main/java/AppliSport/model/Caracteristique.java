@@ -10,7 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+
+
 
 @Entity
 @Table(name = "caracteristique")
@@ -21,25 +26,53 @@ public class Caracteristique {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCaracteristique")
 	@Column(name = "carac_id")
 	private Long id;
-
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_mentale_collectif")
 	private int collectif;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_mentale_creativite")
 	private int creativite;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_mentale_determination")
 	private int determination;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_mentale_patience")
 	private int patience;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_physique_agilite")
 	private int detente;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_physique_detente")
 	private int agilite;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_physique_puissance")
 	private int puissance;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_physique_vitesse")
 	private int vitesse;
+	
+	@Min(value=0)
+	@Max(value=10)
 	@Column(name = "carac_physique_endurance")
 	private int endurance;
+
+	
 	@OneToOne(mappedBy ="caracteristique")
 	private Profil profil;
 
