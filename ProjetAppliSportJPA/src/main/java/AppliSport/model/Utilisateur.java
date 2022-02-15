@@ -48,8 +48,6 @@ public class Utilisateur extends Compte {
 	@OneToMany(mappedBy = "id.club")
 	private List<ClubUtilisateur> clubs;
 	
-	@Version
-	private int version;
 
 	public Utilisateur() {
 		
