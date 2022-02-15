@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 
 @Entity
@@ -45,6 +46,8 @@ public class Evenement {
 	@JoinColumn(name = "evenement_club", foreignKey = @ForeignKey(name = "evenement_club_fk"))
 	private Club club;
 	
+	@Version
+	private int version;
 
 
 	public Evenement() {

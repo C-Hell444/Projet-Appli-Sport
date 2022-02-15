@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 @Entity
 @SequenceGenerator(name = "seqInteret", sequenceName = "seq_interet", initialValue = 10, allocationSize = 1)
@@ -23,7 +24,8 @@ public class Interet {
 	@ManyToOne
 	@JoinColumn(name = "interet_sport", foreignKey = @ForeignKey(name = "interet_sport_fk"))
 	private Sport sport;
-	
+	@Version
+	private int version;
 	
 	public Interet() {
 	}

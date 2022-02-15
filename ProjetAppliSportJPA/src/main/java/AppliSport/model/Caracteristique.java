@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "caracteristique")
 @SequenceGenerator(name = "seqCaracteristique", sequenceName = "seq_caracteristique", initialValue = 1, allocationSize = 1)
-public abstract class Caracteristique {
+public class Caracteristique {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCaracteristique")

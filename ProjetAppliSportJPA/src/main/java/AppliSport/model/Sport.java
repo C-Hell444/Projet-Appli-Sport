@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
 @SequenceGenerator(name = "seqSport", sequenceName = "seq_sport", initialValue = 10, allocationSize = 1)
@@ -31,7 +32,8 @@ public class Sport {
 	@OneToMany(mappedBy = "sport")
 	private Set<Interet> interets;
 
-	
+	@Version
+	private int version;
 	
 	public Sport() {
 		

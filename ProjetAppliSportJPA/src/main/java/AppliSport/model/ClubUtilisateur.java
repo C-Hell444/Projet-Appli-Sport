@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "clubutilisateur")
@@ -18,6 +19,8 @@ public class ClubUtilisateur {
 	private LocalDate dateDebut;
 	@Column(name = "clubutilisateur_date_fin")
 	private LocalDate dateFin;
+	@Version
+	private int version;
 	
 	public ClubUtilisateur() {
 		

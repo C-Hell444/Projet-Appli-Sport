@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 
 
@@ -46,7 +47,8 @@ public class Profil {
 	@OneToOne(mappedBy = "profilUtilisateur")
 	private Utilisateur utilisateur;
 	
-	
+	@Version
+	private int version;
 	
 	public Profil() {
 		

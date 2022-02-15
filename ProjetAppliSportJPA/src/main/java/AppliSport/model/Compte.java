@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -26,7 +27,8 @@ public abstract class Compte {
 	private String mdp;
 	@Column(name = "compte_mail", length = 200, nullable = false)
 	private String mail;
-	
+	@Version
+	private int version;
 	
 	public Compte() {
 		

@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "utilisateur", uniqueConstraints = { @UniqueConstraint(columnNames = "compte_identifiant", name = "utilisateur_identifiant_uk"), @UniqueConstraint(columnNames = "compte_mail", name = "utilisateur_mail_uk") })
@@ -47,6 +48,8 @@ public class Utilisateur extends Compte {
 	@OneToMany(mappedBy = "id.club")
 	private List<ClubUtilisateur> clubs;
 	
+	@Version
+	private int version;
 
 	public Utilisateur() {
 		
