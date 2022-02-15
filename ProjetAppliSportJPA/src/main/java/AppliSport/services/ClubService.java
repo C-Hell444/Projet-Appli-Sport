@@ -1,4 +1,4 @@
-package AppliSport.service;
+package AppliSport.services;
 
 import java.util.List;
 

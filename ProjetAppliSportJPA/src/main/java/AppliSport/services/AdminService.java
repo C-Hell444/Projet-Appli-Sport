@@ -1,4 +1,4 @@
-package AppliSport.service;
+package AppliSport.services;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class EvenementService {
+public class AdminService {
 
 
 

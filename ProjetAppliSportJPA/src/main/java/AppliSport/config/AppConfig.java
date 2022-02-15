@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = {"AppliSport.dao","AppliSport.service"})
+@ComponentScan(basePackages = {"AppliSport.dao","AppliSport.services"})
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"AppliSport.repositories"})
 public class AppConfig {
