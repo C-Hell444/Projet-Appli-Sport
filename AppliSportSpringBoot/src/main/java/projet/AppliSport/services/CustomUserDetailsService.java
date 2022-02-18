@@ -83,6 +83,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 			Admin admin = new Admin();
 			admin.setIdentifiant(compte.getIdentifiant());
 			admin.setMdp(passwordEncoder.encode(compte.getMdp()));
+			admin.setMail(compte.getMail());
 			
 			return (Compte) adminRepository.save(admin);
 		}
@@ -91,6 +92,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 			Club club = new Club();
 			club.setIdentifiant(compte.getIdentifiant());
 			club.setMdp(passwordEncoder.encode(compte.getMdp()));
+			club.setMail(compte.getMail());
 			
 			return (Compte) clubRepository.save(club);
 		}
@@ -99,6 +101,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setIdentifiant(compte.getIdentifiant());
 			utilisateur.setMdp(passwordEncoder.encode(compte.getMdp()));
+			utilisateur.setMail(compte.getMail());
 			
 			return (Compte) utilisateurRepository.save(utilisateur);
 		}
