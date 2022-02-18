@@ -13,22 +13,30 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.ViewsSport;
+
 @Entity
 @SequenceGenerator(name = "seqSport", sequenceName = "seq_sport", initialValue = 10, allocationSize = 1)
 public class Sport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSport")
+	@JsonView(ViewsSport.Common.class)
 	private Long id;
 	
 	@NotEmpty
 	@Column(name = "nom", length = 150)
+	@JsonView(ViewsSport.Common.class)
 	private String nom;
 	//@ManyToOne
 	//@JoinColumn(name = "sport_profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
 	//private Profil profilSport;
 	@OneToMany(mappedBy = "sportClub")
+	@JsonView(ViewsSport.Clubs.class)
 	private Set<Club> clubs;
 	@OneToMany(mappedBy = "sport")
+	@JsonView(ViewsSport.Interets.class)
 	private Set<Interet> interets;
 
 	@Version
@@ -62,7 +70,7 @@ public class Sport {
 		return id;
 	}
 
-	public void setId_sport(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
