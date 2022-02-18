@@ -21,7 +21,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.ClubException;
 import projet.AppliSport.model.Club;
+import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.ClubService;
+import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 
 
@@ -32,6 +34,9 @@ public class ClubRestController {
 
 	@Autowired
 	private ClubService clubService;
+	
+	@Autowired
+	private UtilisateurService utilisateurService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -41,6 +46,13 @@ public class ClubRestController {
 		return list;
 	}
 
+	@GetMapping("")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllUtilisateur() {
+		List<Utilisateur> list = utilisateurService.getAll();
+		System.out.println(list);
+		return list;
+	}
 
 
 	@GetMapping("/{id}")

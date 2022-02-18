@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import projet.AppliSport.exception.EvenementException;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.services.EvenementService;
+import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 @RestController
 @RequestMapping("/api/evenement")
@@ -29,6 +30,8 @@ public class EvenementRestController {
 	
 	@Autowired
 	private EvenementService evenementService;
+	
+
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)

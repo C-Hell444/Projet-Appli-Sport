@@ -21,7 +21,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.EquipeException;
 import projet.AppliSport.model.Equipe;
+import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.EquipeService;
+import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 
 
@@ -30,11 +32,22 @@ import projet.AppliSport.views.Views;
 public class EquipeRestController {
 	@Autowired
 	private EquipeService equipeService;
+	
+	@Autowired
+	private UtilisateurService utilisateurService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
-	public List<Equipe> getAll() {
+	public List<Equipe> getAllEquipe() {
 		List<Equipe> list = equipeService.getAll();
+		System.out.println(list);
+		return list;
+	}
+	
+	@GetMapping("")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllUtilisateur() {
+		List<Utilisateur> list = utilisateurService.getAll();
 		System.out.println(list);
 		return list;
 	}
