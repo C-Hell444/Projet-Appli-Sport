@@ -40,7 +40,6 @@ public class EquipeRestController {
 	@JsonView(Views.Common.class)
 	public List<Equipe> getAllEquipe() {
 		List<Equipe> list = equipeService.getAll();
-		System.out.println(list);
 		return list;
 	}
 	
@@ -48,7 +47,6 @@ public class EquipeRestController {
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllUtilisateur() {
 		List<Utilisateur> list = utilisateurService.getAll();
-		System.out.println(list);
 		return list;
 	}
 
