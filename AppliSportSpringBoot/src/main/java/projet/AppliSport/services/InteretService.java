@@ -91,9 +91,7 @@ public class InteretService {
 		}
 		
 		Interet interetEnBase=interetRepository.findById(interet.getId()).orElseThrow(InteretException::new);
-		interetRepository.deleteInteretByUtilisateur(interetEnBase.getUtilisateur());
-		
-//		interetRepository.delete(interetEnBase);
+		interetRepository.delete(interetEnBase);
 		
 	
 		
