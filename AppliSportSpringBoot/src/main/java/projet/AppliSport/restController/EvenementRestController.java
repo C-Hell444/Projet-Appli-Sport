@@ -37,7 +37,6 @@ public class EvenementRestController {
 	@JsonView(Views.Common.class)
 	public List<Evenement> getAll() {
 		List<Evenement> list = evenementService.getAll();
-		System.out.println(list);
 		return list;
 	}
 

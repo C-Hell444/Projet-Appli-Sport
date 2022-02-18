@@ -42,7 +42,6 @@ public class ClubRestController {
 	@JsonView(Views.Common.class)
 	public List<Club> getAll() {
 		List<Club> list = clubService.getAll();
-		System.out.println(list);
 		return list;
 	}
 
@@ -50,7 +49,6 @@ public class ClubRestController {
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllUtilisateur() {
 		List<Utilisateur> list = utilisateurService.getAll();
-		System.out.println(list);
 		return list;
 	}
 
