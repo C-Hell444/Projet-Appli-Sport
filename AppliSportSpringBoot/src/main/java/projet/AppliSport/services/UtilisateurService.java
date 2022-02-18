@@ -55,7 +55,7 @@ public class UtilisateurService {
 	
 	private void checkData(Utilisateur utilisateur) {
 		if(!validator.validate(utilisateur).isEmpty()) {
-			throw new UtilisateurException();
+			throw new UtilisateurException("erreur de validation");
 		}
 	}
 	
