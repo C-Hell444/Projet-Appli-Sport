@@ -20,8 +20,8 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 
 	// ===================  Attribut club ======================== //
 
-	@Query("select e from Equipe e left join fetch e.club where e.id=:id")
-	Optional<Profil> findByIdClub(@Param("id") Long id);
+	@Query("select e from Equipe e left join fetch e.club.id where e.club.id=:id")
+	List<Equipe> findByIdClub(@Param("id") Long id);
 	
-
+	
 }
