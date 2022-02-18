@@ -10,7 +10,6 @@ public interface AdminRepository extends JpaRepository<Admin, Long>{
 	@Override
 	Optional<Admin> findById(Long id);
 	Optional<Admin> findByIdentifiant(String identifiant);
-
 	
 	
 
