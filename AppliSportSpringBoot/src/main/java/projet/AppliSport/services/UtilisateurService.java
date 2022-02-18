@@ -48,6 +48,22 @@ public class UtilisateurService {
 		});
 	}
 	
+	public Utilisateur getByIdWithClubUtilisateur(Long id) {
+		return utilisateurRepository.findByIdWithClubUtilisateur(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEvenementUtilisateur(Long id) {
+		return utilisateurRepository.findByIdWithEvenementUtilisateur(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEquipeUtilisateur(Long id) {
+		return utilisateurRepository.findByIdWithEquipeUtilisateur(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithInteret(Long id) {
+		return utilisateurRepository.findByIdWithInterets(id).orElseThrow(UtilisateurException::new);
+	}
+	
 	public List<Utilisateur> getAll() {
 		return utilisateurRepository.findAll();
 	}
