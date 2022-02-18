@@ -66,7 +66,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	@Transactional
 	@Modifying
 	@Query("update Utilisateur u set u.profilUtilisateur=null where u.profilUtilisateur=:profil")
-	void setProfilToNull(@Param("profilUtilisateur") Profil profil);
+	void setProfilToNull(@Param("profil") Profil profil);
 	
 	
 	

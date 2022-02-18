@@ -3,6 +3,7 @@ package projet.AppliSport;
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
@@ -16,8 +17,11 @@ import projet.AppliSport.services.UtilisateurService;
 @SpringBootTest
 class ComptesTest {
 
+	@Autowired
 	private AdminService adminService;
+	@Autowired
 	private ClubService clubService;
+	@Autowired
 	private UtilisateurService utilisateurService;
 
 	@Test
@@ -38,7 +42,7 @@ class ComptesTest {
 	@Test
 	@Transactional
 	@Commit
-	void testComptesId() {
+	void testComptesById() {
 		Admin a = new Admin();
 		Club c = new Club();
 		Utilisateur u = new Utilisateur();
@@ -50,7 +54,7 @@ class ComptesTest {
 	@Test
 	@Transactional
 	@Commit
-	void testComptesCreatUpdate() {
+	void testComptesCreateOrUpdate() {
 		Admin a = new Admin();
 		Club c = new Club();
 		Utilisateur u = new Utilisateur();
@@ -62,7 +66,7 @@ class ComptesTest {
 	@Test
 	@Transactional
 	@Commit
-	void testComptesnDeleteId() {
+	void testComptesnDeleteById() {
 		Admin a = new Admin();
 		Club c = new Club();
 		Utilisateur u = new Utilisateur();
@@ -70,6 +74,5 @@ class ComptesTest {
 		clubService.createOrUpdate(c);
 		utilisateurService.createOrUpdate(u);
 	}
-
 
 }

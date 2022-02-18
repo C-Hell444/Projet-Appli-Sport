@@ -4,24 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
+import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
-import projet.AppliSport.model.Profil;
 
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 
-	
-	// ===================  Attribut identifiant ======================== //
+	// =================== Attribut identifiant ======================== //
 	List<Equipe> findByNom(String nom);
 
 	List<Equipe> findByIdOrNom(Long id, String nom);
 
-	// ===================  Attribut club ======================== //
+	// =================== Attribut club ======================== //
 
-	@Query("select e from Equipe e left join fetch e.club.id where e.club.id=:id")
-	List<Equipe> findByIdClub(@Param("id") Long id);
-	
-	
+	List<Equipe> findByClub(Club c);
+
 }
