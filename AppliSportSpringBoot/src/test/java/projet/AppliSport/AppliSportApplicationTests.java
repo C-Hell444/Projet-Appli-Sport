@@ -1,5 +1,7 @@
 package projet.AppliSport;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,7 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AppliSportApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void test() {
+		fail("Not yet implemented");
 	}
 
 }

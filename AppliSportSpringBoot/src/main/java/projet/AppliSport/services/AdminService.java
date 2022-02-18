@@ -2,6 +2,7 @@ package projet.AppliSport.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.AdminException;
@@ -11,6 +12,7 @@ import projet.AppliSport.repositories.AdminRepository;
 @Service
 public class AdminService {
 
+	@Autowired
 	private AdminRepository adminRepo;
 
 	public List<Admin> getAll() {

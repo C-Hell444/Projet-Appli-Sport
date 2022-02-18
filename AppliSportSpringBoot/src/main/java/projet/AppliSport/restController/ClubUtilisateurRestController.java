@@ -19,55 +19,56 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import projet.AppliSport.exception.ProfilException;
-import projet.AppliSport.model.Profil;
-import projet.AppliSport.services.ProfilService;
+import projet.AppliSport.exception.ClubUtilisateurException;
+import projet.AppliSport.model.ClubUtilisateur;
+import projet.AppliSport.model.ClubUtilisateurKey;
+import projet.AppliSport.services.ClubUtilisateurService;
 import projet.AppliSport.views.Views;
 
 @RestController
-@RequestMapping("/api/profil")
+@RequestMapping("/api/clubUtilisateur")
 
-public class ProfilRestController {
+public class ClubUtilisateurRestController {
 
 	@Autowired
-	private ProfilService profilService;
+	private ClubUtilisateurService clubUtilisateurService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
-	public List<Profil> getAll() {
-		List<Profil> profils = profilService.getAll();
-		return profils;
+	public List<ClubUtilisateur> getAll() {
+		List<ClubUtilisateur> clubUtilisateurs = clubUtilisateurService.getAll();
+		return clubUtilisateurs;
 	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
-	public Profil getById(@PathVariable Long id) {
-		return profilService.getById(id);
+	public ClubUtilisateur getById(@PathVariable ClubUtilisateurKey id) {
+		return clubUtilisateurService.getById(id);
 	}
 
 	@PostMapping("")
 	@JsonView(Views.Common.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Profil create(@Valid @RequestBody Profil profil, BindingResult br) {
+	public ClubUtilisateur create(@Valid @RequestBody ClubUtilisateur clubUtilisateur, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new ProfilException();
+			throw new ClubUtilisateurException();
 		}
-		return profilService.createOrUpdate(profil);
+		return clubUtilisateurService.createOrUpdate(clubUtilisateur);
 	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
-	public Profil update(@PathVariable Long id, @Valid @RequestBody Profil profil, BindingResult br) {
-		if (profil.getId() == null || id != profil.getId() || br.hasErrors()) {
-			throw new ProfilException();
+	public ClubUtilisateur update(@PathVariable ClubUtilisateurKey id, @Valid @RequestBody ClubUtilisateur clubUtilisateur, BindingResult br) {
+		if (clubUtilisateur.getClubUtilisateurKey() == null || id != clubUtilisateur.getClubUtilisateurKey() || br.hasErrors()) {
+			throw new ClubUtilisateurException();
 		}
-		return profilService.createOrUpdate(profil);
+		return clubUtilisateurService.createOrUpdate(clubUtilisateur);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
-		profilService.deleteById(id);
+	public void delete(@PathVariable ClubUtilisateurKey id) {
+		clubUtilisateurService.deleteById(id);
 	}
 
 }

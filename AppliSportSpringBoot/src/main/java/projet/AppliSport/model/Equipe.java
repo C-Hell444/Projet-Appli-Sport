@@ -17,99 +17,71 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="equipe")
+@Table(name = "equipe")
 @SequenceGenerator(name = "seqEquipe", sequenceName = "seq_equipe", initialValue = 100, allocationSize = 1)
 public class Equipe {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEquipe")
-	@Column(name="id_equipe")
+	@Column(name = "id_equipe")
 	private Long id;
-	
+
 	@NotEmpty
-	@Column(name="nom_equipe")
+	@Column(name = "nom_equipe")
 	private String nom;
-	
+
 	@OneToMany(mappedBy = "id.utilisateur")
 	private List<EquipeUtilisateur> equipe;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "equipe_club", foreignKey = @ForeignKey(name = "equipe_club_fk"))
 	private Club club;
-	
-	
-	public Equipe() {
-			
-	}
 
-	
+	public Equipe() {
+
+	}
 
 	public Equipe(Long id, List<EquipeUtilisateur> equipe) {
 		this.id = id;
 		this.equipe = equipe;
 	}
 
-
 	public String getNom() {
 		return nom;
 	}
-
-
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-
-
-
-
-
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
 	public List<EquipeUtilisateur> getEquipe() {
 		return equipe;
 	}
-
 
 	public void setEquipe(List<EquipeUtilisateur> equipe) {
 		this.equipe = equipe;
 	}
 
-	
-	
-	
-
-
 	public Club getClub() {
 		return club;
 	}
-
-
 
 	public void setClub(Club club) {
 		this.club = club;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -123,9 +95,4 @@ public class Equipe {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	
-
-	
-	
 }

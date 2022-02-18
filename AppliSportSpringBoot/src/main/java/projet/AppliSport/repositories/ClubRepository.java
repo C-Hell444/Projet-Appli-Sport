@@ -23,7 +23,7 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	
 	@Transactional
 	@Modifying
-	@Query("update Club c set c.sport=null where p.sport=:sport")
-	void setSportToNull(@Param("caracteristique") Sport sport);
+	@Query("update Club c set c.sportClub=null where c.sportClub=:sport")
+	void setSportToNull(@Param("sport") Sport sport);
 
 }

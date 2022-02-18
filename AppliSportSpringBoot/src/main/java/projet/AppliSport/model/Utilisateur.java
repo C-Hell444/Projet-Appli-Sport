@@ -23,6 +23,10 @@ import javax.validation.constraints.Pattern;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 @Entity
 @Table(name = "utilisateur", uniqueConstraints = { @UniqueConstraint(columnNames = "compte_identifiant", name = "utilisateur_identifiant_uk"), @UniqueConstraint(columnNames = "compte_mail", name = "utilisateur_mail_uk") })
 public class Utilisateur extends Compte {
@@ -33,34 +37,43 @@ public class Utilisateur extends Compte {
 			@AttributeOverride(name = "rue", column = @Column(name = "client_rue", length = 200)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
 			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
+	@JsonView(Views.Common.class)
 	private Adresse adresse;
 	
 	@NotEmpty
 	@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$")
 	@Column(name = "utilisateur_nom", length = 100)
+	@JsonView(Views.Common.class)
 	private String nom;
 	
 	@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$")
 	@NotEmpty
 	@Column(name = "utilisateur_prenom", length = 100)
+	@JsonView(Views.Common.class)
 	private String prenom;
 	
 	@NotEmpty
 	@Pattern(regexp="^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$")
 	@Column(name = "utilisateur_tel", length = 30)
+	@JsonView(Views.Common.class)
 	private String numTel;
 	
 	@OneToMany(mappedBy = "utilisateur")
+	@JsonView(Views.UtilisateurWithInteret.class)
 	private Set<Interet> interets;
 	@OneToOne
 	@JoinColumn(name = "utilisateur_profil", foreignKey = @ForeignKey(name = "utilisateur_profil_fk"))
+	@JsonView(Views.UtilisateurWithProfil.class)
 	private Profil profilUtilisateur;
 	
-	@OneToMany(mappedBy = "id.equipe")	
+	@OneToMany(mappedBy = "id.equipe")
+	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
 	private List<EquipeUtilisateur> equipes;
 	@OneToMany(mappedBy = "id.evenement")
+	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
 	private List<EvenementUtilisateur> evenements;
 	@OneToMany(mappedBy = "id.club")
+	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
 	private List<ClubUtilisateur> clubs;
 	
 
