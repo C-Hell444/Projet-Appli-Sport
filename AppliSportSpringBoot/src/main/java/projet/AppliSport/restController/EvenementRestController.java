@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.EvenementException;
 import projet.AppliSport.model.Evenement;
+import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.EvenementService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
@@ -31,7 +32,8 @@ public class EvenementRestController {
 	@Autowired
 	private EvenementService evenementService;
 	
-
+	@Autowired
+	private UtilisateurService utilisateurService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -40,7 +42,12 @@ public class EvenementRestController {
 		return list;
 	}
 
-
+	@GetMapping("/utilisateur")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllUtilisateur() {
+		List<Utilisateur> list = utilisateurService.getAll();
+		return list;
+	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)

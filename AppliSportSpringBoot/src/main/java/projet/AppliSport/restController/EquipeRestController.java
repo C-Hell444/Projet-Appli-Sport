@@ -43,7 +43,7 @@ public class EquipeRestController {
 		return list;
 	}
 	
-	@GetMapping("")
+	@GetMapping("/utilisateur")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllUtilisateur() {
 		List<Utilisateur> list = utilisateurService.getAll();
