@@ -28,9 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.csrf().disable()
 			.authorizeHttpRequests()
-				.antMatchers("/api/**").permitAll()
-				.and()
-				.httpBasic();
+				.antMatchers("/api/**").permitAll();
+	
 		// @formatter:on
 
 	}
