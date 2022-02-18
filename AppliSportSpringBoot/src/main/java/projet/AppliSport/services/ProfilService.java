@@ -84,6 +84,10 @@ public class ProfilService {
 			throw new ProfilException("profil sans id !!");
 		}
 		
+		Profil profilEnBase=profilRepository.findById(profil.getId()).orElseThrow(ProfilException::new);
+		profilRepository.deleteProfilByUtilisateur(profilEnBase.getUtilisateur());
+		
+//		profilRepository.delete(profilEnBase);
 		
 	
 	}

@@ -88,7 +88,8 @@ public class CaracteristiqueService {
 			throw new CaracteristiqueException("caracteristique sans id !!");
 		}
 		
-		
+		Caracteristique caracteristiqueEnBase=caracteristiqueRepository.findById(caracteristique.getId()).orElseThrow(CaracteristiqueException::new);
+		caracteristiqueRepository.delete(caracteristiqueEnBase);
 	
 		
 	}
