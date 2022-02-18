@@ -2,6 +2,8 @@ package projet.AppliSport.services;
 
 import java.util.List;
 
+import javax.validation.Validator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,9 @@ public class UtilisateurService {
 	@Autowired
 	private ProfilRepository profilRepository;
 	
+	@Autowired
+	private Validator validator;
+	
 	
 	public Utilisateur getById(Long id) {
 		return utilisateurRepository.findById(id).orElseThrow(()->{
@@ -49,7 +54,9 @@ public class UtilisateurService {
 	
 	
 	private void checkData(Utilisateur utilisateur) {
-		
+		if(!validator.validate(utilisateur).isEmpty()) {
+			throw new UtilisateurException("erreur de validation");
+		}
 	}
 	
 	
