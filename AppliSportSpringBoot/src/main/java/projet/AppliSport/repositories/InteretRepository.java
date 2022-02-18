@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import projet.AppliSport.model.Interet;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 
 public interface InteretRepository extends JpaRepository<Interet, Long>{
@@ -25,6 +26,11 @@ public interface InteretRepository extends JpaRepository<Interet, Long>{
 	@Modifying
 	@Query("delete from Interet i where i.utilisateur=:utilisateur")
 	void deleteInteretByUtilisateur(@Param("utilisateur") Utilisateur utilisateur);
+	
+	@Transactional
+	@Modifying
+	@Query("delete from Interet i where i.sport=:sport")
+	void deleteInteretBySport(@Param("sport") Sport sport);
 	
 	
 }
