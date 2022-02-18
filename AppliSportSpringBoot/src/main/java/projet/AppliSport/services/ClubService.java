@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import projet.AppliSport.exception.ClubException;
 import projet.AppliSport.exception.UtilisateurException;
 import projet.AppliSport.model.Club;
+import projet.AppliSport.model.Equipe;
+import projet.AppliSport.model.Evenement;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.repositories.ClubRepository;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
@@ -24,6 +26,12 @@ import projet.AppliSport.repositories.UtilisateurRepository;
 public class ClubService {
 	@Autowired
 	private Validator validator;
+	
+	@Autowired
+	private EquipeService equipeService;
+	
+	@Autowired
+	private EvenementService evenementService;
 	
 	@Autowired
 	private ClubRepository clubRepository;
@@ -90,11 +98,16 @@ public class ClubService {
 		}
 		Club clubEnBase = this.getById(club.getId());
 		clubUtilisateurRepository.deleteClubUtilisateurByClub(clubEnBase);
-		evenementUtilisateurRepository.deleteEvenementUtilisateurByClub(clubEnBase);
-		equipeUtilisateurRepository.deleteEquipeUtilisateurByClub(clubEnBase);
-		utilisateurRepository.deleteUtilisateurByClub(clubEnBase);
-		equipeRepository.deleteEquipeByClub(clubEnBase);
-		evenementRepository.deleteEvenementByClub(clubEnBase);
+		List<Equipe> equipes = equipeRepository.findByIdClub(club.getId());
+		//equipes.stream().map(equipeService)
+		for (Equipe e:equipes) {
+			equipeService.delete(e);
+		}
+		List<Evenement> evenements = evenementRepository.findByIdClub(club.getId());
+		for (Evenement ev:evenements) {
+			evenementService.delete(ev);
+		}
+		
 		clubRepository.delete(clubEnBase);
 	}
 	

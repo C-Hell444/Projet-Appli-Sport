@@ -3,11 +3,15 @@ package projet.AppliSport.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import projet.AppliSport.model.Adresse;
+import projet.AppliSport.model.Caracteristique;
 import projet.AppliSport.model.Profil;
 import projet.AppliSport.model.Utilisateur;
 
@@ -59,7 +63,10 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	List<Utilisateur> findUtilisateurWithInteretId(@Param("id") Long id);
 	
 	
-	
+	@Transactional
+	@Modifying
+	@Query("update Utilisateur u set u.profilUtilisateur=null where u.profilUtilisateur=:profil")
+	void setProfilToNull(@Param("profilUtilisateur") Profil profil);
 	
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import projet.AppliSport.exception.CaracteristiqueException;
 import projet.AppliSport.model.Caracteristique;
 import projet.AppliSport.repositories.CaracteristiqueRepository;
+import projet.AppliSport.repositories.ProfilRepository;
 
 
 @Service
@@ -17,6 +18,9 @@ public class CaracteristiqueService {
 
 	@Autowired
 	private CaracteristiqueRepository caracteristiqueRepository;
+	
+	@Autowired
+	private ProfilRepository profilRepository;
 	
 	@Autowired
 	private Validator validator;
@@ -88,7 +92,9 @@ public class CaracteristiqueService {
 			throw new CaracteristiqueException("caracteristique sans id !!");
 		}
 		
-		
+		Caracteristique caracteristiqueEnBase=caracteristiqueRepository.findById(caracteristique.getId()).orElseThrow(CaracteristiqueException::new);
+		profilRepository.setCaracteristiqueToNull(caracteristiqueEnBase);
+		caracteristiqueRepository.delete(caracteristiqueEnBase);
 	
 		
 	}

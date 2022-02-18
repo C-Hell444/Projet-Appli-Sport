@@ -22,7 +22,7 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 	List<Evenement> findByDateFin(LocalDate dateFin);
 	
 	// ===================  Attribut club ======================== //
-	@Query("select e from Evenement e left join fetch e.club where e.id=:id")
-	Optional<Profil> findByIdClub(@Param("id") Long id);
+	@Query("select e from Evenement e left join fetch e.club.id where e.club.id=:id")
+	List<Evenement> findByIdClub(@Param("id") Long id);
 
 }

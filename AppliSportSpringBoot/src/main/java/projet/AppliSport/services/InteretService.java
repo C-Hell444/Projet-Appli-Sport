@@ -26,6 +26,16 @@ public class InteretService {
 	{
 		return interetRepository.findAll();
 	}
+	
+	public List<Interet> getAllWithUtilisateur(Long id)
+	{
+		return interetRepository.findByIdUtilisateur(id);
+	}
+	
+	public List<Interet> getAllWithSport(Long id)
+	{
+		return interetRepository.findByIdSport(id);
+	}
 
 	
 	public Interet getById(Long id)
@@ -80,8 +90,10 @@ public class InteretService {
 			throw new InteretException("interet sans id !!");
 		}
 		
+		Interet interetEnBase=interetRepository.findById(interet.getId()).orElseThrow(InteretException::new);
+		interetRepository.delete(interetEnBase);
 		
-		
+	
 		
 	}
 	
