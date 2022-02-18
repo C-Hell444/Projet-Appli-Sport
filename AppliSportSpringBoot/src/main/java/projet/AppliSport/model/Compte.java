@@ -1,5 +1,8 @@
 package projet.AppliSport.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -14,11 +17,16 @@ import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte", initialValue = 100, allocationSize = 1)
-public abstract class Compte {
+public abstract class Compte implements UserDetails {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@Column(name = "compte_appli")
@@ -79,6 +87,17 @@ public abstract class Compte {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	
+	
+	
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	@Override
 	public int hashCode() {
@@ -96,6 +115,8 @@ public abstract class Compte {
 		Compte other = (Compte) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 
 	
 	
