@@ -35,7 +35,7 @@ public class Profil {
 	@Column(name="profil_id")
 	private Long id;
 	
-	@DecimalMin(value = "0")
+	@DecimalMin(value = "20")
 	@Column(name="profil_poids")
 	private double poids;
 	
@@ -145,6 +145,38 @@ public class Profil {
 	public void setCaracteristique(Caracteristique caracteristique) {
 		this.caracteristique = caracteristique;
 	}
+
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
 
 
 

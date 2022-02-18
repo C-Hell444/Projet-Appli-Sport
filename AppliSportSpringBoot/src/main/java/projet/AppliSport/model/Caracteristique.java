@@ -173,6 +173,14 @@ public class Caracteristique {
 		this.agilite = agilite;
 	}
 
+	public Profil getProfil() {
+		return profil;
+	}
+
+	public void setProfil(Profil profil) {
+		this.profil = profil;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
