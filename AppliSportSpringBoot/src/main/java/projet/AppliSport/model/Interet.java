@@ -31,15 +31,31 @@ public class Interet {
 	}
 	
 	
-	public Long getid() {
+	
+	
+//	public Long getid() {
+//		return id;
+//	}
+//
+//
+//
+//	public void setid(Long id_interet) {
+//		id = id_interet;
+//	}
+
+
+
+	public Long getId() {
 		return id;
 	}
 
 
 
-	public void setid(Long id_interet) {
-		id = id_interet;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 
 
 
@@ -65,6 +81,16 @@ public class Interet {
 		this.sport = sport;
 	}
 
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 
 	@Override
