@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import projet.AppliSport.model.Caracteristique;
 import projet.AppliSport.model.Profil;
 import projet.AppliSport.model.Sexe;
 import projet.AppliSport.model.Utilisateur;
@@ -49,4 +50,10 @@ public interface ProfilRepository extends JpaRepository<Profil, Long>{
 	@Modifying
 	@Query("delete from Profil p where p.utilisateur=:utilisateur")
 	void deleteProfilByUtilisateur(@Param("utilisateur") Utilisateur utilisateur);
+	
+	
+	@Transactional
+	@Modifying
+	@Query("update Profil p set p.caracteristique=null where p.caracteristique=:caracteristique")
+	void setCaracteristiqueToNull(@Param("caracteristique") Caracteristique caracteristique);
 }
