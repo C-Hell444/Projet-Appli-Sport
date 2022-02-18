@@ -1,0 +1,23 @@
+logging:
+  level:
+    root: info
+
+server:
+  servlet:
+    context-path: /boot
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    url: jdbc:postgresql://127.0.0.1:5432/bdd_sport
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        format_sql: true
+        show_sql: false
+  main:
+    allow-circular-references: true
