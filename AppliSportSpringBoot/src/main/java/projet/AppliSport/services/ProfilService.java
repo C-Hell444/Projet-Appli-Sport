@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import projet.AppliSport.exception.ProfilException;
 import projet.AppliSport.model.Profil;
 import projet.AppliSport.repositories.ProfilRepository;
+import projet.AppliSport.repositories.UtilisateurRepository;
 
 
 @Service
@@ -17,6 +18,9 @@ public class ProfilService {
 
 	@Autowired
 	private ProfilRepository profilRepository;
+	
+	@Autowired
+	private UtilisateurRepository utilisateurRepository;
 	
 	@Autowired
 	private Validator validator;
@@ -84,10 +88,9 @@ public class ProfilService {
 			throw new ProfilException("profil sans id !!");
 		}
 		
-		Profil profilEnBase=profilRepository.findById(profil.getId()).orElseThrow(ProfilException::new);
-		profilRepository.deleteProfilByUtilisateur(profilEnBase.getUtilisateur());
-		
-//		profilRepository.delete(profilEnBase);
+		Profil profilEnBase=profilRepository.findById(profil.getId()).orElseThrow(ProfilException::new);	
+		utilisateurRepository.setProfilToNull(profilEnBase);
+		profilRepository.delete(profilEnBase);
 		
 	
 	}
