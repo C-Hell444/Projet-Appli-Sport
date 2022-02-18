@@ -39,28 +39,19 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	
 	Optional<Utilisateur> findByProfilUtilisateur(Profil profilUtilisateur);
 	
-	@Query("select u from Utilisateur u left join fetch Profil p where p.id=:id")
-	Optional<Utilisateur> findByIdProfilUtilisateur(@Param("id") Long id);
 	
 	
+	@Query("select u from Utilisateur u left join fetch u.interets where u.id=:id")
+	Optional<Utilisateur> findByIdWithInterets(@Param("id") Long id);
 	
-	@Query("select u from Utilisateur u left join fetch ClubUtilisateur c where c.id.club=:id")
-	List<Utilisateur> findUtilisateurWithClubId(@Param("id") Long id);
+	@Query("select u from Utilisateur u left join fetch u.clubs where u.id=:id")
+	Optional<Utilisateur> findByIdWithClubUtilisateur(@Param("id") Long id);
 	
+	@Query("select u from Utilisateur u left join fetch u.equipes where u.id=:id")
+	Optional<Utilisateur> findByIdWithEquipeUtilisateur(@Param("id") Long id);
 	
-	
-	@Query("select u from Utilisateur u left join fetch EvenementUtilisateur e where e.id.evenement=:id")
-	List<Utilisateur> findUtilisateurWithEvenementId(@Param("id") Long id);
-	
-	
-	
-	@Query("select u from Utilisateur u left join fetch EquipeUtilisateur e where e.id.equipe=:id")
-	List<Utilisateur> findUtilisateurWithEquipeId(@Param("id") Long id);
-	
-	
-	
-	@Query("select u from Utilisateur u left join fetch Interet i where i.id=:id")
-	List<Utilisateur> findUtilisateurWithInteretId(@Param("id") Long id);
+	@Query("select u from Utilisateur u left join fetch u.evenements where u.id=:id")
+	Optional<Utilisateur> findByIdWithEvenementUtilisateur(@Param("id") Long id);
 	
 	
 	@Transactional
