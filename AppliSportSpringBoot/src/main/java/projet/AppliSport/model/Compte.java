@@ -21,6 +21,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte", initialValue = 100, allocationSize = 1)
@@ -30,18 +34,22 @@ public abstract class Compte implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@Column(name = "compte_appli")
+	@JsonView(Views.Common.class)
 	private Long id;
 	
 	@NotEmpty
 	@Column(name = "compte_identifiant", length = 200, nullable = false)
+	@JsonView(Views.Common.class)
 	private String identifiant;
 	
 	@NotEmpty
 	@Column(name = "compte_mdp", length = 200, nullable = false)
+	@JsonView(Views.Common.class)
 	private String mdp;
 	
 	@Email
 	@Column(name = "compte_mail", length = 200, nullable = false)
+	@JsonView(Views.Common.class)
 	private String mail;
 	@Version
 	private int version;

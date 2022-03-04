@@ -12,17 +12,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 @Entity
 @SequenceGenerator(name = "seqInteret", sequenceName = "seq_interet", initialValue = 10, allocationSize = 1)
 public class Interet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqInteret")
+	@JsonView(Views.Common.class)
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "interet_utilisateur", foreignKey = @ForeignKey(name = "interet_utilisateur_fk"))
+	@JsonView(Views.Common.class)
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "interet_sport", foreignKey = @ForeignKey(name = "interet_sport_fk"))
+	@JsonView(Views.Common.class)
 	private Sport sport;
 	@Version
 	private int version;

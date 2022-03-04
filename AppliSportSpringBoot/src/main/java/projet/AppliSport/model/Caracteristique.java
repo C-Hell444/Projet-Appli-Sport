@@ -13,6 +13,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 
 
 
@@ -24,55 +28,66 @@ public class Caracteristique {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCaracteristique")
 	@Column(name = "carac_id")
+	@JsonView(Views.Common.class)
 	private Long id;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_mentale_collectif")
+	@JsonView(Views.Common.class)
 	private int collectif;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_mentale_creativite")
+	@JsonView(Views.Common.class)
 	private int creativite;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_mentale_determination")
+	@JsonView(Views.Common.class)
 	private int determination;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_mentale_patience")
+	@JsonView(Views.Common.class)
 	private int patience;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_physique_agilite")
+	@JsonView(Views.Common.class)
 	private int detente;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_physique_detente")
+	@JsonView(Views.Common.class)
 	private int agilite;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_physique_puissance")
+	@JsonView(Views.Common.class)
 	private int puissance;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_physique_vitesse")
+	@JsonView(Views.Common.class)
 	private int vitesse;
 	
 	@Min(value=0)
 	@Max(value=10)
 	@Column(name = "carac_physique_endurance")
+	@JsonView(Views.Common.class)
 	private int endurance;
 
 	
 	@OneToOne(mappedBy ="caracteristique")
+	@JsonView(Views.CaracteristiqueProfil.class)
 	private Profil profil;
 
 
