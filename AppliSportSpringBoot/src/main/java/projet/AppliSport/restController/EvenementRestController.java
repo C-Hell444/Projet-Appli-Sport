@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.EvenementException;
+import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.EvenementService;
@@ -44,17 +45,23 @@ public class EvenementRestController {
 		return list;
 	}
 
-	@GetMapping("/utilisateur")
-	@JsonView(Views.Common.class)
-	public List<Utilisateur> getAllUtilisateur() {
-		List<Utilisateur> list = utilisateurService.getAll();
-		return list;
-	}
+//	@GetMapping("/utilisateur")
+//	@JsonView(Views.Common.class)
+//	public List<Utilisateur> getAllUtilisateur() {
+//		List<Utilisateur> list = utilisateurService.getAll();
+//		return list;
+//	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Evenement getById(@PathVariable Long id) {
 		return evenementService.getById(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur")
+	@JsonView(Views.EvenementUtilisateur.class)
+	public Evenement getByIdUtilisateur(@PathVariable Long id) {
+		return evenementService.getByIdWithUtilisateur(id);
 	}
 
 

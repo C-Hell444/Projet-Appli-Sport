@@ -45,6 +45,14 @@ public class ProfilRestController {
 	public Profil getById(@PathVariable Long id) {
 		return profilService.getById(id);
 	}
+	
+	@GetMapping("/{id}/utilisateur")
+	@JsonView(Views.ProfilUtilisateur.class)
+	public Profil getByIdWithUtilisateur(@PathVariable Long id) {
+		return profilService.getByIdWithUtilisateur(id);
+	}
+	
+	
 
 	@PostMapping("")
 	@JsonView(Views.Common.class)

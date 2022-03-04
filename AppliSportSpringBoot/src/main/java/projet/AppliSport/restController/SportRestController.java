@@ -47,6 +47,18 @@ public class SportRestController {
 		return sportService.getById(id);
 	}
 	
+	@GetMapping("/{id}/club")
+	@JsonView(Views.SportClub.class)
+	public Sport getByIdWithClub(@PathVariable Long id) {
+		return sportService.getByIdWithClub(id);
+	}
+	
+	@GetMapping("/{id}/interet")
+	@JsonView(Views.SportInteret.class)
+	public Sport getByIdWithInteret(@PathVariable Long id) {
+		return sportService.getById(id);
+	}
+	
 	
 	
 	@PostMapping("")

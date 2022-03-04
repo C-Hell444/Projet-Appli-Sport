@@ -37,7 +37,14 @@ public class SportService {
 			throw new SportException("sport non reconnu");
 		});
 	}
+	public Sport getByIdWithClub(Long id) {
+		return sportRepo.findByIdWithClub(id).orElseThrow(SportException::new);
+	}
 
+	public Sport getByIdWithInteret(Long id) {
+		return sportRepo.findByIdWithInteret(id).orElseThrow(SportException::new);
+	}
+	
 	public Sport createOrUpdate(Sport sport) {
 		if (sport == null) {
 			throw new SportException();
@@ -79,5 +86,7 @@ public class SportService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
+
+	
 
 }

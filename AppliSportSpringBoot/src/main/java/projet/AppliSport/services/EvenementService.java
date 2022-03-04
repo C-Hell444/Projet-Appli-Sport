@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.EquipeException;
 import projet.AppliSport.exception.EvenementException;
+import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.repositories.EvenementRepository;
 import projet.AppliSport.repositories.EvenementUtilisateurRepository;
@@ -30,6 +31,11 @@ public class EvenementService {
 			throw new EvenementException("evenement inconnu");
 		});
 	}
+	
+	public Evenement getByIdWithUtilisateur(Long id) {
+		return evenementRepository.findByIdWithUtilisateur(id).orElseThrow(EvenementException::new);
+	}
+	
 	public List<Evenement> getAll() {
 		return evenementRepository.findAll();
 	}
@@ -72,6 +78,7 @@ public class EvenementService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
+	
 
 
 

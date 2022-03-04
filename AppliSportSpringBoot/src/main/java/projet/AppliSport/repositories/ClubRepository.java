@@ -1,6 +1,7 @@
 package projet.AppliSport.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -12,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 import projet.AppliSport.model.Adresse;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Sport;
+
 
 public interface ClubRepository extends JpaRepository<Club, Long>{
 
@@ -25,5 +27,14 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	@Modifying
 	@Query("update Club c set c.sportClub=null where c.sportClub=:sport")
 	void setSportToNull(@Param("sport") Sport sport);
+	
+	@Query("select c from Club c left join fetch c.equipes where c.id=:id")
+	Optional<Club> findByIdWithEquipe(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.evenements where c.id=:id")
+	Optional<Club> findByIdWithEvenement(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.listeMembres where c.id=:id")
+	Optional<Club> findByIdWithUtilisateur(@Param("id") Long id);
 
 }

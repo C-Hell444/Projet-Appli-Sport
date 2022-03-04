@@ -43,8 +43,10 @@ public interface ProfilRepository extends JpaRepository<Profil, Long>{
 	
 	// ===================  Attribut utilisateur ======================== //
 	@Query("select p from Profil p left join fetch p.utilisateur where p.id=:id")
-	Optional<Profil> findByIdUtilisateur(@Param("id") Long id);
+	Optional<Profil> findByIdWithUtilisateur(@Param("id") Long id);
 	
+
+
 	
 	@Transactional
 	@Modifying
@@ -56,4 +58,7 @@ public interface ProfilRepository extends JpaRepository<Profil, Long>{
 	@Modifying
 	@Query("update Profil p set p.caracteristique=null where p.caracteristique=:caracteristique")
 	void setCaracteristiqueToNull(@Param("caracteristique") Caracteristique caracteristique);
+	
+	
+
 }

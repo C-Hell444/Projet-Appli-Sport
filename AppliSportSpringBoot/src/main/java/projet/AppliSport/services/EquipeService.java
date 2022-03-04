@@ -7,7 +7,7 @@ import javax.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import projet.AppliSport.exception.ClubException;
 import projet.AppliSport.exception.EquipeException;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.repositories.EquipeRepository;
@@ -29,6 +29,10 @@ public class EquipeService {
 		return equipeRepository.findById(id).orElseThrow(()->{
 			throw new EquipeException("equipe inconnu");
 		});
+	}
+	
+	public Equipe getByIdWithUtilisateur(Long id) {
+		return equipeRepository.findByIdWithUtilisateur(id).orElseThrow(EquipeException::new);
 	}
 	public List<Equipe> getAll() {
 		return equipeRepository.findAll();
@@ -72,5 +76,6 @@ public class EquipeService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
+	
 
 }
