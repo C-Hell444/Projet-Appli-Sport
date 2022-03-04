@@ -1,0 +1,225 @@
+<style>
+  #DivTop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #DivTopLogo {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #DivTopMenus {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+  }
+
+  #DivTopInscriConnection {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  #DivBottom {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+<!-- ********************************************************** -->
+
+<div id="DivTop">
+  <div id="DivTopLogo">
+    <a [routerLink]="['/accueil']" routerLinkActive="active"
+      ><img width="120" height="120" src="assets/img/Logo3.png" alt="logo"
+    /></a>
+  </div>
+  <div id="DivTopMenus">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+          <span>Menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active h5"
+                aria-current="page"
+                [routerLink]="['/accueil']"
+                routerLinkActive="active"
+                >Accueil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link h5" href="#">Nos Clubs</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle h5"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Nos Sports
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Sport1</a></li>
+                <li><a class="dropdown-item" href="#">Sport2</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle h5"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Nos événements
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Evénement1</a></li>
+                <li><a class="dropdown-item" href="#">Evénement2</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link h5"
+                [routerLink]="['/actualite']"
+                routerLinkActive="active"
+                >Actualités</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Recherche
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div id="DivTopInscriConnection">
+    <nav class="navbar navbar-light">
+      <a
+        class="navbar-brand h6"
+        [routerLink]="['/inscription-utilisateur']"
+        routerLinkActive="active"
+      >
+        <img
+          src="assets/img/person-circle.svg"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="SeConnecter"
+        />
+        Se connecter / S'inscrire
+      </a>
+    </nav>
+  </div>
+</div>
+
+<!-- ********************************************************** -->
+
+<router-outlet></router-outlet>
+
+<!-- ********************************************************** -->
+
+<div id="DivBottom">
+  <div class="DivBottomFAQ">
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand" [routerLink]="['/faq']" routerLinkActive="active">
+        Vous avez des questions?
+        <img
+          src="assets/img/faq.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="fb"
+        />
+      </a>
+    </nav>
+  </div>
+
+  <div class="DivBottomMensionLegal">
+    <nav class="navbar navbar-light">
+      <a
+        class="navbar-brand"
+        [routerLink]="['/A-propos']"
+        routerLinkActive="active"
+        >A propos</a
+      >
+      <a
+        class="navbar-brand"
+        [routerLink]="['/accueil']"
+        routerLinkActive="active"
+        >Accueil</a
+      >
+      <a
+        class="navbar-brand"
+        [routerLink]="['/mention-legale']"
+        routerLinkActive="active"
+        >Mentions légales</a
+      >
+    </nav>
+  </div>
+
+  <div class="DivBottomRS">
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand">
+        Suivez-nous
+        <img
+          src="assets/img/fb.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="fb"
+        />
+        <img
+          src="assets/img/tweeter.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="tweeter"
+        />
+        <img
+          src="assets/img/linkedin.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="linkedin"
+        />
+      </a>
+    </nav>
+  </div>
+</div>
