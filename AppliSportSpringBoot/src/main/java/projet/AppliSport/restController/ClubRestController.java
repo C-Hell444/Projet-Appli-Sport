@@ -26,6 +26,7 @@ import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.ClubService;
+import projet.AppliSport.services.CustomUserDetailsService;
 import projet.AppliSport.services.EquipeService;
 import projet.AppliSport.services.EvenementService;
 import projet.AppliSport.services.UtilisateurService;
@@ -49,6 +50,9 @@ public class ClubRestController {
 	
 	@Autowired
 	private EquipeService equipeService;
+	
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -103,7 +107,7 @@ public class ClubRestController {
 		if (club.getId() == null || id != club.getId() || br.hasErrors()) {
 			throw new ClubException();
 		}
-		return clubService.createOrUpdate(club);
+		return (Club) customUserDetailsService.createOrUpdate(club);
 	}
 
 	@DeleteMapping("/{id}")

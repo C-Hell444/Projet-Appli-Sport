@@ -29,7 +29,7 @@ public class ConsoleService implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		LOGGER.info("ça fonctionne");
-		initDataBase();
+		//initDataBase();
 		
 	}
 	
