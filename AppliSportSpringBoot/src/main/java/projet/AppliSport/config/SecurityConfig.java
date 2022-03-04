@@ -24,11 +24,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// @formatter:off
 		http.antMatcher("/**")
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			.and()
-			.csrf().disable()
-			.authorizeHttpRequests()
-				.antMatchers("/api/**").permitAll();
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and()
+		.csrf().disable()
+		.authorizeHttpRequests()
+			.antMatchers(HttpMethod.GET ,"/api/user/**").hasAnyAuthority("Utilisateur","Admin", "Club")
+			.antMatchers("/api/user/**").hasAnyAuthority("Utilisateur","Admin")
+			.antMatchers(HttpMethod.GET ,"/api/sport/**").hasAnyAuthority("Utilisateur","Admin", "Club")
+			.antMatchers("/api/sport/**").hasAnyAuthority("Admin")
+			.antMatchers(HttpMethod.GET ,"/api/profil/**").hasAnyAuthority("Utilisateur","Admin", "Club")
+			.antMatchers("/api/profil/**").hasAnyAuthority("Utilisateur","Admin")
+			.antMatchers(HttpMethod.GET ,"/api/interet/**").hasAnyAuthority("Utilisateur","Admin", "Club")
+			.antMatchers("/api/interet/**").hasAnyAuthority("Utilisateur","Admin")
+			.antMatchers("/api/evenement-utilisateur/**").hasAnyAuthority("Utilisateur", "Admin", "Club")
+			.antMatchers(HttpMethod.GET ,"/api/evenement/**").hasAnyAuthority("Utilisateur", "Admin", "Club")
+			.antMatchers("/api/evenement/**").hasAnyAuthority("Admin", "Club")
+			.antMatchers("/api/equipe-utilisateur/**").hasAnyAuthority("Utilisateur", "Admin", "Club")
+			.antMatchers(HttpMethod.GET ,"/api/equipe/**").hasAnyAuthority("Utilisateur", "Admin", "Club")
+			.antMatchers("/api/equipe/**").hasAnyAuthority("Admin", "Club")
+			.antMatchers("/api/club-utilisateur/**").hasAnyAuthority("Utilisateur", "Admin", "Club")
+			.antMatchers(HttpMethod.GET ,"/api/club/**").hasAnyAuthority("Utilisateur","Admin", "Club")
+			.antMatchers("/api/club/**").hasAnyAuthority("Admin", "Club")
+			.antMatchers(HttpMethod.GET ,"/api/caracteristique/**").hasAnyAuthority("Utilisateur","Admin", "Club")
+			.antMatchers("/api/caracteristique/**").hasAnyAuthority("Utilisateur", "Admin")
+			.antMatchers("/api/auth/**").permitAll()
+			.anyRequest().authenticated()
+		.and()
+			.httpBasic();
 	
 		// @formatter:on
 
