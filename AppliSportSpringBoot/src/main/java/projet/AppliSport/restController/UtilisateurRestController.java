@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,15 +22,20 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.UtilisateurException;
 import projet.AppliSport.model.Utilisateur;
+import projet.AppliSport.services.CustomUserDetailsService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins="*")
 public class UtilisateurRestController {
 
 	@Autowired
 	private UtilisateurService utilisateurService;
+	
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 	
 	
 	@GetMapping("")
@@ -96,7 +102,7 @@ public class UtilisateurRestController {
 		if(br.hasErrors()) {
 			throw new UtilisateurException();
 		}
-		return utilisateurService.createOrUpdate(utilisateur);
+		return (Utilisateur) customUserDetailsService.createOrUpdate(utilisateur);
 	}
 	
 	

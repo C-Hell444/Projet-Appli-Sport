@@ -8,18 +8,29 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 @Embeddable
 public class EvenementUtilisateurKey implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "evenementutilisateurkey_utilisateur", foreignKey = @ForeignKey(name = "evenementutilisateurkey_utilisateur_fk"))
+	@JsonView(Views.Common.class)
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "evenementutilisateurkey_evenement", foreignKey = @ForeignKey(name = "evenementutilisateurkey_evenement_fk"))
+	@JsonView(Views.Common.class)
 	private Evenement evenement;
 	
 	public EvenementUtilisateurKey() {
 		
+	}
+	
+	public EvenementUtilisateurKey(Utilisateur utilisateur, Evenement evenement) {
+		this.utilisateur = utilisateur;
+		this.evenement = evenement;
 	}
 
 	public Utilisateur getUtilisateur() {

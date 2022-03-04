@@ -13,25 +13,38 @@ import javax.validation.constraints.PastOrPresent;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 @Entity
 @Table(name = "equipeutilisateur")
 public class EquipeUtilisateur {
 
 	@EmbeddedId
+	@JsonView(Views.Common.class)
 	private EquipeUtilisateurKey id;
 	@PastOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "equipeutilisateur_date_debut")
+	@JsonView(Views.Common.class)
 	private LocalDate dateDebut;
 	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "equipeutilisateur_date_fin")
+	@JsonView(Views.Common.class)
 	private LocalDate dateFin;
 	@Version
 	private int version;
 	public EquipeUtilisateur() {
 		
 	}
+
+	public EquipeUtilisateur(EquipeUtilisateurKey id) {
+		super();
+		this.id = id;
+	}
+
 
 	public EquipeUtilisateurKey getEquipeUtilisateurKey() {
 		return id;

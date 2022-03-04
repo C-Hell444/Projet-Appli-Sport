@@ -15,28 +15,28 @@ import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import projet.AppliSport.views.ViewsSport;
+import projet.AppliSport.views.Views;
 
 @Entity
 @SequenceGenerator(name = "seqSport", sequenceName = "seq_sport", initialValue = 10, allocationSize = 1)
 public class Sport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSport")
-	@JsonView(ViewsSport.Common.class)
+	@JsonView(Views.Common.class)
 	private Long id;
 	
 	@NotEmpty
 	@Column(name = "nom", length = 150)
-	@JsonView(ViewsSport.Common.class)
+	@JsonView(Views.Common.class)
 	private String nom;
 	//@ManyToOne
 	//@JoinColumn(name = "sport_profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
 	//private Profil profilSport;
 	@OneToMany(mappedBy = "sportClub")
-	@JsonView(ViewsSport.Clubs.class)
+	@JsonView(Views.SportClub.class)
 	private Set<Club> clubs;
 	@OneToMany(mappedBy = "sport")
-	@JsonView(ViewsSport.Interets.class)
+	@JsonView(Views.SportInteret.class)
 	private Set<Interet> interets;
 
 	@Version

@@ -16,6 +16,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 @Entity
 @Table(name = "equipe")
 @SequenceGenerator(name = "seqEquipe", sequenceName = "seq_equipe", initialValue = 100, allocationSize = 1)
@@ -24,17 +28,21 @@ public class Equipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEquipe")
 	@Column(name = "id_equipe")
+	@JsonView(Views.Common.class)
 	private Long id;
 
 	@NotEmpty
 	@Column(name = "nom_equipe")
+	@JsonView(Views.Common.class)
 	private String nom;
 
 	@OneToMany(mappedBy = "id.utilisateur")
+	@JsonView(Views.EquipeUtilisateur.class)
 	private List<EquipeUtilisateur> equipe;
 
 	@ManyToOne
 	@JoinColumn(name = "equipe_club", foreignKey = @ForeignKey(name = "equipe_club_fk"))
+	@JsonView(Views.Common.class)
 	private Club club;
 
 	public Equipe() {

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,24 +24,25 @@ import com.fasterxml.jackson.annotation.JsonView;
 import projet.AppliSport.exception.SportException;
 import projet.AppliSport.model.Sport;
 import projet.AppliSport.services.SportService;
-import projet.AppliSport.views.ViewsSport;
+import projet.AppliSport.views.Views;
 
 @RestController
 @RequestMapping("/api/sport")
+@CrossOrigin(origins="*")
 public class SportRestController {
 
 	@Autowired
 	private SportService sportService;
 	
 	@GetMapping("")
-	@JsonView(ViewsSport.Common.class)
+	@JsonView(Views.Common.class)
 	public List<Sport> getAll(){
 		return sportService.getAll();
 	}
 	
 	
 	@GetMapping("/{id}")
-	@JsonView(ViewsSport.Common.class)
+	@JsonView(Views.Common.class)
 	public Sport getById(@PathVariable Long id) {
 		return sportService.getById(id);
 	}
@@ -48,7 +50,7 @@ public class SportRestController {
 	
 	
 	@PostMapping("")
-	@JsonView(ViewsSport.Common.class)
+	@JsonView(Views.Common.class)
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Sport create (@Valid @RequestBody Sport Sport, BindingResult br) {
 		if(br.hasErrors()) {
@@ -58,7 +60,7 @@ public class SportRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(ViewsSport.Common.class)
+	@JsonView(Views.Common.class)
 	public Sport update(@PathVariable Long id, @Valid @RequestBody Sport sport, BindingResult br) {
 		
 		sportService.getById(id);

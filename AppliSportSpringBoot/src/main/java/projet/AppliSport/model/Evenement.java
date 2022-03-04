@@ -22,6 +22,10 @@ import javax.validation.constraints.PastOrPresent;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 
 @Entity
 @Table(name="evenement")
@@ -31,27 +35,33 @@ public class Evenement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEvenement")
 	@Column(name="id_evenement")
+	@JsonView(Views.Common.class)
 	private Long id;
 	
 	@NotEmpty
 	@Column(name="nom_evenement")
+	@JsonView(Views.Common.class)
 	private String nom;
 	
 	@OneToMany(mappedBy = "id.utilisateur")
+	@JsonView(Views.EvenementUtilisateur.class)
 	private List<EvenementUtilisateur> participants;
 	
 	@PastOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dateDebut_evenement")
+	@JsonView(Views.Common.class)
 	private LocalDate dateDebut;
 	
 	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dateFin_evenement")
+	@JsonView(Views.Common.class)
 	private LocalDate dateFin;
 	
 	@ManyToOne
 	@JoinColumn(name = "evenement_club", foreignKey = @ForeignKey(name = "evenement_club_fk"))
+	@JsonView(Views.Common.class)
 	private Club club;
 	
 	@Version

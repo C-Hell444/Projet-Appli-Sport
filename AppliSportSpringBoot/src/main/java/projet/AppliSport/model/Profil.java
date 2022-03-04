@@ -23,6 +23,10 @@ import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
+
 
 
 @Entity
@@ -33,33 +37,40 @@ public class Profil {
 	@Id
 	@GeneratedValue (strategy = GenerationType.SEQUENCE,generator = "seqProfil")
 	@Column(name="profil_id")
+	@JsonView(Views.Common.class)
 	private Long id;
 	
 	@DecimalMin(value = "20")
 	@Column(name="profil_poids")
+	@JsonView(Views.Common.class)
 	private double poids;
 	
 	@DecimalMin(value = "0.5")
 	@DecimalMax(value = "3.0")
 	@Column(name="profil_taille")
+	@JsonView(Views.Common.class)
 	private double taille;
 	
 	@Past
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="profil_naissance")
+	@JsonView(Views.Common.class)
 	private LocalDate dateNaissance;
 	
 	@NotEmpty
 	@Column(name="profil_sexe")
 	@Enumerated (EnumType.STRING)
+	@JsonView(Views.Common.class)
 	private Sexe sexe;
 	
 	@OneToOne
 	@JoinColumn(name = "profil_caracteristique", foreignKey = @ForeignKey(name = "profil_caracteristique_fk"))
+	@JsonView(Views.Common.class)
 	private Caracteristique caracteristique;
 	//@OneToMany(mappedBy = "profilSport")
 	//private Set<Sport> sports;
 	@OneToOne(mappedBy = "profilUtilisateur")
+	@JsonView(Views.ProfilUtilisateur.class)
 	private Utilisateur utilisateur;
 	
 	@Version

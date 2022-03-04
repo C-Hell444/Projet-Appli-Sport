@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.ClubService;
+import projet.AppliSport.services.CustomUserDetailsService;
 import projet.AppliSport.services.EquipeService;
 import projet.AppliSport.services.EvenementService;
 import projet.AppliSport.services.UtilisateurService;
@@ -34,6 +36,7 @@ import projet.AppliSport.views.Views;
 
 @RestController
 @RequestMapping("/api/club")
+@CrossOrigin(origins="*")
 public class ClubRestController {
 
 	@Autowired
@@ -47,6 +50,9 @@ public class ClubRestController {
 	
 	@Autowired
 	private EquipeService equipeService;
+	
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -101,7 +107,7 @@ public class ClubRestController {
 		if (club.getId() == null || id != club.getId() || br.hasErrors()) {
 			throw new ClubException();
 		}
-		return clubService.createOrUpdate(club);
+		return (Club) customUserDetailsService.createOrUpdate(club);
 	}
 
 	@DeleteMapping("/{id}")
