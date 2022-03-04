@@ -25,4 +25,12 @@ public class Views {
 	public static class UtilisateurWithClubUtilisateur extends Common {
 
 	}
+	
+	public static class SportClub extends Common {
+		
+	}
+	
+public static class SportInteret extends Common {
+		
+	}
 }
