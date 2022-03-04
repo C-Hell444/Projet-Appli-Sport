@@ -61,32 +61,51 @@ public class ClubRestController {
 		return list;
 	}
 
-	@GetMapping("/utilisateur")
-	@JsonView(Views.Common.class)
-	public List<Utilisateur> getAllUtilisateur() {
-		List<Utilisateur> list = utilisateurService.getAll();
-		return list;
-	}
-	
-	@GetMapping("/evenement")
-	@JsonView(Views.Common.class)
-	public List<Evenement> getAllEvenement() {
-		List<Evenement> list = evenementService.getAll();
-		return list;
-	}
-	
-	@GetMapping("/equipe")
-	@JsonView(Views.Common.class)
-	public List<Equipe> getAllEquipe() {
-		List<Equipe> list = equipeService.getAll();
-		return list;
-	}
+//	@GetMapping("/utilisateur")
+//	@JsonView(Views.Common.class)
+//	public List<Utilisateur> getAllUtilisateur() {
+//		List<Utilisateur> list = utilisateurService.getAll();
+//		return list;
+//	}
+//	
+//	@GetMapping("/evenement")
+//	@JsonView(Views.Common.class)
+//	public List<Evenement> getAllEvenement() {
+//		List<Evenement> list = evenementService.getAll();
+//		return list;
+//	}
+//	
+//	@GetMapping("/equipe")
+//	@JsonView(Views.Common.class)
+//	public List<Equipe> getAllEquipe() {
+//		List<Equipe> list = equipeService.getAll();
+//		return list;
+//	}
 
 
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Club getById(@PathVariable Long id) {
 		return clubService.getById(id);
+	}
+	
+	@GetMapping("/{id}/equipe")
+	@JsonView(Views.ClubEquipe.class)
+	public Club getByIdEquipe(@PathVariable Long id) {
+		return clubService.getByIdWithEquipe(id);
+	}
+	
+	@GetMapping("/{id}/evenement")
+	@JsonView(Views.ClubEvenement.class)
+	public Club getByIdEvenement(@PathVariable Long id) {
+		return clubService.getByIdWithEvenement(id);
+	}
+	
+
+	@GetMapping("/{id}/utilisateur")
+	@JsonView(Views.ClubUtilisateur.class)
+	public Club getByIdUtilisateur(@PathVariable Long id) {
+		return clubService.getByIdWithUtilisateur(id);
 	}
 
 

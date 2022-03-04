@@ -39,6 +39,11 @@ public class CaracteristiqueService {
 		});
 	}
 	
+	public Caracteristique getByIdWithProfil(Long id) {
+		return caracteristiqueRepository.findByIdProfil(id).orElseThrow(CaracteristiqueException::new);
+	}
+
+	
 	private void checkData(Caracteristique caracteristique)
 	{
 		if(!validator.validate(caracteristique).isEmpty()) {
@@ -103,5 +108,7 @@ public class CaracteristiqueService {
 		delete(getById(id));
 	}
 
+
+	
 
 }

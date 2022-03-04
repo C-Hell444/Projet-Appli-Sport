@@ -39,6 +39,12 @@ public class ProfilService {
 		});
 	}
 	
+
+	public Profil getByIdWithUtilisateur(Long id) {
+		return profilRepository.findByIdWithUtilisateur(id).orElseThrow(ProfilException::new);
+	}
+	
+	
 	private void checkData(Profil profil)
 	{
 		if(!validator.validate(profil).isEmpty()) {
@@ -99,4 +105,8 @@ public class ProfilService {
 		delete(getById(id));
 	}
 
+
+
+
+	
 }

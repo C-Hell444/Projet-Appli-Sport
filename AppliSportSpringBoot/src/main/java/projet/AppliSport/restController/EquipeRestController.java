@@ -45,12 +45,12 @@ public class EquipeRestController {
 		return list;
 	}
 	
-	@GetMapping("/utilisateur")
-	@JsonView(Views.Common.class)
-	public List<Utilisateur> getAllUtilisateur() {
-		List<Utilisateur> list = utilisateurService.getAll();
-		return list;
-	}
+//	@GetMapping("/utilisateur")
+//	@JsonView(Views.Common.class)
+//	public List<Utilisateur> getAllUtilisateur() {
+//		List<Utilisateur> list = utilisateurService.getAll();
+//		return list;
+//	}
 
 
 
@@ -58,6 +58,12 @@ public class EquipeRestController {
 	@JsonView(Views.Common.class)
 	public Equipe getById(@PathVariable Long id) {
 		return equipeService.getById(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur")
+	@JsonView(Views.EquipeUtilisateur.class)
+	public Equipe getByIdUtilisateur(@PathVariable Long id) {
+		return equipeService.getByIdWithUtilisateur(id);
 	}
 
 

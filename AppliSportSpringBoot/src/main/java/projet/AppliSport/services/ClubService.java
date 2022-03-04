@@ -12,6 +12,7 @@ import projet.AppliSport.exception.UtilisateurException;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
+import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.repositories.ClubRepository;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
 import projet.AppliSport.repositories.EquipeRepository;
@@ -58,6 +59,19 @@ public class ClubService {
 			throw new ClubException("club inconnu");
 		});
 	}
+	
+	public Club getByIdWithEquipe(Long id) {
+		return clubRepository.findByIdWithEquipe(id).orElseThrow(ClubException::new);
+	}
+	
+	public Club getByIdWithEvenement(Long id) {
+		return clubRepository.findByIdWithEvenement(id).orElseThrow(ClubException::new);
+	}
+	
+	public Club getByIdWithUtilisateur(Long id) {
+		return clubRepository.findByIdWithUtilisateur(id).orElseThrow(ClubException::new);
+	}
+	
 	public List<Club> getAll() {
 		return clubRepository.findAll();
 	}
