@@ -22,7 +22,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
-@Table(name = "club", uniqueConstraints = { @UniqueConstraint(columnNames = "compte_identifiant", name = "club_identifiant_uk"), @UniqueConstraint(columnNames = "compte_mail", name = "club_mail_uk") })
+@Table(name = "club", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "compte_identifiant", name = "club_identifiant_uk"),
+		@UniqueConstraint(columnNames = "compte_mail", name = "club_mail_uk") })
 public class Club extends Compte {
 
 	@Valid
@@ -32,37 +34,31 @@ public class Club extends Compte {
 			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
 			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
 	private Adresse adresse;
-	
+
 	@NotEmpty
 	@Column(name = "club_tel", length = 30)
 	private String numTel;
-	
+
 	@NotEmpty
 	@Column(name = "club_nom", length = 30)
 	private String clubNom;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
 	private Sport sportClub;
 
 	@OneToMany(mappedBy = "id.utilisateur")
 	private List<ClubUtilisateur> listeMembres;
-	
+
 	@OneToMany(mappedBy = "club")
 	private List<Equipe> equipes;
-	
+
 	@OneToMany(mappedBy = "club")
 	private List<Evenement> evenements;
-	
-	
-	
-	
-	public Club() {
-		
-	}
 
-	
-	
+	public Club() {
+
+	}
 
 	public Club(String identifiant, String mdp, String mail, Adresse adresse, String numTel, Sport sportClub,
 			List<Utilisateur> listeMembresActif, List<Utilisateur> listeMembresInactif) {
@@ -73,93 +69,68 @@ public class Club extends Compte {
 
 	}
 
-
-
+	public Club(String identifiant, String mdp, String mail, @NotEmpty String numTel, @NotEmpty String clubNom) {
+		super(identifiant, mdp, mail);
+		this.numTel = numTel;
+		this.clubNom = clubNom;
+	}
 
 	public Adresse getAdresse() {
 		return adresse;
 	}
 
-
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
 
 	public String getNumTel() {
 		return numTel;
 	}
 
-
 	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
-
 
 	public Sport getSportClub() {
 		return sportClub;
 	}
 
-
 	public void setSportClub(Sport sportClub) {
 		this.sportClub = sportClub;
 	}
-
-
-
 
 	public List<Equipe> getEquipes() {
 		return equipes;
 	}
 
-
-
-
 	public void setEquipes(List<Equipe> equipes) {
 		this.equipes = equipes;
 	}
-
-
-
 
 	public List<Evenement> getEvenements() {
 		return evenements;
 	}
 
-
-
-
 	public void setEvenements(List<Evenement> evenements) {
 		this.evenements = evenements;
 	}
-	
-	
-	
+
 	public String getClubNom() {
 		return clubNom;
 	}
-
-
-
 
 	public void setClubNom(String clubNom) {
 		this.clubNom = clubNom;
 	}
 
-
-
-
 	public List<ClubUtilisateur> getListeMembres() {
 		return listeMembres;
 	}
 
-
-
-
 	public void setListeMembres(List<ClubUtilisateur> listeMembres) {
 		this.listeMembres = listeMembres;
 	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
@@ -203,9 +174,4 @@ public class Club extends Compte {
 		return true;
 	}
 
-	
-
-	
-	
-	
 }

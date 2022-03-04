@@ -33,6 +33,12 @@ public class EquipeUtilisateur {
 		
 	}
 
+	public EquipeUtilisateur(EquipeUtilisateurKey id) {
+		super();
+		this.id = id;
+	}
+
+
 	public EquipeUtilisateurKey getEquipeUtilisateurKey() {
 		return id;
 	}

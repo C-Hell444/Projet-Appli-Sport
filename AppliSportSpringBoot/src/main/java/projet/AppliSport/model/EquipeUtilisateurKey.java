@@ -22,6 +22,13 @@ public class EquipeUtilisateurKey implements Serializable {
 		
 	}
 
+	public EquipeUtilisateurKey(Utilisateur utilisateur, Equipe equipe) {
+		super();
+		this.utilisateur = utilisateur;
+		this.equipe = equipe;
+	}
+
+
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}

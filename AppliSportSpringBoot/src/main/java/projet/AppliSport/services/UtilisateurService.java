@@ -81,7 +81,7 @@ public class UtilisateurService {
 			throw new UtilisateurException("Utilisateur non saisi");
 		}
 		checkData(utilisateur);
-		Utilisateur utilisateurEnBase = new Utilisateur();
+		Utilisateur utilisateurEnBase = null;
 		if(utilisateur.getId()==null) {
 			return utilisateurRepository.save(utilisateur);
 		}

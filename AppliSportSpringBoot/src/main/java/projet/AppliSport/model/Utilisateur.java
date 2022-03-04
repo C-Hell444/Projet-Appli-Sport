@@ -81,8 +81,20 @@ public class Utilisateur extends Compte {
 		
 	}
 
-
 	
+	public Utilisateur(String identifiant, String mdp, String mail,
+			@NotEmpty @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") String nom,
+			@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String prenom,
+			@NotEmpty @Pattern(regexp = "^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$") String numTel) {
+		super(identifiant, mdp, mail);
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numTel = numTel;
+	}
+
+
+
+
 
 	public Adresse getAdresse() {
 		return adresse;

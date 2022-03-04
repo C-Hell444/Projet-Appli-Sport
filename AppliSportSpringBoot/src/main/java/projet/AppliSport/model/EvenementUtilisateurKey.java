@@ -21,6 +21,11 @@ public class EvenementUtilisateurKey implements Serializable {
 	public EvenementUtilisateurKey() {
 		
 	}
+	
+	public EvenementUtilisateurKey(Utilisateur utilisateur, Evenement evenement) {
+		this.utilisateur = utilisateur;
+		this.evenement = evenement;
+	}
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
