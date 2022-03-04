@@ -17,9 +17,14 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import projet.AppliSport.views.Views;
 
 @Entity
 @Table(name = "club", uniqueConstraints = {
@@ -33,27 +38,35 @@ public class Club extends Compte {
 			@AttributeOverride(name = "rue", column = @Column(name = "client_rue", length = 200)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
 			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
+	@JsonView(Views.Common.class)
 	private Adresse adresse;
 
 	@NotEmpty
 	@Column(name = "club_tel", length = 30)
+	@Pattern(regexp="^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$")
+	@JsonView(Views.Common.class)
 	private String numTel;
 
 	@NotEmpty
 	@Column(name = "club_nom", length = 30)
+	@JsonView(Views.Common.class)
 	private String clubNom;
 
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
+	@JsonView(Views.Common.class)
 	private Sport sportClub;
 
 	@OneToMany(mappedBy = "id.utilisateur")
+	@JsonView(Views.ClubUtilisateur.class)
 	private List<ClubUtilisateur> listeMembres;
 
 	@OneToMany(mappedBy = "club")
+	@JsonView(Views.ClubEquipe.class)
 	private List<Equipe> equipes;
 
 	@OneToMany(mappedBy = "club")
+	@JsonView(Views.ClubEvenement.class)
 	private List<Evenement> evenements;
 
 	public Club() {
