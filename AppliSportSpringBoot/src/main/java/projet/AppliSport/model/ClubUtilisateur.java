@@ -33,6 +33,11 @@ public class ClubUtilisateur {
 	public ClubUtilisateur() {
 		
 	}
+	
+	public ClubUtilisateur(ClubUtilisateurKey id) {
+		this.id = id;
+	}
+
 
 	public ClubUtilisateurKey getClubUtilisateurKey() {
 		return id;

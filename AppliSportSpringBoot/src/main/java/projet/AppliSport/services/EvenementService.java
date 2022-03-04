@@ -36,7 +36,7 @@ public class EvenementService {
 	
 	private void checkdata(Evenement evenement) {
 		if (!validator.validate(evenement).isEmpty()) {
-			throw new EvenementException();
+			throw new EvenementException("essai");
 		}
 	}
 	
