@@ -23,6 +23,86 @@
 
 <!-- ********************************************************** -->
 
+<div id="DivContenu">
+  <br /><br /><br />
+
+  <div class="d-flex align-items-center w-75 p-3 mx-auto">
+    <div class="flex-shrink-0">
+      <a [routerLink]="['/accueil']" routerLinkActive="active"
+        ><img
+          width="480"
+          height="480"
+          src="assets/img/Logo3.png"
+          class="align-self-center mr-3"
+          alt="logo"
+      /></a>
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <h3 class="mt-0 w-75 p-3 mx-auto">Connectez-vous à votre compte</h3>
+
+      <form class="row g-3" (ngSubmit)="save()" [formGroup]="form">
+        <div class="col-md-12">
+          <label for="validationServer03" class="form-label">E-mail</label>
+          <input
+            type="email"
+            class="form-control is-invalid"
+            placeholder="E-mail"
+            id="mail"
+            aria-describedby="validationServer03Feedback"
+            required
+            formControlName="login"
+          />
+          <div
+            *ngIf="
+              form.controls['login'].dirty && form.controls['login'].invalid
+            "
+            id="validationServer03Feedback"
+            class="invalid-feedback"
+          >
+            login obligatoire
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="validationServer05" class="form-label"
+            >Mot de passe</label
+          >
+          <input
+            type="password"
+            class="form-control is-invalid"
+            placeholder="Mot de passe"
+            id="password"
+            aria-describedby="validationServer05Feedback"
+            required
+            formControlName="password"
+          />
+          <div
+            *ngIf="form.get('password')?.dirty && form.get('password')?.invalid"
+            id="validationServer05Feedback"
+            class="invalid-feedback"
+          >
+            mot passe obligatoire
+          </div>
+        </div>
+
+        <div class="col-12">
+          <a [routerLink]="['/accueil']" routerLinkActive="active"
+            ><button class="btn btn-primary" type="submit">connexion</button></a
+          >
+        </div>
+      </form>
+      <div id="DivContenuLienCreationCompte">
+        <a
+          class="w-75 p-3 mr-0 mx-auto h6"
+          [routerLink]="['/inscription-utilisateur']"
+          routerLinkActive="active"
+          >Créer un compte</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ********************************************************** -->
 
 <div class="DivEspace3">
