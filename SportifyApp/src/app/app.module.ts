@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { MenuPrincipaleComponent } from './componenets/menu-principale/menu-principale.component';
 import { ActualitesComponent } from './componenets/actualites/actualites.component';
 import { NotFoundPageComponent } from './componenets/not-found-page/not-found-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,6 +34,7 @@ import { ConnexionComponent } from './componenets/connexion/connexion.component'
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
