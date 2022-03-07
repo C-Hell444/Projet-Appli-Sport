@@ -59,7 +59,7 @@ public class EvenementRestController {
 	}
 	
 	@GetMapping("/{id}/utilisateur")
-	@JsonView(Views.EvenementUtilisateur.class)
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
 	public Evenement getByIdUtilisateur(@PathVariable Long id) {
 		return evenementService.getByIdWithUtilisateur(id);
 	}

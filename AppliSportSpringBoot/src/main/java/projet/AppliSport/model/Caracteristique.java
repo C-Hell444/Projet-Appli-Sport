@@ -87,7 +87,7 @@ public class Caracteristique {
 
 	
 	@OneToOne(mappedBy ="caracteristique")
-	@JsonView(Views.CaracteristiqueProfil.class)
+	@JsonView(Views.CaracteristiqueWithProfil.class)
 	private Profil profil;
 
 

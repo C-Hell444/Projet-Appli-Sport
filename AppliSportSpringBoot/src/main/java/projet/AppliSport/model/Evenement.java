@@ -44,7 +44,7 @@ public class Evenement {
 	private String nom;
 	
 	@OneToMany(mappedBy = "id.utilisateur")
-	@JsonView(Views.EvenementUtilisateur.class)
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
 	private List<EvenementUtilisateur> participants;
 	
 	@PastOrPresent
@@ -61,7 +61,7 @@ public class Evenement {
 	
 	@ManyToOne
 	@JoinColumn(name = "evenement_club", foreignKey = @ForeignKey(name = "evenement_club_fk"))
-	@JsonView(Views.Common.class)
+	@JsonView(Views.EvenementWithClub.class)
 	private Club club;
 	
 	@Version

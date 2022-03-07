@@ -17,11 +17,11 @@ public class EvenementUtilisateurKey implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "evenementutilisateurkey_utilisateur", foreignKey = @ForeignKey(name = "evenementutilisateurkey_utilisateur_fk"))
-	@JsonView(Views.Common.class)
+	@JsonView(Views.EvenementUtilisateurWithUtilisateur.class)
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "evenementutilisateurkey_evenement", foreignKey = @ForeignKey(name = "evenementutilisateurkey_evenement_fk"))
-	@JsonView(Views.Common.class)
+	@JsonView(Views.EvenementUtilisateurWithEvenement.class)
 	private Evenement evenement;
 	
 	public EvenementUtilisateurKey() {
