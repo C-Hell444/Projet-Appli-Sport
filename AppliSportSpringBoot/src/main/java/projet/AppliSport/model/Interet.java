@@ -25,11 +25,11 @@ public class Interet {
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "interet_utilisateur", foreignKey = @ForeignKey(name = "interet_utilisateur_fk"))
-	@JsonView(Views.InteretWithUtilisateur.class)
+	@JsonView(Views.SportWithInteret.class)
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "interet_sport", foreignKey = @ForeignKey(name = "interet_sport_fk"))
-	@JsonView(Views.InteretWithSport.class)
+	@JsonView(Views.UtilisateurWithInteret.class)
 	private Sport sport;
 	@Version
 	private int version;
