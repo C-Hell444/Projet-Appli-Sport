@@ -57,7 +57,7 @@ public class Club extends Compte {
 	@JsonView(Views.Common.class)
 	private Sport sportClub;
 
-	@OneToMany(mappedBy = "id.utilisateur")
+	@OneToMany(mappedBy = "id.club")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	private List<ClubUtilisateur> listeMembres;
 

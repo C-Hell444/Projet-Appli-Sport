@@ -66,13 +66,13 @@ public class Utilisateur extends Compte {
 	@JsonView(Views.UtilisateurWithProfil.class)
 	private Profil profilUtilisateur;
 	
-	@OneToMany(mappedBy = "id.equipe")
+	@OneToMany(mappedBy = "id.utilisateur")
 	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
 	private List<EquipeUtilisateur> equipes;
-	@OneToMany(mappedBy = "id.evenement")
+	@OneToMany(mappedBy = "id.utilisateur")
 	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
 	private List<EvenementUtilisateur> evenements;
-	@OneToMany(mappedBy = "id.club")
+	@OneToMany(mappedBy = "id.utilisateur")
 	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
 	private List<ClubUtilisateur> clubs;
 	
