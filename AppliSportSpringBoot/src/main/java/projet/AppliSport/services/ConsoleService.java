@@ -1,5 +1,7 @@
 package projet.AppliSport.services;
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +72,7 @@ public class ConsoleService implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		LOGGER.info("ça fonctionne");
-		//initDataBase();
+		initDataBase();
 		
 	}
 	
@@ -83,30 +85,6 @@ public class ConsoleService implements CommandLineRunner {
 		adresse.setCodePostal("35000");
 		adresse.setVille("Rennes");
 		
-		Utilisateur utilisateur = new Utilisateur();
-		utilisateur.setIdentifiant("user");
-		utilisateur.setMdp("user");
-		utilisateur.setMail("user@google.com");
-		utilisateur.setNom("user");
-		utilisateur.setPrenom("user");
-		utilisateur.setNumTel("0606060606");
-		utilisateur.setAdresse(adresse);
-		customUserDetailsService.createOrUpdate(utilisateur);
-		
-		Admin admin = new Admin();
-		admin.setIdentifiant("admin");
-		admin.setMdp("admin");
-		admin.setMail("admin@google.com");
-		customUserDetailsService.createOrUpdate(admin);
-		
-		Club club = new Club();
-		club.setIdentifiant("club");
-		club.setMdp("club");
-		club.setMail("club@gmail.com");
-		club.setClubNom("club");
-		club.setNumTel("0606060606");
-		club.setAdresse(adresse);
-		customUserDetailsService.createOrUpdate(club);
 		
 		Caracteristique c1 = new Caracteristique();
 		c1.setAgilite(2);
@@ -119,6 +97,48 @@ public class ConsoleService implements CommandLineRunner {
 		c1.setPuissance(0);
 		c1.setVitesse(0);
 		caracteristiqueService.createOrUpdate(c1);
+		
+		
+		Profil bg= new Profil();
+		bg.setDateNaissance(null);
+		bg.setPoids(40);
+		bg.setSexe(Sexe.H);
+		bg.setTaille(2);
+		bg.setCaracteristique(c1);
+		profilService.createOrUpdate(bg);
+		
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setIdentifiant("user");
+		utilisateur.setMdp("user");
+		utilisateur.setMail("user@google.com");
+		utilisateur.setNom("user");
+		utilisateur.setPrenom("user");
+		utilisateur.setNumTel("0606060606");
+		utilisateur.setAdresse(adresse);
+		utilisateur.setProfilUtilisateur(bg);
+		customUserDetailsService.createOrUpdate(utilisateur);
+		
+		Admin admin = new Admin();
+		admin.setIdentifiant("admin");
+		admin.setMdp("admin");
+		admin.setMail("admin@google.com");
+		customUserDetailsService.createOrUpdate(admin);
+		
+		Sport football= new Sport();
+		football.setNom("Foot");
+		sportService.createOrUpdate(football);
+		
+		Club club = new Club();
+		club.setIdentifiant("club");
+		club.setMdp("club");
+		club.setMail("club@gmail.com");
+		club.setClubNom("club");
+		club.setNumTel("0606060606");
+		club.setAdresse(adresse);
+		club.setSportClub(football);
+		customUserDetailsService.createOrUpdate(club);
+		
+		
 		
 		Caracteristique c2 = new Caracteristique();
 		c2.setAgilite(2);
@@ -134,9 +154,7 @@ public class ConsoleService implements CommandLineRunner {
 	
 		
 		
-		Sport football= new Sport();
-		football.setNom("Foot");
-		sportService.createOrUpdate(football);
+		
 		
 		Sport basketball= new Sport();
 		basketball.setNom("Basket");
@@ -156,13 +174,7 @@ public class ConsoleService implements CommandLineRunner {
 		Fete2.setNom("Fete2");
 		evenementService.createOrUpdate(Fete2);
 		
-		Profil bg= new Profil();
-		bg.setDateNaissance(null);
-		bg.setPoids(40);
-		bg.setSexe(Sexe.H);
-		bg.setTaille(2);
-		bg.setCaracteristique(c1);
-		profilService.createOrUpdate(bg);
+		
 		
 		Profil bg2= new Profil();
 		bg2.setDateNaissance(null);
@@ -197,13 +209,13 @@ public class ConsoleService implements CommandLineRunner {
 		EquipeUtilisateurKey euKey2 = new EquipeUtilisateurKey(utilisateur, equipe2);
 		
 		EquipeUtilisateur eu1 = new EquipeUtilisateur(euKey1);
-		eu1.setDateDebut(null);
-		eu1.setDateFin(null);
+		eu1.setDateDebut(LocalDate.parse("2020-01-01"));
+		eu1.setDateFin(LocalDate.parse("2023-01-01"));
 		equipeUtilisateurService.createOrUpdate(eu1);
 		
 		EquipeUtilisateur eu2 = new EquipeUtilisateur(euKey2);
-		eu2.setDateDebut(null);
-		eu2.setDateFin(null);
+		eu2.setDateDebut(LocalDate.parse("2019-01-01"));
+		eu2.setDateFin(LocalDate.parse("2024-01-01"));
 		equipeUtilisateurService.createOrUpdate(eu2);
 		
 		
@@ -211,13 +223,13 @@ public class ConsoleService implements CommandLineRunner {
 		EvenementUtilisateurKey evuKey2 = new EvenementUtilisateurKey(utilisateur, Fete2);
 		
 		EvenementUtilisateur evu1 = new EvenementUtilisateur(evuKey1);
-		evu1.setDateDebut(null);
-		evu1.setDateFin(null);
+		evu1.setDateDebut(LocalDate.parse("2020-01-01"));
+		evu1.setDateFin(LocalDate.parse("2023-01-01"));
 		evenementUtilisateurService.createOrUpdate(evu1);
 		
 		EvenementUtilisateur evu2 = new EvenementUtilisateur(evuKey2);
-		evu2.setDateDebut(null);
-		evu2.setDateFin(null);
+		evu2.setDateDebut(LocalDate.parse("2019-01-01"));
+		evu2.setDateFin(LocalDate.parse("2024-01-01"));
 		evenementUtilisateurService.createOrUpdate(evu2);
 		
 		
@@ -226,8 +238,8 @@ public class ConsoleService implements CommandLineRunner {
 		
 		
 		ClubUtilisateur cu1 = new ClubUtilisateur(cuKey1);
-		cu1.setDateDebut(null);
-		cu1.setDateFin(null);
+		cu1.setDateDebut(LocalDate.parse("2020-01-01"));
+		cu1.setDateFin(LocalDate.parse("2023-01-01"));
 		clubUtilisateurService.createOrUpdate(cu1);
 		
 		
