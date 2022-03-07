@@ -47,7 +47,7 @@ public class ProfilRestController {
 	}
 	
 	@GetMapping("/{id}/utilisateur")
-	@JsonView(Views.ProfilUtilisateur.class)
+	@JsonView(Views.ProfilWithUtilisateur.class)
 	public Profil getByIdWithUtilisateur(@PathVariable Long id) {
 		return profilService.getByIdWithUtilisateur(id);
 	}
