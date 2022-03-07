@@ -4,7 +4,7 @@ logging:
 
 server:
   servlet:
-    context-path: /boot
+    context-path: /sportify-boot
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
