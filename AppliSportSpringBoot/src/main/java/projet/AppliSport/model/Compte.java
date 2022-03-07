@@ -52,6 +52,7 @@ public abstract class Compte implements UserDetails {
 	private String identifiant;
 	
 	@NotEmpty
+	@JsonView(Views.Common.class)
 	@Column(name = "compte_mdp", length = 200, nullable = false)
 	private String mdp;
 	

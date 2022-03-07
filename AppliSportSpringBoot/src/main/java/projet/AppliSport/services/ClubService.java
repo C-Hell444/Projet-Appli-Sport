@@ -92,7 +92,10 @@ public class ClubService {
 			return clubRepository.save(club);
 		}
 		else {
-			
+			clubEnBase=this.getById(club.getId());
+			clubEnBase.setIdentifiant(club.getIdentifiant());
+			clubEnBase.setMdp(club.getMdp());
+			clubEnBase.setMail(club.getMail());
 			clubEnBase.setNumTel(club.getNumTel());
 			clubEnBase.setClubNom(club.getClubNom());
 			clubEnBase.setAdresse(club.getAdresse());
