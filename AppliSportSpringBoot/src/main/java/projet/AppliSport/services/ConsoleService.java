@@ -108,6 +108,18 @@ public class ConsoleService implements CommandLineRunner {
 		club.setAdresse(adresse);
 		customUserDetailsService.createOrUpdate(club);
 		
+		Caracteristique c1 = new Caracteristique();
+		c1.setAgilite(2);
+		c1.setCollectif(3);
+		c1.setCreativite(4);
+		c1.setDetente(0);
+		c1.setDetermination(0);
+		c1.setEndurance(0);
+		c1.setPatience(2);
+		c1.setPuissance(0);
+		c1.setVitesse(0);
+		caracteristiqueService.createOrUpdate(c1);
+		
 		Caracteristique c2 = new Caracteristique();
 		c2.setAgilite(2);
 		c2.setCollectif(3);
@@ -149,7 +161,7 @@ public class ConsoleService implements CommandLineRunner {
 		bg.setPoids(40);
 		bg.setSexe(Sexe.H);
 		bg.setTaille(2);
-		bg.setCaracteristique(c2);
+		bg.setCaracteristique(c1);
 		profilService.createOrUpdate(bg);
 		
 		Profil bg2= new Profil();
