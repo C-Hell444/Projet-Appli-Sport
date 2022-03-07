@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET ,"/api/caracteristique/**").hasAnyAuthority("Utilisateur","Admin", "Club")
 			.antMatchers("/api/caracteristique/**").hasAnyAuthority("Utilisateur", "Admin")
 			.antMatchers("/api/auth/**").permitAll()
+			.antMatchers("/api/compte/**").permitAll()
 			.anyRequest().authenticated()
 		.and()
 			.httpBasic();

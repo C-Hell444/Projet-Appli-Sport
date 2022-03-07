@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CompteRepository extends JpaRepository<Compte, Long> {
 
-	Optional<Compte> findByIdentifiant(String username);
+	Optional<Compte> findByIdentifiant(String identifiant);
 	
 }

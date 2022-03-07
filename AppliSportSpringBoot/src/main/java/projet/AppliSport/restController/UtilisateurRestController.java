@@ -27,7 +27,7 @@ import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/utilisateur")
 @CrossOrigin(origins="*")
 public class UtilisateurRestController {
 
@@ -94,13 +94,13 @@ public class UtilisateurRestController {
 	
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
-	public Utilisateur update(@PathVariable Long id,@Valid @RequestBody Utilisateur utilisateur, BindingResult br) {
+	public Utilisateur update(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
 		utilisateurService.getById(id);
 		if(utilisateur.getId()==null) {
 			throw new UtilisateurException();
 		}
-		if(br.hasErrors()) {
-			throw new UtilisateurException();
+		if(utilisateur.getMdp()==null) {
+			utilisateur.setMdp("toto");
 		}
 		return (Utilisateur) customUserDetailsService.createOrUpdate(utilisateur);
 	}

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Validator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +56,9 @@ public class ClubService {
 	@Autowired
 	private EvenementUtilisateurRepository evenementUtilisateurRepository;
 
+	
+	private static final Logger LOGGER=LoggerFactory.getLogger(ClubService.class);
+	
 	public Club getById(Long id) {
 		return clubRepository.findById(id).orElseThrow(()->{
 			throw new ClubException("club inconnu");
@@ -69,7 +74,10 @@ public class ClubService {
 	}
 	
 	public Club getByIdWithUtilisateur(Long id) {
-		return clubRepository.findByIdWithUtilisateur(id).orElseThrow(ClubException::new);
+
+		Club club =clubRepository.findByIdWithUtilisateur(id).orElseThrow(ClubException::new);
+		LOGGER.info(club.getListeMembres().toString());
+		return club;
 	}
 	
 	public List<Club> getAll() {

@@ -43,7 +43,7 @@ public class Evenement {
 	@JsonView(Views.Common.class)
 	private String nom;
 	
-	@OneToMany(mappedBy = "id.utilisateur")
+	@OneToMany(mappedBy = "id.evenement")
 	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
 	private List<EvenementUtilisateur> participants;
 	

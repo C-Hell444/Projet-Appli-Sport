@@ -36,7 +36,7 @@ public class Equipe {
 	@JsonView(Views.Common.class)
 	private String nom;
 
-	@OneToMany(mappedBy = "id.utilisateur")
+	@OneToMany(mappedBy = "id.equipe")
 	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
 	private List<EquipeUtilisateur> equipe;
 
