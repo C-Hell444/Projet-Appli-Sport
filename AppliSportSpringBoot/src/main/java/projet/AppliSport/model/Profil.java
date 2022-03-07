@@ -57,7 +57,7 @@ public class Profil {
 	@JsonView(Views.Common.class)
 	private LocalDate dateNaissance;
 	
-	@NotEmpty
+
 	@Column(name="profil_sexe")
 	@Enumerated (EnumType.STRING)
 	@JsonView(Views.Common.class)
