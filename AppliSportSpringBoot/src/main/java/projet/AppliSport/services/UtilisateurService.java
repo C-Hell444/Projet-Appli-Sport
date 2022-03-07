@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.UtilisateurException;
@@ -40,6 +41,9 @@ public class UtilisateurService {
 	
 	@Autowired
 	private Validator validator;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	
 	public Utilisateur getById(Long id) {
@@ -92,15 +96,27 @@ public class UtilisateurService {
 			utilisateurEnBase.setAdresse(utilisateur.getAdresse());
 			utilisateurEnBase.setIdentifiant(utilisateur.getIdentifiant());
 			utilisateurEnBase.setMail(utilisateur.getMail());
-			utilisateurEnBase.setMdp(utilisateur.getMdp());
 			utilisateurEnBase.setNumTel(utilisateur.getNumTel());
 			utilisateurEnBase.setProfilUtilisateur(utilisateur.getProfilUtilisateur());
-//			utilisateurEnBase.setEquipes(utilisateur.getEquipes());
-//			utilisateurEnBase.setEvenements(utilisateur.getEvenements());
-//			utilisateurEnBase.setInterets(utilisateur.getInterets());
-//			utilisateurEnBase.setClubs(utilisateur.getClubs());
+			utilisateurEnBase.setEquipes(utilisateur.getEquipes());
+			utilisateurEnBase.setEvenements(utilisateur.getEvenements());
+			utilisateurEnBase.setInterets(utilisateur.getInterets());
+			utilisateurEnBase.setClubs(utilisateur.getClubs());
+			if(utilisateur.getMdp()!=passwordEncoder.encode("toto")) {
+				utilisateurEnBase.setMdp(utilisateur.getMdp());
+			}
 			return utilisateurRepository.save(utilisateurEnBase);
 		}
+	}
+	
+	public Utilisateur updatePassword(Utilisateur utilisateur) {
+		if(utilisateur==null || utilisateur.getId()==null) {
+			throw new UtilisateurException("Utilisateur non saisi");
+		}
+		checkData(utilisateur);
+		Utilisateur utilisateurEnBase = getById(utilisateur.getId());
+		utilisateurEnBase.setMdp(utilisateur.getMdp());
+		return utilisateurRepository.save(utilisateurEnBase);
 	}
 	
 	public void delete(Utilisateur utilisateur) {
