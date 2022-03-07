@@ -17,7 +17,7 @@ public class EvenementUtilisateurKey implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "evenementutilisateurkey_utilisateur", foreignKey = @ForeignKey(name = "evenementutilisateurkey_utilisateur_fk"))
-	@JsonView(Views.EvenementUtilisateurWithUtilisateur.class)
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
 	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name = "evenementutilisateurkey_evenement", foreignKey = @ForeignKey(name = "evenementutilisateurkey_evenement_fk"))
