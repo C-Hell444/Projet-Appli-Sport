@@ -37,6 +37,8 @@ public class AdminService {
 			adminEnBase = this.getById(a.getId());
 			checkData(a);
 			adminEnBase.setIdentifiant(a.getIdentifiant());
+			adminEnBase.setMdp(a.getMdp());
+			adminEnBase.setMail(a.getMail());
 			return adminRepo.save(adminEnBase);
 		}
 	}

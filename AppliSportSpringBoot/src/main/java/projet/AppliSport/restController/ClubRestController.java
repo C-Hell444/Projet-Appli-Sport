@@ -123,15 +123,10 @@ public class ClubRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Club update(@PathVariable Long id, @Valid @RequestBody Club club, BindingResult br) {
-		if (club.getId() == null ) {
+		if (club.getId() == null ||id != club.getId() ||br.hasErrors()) {
 			throw new ClubException("test");
 		}
-		if ( id != club.getId() ) {
-			throw new ClubException("test2");
-		}
-		if ( br.hasErrors()) {
-			throw new ClubException("test3");
-		}
+	
 		
 		return (Club) customUserDetailsService.createOrUpdate(club);
 	}

@@ -200,9 +200,10 @@ public class ConsoleService implements CommandLineRunner {
 		eu1.setDateDebut(null);
 		eu1.setDateFin(null);
 		equipeUtilisateurService.createOrUpdate(eu1);
+		
 		EquipeUtilisateur eu2 = new EquipeUtilisateur(euKey2);
-		eu1.setDateDebut(null);
-		eu1.setDateFin(null);
+		eu2.setDateDebut(null);
+		eu2.setDateFin(null);
 		equipeUtilisateurService.createOrUpdate(eu2);
 		
 		
@@ -213,10 +214,12 @@ public class ConsoleService implements CommandLineRunner {
 		evu1.setDateDebut(null);
 		evu1.setDateFin(null);
 		evenementUtilisateurService.createOrUpdate(evu1);
+		
 		EvenementUtilisateur evu2 = new EvenementUtilisateur(evuKey2);
-		evu1.setDateDebut(null);
-		evu1.setDateFin(null);
+		evu2.setDateDebut(null);
+		evu2.setDateFin(null);
 		evenementUtilisateurService.createOrUpdate(evu2);
+		
 		
 		
 		ClubUtilisateurKey cuKey1 = new ClubUtilisateurKey(utilisateur,club );
