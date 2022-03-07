@@ -110,22 +110,29 @@ public class ClubRestController {
 
 
 
-	@PostMapping("")
-	@JsonView(Views.Common.class)
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Club create(@Valid @RequestBody Club club, BindingResult br) {
-		if (br.hasErrors()) {
-			throw new ClubException();
-		}
-		return clubService.createOrUpdate(club);
-	}
+//	@PostMapping("")
+//	@JsonView(Views.Common.class)
+//	@ResponseStatus(code = HttpStatus.CREATED)
+//	public Club create(@Valid @RequestBody Club club, BindingResult br) {
+//		if (br.hasErrors()) {
+//			throw new ClubException();
+//		}
+//		return clubService.createOrUpdate(club);
+//	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Club update(@PathVariable Long id, @Valid @RequestBody Club club, BindingResult br) {
-		if (club.getId() == null || id != club.getId() || br.hasErrors()) {
-			throw new ClubException();
+		if (club.getId() == null ) {
+			throw new ClubException("test");
 		}
+		if ( id != club.getId() ) {
+			throw new ClubException("test2");
+		}
+		if ( br.hasErrors()) {
+			throw new ClubException("test3");
+		}
+		
 		return (Club) customUserDetailsService.createOrUpdate(club);
 	}
 
