@@ -44,7 +44,6 @@ public abstract class Compte implements UserDetails {
 	
 	@NotEmpty
 	@Column(name = "compte_mdp", length = 200, nullable = false)
-	@JsonView(Views.Common.class)
 	private String mdp;
 	
 	@Email
