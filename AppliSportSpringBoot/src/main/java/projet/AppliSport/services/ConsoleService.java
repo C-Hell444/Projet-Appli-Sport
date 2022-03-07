@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.model.Admin;
+import projet.AppliSport.model.Adresse;
 import projet.AppliSport.model.Caracteristique;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.ClubUtilisateur;
@@ -69,12 +70,18 @@ public class ConsoleService implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		LOGGER.info("ça fonctionne");
-		initDataBase();
+		//initDataBase();
 		
 	}
 	
 
 	private void initDataBase() {
+		
+		Adresse adresse = new Adresse();
+		adresse.setNumero("1");
+		adresse.setRue("Rue de la soif");
+		adresse.setCodePostal("35000");
+		adresse.setVille("Rennes");
 		
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setIdentifiant("user");
@@ -83,6 +90,7 @@ public class ConsoleService implements CommandLineRunner {
 		utilisateur.setNom("user");
 		utilisateur.setPrenom("user");
 		utilisateur.setNumTel("0606060606");
+		utilisateur.setAdresse(adresse);
 		customUserDetailsService.createOrUpdate(utilisateur);
 		
 		Admin admin = new Admin();
@@ -97,6 +105,7 @@ public class ConsoleService implements CommandLineRunner {
 		club.setMail("club@gmail.com");
 		club.setClubNom("club");
 		club.setNumTel("0606060606");
+		club.setAdresse(adresse);
 		customUserDetailsService.createOrUpdate(club);
 		
 		Caracteristique c2 = new Caracteristique();

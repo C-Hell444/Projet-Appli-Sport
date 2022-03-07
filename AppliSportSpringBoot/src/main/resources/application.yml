@@ -4,7 +4,7 @@ logging:
 
 server:
   servlet:
-    context-path: /boot
+    context-path: /sportify-boot
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -13,7 +13,7 @@ spring:
     username: postgres
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect

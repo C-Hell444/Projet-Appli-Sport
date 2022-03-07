@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import projet.AppliSport.exception.CompteException;
+import projet.AppliSport.model.Admin;
+import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Compte;
+import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.CustomUserDetailsService;
 
 
@@ -36,13 +39,31 @@ public class AuthRestController {
 		System.out.println(user.getAuthorities());
 	}
 	
-	@PostMapping("/inscription")
+	@PostMapping("/inscription/utilisateur")
 	@ResponseStatus(code=HttpStatus.CREATED)
-	public Compte create (@Valid @RequestBody Compte utilisateur, BindingResult br) {
+	public Utilisateur create (@Valid @RequestBody Utilisateur utilisateur, BindingResult br) {
 		if(br.hasErrors()) {
 			throw new CompteException();
 		}
-		return customUserDetailsService.createOrUpdate(utilisateur);
+		return (Utilisateur) customUserDetailsService.createOrUpdate(utilisateur);
+	}
+	
+	@PostMapping("/inscription/club")
+	@ResponseStatus(code=HttpStatus.CREATED)
+	public Club create (@Valid @RequestBody Club club, BindingResult br) {
+		if(br.hasErrors()) {
+			throw new CompteException();
+		}
+		return (Club) customUserDetailsService.createOrUpdate(club);
+	}
+	
+	@PostMapping("/inscription/admin")
+	@ResponseStatus(code=HttpStatus.CREATED)
+	public Admin create (@Valid @RequestBody Admin admin, BindingResult br) {
+		if(br.hasErrors()) {
+			throw new CompteException();
+		}
+		return (Admin) customUserDetailsService.createOrUpdate(admin);
 	}
 	
 	
