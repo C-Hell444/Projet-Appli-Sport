@@ -65,12 +65,12 @@ public class Profil {
 	
 	@OneToOne
 	@JoinColumn(name = "profil_caracteristique", foreignKey = @ForeignKey(name = "profil_caracteristique_fk"))
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ProfilWithCaracteristique.class)
 	private Caracteristique caracteristique;
 	//@OneToMany(mappedBy = "profilSport")
 	//private Set<Sport> sports;
 	@OneToOne(mappedBy = "profilUtilisateur")
-	@JsonView(Views.ProfilUtilisateur.class)
+	@JsonView(Views.ProfilWithUtilisateur.class)
 	private Utilisateur utilisateur;
 	
 	@Version

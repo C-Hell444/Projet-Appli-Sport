@@ -58,15 +58,15 @@ public class Club extends Compte {
 	private Sport sportClub;
 
 	@OneToMany(mappedBy = "id.utilisateur")
-	@JsonView(Views.ClubUtilisateur.class)
+	@JsonView(Views.ClubWithClubUtilisateur.class)
 	private List<ClubUtilisateur> listeMembres;
 
 	@OneToMany(mappedBy = "club")
-	@JsonView(Views.ClubEquipe.class)
+	@JsonView(Views.ClubWithEquipe.class)
 	private List<Equipe> equipes;
 
 	@OneToMany(mappedBy = "club")
-	@JsonView(Views.ClubEvenement.class)
+	@JsonView(Views.ClubWithEvenement.class)
 	private List<Evenement> evenements;
 
 	public Club() {

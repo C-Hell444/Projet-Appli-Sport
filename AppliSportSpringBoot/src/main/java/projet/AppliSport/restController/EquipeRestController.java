@@ -61,7 +61,7 @@ public class EquipeRestController {
 	}
 	
 	@GetMapping("/{id}/utilisateur")
-	@JsonView(Views.EquipeUtilisateur.class)
+	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
 	public Equipe getByIdUtilisateur(@PathVariable Long id) {
 		return equipeService.getByIdWithUtilisateur(id);
 	}

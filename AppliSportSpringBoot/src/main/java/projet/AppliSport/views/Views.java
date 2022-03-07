@@ -26,41 +26,95 @@ public class Views {
 
 	}
 
-	public static class SportClub extends Common {
+	public static class SportWithClub extends Common {
 
 	}
 
-	public static class SportInteret extends Common {
+	public static class SportWithInteret extends Common {
+
+	}
+
+	public static class ProfilWithUtilisateur extends Common {
+
+	}
+
+	public static class ProfilWithCaracteristique extends Common {
 
 	}
 	
-	public static class ProfilUtilisateur extends Common{
-		
-	}
-	
-public static class EvenementUtilisateur extends Common{
-		
+	public static class InteretWithUtilisateur extends Common {
+
 	}
 
-public static class EquipeUtilisateur extends Common{
-	
-}
+	public static class InteretWithSport extends Common {
 
-public static class ClubUtilisateur extends Common{
+	}
 	
-}
+	public static class EvenementUtilisateurWithUtilisateur extends Common {
 
-public static class ClubEvenement extends Common{
-	
-}
+	}
 
-public static class ClubEquipe extends Common{
-	
-}
+	public static class EvenementUtilisateurWithEvenement extends Common {
 
-public static class CaracteristiqueProfil extends Common{
+	}
+
+	public static class EvenementWithEvenementUtilisateur extends Common {
+
+	}
 	
-}
+
+	public static class EvenementWithClub extends Common {
+
+	}
+
+	public static class EquipeWithEquipeUtilisateur extends Common {
+
+	}
 	
+	public static class EquipeWithClub extends Common {
+
+	}
 	
+	public static class EquipeUtilisateurWithUtilisateur extends Common {
+
+	}
+
+	public static class EquipeUtilisateurWithEquipe extends Common {
+
+	}
+
+	public static class ClubWithClubUtilisateur extends Common {
+
+	}
+
+	public static class ClubWithEvenement extends Common {
+
+	}
+
+	public static class ClubWithEquipe extends Common {
+
+	}
+	
+	public static class ClubUtilisateurWithUtilisateur extends Common {
+
+	}
+
+	public static class ClubUtilisateurWithClub extends Common {
+
+	}
+
+	public static class CaracteristiqueWithProfil extends Common {
+
+	}
+
+	
+
+	
+
+	
+
+	
+
+	
+
 }

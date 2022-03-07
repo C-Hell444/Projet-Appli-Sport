@@ -47,7 +47,7 @@ public class CarateristiqueRestController {
 	}
 	
 	@GetMapping("/{id}/profil")
-	@JsonView(Views.CaracteristiqueProfil.class)
+	@JsonView(Views.CaracteristiqueWithProfil.class)
 	public Caracteristique getByIdWithProfil(@PathVariable Long id) {
 		return caracteristiqueService.getByIdWithProfil(id);
 	}

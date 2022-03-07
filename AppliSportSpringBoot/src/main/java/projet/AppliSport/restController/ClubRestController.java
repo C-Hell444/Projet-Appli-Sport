@@ -90,20 +90,20 @@ public class ClubRestController {
 	}
 	
 	@GetMapping("/{id}/equipe")
-	@JsonView(Views.ClubEquipe.class)
+	@JsonView(Views.ClubWithEquipe.class)
 	public Club getByIdEquipe(@PathVariable Long id) {
 		return clubService.getByIdWithEquipe(id);
 	}
 	
 	@GetMapping("/{id}/evenement")
-	@JsonView(Views.ClubEvenement.class)
+	@JsonView(Views.ClubWithEvenement.class)
 	public Club getByIdEvenement(@PathVariable Long id) {
 		return clubService.getByIdWithEvenement(id);
 	}
 	
 
 	@GetMapping("/{id}/utilisateur")
-	@JsonView(Views.ClubUtilisateur.class)
+	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdUtilisateur(@PathVariable Long id) {
 		return clubService.getByIdWithUtilisateur(id);
 	}

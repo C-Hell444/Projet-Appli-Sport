@@ -37,12 +37,12 @@ public class Equipe {
 	private String nom;
 
 	@OneToMany(mappedBy = "id.utilisateur")
-	@JsonView(Views.EquipeUtilisateur.class)
+	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
 	private List<EquipeUtilisateur> equipe;
 
 	@ManyToOne
 	@JoinColumn(name = "equipe_club", foreignKey = @ForeignKey(name = "equipe_club_fk"))
-	@JsonView(Views.Common.class)
+	@JsonView(Views.EquipeWithClub.class)
 	private Club club;
 
 	public Equipe() {
