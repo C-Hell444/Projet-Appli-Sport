@@ -77,7 +77,7 @@ public class EquipeRestController {
 	public List<Equipe> getByClubNom(@PathVariable String nom) {
 			return equipeService.getByClubNom(nom);
 	}
-	@GetMapping("/club/{club}/club")
+	@GetMapping("/club/objet")
 	@JsonView(Views.EquipeWithClub.class)
 	public List<Equipe> getByClub(@Valid @RequestBody Club club) {
 			return equipeService.getByClub(club);
