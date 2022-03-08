@@ -79,7 +79,7 @@ public class EquipeRestController {
 	}
 	@GetMapping("/club/objet")
 	@JsonView(Views.EquipeWithClub.class)
-	public List<Equipe> getByClub(@Valid @RequestBody Club club) {
+	public List<Equipe> getByClub( @RequestBody Club club) {
 			return equipeService.getByClub(club);
 	}
 	

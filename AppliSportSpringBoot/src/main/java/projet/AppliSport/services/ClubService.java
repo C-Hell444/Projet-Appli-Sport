@@ -1,5 +1,6 @@
 package projet.AppliSport.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Validator;
@@ -106,7 +107,7 @@ public class ClubService {
 	}
 	
 	public List<Club> getByListeSport(List<Sport> sports) {
-		List<Club>clubs = null;
+		List<Club>clubs = new ArrayList<Club>();
 		for (Sport s:sports) {
 			clubs.addAll(getBySportClub(s));
 		}

@@ -92,7 +92,7 @@ public class EvenementRestController {
 
 	@GetMapping("/club/objet")
 	@JsonView(Views.EvenementWithClub.class)
-	public List<Evenement> getByClub(@Valid @RequestBody Club club) {
+	public List<Evenement> getByClub( @RequestBody Club club) {
 		return evenementService.getByClub(club);
 	}
 	
