@@ -54,7 +54,7 @@ public class Club extends Compte {
 
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
-	@JsonView(Views.SportWithClub.class)
+	@JsonView(Views.ClubWithSport.class)
 	private Sport sportClub;
 
 	@OneToMany(mappedBy = "id.club")
