@@ -64,39 +64,39 @@ public class ClubRestController {
 		
 	}
 	
-	@GetMapping("id")
+	@GetMapping("/id")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderById() {
 		return  clubService.getAllOrderById();
 	}
 	
-	@GetMapping("nom")
+	@GetMapping("/nom")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByClubNom() {
 		return  clubService.getAllOrderByClubNom();
 	}
 	
-	@GetMapping("numero")
+	@GetMapping("/numero")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByNumTel() {
 		return clubService.getAllOrderByNumTel();
 	
 	}
 	
-	@GetMapping("sport")
+	@GetMapping("/sport")
 	@JsonView(Views.ClubWithSport.class)
 	public List<Club> getAllOrderBySportClub() {
 		return clubService.getAllOrderBySportClub();
 	}
 	
-	@GetMapping("ville")
+	@GetMapping("/ville")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByVille() {
 		return clubService.getAllOrderByVille();
 
 	}
 	
-	@GetMapping("cp")
+	@GetMapping("/cp")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByCodePostal() {
 		return clubService.getAllOrderByCodePostal();
@@ -181,25 +181,25 @@ public class ClubRestController {
 		return clubService.getByIdWithUtilisateur(id);
 	}
 	
-	@GetMapping("/{id}/club/date-debut-asc")
+	@GetMapping("/{id}/utilisateur/date-debut-asc")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdWithClubUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
 		return clubService.getByIdWithClubUtilisateurOrderByDateDebutAsc(id);
 	}
 	
-	@GetMapping("/{id}/club/date-debut-desc")
+	@GetMapping("/{id}/utilisateurdate-debut-desc")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdWithClubUtilisateurbOrderByDateDebutDesc(@PathVariable Long id) {
 		return clubService.getByIdWithClubUtilisateurOrderByDateDebutDesc(id);
 	}
 	
-	@GetMapping("/{id}/club/date-fin-asc")
+	@GetMapping("/{id}/utilisateur/date-fin-asc")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdWithClubUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
 		return clubService.getByIdWithClubUtilisateurOrderByDateFinAsc(id);
 	}
 	
-	@GetMapping("/{id}/club/date-fin-desc")
+	@GetMapping("/{id}/utilisateur/date-fin-desc")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdWithClubUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
 		return clubService.getByIdWithClubUtilisateurOrderByDateFinDesc(id);

@@ -42,23 +42,23 @@ public class EquipeRestController {
 	// =================== Get All + tri  ======================== //
 	@GetMapping("")
 	@JsonView(Views.Common.class)
-	public List<Equipe> getAllEquipe() {
+	public List<Equipe> getAll() {
 		return equipeService.getAll();
 	}
 	
-	@GetMapping("id")
+	@GetMapping("/id")
 	@JsonView(Views.Common.class)
 	public List<Equipe> getAllOrderById() {
 		return  equipeService.getAllOrderById();
 	}
 	
-	@GetMapping("nom")
+	@GetMapping("/nom")
 	@JsonView(Views.Common.class)
 	public List<Equipe> getAllOrderByNom() {
 		return  equipeService.getAllOrderByNom();
 	}
 	
-	@GetMapping("club")
+	@GetMapping("/club")
 	@JsonView(Views.EquipeWithClub.class)
 	public List<Equipe> getAllOrderByClub() {
 		return  equipeService.getAllOrderByClub();

@@ -1,3 +1,4 @@
+import { Sport } from './sport';
 import { Profil } from './profil';
 
 export class Caracteristique {
@@ -12,6 +13,7 @@ export class Caracteristique {
   private _vitesse: number | undefined;
   private _endurance: number | undefined;
   private _profil: Profil | undefined;
+  private _sport: Sport | undefined;
 
   constructor(
     id?: number,
@@ -24,7 +26,8 @@ export class Caracteristique {
     puissance?: number,
     vitesse?: number,
     endurance?: number,
-    profil?: Profil
+    profil?: Profil,
+    sport?: Sport
   ) {
     this._id = id;
     this._collectif = collectif;
@@ -37,6 +40,7 @@ export class Caracteristique {
     this._vitesse = vitesse;
     this._endurance = endurance;
     this._profil = profil;
+    this._sport = sport;
   }
 
   /**
@@ -213,5 +217,21 @@ export class Caracteristique {
    */
   public set profil(value: Profil | undefined) {
     this._profil = value;
+  }
+
+  /**
+   * Getter sport
+   * @return {Sport }
+   */
+  public get sport(): Sport | undefined {
+    return this._sport;
+  }
+
+  /**
+   * Setter sport
+   * @param {Sport } value
+   */
+  public set sport(value: Sport | undefined) {
+    this._sport = value;
   }
 }
