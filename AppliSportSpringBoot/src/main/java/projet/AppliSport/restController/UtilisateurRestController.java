@@ -51,38 +51,38 @@ public class UtilisateurRestController {
 		return utilisateurService.getAll();
 	}
 	
-	@GetMapping("id")
+	@GetMapping("/id")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllOrderById() {
 		return  utilisateurService.getAllOrderById();
 	}
-	@GetMapping("nom")
+	@GetMapping("/nom")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllOrderByNom() {
 		return  utilisateurService.getAllOrderByNom();
 	}
 	
-	@GetMapping("prenom")
+	@GetMapping("/prenom")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllOrderByPrenom() {
 		return  utilisateurService.getAllOrderByPrenom();
 	}
 	
-	@GetMapping("numero")
+	@GetMapping("/numero")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllOrderByNumTel() {
 		return utilisateurService.getAllOrderByNumTel();
 	
 	}
 	
-	@GetMapping("ville")
+	@GetMapping("/ville")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllOrderByVille() {
 		return utilisateurService.getAllOrderByVille();
 
 	}
 	
-	@GetMapping("cp")
+	@GetMapping("/cp")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAllOrderByCodePostal() {
 		return utilisateurService.getAllOrderByCodePostal();
@@ -105,6 +105,7 @@ public class UtilisateurRestController {
 		public List<Utilisateur> getByNom(@PathVariable String nom) {
 				return utilisateurService.getByNom(nom);
 		}
+		
 		@GetMapping("/prenom/{prenom}")
 		@JsonView(Views.Common.class)
 		public List<Utilisateur> getByPrenom(@PathVariable String prenom) {
