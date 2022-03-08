@@ -1,6 +1,11 @@
+import { CompteService } from './../../services/compte.service';
+import { Compte } from './../../model/compte';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Admin } from 'src/app/model/admin';
+import { Club } from 'src/app/model/club';
+import { Utilisateur } from 'src/app/model/utilisateur';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
@@ -11,10 +16,12 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 export class ConnexionComponent implements OnInit {
   form!: FormGroup;
   error = false;
+  compte: Compte = new Compte();
 
   constructor(
     private authService: AuthentificationService,
-    private router: Router
+    private router: Router,
+    private compteService: CompteService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +49,19 @@ export class ConnexionComponent implements OnInit {
                 this.form.controls['password'].value
             )
           );
-          this.router.navigateByUrl('/accueil');
+          this.compteService
+            .getType(this.form.controls['login'].value)
+            .subscribe((result) => {
+              this.compte = result;
+              if (this.compte.type == 'admin') {
+                this.router.navigateByUrl('/menu-admin');
+              } else if (this.compte.type == 'utilisateur') {
+                this.router.navigateByUrl('/menu-utilisateur');
+              } else if (this.compte.type == 'club') {
+                this.router.navigateByUrl('/menu-club');
+              }
+              localStorage.setItem('type', this.compte.type!);
+            });
         },
         error: (error) => {
           this.error = true;

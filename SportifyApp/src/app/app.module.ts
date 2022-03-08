@@ -35,6 +35,23 @@ import { MenuAdminClubsComponent } from './componenets/admin/menu-admin-clubs/me
 import { MenuAdminEquipesComponent } from './componenets/admin/menu-admin-equipes/menu-admin-equipes.component';
 import { MenuAdminEvenementsComponent } from './componenets/admin/menu-admin-evenements/menu-admin-evenements.component';
 import { MenuAdminHistoriqueComponent } from './componenets/admin/menu-admin-historique/menu-admin-historique.component';
+import { MenuClubEditComponent } from './componenets/club/menu-club-edit/menu-club-edit.component';
+import { MenuClubMembresEditComponent } from './componenets/club/menu-club-membres-edit/menu-club-membres-edit.component';
+import { MenuClubEquipesEditComponent } from './componenets/club/menu-club-equipes-edit/menu-club-equipes-edit.component';
+import { MenuClubEvenementsEditComponent } from './componenets/club/menu-club-evenements-edit/menu-club-evenements-edit.component';
+import { MenuClubHistoriqueEditComponent } from './componenets/club/menu-club-historique-edit/menu-club-historique-edit.component';
+import { MenuUtilisateurEditComponent } from './componenets/utilisateur/menu-utilisateur-edit/menu-utilisateur-edit.component';
+import { MenuUtilisateurClubsEditComponent } from './componenets/utilisateur/menu-utilisateur-clubs-edit/menu-utilisateur-clubs-edit.component';
+import { MenuUtilisateurEquipesEditComponent } from './componenets/utilisateur/menu-utilisateur-equipes-edit/menu-utilisateur-equipes-edit.component';
+import { MenuUtilisateurEvenementsEditComponent } from './componenets/utilisateur/menu-utilisateur-evenements-edit/menu-utilisateur-evenements-edit.component';
+import { MenuUtilisateurHistoriqueEditComponent } from './componenets/utilisateur/menu-utilisateur-historique-edit/menu-utilisateur-historique-edit.component';
+import { MenuAdminEditComponent } from './componenets/admin/menu-admin-edit/menu-admin-edit.component';
+import { MenuAdminUtilisateursEditComponent } from './componenets/admin/menu-admin-utilisateurs-edit/menu-admin-utilisateurs-edit.component';
+import { MenuAdminSportsEditComponent } from './componenets/admin/menu-admin-sports-edit/menu-admin-sports-edit.component';
+import { MenuAdminClubsEditComponent } from './componenets/admin/menu-admin-clubs-edit/menu-admin-clubs-edit.component';
+import { MenuAdminEquipesEditComponent } from './componenets/admin/menu-admin-equipes-edit/menu-admin-equipes-edit.component';
+import { MenuAdminEvenementsEditComponent } from './componenets/admin/menu-admin-evenements-edit/menu-admin-evenements-edit.component';
+import { MenuAdminHistoriqueEditComponent } from './componenets/admin/menu-admin-historique-edit/menu-admin-historique-edit.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +85,23 @@ import { MenuAdminHistoriqueComponent } from './componenets/admin/menu-admin-his
     MenuAdminEquipesComponent,
     MenuAdminEvenementsComponent,
     MenuAdminHistoriqueComponent,
+    MenuClubEditComponent,
+    MenuClubMembresEditComponent,
+    MenuClubEquipesEditComponent,
+    MenuClubEvenementsEditComponent,
+    MenuClubHistoriqueEditComponent,
+    MenuUtilisateurEditComponent,
+    MenuUtilisateurClubsEditComponent,
+    MenuUtilisateurEquipesEditComponent,
+    MenuUtilisateurEvenementsEditComponent,
+    MenuUtilisateurHistoriqueEditComponent,
+    MenuAdminEditComponent,
+    MenuAdminUtilisateursEditComponent,
+    MenuAdminSportsEditComponent,
+    MenuAdminClubsEditComponent,
+    MenuAdminEquipesEditComponent,
+    MenuAdminEvenementsEditComponent,
+    MenuAdminHistoriqueEditComponent,
   ],
   imports: [
     BrowserModule,
