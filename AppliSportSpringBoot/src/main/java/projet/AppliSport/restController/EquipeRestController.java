@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.EquipeException;
+import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.EquipeService;
@@ -38,27 +39,61 @@ public class EquipeRestController {
 	@Autowired
 	private UtilisateurService utilisateurService;
 
+	// =================== Get All + tri  ======================== //
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Equipe> getAllEquipe() {
-		List<Equipe> list = equipeService.getAll();
-		return list;
+		return equipeService.getAll();
 	}
 	
-//	@GetMapping("/utilisateur")
-//	@JsonView(Views.Common.class)
-//	public List<Utilisateur> getAllUtilisateur() {
-//		List<Utilisateur> list = utilisateurService.getAll();
-//		return list;
-//	}
+	@GetMapping("id")
+	@JsonView(Views.Common.class)
+	public List<Equipe> getAllOrderById() {
+		return  equipeService.getAllOrderById();
+	}
+	
+	@GetMapping("nom")
+	@JsonView(Views.Common.class)
+	public List<Equipe> getAllOrderByNom() {
+		return  equipeService.getAllOrderByNom();
+	}
+	
+	@GetMapping("club")
+	@JsonView(Views.EquipeWithClub.class)
+	public List<Equipe> getAllOrderByClub() {
+		return  equipeService.getAllOrderByClub();
+	}
+	
+	// =================== Get By ? ======================== //
 
-
-
+	@GetMapping("/nom/{nom}")
+	@JsonView(Views.Common.class)
+	public List<Equipe> getByNom(@PathVariable String nom) {
+			return equipeService.getByNom(nom);
+	}
+	
+	@GetMapping("/club/{nom}")
+	@JsonView(Views.EquipeWithClub.class)
+	public List<Equipe> getByClubNom(@PathVariable String nom) {
+			return equipeService.getByClubNom(nom);
+	}
+	@GetMapping("/club/{club}/club")
+	@JsonView(Views.EquipeWithClub.class)
+	public List<Equipe> getByClub(@Valid @RequestBody Club club) {
+			return equipeService.getByClub(club);
+	}
+	
+	
+	// =================== Get By Id ======================== //
+	
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Equipe getById(@PathVariable Long id) {
 		return equipeService.getById(id);
 	}
+	
+	
+	// =================== Get Utilisateurs + tri ======================== //
 	
 	@GetMapping("/{id}/utilisateur")
 	@JsonView(Views.EquipeWithEquipeUtilisateur.class)

@@ -14,16 +14,22 @@ import projet.AppliSport.model.Evenement;
 
 public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 	
-	// ===================  Attribut identifiant ======================== //
+	
 	List<Evenement> findByNom(String nom);
-	List<Evenement> findByIdOrNom(Long id, String nom);
-	
-	// ===================  Attribut date ======================== //
-	List<Evenement> findByDateDebut(LocalDate dateDebut);
-	List<Evenement> findByDateFin(LocalDate dateFin);
-	
-	// ===================  Attribut club ======================== //
 	List<Evenement> findByClub(Club club);
+	@Query("select e from Evenement e where e.club.clubNom=:nom")
+	List<Evenement> findByClubNom(@Param("nom")String nom);
+	@Query("select e from Evenement e where e.dateDebut>=:date")
+	List<Evenement> findByDateFutur(@Param("date")LocalDate date);
+	@Query("select e from Evenement e where e.dateFin<:date")
+	List<Evenement> findByDatePasse(@Param("date")LocalDate date);
+	
+	List<Evenement> findAllByOrderById();
+	List<Evenement> findAllByOrderByNom();
+	List<Evenement> findAllByOrderByClub();
+	List<Evenement> findAllByOrderByDateDebut();
+	List<Evenement> findAllByOrderByDateFin();
+	
 	
 	@Query("select e from Evenement e left join fetch e.participants where e.id=:id")
 	Optional<Evenement> findByIdWithUtilisateur(Long id);

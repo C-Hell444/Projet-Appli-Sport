@@ -19,14 +19,13 @@ import projet.AppliSport.model.Utilisateur;
 public interface ClubRepository extends JpaRepository<Club, Long>{
 
 	
-	List<Club> findByAdresse(Adresse adresse);
-	List<Club> findByNumTel(String num);
 	
 	
-
+	
+	List<Club> findAllByOrderById();
 	List<Club> findAllByOrderByClubNom();
+	List<Club> findAllByOrderByNumTel();
 	List<Club> findAllByOrderBySportClub();
-	
 	@Query("select c from Club c order by c.adresse.ville")
 	List<Club> findAllByOrderByVille();
 	@Query("select c from Club c order by c.adresse.codePostal")
@@ -34,6 +33,7 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	
 	
 	List<Club> findByClubNom(String nom);
+	List<Club> findByNumTel(String num);
 	List<Club> findBySportClub(Sport sport);
 	@Query("select c from Club c where c.sportClub.nom=:nom")
 	List<Club> findBySportNom(@Param("nom")String nom);

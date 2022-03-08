@@ -63,8 +63,15 @@ public class ClubService {
 	public List<Club> getAll() {
 		return clubRepository.findAll();
 	}
+
+	public List<Club> getAllOrderById() {
+		return clubRepository.findAllByOrderById();
+	}
 	public List<Club> getAllOrderByClubNom() {
 		return clubRepository.findAllByOrderByClubNom();
+	}
+	public List<Club> getAllOrderByNumTel() {
+		return clubRepository.findAllByOrderByNumTel();
 	}
 	public List<Club> getAllOrderBySportClub() {
 		return clubRepository.findAllByOrderBySportClub();
@@ -85,6 +92,9 @@ public class ClubService {
 	}
 	public List<Club> getByClubNom(String nom) {
 		return clubRepository.findByClubNom(nom);
+	}
+	public List<Club> getByNumTel(String num) {
+		return clubRepository.findByNumTel(num);
 	}
 	
 	public List<Club> getBySportClub(Sport sport) {

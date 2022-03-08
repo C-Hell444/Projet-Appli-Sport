@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.ClubException;
 import projet.AppliSport.exception.EquipeException;
+import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.repositories.EquipeRepository;
 import projet.AppliSport.repositories.EquipeUtilisateurRepository;
@@ -25,10 +26,36 @@ public class EquipeService {
 	@Autowired
 	private EquipeRepository equipeRepository;
 
+	public List<Equipe> getAll() {
+		return equipeRepository.findAll();
+	}
+	
+	public List<Equipe> getAllOrderById() {
+		return equipeRepository.findAllByOrderById();
+	}
+	public List<Equipe> getAllOrderByNom() {
+		return equipeRepository.findAllByOrderByNom();
+	}
+	
+	public List<Equipe> getAllOrderByClub() {
+		return equipeRepository.findAllByOrderByClub();
+	}
+	
+	
 	public Equipe getById(Long id) {
 		return equipeRepository.findById(id).orElseThrow(()->{
 			throw new EquipeException("equipe inconnu");
 		});
+	}
+	
+	public List<Equipe> getByNom(String nom){
+		return equipeRepository.findByNom(nom);
+	}
+	public List<Equipe> getByClubNom(String nom){
+		return equipeRepository.findByClubNom(nom);
+	}
+	public List<Equipe> getByClub(Club club){
+		return equipeRepository.findByClub(club);
 	}
 	
 	public Equipe getByIdWithUtilisateur(Long id) {
@@ -50,9 +77,7 @@ public class EquipeService {
 		return equipeRepository.findByIdWithEquipeUtilisateurOrderByDateFinDesc(id).orElseThrow(EquipeException::new);
 	}
 	
-	public List<Equipe> getAll() {
-		return equipeRepository.findAll();
-	}
+	
 	
 	private void checkdata(Equipe equipe) {
 		if (!validator.validate(equipe).isEmpty()) {
