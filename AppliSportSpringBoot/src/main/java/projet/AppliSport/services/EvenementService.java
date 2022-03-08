@@ -95,7 +95,10 @@ public class EvenementService {
 	
 	private void checkdata(Evenement evenement) {
 		if (!validator.validate(evenement).isEmpty()) {
-			throw new EvenementException("essai");
+			throw new EvenementException();
+		}
+		if(evenement.getDateDebut().isAfter(evenement.getDateFin())&&evenement.getDateDebut()!=null&&evenement.getDateFin()!=null) {
+			throw new EvenementException("dateDebut>dateFin");
 		}
 	}
 	

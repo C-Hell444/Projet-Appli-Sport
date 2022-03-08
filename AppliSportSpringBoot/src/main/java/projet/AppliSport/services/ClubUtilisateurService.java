@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.ClubUtilisateurException;
+import projet.AppliSport.exception.EvenementUtilisateurException;
 import projet.AppliSport.model.ClubUtilisateur;
 import projet.AppliSport.model.ClubUtilisateurKey;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
@@ -34,6 +35,9 @@ public class ClubUtilisateurService {
 	private void checkData(ClubUtilisateur clubUtilisateur) {
 		if (!validator.validate(clubUtilisateur).isEmpty()) {
 			throw new ClubUtilisateurException("erreur de validation");
+		}
+		if(clubUtilisateur.getDateDebut().isAfter(clubUtilisateur.getDateFin())&&clubUtilisateur.getDateDebut()!=null&&clubUtilisateur.getDateFin()!=null) {
+			throw new ClubUtilisateurException("dateDebut>dateFin");
 		}
 	}
 

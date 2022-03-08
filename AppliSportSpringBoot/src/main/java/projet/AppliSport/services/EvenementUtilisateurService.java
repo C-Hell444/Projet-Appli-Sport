@@ -7,6 +7,7 @@ import javax.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import projet.AppliSport.exception.EvenementException;
 import projet.AppliSport.exception.EvenementUtilisateurException;
 import projet.AppliSport.model.EvenementUtilisateur;
 import projet.AppliSport.model.EvenementUtilisateurKey;
@@ -35,6 +36,9 @@ public class EvenementUtilisateurService {
 	private void checkData(EvenementUtilisateur evenementUtilisateur) {
 		if (!validator.validate(evenementUtilisateur).isEmpty()) {
 			throw new EvenementUtilisateurException("erreur de validation");
+		}
+		if(evenementUtilisateur.getDateDebut().isAfter(evenementUtilisateur.getDateFin())&&evenementUtilisateur.getDateDebut()!=null&&evenementUtilisateur.getDateFin()!=null) {
+			throw new EvenementUtilisateurException("dateDebut>dateFin");
 		}
 	}
 
