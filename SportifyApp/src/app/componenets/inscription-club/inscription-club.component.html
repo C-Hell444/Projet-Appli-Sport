@@ -80,8 +80,16 @@
             placeholder="Nom du club"
             id="nomClub"
             required
+            formControlName="nomClub"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['nomClub'].dirty && form.controls['nomClub'].invalid
+            "
+          >
+            {{ errorNomClub }}
+          </div>
         </div>
 
         <!-- <div class="col-md-12">
@@ -106,7 +114,14 @@
             required
             formControlName="login"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['login'].dirty && form.controls['login'].invalid
+            "
+          >
+            {{ errorLogin }}
+          </div>
         </div>
 
         <div class="col-md-12">
@@ -120,8 +135,12 @@
             required
             formControlName="mail"
           />
-          <div id="validationServer03Feedback" class="invalid-feedback">
-            Please provide a valid city.
+          <div
+            id="validationServer03Feedback"
+            class="invalid-feedback"
+            *ngIf="form.controls['mail'].dirty && form.controls['mail'].invalid"
+          >
+            {{ errorMail }}
           </div>
         </div>
         <ng-container formGroupName="passwordGrp">
@@ -138,8 +157,15 @@
               required
               formControlName="password"
             />
-            <div id="validationServer05Feedback" class="invalid-feedback">
-              Please provide a valid zip.
+            <div
+              id="validationServer05Feedback"
+              class="invalid-feedback"
+              *ngIf="
+                form.get('passwordGrp')?.get('password')?.dirty &&
+                form.get('passwordGrp')?.get('password')?.invalid
+              "
+            >
+              {{ errorPassword }}
             </div>
           </div>
 
@@ -156,8 +182,15 @@
               required
               formControlName="confirm"
             />
-            <div id="validationServer05Feedback" class="invalid-feedback">
-              Please provide a valid zip.
+            <div
+              id="validationServer05Feedback"
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['passwordGrp'].dirty &&
+                form.controls['passwordGrp'].invalid
+              "
+            >
+              le mot de passe et la confirmation ne sont pas identiques
             </div>
           </div>
         </ng-container>
@@ -174,7 +207,14 @@
             required
             formControlName="numTel"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['numTel'].dirty && form.controls['numTel'].invalid
+            "
+          >
+            {{ errorTel }}
+          </div>
         </div>
 
         <div class="col-12 h4">Adresse</div>
@@ -189,7 +229,14 @@
             required
             formControlName="numero"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['numero'].dirty && form.controls['numero'].invalid
+            "
+          >
+            {{ errorNumero }}
+          </div>
         </div>
 
         <div class="col-md-3">
@@ -202,7 +249,12 @@
             required
             formControlName="rue"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="form.controls['rue'].dirty && form.controls['rue'].invalid"
+          >
+            {{ errorRue }}
+          </div>
         </div>
 
         <div class="col-md-3">
@@ -215,7 +267,14 @@
             required
             formControlName="ville"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['ville'].dirty && form.controls['ville'].invalid
+            "
+          >
+            {{ errorVille }}
+          </div>
         </div>
 
         <div class="col-md-3">
@@ -230,7 +289,15 @@
             required
             formControlName="codePostale"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['codePostale'].dirty &&
+              form.controls['codePostale'].invalid
+            "
+          >
+            {{ errorCp }}
+          </div>
         </div>
 
         <div class="col-12">
