@@ -32,8 +32,22 @@ public class EvenementService {
 		});
 	}
 	
+	
 	public Evenement getByIdWithUtilisateur(Long id) {
 		return evenementRepository.findByIdWithUtilisateur(id).orElseThrow(EvenementException::new);
+	}
+	
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateDebutAsc(Long id) {
+		return evenementRepository.findByIdWithEvenementUtilisateurOrderByDateDebutAsc(id).orElseThrow(EvenementException::new);
+	}
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateDebutDesc(Long id) {
+		return evenementRepository.findByIdWithEvenementUtilisateurOrderByDateDebutDesc(id).orElseThrow(EvenementException::new);
+	}
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateFinAsc(Long id) {
+		return evenementRepository.findByIdWithEvenementUtilisateurOrderByDateFinAsc(id).orElseThrow(EvenementException::new);
+	}
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateFinDesc(Long id) {
+		return evenementRepository.findByIdWithEvenementUtilisateurOrderByDateFinDesc(id).orElseThrow(EvenementException::new);
 	}
 	
 	public List<Evenement> getAll() {
@@ -68,7 +82,7 @@ public class EvenementService {
 			throw new EvenementException("Evenement non saisi");
 		}
 		if (evenement.getId()==null) {
-			throw new EquipeException("Suppression d'une evenement sans id");
+			throw new EvenementException("Suppression d'une evenement sans id");
 		}
 		Evenement evenementEnBase = this.getById(evenement.getId());
 		evenementUtilisateurRepository.deleteEvenementUtilisateurByEvenement(evenementEnBase);

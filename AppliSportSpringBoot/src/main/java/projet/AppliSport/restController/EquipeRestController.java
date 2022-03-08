@@ -62,9 +62,35 @@ public class EquipeRestController {
 	
 	@GetMapping("/{id}/utilisateur")
 	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
-	public Equipe getByIdUtilisateur(@PathVariable Long id) {
+	public Equipe getByIdWithEquipeUtilisateur(@PathVariable Long id) {
 		return equipeService.getByIdWithUtilisateur(id);
 	}
+	
+	@GetMapping("/{id}/utilisateur/date-debut-asc")
+	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
+		return equipeService.getByIdWithEquipeUtilisateurOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur/date-fin-asc")
+	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
+		return equipeService.getByIdWithEquipeUtilisateurOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur/date-debut-desc")
+	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateDebutDesc(@PathVariable Long id) {
+		return equipeService.getByIdWithEquipeUtilisateurOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur/date-fin-desc")
+	@JsonView(Views.EquipeWithEquipeUtilisateur.class)
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
+		return equipeService.getByIdWithEquipeUtilisateurOrderByDateFinDesc(id);
+	}
+	
+	
 
 
 
