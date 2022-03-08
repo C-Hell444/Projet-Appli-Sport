@@ -40,5 +40,11 @@ export class AuthentificationService {
       'http://localhost:8080/sportify-boot/api/auth/search/' + username
     );
   }
+
+  public checkMail(mail: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      'http://localhost:8080/sportify-boot/api/auth/search/' + mail
+    );
+  }
   /////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -47,13 +47,17 @@ export class InscriptionClubComponent implements OnInit {
         },
         this.checkNotEquals
       ),
-      mail: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(200),
-        Validators.pattern(
-          /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
-        ),
-      ]),
+      mail: new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(200),
+          Validators.pattern(
+            /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
+          ),
+        ],
+        this.checkMail()
+      ),
       numTel: new FormControl('', [
         Validators.required,
         Validators.maxLength(30),
@@ -108,6 +112,17 @@ export class InscriptionClubComponent implements OnInit {
     };
   }
 
+  checkMail(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return this.authService.checkMail(control.value).pipe(
+        debounceTime(1000),
+        map((res: boolean) => {
+          return res ? { mailAlreadyUsed: true } : null;
+        })
+      );
+    };
+  }
+
   get errorPassword(): string {
     let control = this.form.get('passwordGrp')?.get('password');
     if (control!.invalid) {
@@ -122,14 +137,115 @@ export class InscriptionClubComponent implements OnInit {
     return '';
   }
 
+  get errorLogin(): string {
+    let control = this.form.get('login');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'login obligatoire';
+      else if (control!.hasError('minlength'))
+        return 'le login doit faire 3 caracteres minimum';
+      else if (control!.hasError('maxlength'))
+        return 'le login ne doit pas faire plus de 200 caracteres';
+      else if (control!.hasError('loginAlreadyUsed'))
+        return ' le login est déjà utilisé';
+    }
+    return '';
+  }
+
+  get errorMail(): string {
+    let control = this.form.get('mail');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'mail obligatoire';
+      else if (control!.hasError('pattern')) return 'le mail est incorrecte';
+      else if (control!.hasError('maxlength'))
+        return 'le mail ne doit pas faire plus de 200 caracteres';
+      else if (control!.hasError('mailAlreadyUsed'))
+        return ' le mail est déjà utilisé';
+    }
+    return '';
+  }
+
+  get errorTel(): string {
+    let control = this.form.get('numTel');
+    if (control!.invalid) {
+      if (control!.hasError('required'))
+        return 'numéro de téléphone obligatoire';
+      else if (control!.hasError('pattern'))
+        return 'le numéro de téléphone est incorrecte';
+      else if (control!.hasError('maxlength'))
+        return 'le numéro de téléphone ne doit pas faire plus de 30 caracteres';
+    }
+    return '';
+  }
+
+  get errorNumero(): string {
+    let control = this.form.get('numero');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'numéro de voie obligatoire';
+      else if (control!.hasError('maxlength'))
+        return 'le numéro de voie ne doit pas faire plus de 30 caracteres';
+    }
+    return '';
+  }
+
+  get errorRue(): string {
+    let control = this.form.get('rue');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'rue obligatoire';
+      else if (control!.hasError('maxlength'))
+        return 'le champ rue ne doit pas faire plus de 150 caracteres';
+    }
+    return '';
+  }
+
+  get errorVille(): string {
+    let control = this.form.get('ville');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'ville obligatoire';
+      else if (control!.hasError('maxlength'))
+        return 'le champ ville ne doit pas faire plus de 100 caracteres';
+    }
+    return '';
+  }
+
+  get errorCp(): string {
+    let control = this.form.get('codePostale');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'code postale obligatoire';
+      else if (control!.hasError('maxlength'))
+        return 'le code postale ne doit pas faire plus de 30 caracteres';
+    }
+    return '';
+  }
+
+  get errorNomClub(): string {
+    let control = this.form.get('nomClub');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'Nom de club obligatoire';
+      else if (control!.hasError('maxlength'))
+        return 'le nom de club ne doit pas faire plus de 30 caracteres';
+    }
+    return '';
+  }
+
   save() {
-    let user = {
-      username: this.form.get('login')?.value,
-      password: this.form.get('passwordGrp')?.get('password')?.value,
+    let club = {
+      identifiant: this.form.get('login')?.value,
+      mdp: this.form.get('passwordGrp')?.get('password')?.value,
+      type: 'club',
+      mail: this.form.get('mail')?.value,
+      numTel: this.form.get('numTel')?.value,
+      clubNom: this.form.get('nomClub')?.value,
+      adresse: {
+        numero: this.form.get('numero')?.value,
+        rue: this.form.get('rue')?.value,
+        ville: this.form.get('ville')?.value,
+        codePostal: this.form.get('codePostale')?.value,
+      },
     };
-    console.log(user);
-    this.authService.inscriptionClub(user).subscribe((ok) => {
-      this.router.navigateByUrl('/acceuil');
+
+    // console.log(club);
+    this.authService.inscriptionClub(club).subscribe((ok) => {
+      this.router.navigateByUrl('/menu-club');
     });
   }
 }
