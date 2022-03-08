@@ -28,7 +28,6 @@ export class SportService {
 
   public create(sport: Sport): Observable<Sport> {
     const sportEnJson = {
-      id: sport.id,
       nom: sport.nom,
       clubs: sport.clubs,
       interets: sport.interets,
