@@ -103,6 +103,43 @@ public class Sport {
 	}
 
 
+	
+
+
+
+
+	public Caracteristique getCaracteristique() {
+		return caracteristique;
+	}
+
+
+
+
+
+
+	public void setCaracteristique(Caracteristique caracteristique) {
+		this.caracteristique = caracteristique;
+	}
+
+
+
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
 
 
 
