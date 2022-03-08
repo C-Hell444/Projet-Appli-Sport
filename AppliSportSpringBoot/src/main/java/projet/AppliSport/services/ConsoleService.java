@@ -250,59 +250,59 @@ public class ConsoleService implements CommandLineRunner {
 	}
 
 	private void initCaracteristique() {
-		caracteristique1.setAgilite(2);
-		caracteristique1.setCollectif(3);
-		caracteristique1.setCreativite(4);
-		caracteristique1.setDetente(0);
-		caracteristique1.setDetermination(0);
-		caracteristique1.setEndurance(0);
-		caracteristique1.setPatience(2);
-		caracteristique1.setPuissance(0);
-		caracteristique1.setVitesse(0);
+		caracteristique1.setAgilite(5);
+		caracteristique1.setCollectif(5);
+		caracteristique1.setCreativite(5);
+		caracteristique1.setDetente(5);
+		caracteristique1.setDetermination(5);
+		caracteristique1.setEndurance(5);
+		caracteristique1.setPatience(5);
+		caracteristique1.setPuissance(5);
+		caracteristique1.setVitesse(5);
 		caracteristiqueService.createOrUpdate(caracteristique1);
 
-		caracteristique2.setAgilite(2);
-		caracteristique2.setCollectif(3);
-		caracteristique2.setCreativite(4);
-		caracteristique2.setDetente(0);
-		caracteristique2.setDetermination(0);
-		caracteristique2.setEndurance(0);
-		caracteristique2.setPatience(2);
-		caracteristique2.setPuissance(0);
-		caracteristique2.setVitesse(0);
+		caracteristique2.setAgilite(7);
+		caracteristique2.setCollectif(7);
+		caracteristique2.setCreativite(7);
+		caracteristique2.setDetente(7);
+		caracteristique2.setDetermination(7);
+		caracteristique2.setEndurance(7);
+		caracteristique2.setPatience(7);
+		caracteristique2.setPuissance(7);
+		caracteristique2.setVitesse(7);
 		caracteristiqueService.createOrUpdate(caracteristique2);
 
-		caracteristique3.setAgilite(2);
+		caracteristique3.setAgilite(3);
 		caracteristique3.setCollectif(3);
-		caracteristique3.setCreativite(4);
-		caracteristique3.setDetente(0);
-		caracteristique3.setDetermination(0);
-		caracteristique3.setEndurance(0);
-		caracteristique3.setPatience(2);
-		caracteristique3.setPuissance(0);
-		caracteristique3.setVitesse(0);
+		caracteristique3.setCreativite(3);
+		caracteristique3.setDetente(3);
+		caracteristique3.setDetermination(3);
+		caracteristique3.setEndurance(3);
+		caracteristique3.setPatience(3);
+		caracteristique3.setPuissance(3);
+		caracteristique3.setVitesse(3);
 		caracteristiqueService.createOrUpdate(caracteristique3);
 
 		caracteristique4.setAgilite(2);
 		caracteristique4.setCollectif(3);
 		caracteristique4.setCreativite(4);
-		caracteristique4.setDetente(0);
-		caracteristique4.setDetermination(0);
-		caracteristique4.setEndurance(0);
-		caracteristique4.setPatience(2);
-		caracteristique4.setPuissance(0);
-		caracteristique4.setVitesse(0);
+		caracteristique4.setDetente(5);
+		caracteristique4.setDetermination(6);
+		caracteristique4.setEndurance(7);
+		caracteristique4.setPatience(8);
+		caracteristique4.setPuissance(9);
+		caracteristique4.setVitesse(1);
 		caracteristiqueService.createOrUpdate(caracteristique4);
 
-		caracteristique5.setAgilite(2);
-		caracteristique5.setCollectif(3);
-		caracteristique5.setCreativite(4);
-		caracteristique5.setDetente(0);
-		caracteristique5.setDetermination(0);
-		caracteristique5.setEndurance(0);
-		caracteristique5.setPatience(2);
-		caracteristique5.setPuissance(0);
-		caracteristique5.setVitesse(0);
+		caracteristique5.setAgilite(1);
+		caracteristique5.setCollectif(1);
+		caracteristique5.setCreativite(1);
+		caracteristique5.setDetente(1);
+		caracteristique5.setDetermination(1);
+		caracteristique5.setEndurance(1);
+		caracteristique5.setPatience(1);
+		caracteristique5.setPuissance(1);
+		caracteristique5.setVitesse(1);
 		caracteristiqueService.createOrUpdate(caracteristique5);
 
 		caracteristique6.setAgilite(2);
@@ -350,14 +350,14 @@ public class ConsoleService implements CommandLineRunner {
 		caracteristiqueService.createOrUpdate(caracteristique9);
 
 		caracteristique10.setAgilite(2);
-		caracteristique10.setCollectif(3);
-		caracteristique10.setCreativite(4);
-		caracteristique10.setDetente(0);
-		caracteristique10.setDetermination(0);
-		caracteristique10.setEndurance(0);
+		caracteristique10.setCollectif(2);
+		caracteristique10.setCreativite(2);
+		caracteristique10.setDetente(2);
+		caracteristique10.setDetermination(2);
+		caracteristique10.setEndurance(2);
 		caracteristique10.setPatience(2);
-		caracteristique10.setPuissance(0);
-		caracteristique10.setVitesse(0);
+		caracteristique10.setPuissance(2);
+		caracteristique10.setVitesse(2);
 		caracteristiqueService.createOrUpdate(caracteristique10);
 
 		caracteristique11.setAgilite(2);
@@ -385,23 +385,23 @@ public class ConsoleService implements CommandLineRunner {
 
 	private void initProfil() {
 		profil1.setDateNaissance(LocalDate.parse("1990-01-01"));
-		profil1.setPoids(70);
+		profil1.setPoids(50);
 		profil1.setSexe(Sexe.H);
-		profil1.setTaille(1.7);
+		profil1.setTaille(1.5);
 		profil1.setCaracteristique(caracteristique1);
 		profilService.createOrUpdate(profil1);
 
 		profil2.setDateNaissance(LocalDate.parse("1991-01-01"));
 		profil2.setPoids(70);
-		profil2.setSexe(Sexe.H);
+		profil2.setSexe(Sexe.F);
 		profil2.setTaille(1.7);
 		profil2.setCaracteristique(caracteristique2);
 		profilService.createOrUpdate(profil2);
 
 		profil3.setDateNaissance(LocalDate.parse("1992-01-01"));
-		profil3.setPoids(70);
+		profil3.setPoids(60);
 		profil3.setSexe(Sexe.H);
-		profil3.setTaille(1.7);
+		profil3.setTaille(1.6);
 		profil3.setCaracteristique(caracteristique3);
 		profilService.createOrUpdate(profil3);
 
