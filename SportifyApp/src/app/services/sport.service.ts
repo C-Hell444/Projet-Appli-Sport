@@ -7,7 +7,7 @@ import { Sport } from '../model/sport';
   providedIn: 'root',
 })
 export class SportService {
-  static URL: string = 'http://localhost:8080/boot/api/sport';
+  static URL: string = 'http://localhost:8080/sportify-boot/api/sport';
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<Sport[]> {

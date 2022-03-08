@@ -8,7 +8,7 @@ import { NotFoundPageComponent } from './componenets/not-found-page/not-found-pa
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MentionLegaleComponent } from './componenets/mention-legale/mention-legale.component';
 import { AProposComponent } from './componenets/a-propos/a-propos.component';
 import { FaqComponent } from './componenets/faq/faq.component';
@@ -52,6 +52,7 @@ import { MenuAdminClubsEditComponent } from './componenets/admin/menu-admin-club
 import { MenuAdminEquipesEditComponent } from './componenets/admin/menu-admin-equipes-edit/menu-admin-equipes-edit.component';
 import { MenuAdminEvenementsEditComponent } from './componenets/admin/menu-admin-evenements-edit/menu-admin-evenements-edit.component';
 import { MenuAdminHistoriqueEditComponent } from './componenets/admin/menu-admin-historique-edit/menu-admin-historique-edit.component';
+import { AuthInterceptor } from './interceptor/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,9 @@ import { MenuAdminHistoriqueEditComponent } from './componenets/admin/menu-admin
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

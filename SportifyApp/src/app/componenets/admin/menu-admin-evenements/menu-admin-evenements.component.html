@@ -107,69 +107,84 @@
         Historique
       </button>
     </div>
-    <table
-      class="table table-striped table-hover h2 align-items-center w-75 p-3 mx-auto"
-    >
-      <tbody>
-        <tr class="bg-warning text-dark">
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
+      <div class="d-flex justify-content-around">
+        <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
+        <a [routerLink]="['/menu-utilisateur-edit']" routerLinkActive="active"
+          ><img
+            src="assets/img/MajProfil.png"
+            width="100"
+            height="100"
+            class="d-inline-block align-top"
+            alt="tweeter"
+        /></a>
+      </div>
+      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+        La liste des évenements
+      </p>
+      <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
+        <table class="table table-striped table-hover fs-4">
+          <tbody>
+            <tr class="bg-warning text-dark">
+              <th>Nom de l'évenement</th>
+              <th>Date de l'évenement</th>
+              <th>Nom du club</th>
+              <th>Nom du participant</th>
+              <th>Prenom du participant</th>
+            </tr>
+            <tr *ngFor="let e of evenementsObservable | async">
+              <td>{{ e.nom }}</td>
+              <td>{{ e.dateDebut }}</td>
+              <td>{{ e.club }}</td>
+              <!-- <td>{{e.participants.nom}}</td>
+              <td>{{e.participants.prenom}}</td> -->
+            </tr>
+            <!-- <tr>
+              <td>évenement1</td>
+              <td>date1</td>
+              <td>club1</td>
+              <td>nom du participant1</td>
+              <td>prenom du participant1</td>
+            </tr>
+            <tr>
+              <td>évenement2</td>
+              <td>date2</td>
+              <td>club2</td>
+              <td>nom du participant2</td>
+              <td>prenom du participant2</td>
+            </tr>
+            <tr>
+              <td>évenement3</td>
+              <td>date3</td>
+              <td>club3</td>
+              <td>nom du participant3</td>
+              <td>prenom du participant3</td>
+            </tr>
+            <tr>
+              <td>évenement4</td>
+              <td>date4</td>
+              <td>club4</td>
+              <td>nom du participant4</td>
+              <td>prenom du participant4</td>
+            </tr>
+            <tr>
+              <td>évenement5</td>
+              <td>date5</td>
+              <td>club5</td>
+              <td>nom du participant5</td>
+              <td>prenom du participant5</td>
+            </tr>
+            <tr>
+              <td>évenement6</td>
+              <td>date6</td>
+              <td>club6</td>
+              <td>nom du participant6</td>
+              <td>prenom du participant6</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

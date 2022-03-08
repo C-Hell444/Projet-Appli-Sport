@@ -83,73 +83,65 @@
         Historique
       </button>
     </div>
-
-    <table
-      class="table table-striped table-hover h2 align-items-center w-75 p-3 mx-auto"
-    >
-      <tbody>
-        <tr class="bg-warning text-dark">
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-        <tr>
-          <td>case1</td>
-          <td>case2</td>
-          <td>case3</td>
-          <td>case4</td>
-          <td>case5</td>
-          <td>case6</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
+      <div class="d-flex justify-content-around">
+        <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
+        <a [routerLink]="['/menu-utilisateur-edit']" routerLinkActive="active"
+          ><img
+            src="assets/img/MajProfil.png"
+            width="100"
+            height="100"
+            class="d-inline-block align-top"
+            alt="tweeter"
+        /></a>
+      </div>
+      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+        Vous êtes inscrit aux clubs suivants
+      </p>
+      <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
+        <table class="table table-striped table-hover fs-4">
+          <tbody>
+            <tr class="bg-warning text-dark">
+              <th>Nom du club</th>
+              <th>Sport</th>
+              <th>Adresse</th>
+            </tr>
+            <tr>
+              <td>club1</td>
+              <td>sport1</td>
+              <td>adresse1</td>
+            </tr>
+            <tr>
+              <td>club2</td>
+              <td>sport2</td>
+              <td>adresse2</td>
+            </tr>
+            <tr>
+              <td>club2</td>
+              <td>sport2</td>
+              <td>adresse2</td>
+            </tr>
+            <tr>
+              <td>club3</td>
+              <td>sport3</td>
+              <td>adresse3</td>
+            </tr>
+            <tr>
+              <td>club4</td>
+              <td>sport4</td>
+              <td>adresse4</td>
+            </tr>
+            <tr>
+              <td>club5</td>
+              <td>sport5</td>
+              <td>adresse5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- ********************************************************** -->
 
 <div class="DivEspace3">
