@@ -25,6 +25,7 @@ import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.CustomUserDetailsService;
+import projet.AppliSport.services.SportService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 
@@ -35,6 +36,9 @@ public class UtilisateurRestController {
 
 	@Autowired
 	private UtilisateurService utilisateurService;
+	
+	@Autowired
+	private SportService sportService;
 	
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
@@ -83,6 +87,15 @@ public class UtilisateurRestController {
 		return utilisateurService.getAllOrderByCodePostal();
 
 	}
+	
+	// =================== Get All by sport  ======================== //
+	
+	@GetMapping("/sport/{id}")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllByIdSport(@PathVariable Long id){
+		return utilisateurService.getAllBySport(sportService.getById(id));
+	}
+	
 	
 	// =================== Get By ? ======================== //
 	

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.UtilisateurException;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
 import projet.AppliSport.repositories.EquipeUtilisateurRepository;
@@ -83,6 +84,11 @@ public class UtilisateurService {
 	}
 	public List<Utilisateur> getByCodePostal(String cp) {
 		return utilisateurRepository.findByCodePostal(cp);
+	}
+	
+	
+	public List<Utilisateur> getAllBySport(Sport sport) {
+		return utilisateurRepository.findAllBySport(sport);
 	}
 	
 	

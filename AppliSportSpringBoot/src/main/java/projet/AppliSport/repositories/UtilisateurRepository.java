@@ -41,6 +41,9 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	
 	
 	
+	@Query("select u from Utilisateur u left join u.interets i where i.sport=:sport")
+	List<Utilisateur> findAllBySport(@Param("sport") Sport sport);
+	
 	
 	Optional<Utilisateur> findByProfilUtilisateur(Profil profilUtilisateur);
 	
