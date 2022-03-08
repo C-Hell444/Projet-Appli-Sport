@@ -98,6 +98,9 @@ public class Views {
 	public static class ClubWithEquipe extends Common {
 
 	}
+	public static class ClubWithSport extends Common {
+
+	}
 	
 	public static class ClubUtilisateurWithUtilisateur extends Common {
 

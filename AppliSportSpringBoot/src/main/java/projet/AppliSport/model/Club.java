@@ -34,10 +34,10 @@ public class Club extends Compte {
 
 	@Valid
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "client_numero", length = 50)),
-			@AttributeOverride(name = "rue", column = @Column(name = "client_rue", length = 200)),
-			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
-			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
+	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "club_numero", length = 50)),
+			@AttributeOverride(name = "rue", column = @Column(name = "club_rue", length = 200)),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "club_code_postal", length = 20)),
+			@AttributeOverride(name = "ville", column = @Column(name = "club_ville", length = 100)) })
 	@JsonView(Views.Common.class)
 	private Adresse adresse;
 
@@ -54,7 +54,7 @@ public class Club extends Compte {
 
 	@ManyToOne
 	@JoinColumn(name = "club_sportclub", foreignKey = @ForeignKey(name = "club_sportclub_fk"))
-	@JsonView(Views.SportWithClub.class)
+	@JsonView(Views.ClubWithSport.class)
 	private Sport sportClub;
 
 	@OneToMany(mappedBy = "id.club")

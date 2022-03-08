@@ -84,7 +84,7 @@ public class ClubRestController {
 	}
 	
 	@GetMapping("sport")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ClubWithSport.class)
 	public List<Club> getAllOrderBySportClub() {
 		return clubService.getAllOrderBySportClub();
 	}
@@ -139,20 +139,20 @@ public class ClubRestController {
 	}
 	
 	@GetMapping("/sport/{sport}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.ClubWithSport.class)
 	public List<Club> getBySportNom(@PathVariable String sport) {
 			return clubService.getBySportNom(sport);
 	}
 	
-	@GetMapping("/sport/{sport}/sport")
-	@JsonView(Views.Common.class)
-	public List<Club> getBySport(@Valid @RequestBody Sport sport) {
+	@GetMapping("/sport/objet")
+	@JsonView(Views.ClubWithSport.class)
+	public List<Club> getBySport( @RequestBody Sport sport) {
 			return clubService.getBySportClub(sport);
 	}
 	
-	@GetMapping("/sport/{sport}/liste")
-	@JsonView(Views.Common.class)
-	public List<Club> getByListeSport(@Valid @RequestBody List<Sport> sports) {
+	@GetMapping("/sport/liste")
+	@JsonView(Views.ClubWithSport.class)
+	public List<Club> getByListeSport( @RequestBody List<Sport> sports) {
 			return clubService.getByListeSport(sports);
 	}
 	

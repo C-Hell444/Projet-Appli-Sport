@@ -40,7 +40,7 @@
     <div class="flex-grow-1 ms-3">
       <h3 class="mt-0 w-75 p-3 mx-auto">Création de votre compte</h3>
 
-      <form class="row g-3">
+      <form class="row g-3" (ngSubmit)="save()" [formGroup]="form">
         <div class="col-md-12 d-flex justify-content-between">
           <label for="validationServer00" class="form-label h6"
             >Vous créez un compte en tant que
@@ -80,8 +80,14 @@
             placeholder="Nom"
             id="Nom"
             required
+            formControlName="nom"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="form.controls['nom'].dirty && form.controls['nom'].invalid"
+          >
+            {{ errorNom }}
+          </div>
         </div>
 
         <div class="col-md-12">
@@ -92,21 +98,36 @@
             placeholder="Prenom"
             id="Prenom"
             required
+            formControlName="prenom"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['prenom'].dirty && form.controls['prenom'].invalid
+            "
+          >
+            {{ errorPrenom }}
+          </div>
         </div>
 
         <div class="col-md-12">
-          <label for="validationServer02" class="form-label">Identifiant</label>
+          <label for="validationServer01" class="form-label">Identifiant</label>
           <input
             type="text"
             class="form-control is-valid"
-            required
             placeholder="Identifiant"
             id="identifiant"
             required
+            formControlName="login"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['login'].dirty && form.controls['login'].invalid
+            "
+          >
+            {{ errorLogin }}
+          </div>
         </div>
 
         <div class="col-md-12">
@@ -118,45 +139,68 @@
             id="mail"
             aria-describedby="validationServer03Feedback"
             required
+            formControlName="mail"
           />
-          <div id="validationServer03Feedback" class="invalid-feedback">
-            Please provide a valid city.
+          <div
+            id="validationServer03Feedback"
+            class="invalid-feedback"
+            *ngIf="form.controls['mail'].dirty && form.controls['mail'].invalid"
+          >
+            {{ errorMail }}
           </div>
         </div>
 
-        <div class="col-md-12">
-          <label for="validationServer05" class="form-label"
-            >Mot de passe</label
-          >
-          <input
-            type="password"
-            class="form-control is-invalid"
-            placeholder="Mot de passe"
-            id="password"
-            aria-describedby="validationServer05Feedback"
-            required
-          />
-          <div id="validationServer05Feedback" class="invalid-feedback">
-            Please provide a valid zip.
+        <ng-container formGroupName="passwordGrp">
+          <div class="col-md-12">
+            <label for="validationServer05" class="form-label"
+              >Mot de passe</label
+            >
+            <input
+              type="password"
+              class="form-control is-invalid"
+              placeholder="Mot de passe"
+              id="password"
+              aria-describedby="validationServer05Feedback"
+              required
+              formControlName="password"
+            />
+            <div
+              id="validationServer05Feedback"
+              class="invalid-feedback"
+              *ngIf="
+                form.get('passwordGrp')?.get('password')?.dirty &&
+                form.get('passwordGrp')?.get('password')?.invalid
+              "
+            >
+              {{ errorPassword }}
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-12">
-          <label for="validationServer05" class="form-label"
-            >Confirmation de votre mot de passe</label
-          >
-          <input
-            type="password"
-            class="form-control is-invalid"
-            placeholder="Veuillez saisir de nouveau votre mot de passe"
-            id="passwordConfirmation"
-            aria-describedby="validationServer05Feedback"
-            required
-          />
-          <div id="validationServer05Feedback" class="invalid-feedback">
-            Please provide a valid zip.
+          <div class="col-md-12">
+            <label for="validationServer05" class="form-label"
+              >Confirmation de votre mot de passe</label
+            >
+            <input
+              type="password"
+              class="form-control is-invalid"
+              placeholder="Veuillez saisir de nouveau votre mot de passe"
+              id="passwordConfirmation"
+              aria-describedby="validationServer05Feedback"
+              required
+              formControlName="confirm"
+            />
+            <div
+              id="validationServer05Feedback"
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['passwordGrp'].dirty &&
+                form.controls['passwordGrp'].invalid
+              "
+            >
+              le mot de passe et la confirmation ne sont pas identiques
+            </div>
           </div>
-        </div>
+        </ng-container>
 
         <div class="col-md-12">
           <label for="validationServer01" class="form-label"
@@ -168,8 +212,16 @@
             placeholder="N° de téléphone"
             id="numTel"
             required
+            formControlName="numTel"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['numTel'].dirty && form.controls['numTel'].invalid
+            "
+          >
+            {{ errorTel }}
+          </div>
         </div>
 
         <div class="col-12 h4">Adresse</div>
@@ -182,8 +234,16 @@
             placeholder="Numéro"
             id="numero"
             required
+            formControlName="numero"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['numero'].dirty && form.controls['numero'].invalid
+            "
+          >
+            {{ errorNumero }}
+          </div>
         </div>
 
         <div class="col-md-3">
@@ -194,8 +254,14 @@
             placeholder="Rue"
             id="rue"
             required
+            formControlName="rue"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="form.controls['rue'].dirty && form.controls['rue'].invalid"
+          >
+            {{ errorRue }}
+          </div>
         </div>
 
         <div class="col-md-3">
@@ -206,8 +272,16 @@
             placeholder="ville"
             id="ville"
             required
+            formControlName="ville"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['ville'].dirty && form.controls['ville'].invalid
+            "
+          >
+            {{ errorVille }}
+          </div>
         </div>
 
         <div class="col-md-3">
@@ -220,12 +294,25 @@
             placeholder="Code postale"
             id="cp"
             required
+            formControlName="codePostale"
           />
-          <div class="valid-feedback">Looks good!</div>
+          <div
+            class="valid-feedback"
+            *ngIf="
+              form.controls['codePostale'].dirty &&
+              form.controls['codePostale'].invalid
+            "
+          >
+            {{ errorCp }}
+          </div>
         </div>
 
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
             Valider votre inscription
           </button>
         </div>
