@@ -72,6 +72,9 @@ public class UtilisateurService {
 		return utilisateurRepository.findAllByOrderByCodePostal();
 	}
 	
+	public List<Utilisateur> getAllBySport(Sport sport) {
+        return utilisateurRepository.findAllBySport(sport);
+    }
 	
 	public List<Utilisateur> getByNom(String nom) {
 		return utilisateurRepository.findByNom(nom);

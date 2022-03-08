@@ -7,11 +7,11 @@ import javax.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import projet.AppliSport.exception.EvenementException;
 import projet.AppliSport.exception.EvenementUtilisateurException;
 import projet.AppliSport.model.EvenementUtilisateur;
 import projet.AppliSport.model.EvenementUtilisateurKey;
 import projet.AppliSport.repositories.EvenementUtilisateurRepository;
-
 
 @Service
 public class EvenementUtilisateurService {
@@ -35,6 +35,11 @@ public class EvenementUtilisateurService {
 	private void checkData(EvenementUtilisateur evenementUtilisateur) {
 		if (!validator.validate(evenementUtilisateur).isEmpty()) {
 			throw new EvenementUtilisateurException("erreur de validation");
+		}
+		if (evenementUtilisateur.getDateDebut() != null && evenementUtilisateur.getDateFin() != null) {
+			if (evenementUtilisateur.getDateDebut().isAfter(evenementUtilisateur.getDateFin())) {
+				throw new EvenementUtilisateurException("dateDebut>dateFin");
+			}
 		}
 	}
 

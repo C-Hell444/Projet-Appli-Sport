@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.EquipeUtilisateurException;
+import projet.AppliSport.exception.EvenementUtilisateurException;
 import projet.AppliSport.model.EquipeUtilisateur;
 import projet.AppliSport.model.EquipeUtilisateurKey;
 import projet.AppliSport.repositories.EquipeUtilisateurRepository;
-
 
 @Service
 public class EquipeUtilisateurService {
@@ -35,6 +35,12 @@ public class EquipeUtilisateurService {
 	private void checkData(EquipeUtilisateur equipeUtilisateur) {
 		if (!validator.validate(equipeUtilisateur).isEmpty()) {
 			throw new EquipeUtilisateurException("erreur de validation");
+		}
+		if (equipeUtilisateur.getDateDebut() != null && equipeUtilisateur.getDateFin() != null) {
+			if (equipeUtilisateur.getDateDebut().isAfter(equipeUtilisateur.getDateFin())) {
+				throw new EquipeUtilisateurException("dateDebut>dateFin");
+			}
+
 		}
 	}
 
