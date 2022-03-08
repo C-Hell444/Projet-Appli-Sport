@@ -63,6 +63,32 @@ public class EvenementRestController {
 	public Evenement getByIdUtilisateur(@PathVariable Long id) {
 		return evenementService.getByIdWithUtilisateur(id);
 	}
+	
+	
+	@GetMapping("/{id}/utilisateur/date-debut-asc")
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
+		return evenementService.getByIdWithEvenementUtilisateurOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur/date-fin-asc")
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
+		return evenementService.getByIdWithEvenementUtilisateurOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur/date-debut-desc")
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateDebutDesc(@PathVariable Long id) {
+		return evenementService.getByIdWithEvenementUtilisateurOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/utilisateur/date-fin-desc")
+	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
+	public Evenement getByIdWithEvenementUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
+		return evenementService.getByIdWithEvenementUtilisateurOrderByDateFinDesc(id);
+	}
+	
 
 
 

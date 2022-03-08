@@ -24,4 +24,18 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	
 	@Query("select e from Equipe e left join fetch e.equipe where e.id=:id")
 	Optional<Equipe> findByIdWithUtilisateur(@Param("id") Long id);
+	
+	@Query("select e from Equipe e left join fetch e.equipe m where e.id=:id order by m.dateDebut asc")
+	Optional<Equipe> findByIdWithEquipeUtilisateurOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select e from Equipe e left join fetch e.equipe m where e.id=:id order by m.dateDebut desc")
+	Optional<Equipe> findByIdWithEquipeUtilisateurOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select e from Equipe e left join fetch e.equipe m where e.id=:id order by m.dateFin asc")
+	Optional<Equipe> findByIdWithEquipeUtilisateurOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select e from Equipe e left join fetch e.equipe m where e.id=:id order by m.dateFin desc")
+	Optional<Equipe> findByIdWithEquipeUtilisateurOrderByDateFinDesc(@Param("id") Long id);
+	
+	
 }

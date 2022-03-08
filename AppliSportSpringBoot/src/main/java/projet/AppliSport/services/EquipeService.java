@@ -34,6 +34,22 @@ public class EquipeService {
 	public Equipe getByIdWithUtilisateur(Long id) {
 		return equipeRepository.findByIdWithUtilisateur(id).orElseThrow(EquipeException::new);
 	}
+	
+	
+
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateDebutAsc(Long id) {
+		return equipeRepository.findByIdWithEquipeUtilisateurOrderByDateDebutAsc(id).orElseThrow(EquipeException::new);
+	}
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateDebutDesc(Long id) {
+		return equipeRepository.findByIdWithEquipeUtilisateurOrderByDateDebutDesc(id).orElseThrow(EquipeException::new);
+	}
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateFinAsc(Long id) {
+		return equipeRepository.findByIdWithEquipeUtilisateurOrderByDateFinAsc(id).orElseThrow(EquipeException::new);
+	}
+	public Equipe getByIdWithEquipeUtilisateurOrderByDateFinDesc(Long id) {
+		return equipeRepository.findByIdWithEquipeUtilisateurOrderByDateFinDesc(id).orElseThrow(EquipeException::new);
+	}
+	
 	public List<Equipe> getAll() {
 		return equipeRepository.findAll();
 	}
@@ -76,6 +92,8 @@ public class EquipeService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
+
+	
 	
 
 }

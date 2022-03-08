@@ -14,6 +14,7 @@ import projet.AppliSport.exception.UtilisateurException;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.repositories.ClubRepository;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
@@ -57,13 +58,63 @@ public class ClubService {
 	private EvenementUtilisateurRepository evenementUtilisateurRepository;
 
 	
-	private static final Logger LOGGER=LoggerFactory.getLogger(ClubService.class);
+	
+	
+	public List<Club> getAll() {
+		return clubRepository.findAll();
+	}
+	public List<Club> getAllOrderByClubNom() {
+		return clubRepository.findAllByOrderByClubNom();
+	}
+	public List<Club> getAllOrderBySportClub() {
+		return clubRepository.findAllByOrderBySportClub();
+	}
+	public List<Club> getAllOrderByVille() {
+		return clubRepository.findAllByOrderByVille();
+	}
+	public List<Club> getAllOrderByCodePostal() {
+		return clubRepository.findAllByOrderByCodePostal();
+	}
+	
+	
 	
 	public Club getById(Long id) {
 		return clubRepository.findById(id).orElseThrow(()->{
 			throw new ClubException("club inconnu");
 		});
 	}
+	public List<Club> getByClubNom(String nom) {
+		return clubRepository.findByClubNom(nom);
+	}
+	
+	public List<Club> getBySportClub(Sport sport) {
+		return clubRepository.findBySportClub(sport);
+	}
+	
+	public List<Club> getBySportNom(String sport) {
+		return clubRepository.findBySportNom(sport);
+	}
+	
+	public List<Club> getByListeSport(List<Sport> sports) {
+		List<Club>clubs = null;
+		for (Sport s:sports) {
+			clubs.addAll(getBySportClub(s));
+		}
+		return clubs;
+	}
+	
+	
+	public List<Club> getByVille(String ville) {
+		return clubRepository.findByVille(ville);
+	}
+	public List<Club> getByCodePostal(String cp) {
+		return clubRepository.findByCodePostal(cp);
+	}
+	
+	
+	
+	
+	
 	
 	public Club getByIdWithEquipe(Long id) {
 		return clubRepository.findByIdWithEquipe(id).orElseThrow(ClubException::new);
@@ -75,14 +126,29 @@ public class ClubService {
 	
 	public Club getByIdWithUtilisateur(Long id) {
 
-		Club club =clubRepository.findByIdWithUtilisateur(id).orElseThrow(ClubException::new);
-		LOGGER.info(club.getListeMembres().toString());
-		return club;
+		return clubRepository.findByIdWithUtilisateur(id).orElseThrow(ClubException::new);
+
 	}
 	
-	public List<Club> getAll() {
-		return clubRepository.findAll();
+
+	public Club getByIdWithClubUtilisateurOrderByDateDebutAsc(Long id) {
+		
+		return clubRepository.findByIdWithClubUtilisateurOrderByDateDebutAsc(id).orElseThrow(ClubException::new);
 	}
+
+	public Club getByIdWithClubUtilisateurOrderByDateDebutDesc(Long id) {
+		return clubRepository.findByIdWithClubUtilisateurOrderByDateDebutDesc(id).orElseThrow(ClubException::new);
+	}
+	
+	public Club getByIdWithClubUtilisateurOrderByDateFinAsc(Long id) {
+		return clubRepository.findByIdWithClubUtilisateurOrderByDateFinAsc(id).orElseThrow(ClubException::new);
+	}
+
+	public Club getByIdWithClubUtilisateurOrderByDateFinDesc(Long id) {
+		return clubRepository.findByIdWithClubUtilisateurOrderByDateFinDesc(id).orElseThrow(ClubException::new);
+	}
+	
+	
 	
 	private void checkdata(Club club) {
 		if (!validator.validate(club).isEmpty()) {
@@ -138,5 +204,7 @@ public class ClubService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
+
+
 
 }

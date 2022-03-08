@@ -6,8 +6,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import projet.AppliSport.model.Club;
+import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 
 public interface EvenementRepository extends JpaRepository<Evenement, Long>{
@@ -25,5 +27,18 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 	
 	@Query("select e from Evenement e left join fetch e.participants where e.id=:id")
 	Optional<Evenement> findByIdWithUtilisateur(Long id);
+	
+	@Query("select e from Evenement e left join fetch e.participants p where e.id=:id order by p.dateDebut asc")
+	Optional<Evenement> findByIdWithEvenementUtilisateurOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select e from Evenement e left join fetch e.participants p where e.id=:id order by p.dateDebut desc")
+	Optional<Evenement> findByIdWithEvenementUtilisateurOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select e from Evenement e left join fetch e.participants p where e.id=:id order by p.dateFin asc")
+	Optional<Evenement> findByIdWithEvenementUtilisateurOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select e from Evenement e left join fetch e.participants p where e.id=:id order by p.dateFin desc")
+	Optional<Evenement> findByIdWithEvenementUtilisateurOrderByDateFinDesc(@Param("id") Long id);
+	
 
 }
