@@ -11,6 +11,7 @@ import projet.AppliSport.exception.CaracteristiqueException;
 import projet.AppliSport.model.Caracteristique;
 import projet.AppliSport.repositories.CaracteristiqueRepository;
 import projet.AppliSport.repositories.ProfilRepository;
+import projet.AppliSport.repositories.SportRepository;
 
 
 @Service
@@ -21,6 +22,9 @@ public class CaracteristiqueService {
 	
 	@Autowired
 	private ProfilRepository profilRepository;
+	
+	@Autowired
+	private SportRepository sportRepository;
 	
 	@Autowired
 	private Validator validator;
@@ -99,6 +103,7 @@ public class CaracteristiqueService {
 		
 		Caracteristique caracteristiqueEnBase=caracteristiqueRepository.findById(caracteristique.getId()).orElseThrow(CaracteristiqueException::new);
 		profilRepository.setCaracteristiqueToNull(caracteristiqueEnBase);
+		sportRepository.setCaracteristiqueToNull(caracteristiqueEnBase);
 		caracteristiqueRepository.delete(caracteristiqueEnBase);
 	
 		
