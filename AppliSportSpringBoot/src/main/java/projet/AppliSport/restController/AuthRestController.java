@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import projet.AppliSport.exception.CompteException;
 import projet.AppliSport.model.Admin;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Compte;
+import projet.AppliSport.model.CompteRepository;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.CustomUserDetailsService;
 
@@ -31,6 +33,9 @@ public class AuthRestController {
 	
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
+	
+	@Autowired
+	private CompteRepository compteRepository;
 	
 	@GetMapping("")
 	public void auth(@AuthenticationPrincipal Compte user) {
@@ -66,6 +71,10 @@ public class AuthRestController {
 		return (Admin) customUserDetailsService.createOrUpdate(admin);
 	}
 	
+	@GetMapping("/search/{identifiant}")
+	public boolean usernameDejaUtilise(@PathVariable String identifiant) {
+		return compteRepository.findByIdentifiant(identifiant).isPresent();
+	}
 	
 
 }

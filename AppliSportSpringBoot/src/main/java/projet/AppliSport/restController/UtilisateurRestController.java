@@ -57,16 +57,88 @@ public class UtilisateurRestController {
 		return utilisateurService.getByIdWithClubUtilisateur(id);
 	}
 	
+	@GetMapping("/{id}/club/date-debut-asc")
+	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithClubUtilisateurOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/club/date-debut-desc")
+	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateDebutDesc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithClubUtilisateurOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/club/date-fin-asc")
+	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithClubUtilisateurOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/club/date-fin-desc")
+	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithClubUtilisateurOrderByDateFinDesc(id);
+	}
+	
 	@GetMapping("/{id}/evenement")
 	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
 	public Utilisateur getByIdWithEvenementUtilisateur(@PathVariable Long id) {
 		return utilisateurService.getByIdWithEvenementUtilisateur(id);
 	}
 	
+	@GetMapping("/{id}/evenement/date-debut-asc")
+	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEvenementUtilisateurOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/evenement/date-debut-desc")
+	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateDebutDesc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEvenementUtilisateurOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/evenement/date-fin-asc")
+	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEvenementUtilisateurOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/evenement/date-fin-desc")
+	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEvenementUtilisateurOrderByDateFinDesc(id);
+	}
+	
 	@GetMapping("/{id}/equipe")
 	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
 	public Utilisateur getByIdWithEquipeUtilisateur(@PathVariable Long id) {
 		return utilisateurService.getByIdWithEquipeUtilisateur(id);
+	}
+	
+	@GetMapping("/{id}/equipe/date-debut-asc")
+	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEquipeUtilisateurOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/equipe/date-debut-desc")
+	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateDebutDesc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEquipeUtilisateurOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/equipe/date-fin-asc")
+	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEquipeUtilisateurOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/equipe/date-fin-desc")
+	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
+		return utilisateurService.getByIdWithEquipeUtilisateurOrderByDateFinDesc(id);
 	}
 	
 	@GetMapping("/{id}/profil")

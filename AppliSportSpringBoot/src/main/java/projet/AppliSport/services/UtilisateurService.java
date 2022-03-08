@@ -56,12 +56,61 @@ public class UtilisateurService {
 		return utilisateurRepository.findByIdWithClubUtilisateur(id).orElseThrow(UtilisateurException::new);
 	}
 	
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateDebutAsc(Long id) {
+		return utilisateurRepository.findByIdWithClubUtilisateurOrderByDateDebutAsc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateDebutDesc(Long id) {
+		return utilisateurRepository.findByIdWithClubUtilisateurOrderByDateDebutDesc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateFinAsc(Long id) {
+		return utilisateurRepository.findByIdWithClubUtilisateurOrderByDateFinAsc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithClubUtilisateurOrderByDateFinDesc(Long id) {
+		return utilisateurRepository.findByIdWithClubUtilisateurOrderByDateFinDesc(id).orElseThrow(UtilisateurException::new);
+	}
+	
 	public Utilisateur getByIdWithEvenementUtilisateur(Long id) {
 		return utilisateurRepository.findByIdWithEvenementUtilisateur(id).orElseThrow(UtilisateurException::new);
 	}
 	
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateDebutAsc(Long id) {
+		return utilisateurRepository.findByIdWithEvenementUtilisateurOrderByDateDebutAsc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateDebutDesc(Long id) {
+		return utilisateurRepository.findByIdWithEvenementUtilisateurOrderByDateDebutDesc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateFinAsc(Long id) {
+		return utilisateurRepository.findByIdWithEvenementUtilisateurOrderByDateFinAsc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEvenementUtilisateurOrderByDateFinDesc(Long id) {
+		return utilisateurRepository.findByIdWithEvenementUtilisateurOrderByDateFinDesc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	
 	public Utilisateur getByIdWithEquipeUtilisateur(Long id) {
 		return utilisateurRepository.findByIdWithEquipeUtilisateur(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateDebutAsc(Long id) {
+		return utilisateurRepository.findByIdWithEquipeUtilisateurOrderByDateDebutAsc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateDebutDesc(Long id) {
+		return utilisateurRepository.findByIdWithEquipeUtilisateurOrderByDateDebutDesc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateFinAsc(Long id) {
+		return utilisateurRepository.findByIdWithEquipeUtilisateurOrderByDateFinAsc(id).orElseThrow(UtilisateurException::new);
+	}
+	
+	public Utilisateur getByIdWithEquipeUtilisateurOrderByDateFinDesc(Long id) {
+		return utilisateurRepository.findByIdWithEquipeUtilisateurOrderByDateFinDesc(id).orElseThrow(UtilisateurException::new);
 	}
 	
 	public Utilisateur getByIdWithInteret(Long id) {

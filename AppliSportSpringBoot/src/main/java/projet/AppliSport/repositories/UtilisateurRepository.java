@@ -47,11 +47,53 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	@Query("select u from Utilisateur u left join fetch u.clubs where u.id=:id")
 	Optional<Utilisateur> findByIdWithClubUtilisateur(@Param("id") Long id);
 	
+	@Query("select u from Utilisateur u left join fetch u.clubs e where u.id=:id order by e.dateDebut asc")
+	Optional<Utilisateur> findByIdWithClubUtilisateurOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.clubs e where u.id=:id order by e.dateDebut desc")
+	Optional<Utilisateur> findByIdWithClubUtilisateurOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.clubs e where u.id=:id order by e.dateFin asc")
+	Optional<Utilisateur> findByIdWithClubUtilisateurOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.clubs e where u.id=:id order by e.dateFin desc")
+	Optional<Utilisateur> findByIdWithClubUtilisateurOrderByDateFinDesc(@Param("id") Long id);
+	
+	
+	
+	
 	@Query("select u from Utilisateur u left join fetch u.equipes where u.id=:id")
 	Optional<Utilisateur> findByIdWithEquipeUtilisateur(@Param("id") Long id);
 	
+	@Query("select u from Utilisateur u left join fetch u.equipes e where u.id=:id order by e.dateDebut asc")
+	Optional<Utilisateur> findByIdWithEquipeUtilisateurOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.equipes e where u.id=:id order by e.dateDebut desc")
+	Optional<Utilisateur> findByIdWithEquipeUtilisateurOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.equipes e where u.id=:id order by e.dateFin asc")
+	Optional<Utilisateur> findByIdWithEquipeUtilisateurOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.equipes e where u.id=:id order by e.dateFin desc")
+	Optional<Utilisateur> findByIdWithEquipeUtilisateurOrderByDateFinDesc(@Param("id") Long id);
+	
+	
+	
+	
 	@Query("select u from Utilisateur u left join fetch u.evenements where u.id=:id")
 	Optional<Utilisateur> findByIdWithEvenementUtilisateur(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.evenements e where u.id=:id order by e.dateDebut asc")
+	Optional<Utilisateur> findByIdWithEvenementUtilisateurOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.evenements e where u.id=:id order by e.dateDebut desc")
+	Optional<Utilisateur> findByIdWithEvenementUtilisateurOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.evenements e where u.id=:id order by e.dateFin asc")
+	Optional<Utilisateur> findByIdWithEvenementUtilisateurOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select u from Utilisateur u left join fetch u.evenements e where u.id=:id order by e.dateFin desc")
+	Optional<Utilisateur> findByIdWithEvenementUtilisateurOrderByDateFinDesc(@Param("id") Long id);
 	
 	
 	@Transactional
