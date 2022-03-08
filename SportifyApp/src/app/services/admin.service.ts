@@ -31,7 +31,12 @@ export class AdminService {
   }
 
   create(Admin: Admin): Observable<Admin> {
-    const AdminEnJson = { identifiant: Admin.identifiant };
+    const AdminEnJson = {
+      identifiant: Admin.identifiant,
+      mdp: Admin.mdp,
+      mail: Admin.mail,
+      type: Admin.type,
+    };
     return this.http.post<Admin>(AdminService.URL, AdminEnJson);
   }
 }

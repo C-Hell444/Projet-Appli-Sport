@@ -33,7 +33,23 @@ export class ClubUtilisateurService {
   }
 
   create(ClubUtilisateur: ClubUtilisateur): Observable<ClubUtilisateur> {
-    const ClubUtilisateurEnJson = { identifiant: ClubUtilisateur.id };
+    const ClubUtilisateurEnJson = {
+      dateDebut: ClubUtilisateur.dateDebut,
+      dateFin: ClubUtilisateur.dateFin,
+    };
+    if (ClubUtilisateur.id) {
+      if (ClubUtilisateur.id.utilisateur) {
+        Object.assign(ClubUtilisateurEnJson, {
+          utilisateur: { id: ClubUtilisateur.id.utilisateur.id },
+        });
+      }
+      if (ClubUtilisateur.id.club) {
+        Object.assign(ClubUtilisateurEnJson, {
+          club: { id: ClubUtilisateur.id.club.id },
+        });
+      }
+    }
+
     return this.http.post<ClubUtilisateur>(
       ClubUtilisateurService.URL,
       ClubUtilisateurEnJson
