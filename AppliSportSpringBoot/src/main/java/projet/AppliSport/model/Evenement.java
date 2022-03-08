@@ -47,13 +47,13 @@ public class Evenement {
 	@JsonView(Views.EvenementWithEvenementUtilisateur.class)
 	private List<EvenementUtilisateur> participants;
 	
-	@PastOrPresent
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dateDebut_evenement")
 	@JsonView(Views.Common.class)
 	private LocalDate dateDebut;
 	
-	@FutureOrPresent
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dateFin_evenement")
 	@JsonView(Views.Common.class)

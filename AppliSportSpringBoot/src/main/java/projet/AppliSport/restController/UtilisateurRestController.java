@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.UtilisateurException;
 import projet.AppliSport.model.Club;
+import projet.AppliSport.model.Profil;
 import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.CustomUserDetailsService;
@@ -114,6 +115,13 @@ public class UtilisateurRestController {
 		public List<Utilisateur> getByCodePostal(@PathVariable String cp) {
 				return utilisateurService.getByCodePostal(cp);
 		}
+		
+		@GetMapping("/profil/liste")
+		@JsonView(Views.ProfilWithUtilisateur.class)
+		public List<Utilisateur> getByListeSport( @RequestBody List<Profil> profils) {
+				return utilisateurService.getByListeProfil(profils);
+		}
+		
 	
 	// =================== Get By Id ======================== //
 	@GetMapping("/{id}")

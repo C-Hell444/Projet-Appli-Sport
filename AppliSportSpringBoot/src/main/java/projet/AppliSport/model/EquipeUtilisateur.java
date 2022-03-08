@@ -24,12 +24,12 @@ public class EquipeUtilisateur {
 	@EmbeddedId
 	@JsonView(Views.Common.class)
 	private EquipeUtilisateurKey id;
-	@PastOrPresent
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "equipeutilisateur_date_debut")
 	@JsonView(Views.Common.class)
 	private LocalDate dateDebut;
-	@FutureOrPresent
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "equipeutilisateur_date_fin")
 	@JsonView(Views.Common.class)

@@ -1,5 +1,6 @@
 package projet.AppliSport.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Validator;
@@ -9,6 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.UtilisateurException;
+import projet.AppliSport.model.Club;
+import projet.AppliSport.model.Profil;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
 import projet.AppliSport.repositories.EquipeUtilisateurRepository;
@@ -84,6 +88,19 @@ public class UtilisateurService {
 	public List<Utilisateur> getByCodePostal(String cp) {
 		return utilisateurRepository.findByCodePostal(cp);
 	}
+	
+	public Utilisateur getByProfilUtilisateur(Profil profil) {
+		return utilisateurRepository.findByProfilUtilisateur(profil).orElseThrow(UtilisateurException::new);
+	}
+	
+	public List<Utilisateur> getByListeProfil(List<Profil> profils) {
+		List<Utilisateur>clubs = new ArrayList<Utilisateur>();
+		for (Profil s:profils) {
+			clubs.add(getByProfilUtilisateur(s));
+		}
+		return clubs;
+	}
+
 	
 	
 	public Utilisateur getById(Long id) {
@@ -224,6 +241,6 @@ public class UtilisateurService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
-
+	
 
 }
