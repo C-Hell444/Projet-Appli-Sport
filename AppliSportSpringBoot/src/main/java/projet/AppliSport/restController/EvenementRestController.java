@@ -47,31 +47,31 @@ public class EvenementRestController {
 	public List<Evenement> getAllEvenement() {
 		return evenementService.getAll();
 	}
-	@GetMapping("id")
+	@GetMapping("/id")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getAllOrderById() {
 		return evenementService.getAllOrderById();
 	}
 
-	@GetMapping("nom")
+	@GetMapping("/nom")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getAllOrderByNom() {
 		return evenementService.getAllOrderByNom();
 	}
 
-	@GetMapping("club")
+	@GetMapping("/club")
 	@JsonView(Views.EvenementWithClub.class)
 	public List<Evenement> getAllOrderByClub() {
 		return evenementService.getAllOrderByClub();
 	}
 	
-	@GetMapping("date-debut")
+	@GetMapping("/date-debut")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getAllOrderByDateDebut() {
 		return evenementService.getAllOrderByDateDebut();
 	}
 	
-	@GetMapping("date-fin")
+	@GetMapping("/date-fin")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getAllOrderByDateFin() {
 		return evenementService.getAllOrderByDateFin();
