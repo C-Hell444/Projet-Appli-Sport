@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 import projet.AppliSport.exception.SportException;
+import projet.AppliSport.model.Caracteristique;
 import projet.AppliSport.model.Sport;
 import projet.AppliSport.services.SportService;
 import projet.AppliSport.views.Views;
@@ -57,6 +58,13 @@ public class SportRestController {
 	@JsonView(Views.SportWithInteret.class)
 	public Sport getByIdWithInteret(@PathVariable Long id) {
 		return sportService.getById(id);
+	}
+	
+	
+	@GetMapping("/caracteristique")
+	@JsonView(Views.Common.class)
+	public List<Sport> getAllByCaracteristique(@RequestBody Caracteristique caracteristique) {
+		return sportService.getAllByCaracteristique(caracteristique);
 	}
 	
 	

@@ -76,5 +76,9 @@ public class AuthRestController {
 		return compteRepository.findByIdentifiant(identifiant).isPresent();
 	}
 	
+	@GetMapping("/search/{mail}")
+	public boolean mailDejaUtilise(@PathVariable String mail) {
+		return compteRepository.findByMail(mail).isPresent();
+	}
 
 }

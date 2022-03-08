@@ -3,12 +3,20 @@ export class Compte {
   private _identifiant: string | undefined;
   private _mdp: string | undefined;
   private _mail: string | undefined;
+  private _type: string | undefined;
 
-  constructor(id?: number, identifiant?: string, mdp?: string, mail?: string) {
+  constructor(
+    id?: number,
+    identifiant?: string,
+    mdp?: string,
+    mail?: string,
+    type?: string
+  ) {
     this._id = id;
     this._identifiant = identifiant;
     this._mdp = mdp;
     this._mail = mail;
+    this._type = type;
   }
 
   /**
@@ -44,6 +52,14 @@ export class Compte {
   }
 
   /**
+   * Getter type
+   * @return {string }
+   */
+  public get type(): string | undefined {
+    return this._type;
+  }
+
+  /**
    * Setter id
    * @param {number } value
    */
@@ -73,5 +89,13 @@ export class Compte {
    */
   public set mail(value: string | undefined) {
     this._mail = value;
+  }
+
+  /**
+   * Setter type
+   * @param {string } value
+   */
+  public set type(value: string | undefined) {
+    this._type = value;
   }
 }

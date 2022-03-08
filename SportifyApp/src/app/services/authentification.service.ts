@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 export class AuthentificationService {
   constructor(private http: HttpClient) {}
 
-  public authentication(login: string, password: string): Observable<void> {
+  public authentication(identifiant: string, mdp: string): Observable<void> {
     let headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa(login + ':' + password),
+      Authorization: 'Basic ' + btoa(identifiant + ':' + mdp),
     });
-    return this.http.get<void>('http://localhost:8080/boot/api/auth', {
+    return this.http.get<void>('http://localhost:8080/sportify-boot/api/auth', {
       headers: headers,
     });
   }
@@ -20,4 +20,25 @@ export class AuthentificationService {
   public isAuthenticated(): string | null {
     return localStorage.getItem('token');
   }
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  public inscriptionUtilisateur(user: any): Observable<any> {
+    return this.http.post(
+      'http://localhost:8080/sportify-boot/api/auth/inscription/utilisateur',
+      user
+    );
+  }
+
+  public inscriptionClub(user: any): Observable<any> {
+    return this.http.post(
+      'http://localhost:8080/sportify-boot/api/auth/inscription/club',
+      user
+    );
+  }
+
+  public checkUsername(username: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      'http://localhost:8080/sportify-boot/api/auth/search/' + username
+    );
+  }
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 }
