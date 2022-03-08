@@ -11,12 +11,6 @@ export class EvenementUtilisateurService {
     'http://localhost:8080/sportify-boot/api/evenement-utilisateur';
   constructor(private http: HttpClient) {}
 
-  getType(login: string): Observable<EvenementUtilisateur> {
-    return this.http.get<EvenementUtilisateur>(
-      EvenementUtilisateurService.URL + '/' + login
-    );
-  }
-
   getAll(): Observable<EvenementUtilisateur[]> {
     return this.http.get<EvenementUtilisateur[]>(
       EvenementUtilisateurService.URL

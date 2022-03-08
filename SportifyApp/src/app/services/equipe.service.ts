@@ -10,10 +10,6 @@ export class EquipeService {
   static URL: string = 'http://localhost:8080/sportify-boot/api/equipe';
   constructor(private http: HttpClient) {}
 
-  getType(login: string): Observable<Equipe> {
-    return this.http.get<Equipe>(EquipeService.URL + '/' + login);
-  }
-
   getAll(): Observable<Equipe[]> {
     return this.http.get<Equipe[]>(EquipeService.URL);
   }
