@@ -46,6 +46,46 @@ public class UtilisateurService {
 	private PasswordEncoder passwordEncoder;
 	
 	
+	public List<Utilisateur> getAll() {
+		return utilisateurRepository.findAll();
+	}
+	public List<Utilisateur> getAllOrderById() {
+		return utilisateurRepository.findAllByOrderById();
+	}
+	public List<Utilisateur> getAllOrderByNom() {
+		return utilisateurRepository.findAllByOrderByNom();
+	}
+	public List<Utilisateur> getAllOrderByPrenom() {
+		return utilisateurRepository.findAllByOrderByPrenom();
+	}
+	public List<Utilisateur> getAllOrderByNumTel() {
+		return utilisateurRepository.findAllByOrderByNumTel();
+	}
+	public List<Utilisateur> getAllOrderByVille() {
+		return utilisateurRepository.findAllByOrderByVille();
+	}
+	public List<Utilisateur> getAllOrderByCodePostal() {
+		return utilisateurRepository.findAllByOrderByCodePostal();
+	}
+	
+	
+	public List<Utilisateur> getByNom(String nom) {
+		return utilisateurRepository.findByNom(nom);
+	}
+	public List<Utilisateur> getByPrenom(String prenom) {
+		return utilisateurRepository.findByPrenom(prenom);
+	}
+	public List<Utilisateur> getByNumTel(String num) {
+		return utilisateurRepository.findByNumTel(num);
+	}
+	public List<Utilisateur> getByVille(String ville) {
+		return utilisateurRepository.findByVille(ville);
+	}
+	public List<Utilisateur> getByCodePostal(String cp) {
+		return utilisateurRepository.findByCodePostal(cp);
+	}
+	
+	
 	public Utilisateur getById(Long id) {
 		return utilisateurRepository.findById(id).orElseThrow(()->{
 			throw new UtilisateurException("Utilisateur inconnu");
@@ -117,9 +157,6 @@ public class UtilisateurService {
 		return utilisateurRepository.findByIdWithInterets(id).orElseThrow(UtilisateurException::new);
 	}
 	
-	public List<Utilisateur> getAll() {
-		return utilisateurRepository.findAll();
-	}
 	
 	
 	private void checkData(Utilisateur utilisateur) {

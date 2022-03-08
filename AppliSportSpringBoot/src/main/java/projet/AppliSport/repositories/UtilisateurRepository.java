@@ -12,28 +12,33 @@ import org.springframework.data.repository.query.Param;
 
 import projet.AppliSport.model.Adresse;
 import projet.AppliSport.model.Caracteristique;
+import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Profil;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 
+	
+	
+	List<Utilisateur> findAllByOrderById();
+	List<Utilisateur> findAllByOrderByNom();
+	List<Utilisateur> findAllByOrderByPrenom();
+	List<Utilisateur> findAllByOrderByNumTel();
+	@Query("select u from Utilisateur u order by u.adresse.ville")
+	List<Utilisateur> findAllByOrderByVille();
+	@Query("select u from Utilisateur u order by u.adresse.codePostal")
+	List<Utilisateur> findAllByOrderByCodePostal();
+	
+	
 	List<Utilisateur> findByNom(String nom);
+	List<Utilisateur> findByPrenom(String prenom);
+	List<Utilisateur> findByNumTel(String numTel);
+	@Query("select u from Utilisateur u where u.adresse.ville=:ville")
+	List<Utilisateur> findByVille(@Param("ville")String ville);
+	@Query("select u from Utilisateur u where u.adresse.codePostal=:cp")
+	List<Utilisateur> findByCodePostal(@Param("cp")String cp);
 	
-	List<Utilisateur> findByNomLike(String nom);
-	
-	List<Utilisateur> findByNomStartingWith (String nom);
-	
-	List<Utilisateur> findByNomContaining(String nom);
-	
-	
-	
-	Optional<Utilisateur> findByNumTel(String numTel);
-	
-	List<Utilisateur> findByNumTelStartingWith(String numTel);
-	
-	
-	
-	Optional<Utilisateur> findByAdresse(Adresse adresse);
 	
 	
 	

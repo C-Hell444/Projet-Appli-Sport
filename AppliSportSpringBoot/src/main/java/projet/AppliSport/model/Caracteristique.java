@@ -89,6 +89,10 @@ public class Caracteristique {
 	@OneToOne(mappedBy ="caracteristique")
 	@JsonView(Views.CaracteristiqueWithProfil.class)
 	private Profil profil;
+	
+	@OneToOne(mappedBy="caracteristique")
+	@JsonView(Views.CaracteristiqueWithSport.class)
+	private Sport sport;
 
 
 	public Caracteristique() {

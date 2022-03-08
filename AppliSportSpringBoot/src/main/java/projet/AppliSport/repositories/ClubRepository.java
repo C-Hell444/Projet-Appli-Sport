@@ -13,15 +13,40 @@ import org.springframework.data.repository.query.Param;
 import projet.AppliSport.model.Adresse;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Sport;
+import projet.AppliSport.model.Utilisateur;
 
 
 public interface ClubRepository extends JpaRepository<Club, Long>{
 
 	
-	List<Club> findByAdresse(Adresse adresse);
-	List<Club> findByNumTel(String num);
+	
+	
+	
+	List<Club> findAllByOrderById();
+	List<Club> findAllByOrderByClubNom();
+	List<Club> findAllByOrderByNumTel();
+	List<Club> findAllByOrderBySportClub();
+	@Query("select c from Club c order by c.adresse.ville")
+	List<Club> findAllByOrderByVille();
+	@Query("select c from Club c order by c.adresse.codePostal")
+	List<Club> findAllByOrderByCodePostal();
+	
+	
 	List<Club> findByClubNom(String nom);
+	List<Club> findByNumTel(String num);
 	List<Club> findBySportClub(Sport sport);
+	@Query("select c from Club c where c.sportClub.nom=:nom")
+	List<Club> findBySportNom(@Param("nom")String nom);
+	@Query("select c from Club c where c.adresse.ville=:ville")
+	List<Club> findByVille(@Param("ville")String ville);
+	@Query("select c from Club c where c.adresse.codePostal=:cp")
+	List<Club> findByCodePostal(@Param("cp")String cp);
+
+	
+	
+	
+	
+	
 	
 	@Transactional
 	@Modifying
@@ -36,5 +61,17 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	
 	@Query("select c from Club c left join fetch c.listeMembres where c.id=:id")
 	Optional<Club> findByIdWithUtilisateur(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.listeMembres l where c.id=:id order by l.dateDebut asc")
+	Optional<Club> findByIdWithClubUtilisateurOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.listeMembres l where c.id=:id order by l.dateDebut desc")
+	Optional<Club> findByIdWithClubUtilisateurOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.listeMembres l where c.id=:id order by l.dateFin asc")
+	Optional<Club> findByIdWithClubUtilisateurOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.listeMembres l where c.id=:id order by l.dateFin desc")
+	Optional<Club> findByIdWithClubUtilisateurOrderByDateFinDesc(@Param("id") Long id);
 
 }

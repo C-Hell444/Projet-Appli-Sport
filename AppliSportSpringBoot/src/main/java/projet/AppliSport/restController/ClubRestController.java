@@ -24,6 +24,7 @@ import projet.AppliSport.exception.ClubException;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.ClubService;
 import projet.AppliSport.services.CustomUserDetailsService;
@@ -54,35 +55,57 @@ public class ClubRestController {
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
 
+	
+	// =================== Get All + tri  ======================== //
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Club> getAll() {
-		List<Club> list = clubService.getAll();
-		return list;
+		return clubService.getAll();
+		
 	}
+	
+	@GetMapping("id")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderById() {
+		return  clubService.getAllOrderById();
+	}
+	
+	@GetMapping("nom")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderByClubNom() {
+		return  clubService.getAllOrderByClubNom();
+	}
+	
+	@GetMapping("numero")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderByNumTel() {
+		return clubService.getAllOrderByNumTel();
+	
+	}
+	
+	@GetMapping("sport")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderBySportClub() {
+		return clubService.getAllOrderBySportClub();
+	}
+	
+	@GetMapping("ville")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderByVille() {
+		return clubService.getAllOrderByVille();
 
-//	@GetMapping("/utilisateur")
-//	@JsonView(Views.Common.class)
-//	public List<Utilisateur> getAllUtilisateur() {
-//		List<Utilisateur> list = utilisateurService.getAll();
-//		return list;
-//	}
-//	
-//	@GetMapping("/evenement")
-//	@JsonView(Views.Common.class)
-//	public List<Evenement> getAllEvenement() {
-//		List<Evenement> list = evenementService.getAll();
-//		return list;
-//	}
-//	
-//	@GetMapping("/equipe")
-//	@JsonView(Views.Common.class)
-//	public List<Equipe> getAllEquipe() {
-//		List<Equipe> list = equipeService.getAll();
-//		return list;
-//	}
+	}
+	
+	@GetMapping("cp")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderByCodePostal() {
+		return clubService.getAllOrderByCodePostal();
 
+	}
+	
+	
 
+	// =================== Get By Id ======================== //
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Club getById(@PathVariable Long id) {
@@ -101,11 +124,85 @@ public class ClubRestController {
 		return clubService.getByIdWithEvenement(id);
 	}
 	
-
+	// =================== Get By ? ======================== //
+	
+	@GetMapping("/nom/{nom}")
+	@JsonView(Views.Common.class)
+	public List<Club> getByClubNom(@PathVariable String nom) {
+			return clubService.getByClubNom(nom);
+	}
+	
+	@GetMapping("/numero/{num}")
+	@JsonView(Views.Common.class)
+	public List<Club> getByNumTel(@PathVariable String num) {
+			return clubService.getByNumTel(num);
+	}
+	
+	@GetMapping("/sport/{sport}")
+	@JsonView(Views.Common.class)
+	public List<Club> getBySportNom(@PathVariable String sport) {
+			return clubService.getBySportNom(sport);
+	}
+	
+	@GetMapping("/sport/{sport}/sport")
+	@JsonView(Views.Common.class)
+	public List<Club> getBySport(@Valid @RequestBody Sport sport) {
+			return clubService.getBySportClub(sport);
+	}
+	
+	@GetMapping("/sport/{sport}/liste")
+	@JsonView(Views.Common.class)
+	public List<Club> getByListeSport(@Valid @RequestBody List<Sport> sports) {
+			return clubService.getByListeSport(sports);
+	}
+	
+	
+	@GetMapping("/ville/{ville}")
+	@JsonView(Views.Common.class)
+	public List<Club> getByVille(@PathVariable String ville) {
+			return clubService.getByVille(ville);
+	}
+	
+	@GetMapping("/cp/{cp}")
+	@JsonView(Views.Common.class)
+	public List<Club> getByCodePostal(@PathVariable String cp) {
+			return clubService.getByCodePostal(cp);
+	}
+	
+	
+	
+	
+	
+	// =================== Get Utilisateurs + tri ======================== //
+	
 	@GetMapping("/{id}/utilisateur")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdUtilisateur(@PathVariable Long id) {
 		return clubService.getByIdWithUtilisateur(id);
+	}
+	
+	@GetMapping("/{id}/club/date-debut-asc")
+	@JsonView(Views.ClubWithClubUtilisateur.class)
+	public Club getByIdWithClubUtilisateurOrderByDateDebutAsc(@PathVariable Long id) {
+		return clubService.getByIdWithClubUtilisateurOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/club/date-debut-desc")
+	@JsonView(Views.ClubWithClubUtilisateur.class)
+	public Club getByIdWithClubUtilisateurbOrderByDateDebutDesc(@PathVariable Long id) {
+		return clubService.getByIdWithClubUtilisateurOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/club/date-fin-asc")
+	@JsonView(Views.ClubWithClubUtilisateur.class)
+	public Club getByIdWithClubUtilisateurOrderByDateFinAsc(@PathVariable Long id) {
+		return clubService.getByIdWithClubUtilisateurOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/club/date-fin-desc")
+	@JsonView(Views.ClubWithClubUtilisateur.class)
+	public Club getByIdWithClubUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
+		return clubService.getByIdWithClubUtilisateurOrderByDateFinDesc(id);
 	}
 
 

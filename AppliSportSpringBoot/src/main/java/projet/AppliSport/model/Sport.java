@@ -5,10 +5,13 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
@@ -30,15 +33,18 @@ public class Sport {
 	@Column(name = "nom", length = 150)
 	@JsonView(Views.Common.class)
 	private String nom;
-	//@ManyToOne
-	//@JoinColumn(name = "sport_profil", foreignKey = @ForeignKey(name = "spt_profil_fk"))
-	//private Profil profilSport;
+	
 	@OneToMany(mappedBy = "sportClub")
 	@JsonView(Views.SportWithClub.class)
 	private Set<Club> clubs;
 	@OneToMany(mappedBy = "sport")
 	@JsonView(Views.SportWithInteret.class)
 	private Set<Interet> interets;
+	
+	@OneToOne
+	@JoinColumn(name = "sport_caracteristique", foreignKey = @ForeignKey(name = "sport_caracteristique_fk"))
+	@JsonView(Views.SportWithCaracteristique.class)
+	private Caracteristique caracteristique;
 
 	@Version
 	private int version;
@@ -94,6 +100,43 @@ public class Sport {
 
 	public void setInterets(Set<Interet> interets) {
 		this.interets = interets;
+	}
+
+
+	
+
+
+
+
+	public Caracteristique getCaracteristique() {
+		return caracteristique;
+	}
+
+
+
+
+
+
+	public void setCaracteristique(Caracteristique caracteristique) {
+		this.caracteristique = caracteristique;
+	}
+
+
+
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 

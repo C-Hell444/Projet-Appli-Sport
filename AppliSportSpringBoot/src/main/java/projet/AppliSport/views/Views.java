@@ -33,6 +33,10 @@ public class Views {
 	public static class SportWithInteret extends Common {
 
 	}
+	
+	public static class SportWithCaracteristique extends Common {
+		
+	}
 
 	public static class ProfilWithUtilisateur extends Common {
 
@@ -105,6 +109,10 @@ public class Views {
 
 	public static class CaracteristiqueWithProfil extends Common {
 
+	}
+	
+	public static class CaracteristiqueWithSport extends Common {
+		
 	}
 
 	
