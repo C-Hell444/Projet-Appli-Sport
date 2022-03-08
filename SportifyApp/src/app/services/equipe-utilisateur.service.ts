@@ -33,7 +33,22 @@ export class EquipeUtilisateurService {
   }
 
   create(EquipeUtilisateur: EquipeUtilisateur): Observable<EquipeUtilisateur> {
-    const EquipeUtilisateurEnJson = { identifiant: EquipeUtilisateur.id };
+    const EquipeUtilisateurEnJson = {
+      dateDebut: EquipeUtilisateur.dateDebut,
+      dateFin: EquipeUtilisateur.dateFin,
+    };
+    if (EquipeUtilisateur.id) {
+      if (EquipeUtilisateur.id.equipe) {
+        Object.assign(EquipeUtilisateurEnJson, {
+          equipe: { id: EquipeUtilisateur.id.equipe.id },
+        });
+      }
+      if (EquipeUtilisateur.id.utilisateur) {
+        Object.assign(EquipeUtilisateurEnJson, {
+          utilisateur: { id: EquipeUtilisateur.id.utilisateur.id },
+        });
+      }
+    }
     return this.http.post<EquipeUtilisateur>(
       EquipeUtilisateurService.URL,
       EquipeUtilisateurEnJson

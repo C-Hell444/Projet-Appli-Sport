@@ -1,3 +1,4 @@
+import { Sport } from './../model/sport';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Club } from '../model/club';
@@ -14,16 +15,8 @@ export class ClubService {
     return this.http.get<Club>(ClubService.URL + '/' + login);
   }
 
-  getAll(): Observable<Club[]> {
-    return this.http.get<Club[]>(ClubService.URL);
-  }
-
   delete(id: number): Observable<void> {
     return this.http.delete<void>(ClubService.URL + '/' + id);
-  }
-
-  get(id: number): Observable<Club> {
-    return this.http.get<Club>(ClubService.URL + '/' + id);
   }
 
   update(Club: Club): Observable<Club> {
@@ -31,7 +24,114 @@ export class ClubService {
   }
 
   create(Club: Club): Observable<Club> {
-    const ClubEnJson = { identifiant: Club.identifiant };
+    const ClubEnJson = {
+      identifiant: Club.identifiant,
+      mdp: Club.mdp,
+      mail: Club.mail,
+      clubNom: Club.clubNom,
+    };
+
+    if (Club.adresse) {
+      Object.assign(ClubEnJson, {
+        adresse: {
+          numero: Club.adresse.numero,
+          rue: Club.adresse.rue,
+          codePostal: Club.adresse.codePostal,
+          ville: Club.adresse.ville,
+        },
+      });
+    }
+    if (Club.sportClub) {
+      Object.assign(ClubEnJson, { sport: { id: Club.sportClub.id } });
+    }
+
     return this.http.post<Club>(ClubService.URL, ClubEnJson);
+  }
+
+  // =================== Get All + tri  ======================== //
+
+  getAll(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL);
+  }
+  getAllOrderById(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/id');
+  }
+  getAllOrderByNom(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/nom');
+  }
+  getAllOrderByTel(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/numero');
+  }
+  getAllOrderBySport(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/sport');
+  }
+  getAllOrderByVille(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/ville');
+  }
+  getAllOrderByCodePostal(): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/cp');
+  }
+
+  // =================== Get By Id ======================== //
+
+  get(id: number): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/' + id);
+  }
+
+  getByIdEquipe(id: number): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/' + id + '/equipe');
+  }
+  getByIdEvenement(id: number): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/' + id + '/evenement');
+  }
+
+  // =================== Get By ? ======================== //
+
+  getByNom(nom: string): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/nom/' + nom);
+  }
+  getByTel(num: string): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/num/' + num);
+  }
+  getBySportNom(nom: string): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/sport/' + nom);
+  }
+  getSport(sport: Sport): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/sport/objet');
+  }
+  getSportListe(sports: Sport[]): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/sport/liste');
+  }
+  getByVille(ville: string): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/ville/' + ville);
+  }
+  getByCodePostal(cp: string): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/cp/' + cp);
+  }
+
+  // =================== Get Utilisateurs + tri ======================== //
+
+  getByIdUtilisateur(id: number): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/' + id + '/utilisateur');
+  }
+  getByIdUtilisateurOrderByDateDebutAsc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/utilisateur/date-debut-asc'
+    );
+  }
+  getByIdUtilisateurOrderByDateDebutDesc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/utilisateur/date-debut-desc'
+    );
+  }
+  getByIdUtilisateurOrderByDateFinAsc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/utilisateur/date-fin-asc'
+    );
+  }
+  getByIdUtilisateurOrderByDateFinDesc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/utilisateur/date-fin-desc'
+    );
   }
 }
