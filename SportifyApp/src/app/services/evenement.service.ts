@@ -10,10 +10,6 @@ export class EvenementService {
   static URL: string = 'http://localhost:8080/sportify-boot/api/evenement';
   constructor(private http: HttpClient) {}
 
-  getType(login: string): Observable<Evenement> {
-    return this.http.get<Evenement>(EvenementService.URL + '/' + login);
-  }
-
   getAll(): Observable<Evenement[]> {
     return this.http.get<Evenement[]>(EvenementService.URL);
   }

@@ -146,13 +146,13 @@ public class ClubRestController {
 	
 	@GetMapping("/sport/objet")
 	@JsonView(Views.ClubWithSport.class)
-	public List<Club> getBySport(@Valid @RequestBody Sport sport) {
+	public List<Club> getBySport( @RequestBody Sport sport) {
 			return clubService.getBySportClub(sport);
 	}
 	
 	@GetMapping("/sport/liste")
 	@JsonView(Views.ClubWithSport.class)
-	public List<Club> getByListeSport(@Valid @RequestBody List<Sport> sports) {
+	public List<Club> getByListeSport( @RequestBody List<Sport> sports) {
 			return clubService.getByListeSport(sports);
 	}
 	

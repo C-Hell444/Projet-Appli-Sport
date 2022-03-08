@@ -90,19 +90,19 @@ public class EvenementRestController {
 		return evenementService.getByClubNom(nom);
 	}
 
-	@GetMapping("/club/{club}/club")
+	@GetMapping("/club/objet")
 	@JsonView(Views.EvenementWithClub.class)
-	public List<Evenement> getByClub(@Valid @RequestBody Club club) {
+	public List<Evenement> getByClub( @RequestBody Club club) {
 		return evenementService.getByClub(club);
 	}
 	
-	@GetMapping("/date-futur/{date}")
+	@GetMapping("/date-futur")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getByDateFutur(@PathVariable LocalDate date) {
 		return evenementService.getByDateFutur(date);
 	}
 	
-	@GetMapping("/date-passe/{date}")
+	@GetMapping("/date-passe")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getByDatePasse(@PathVariable LocalDate date) {
 		return evenementService.getByDatePasse(date);

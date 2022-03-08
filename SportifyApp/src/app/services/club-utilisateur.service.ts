@@ -11,12 +11,6 @@ export class ClubUtilisateurService {
     'http://localhost:8080/sportify-boot/api/club-utilisateur';
   constructor(private http: HttpClient) {}
 
-  getType(login: string): Observable<ClubUtilisateur> {
-    return this.http.get<ClubUtilisateur>(
-      ClubUtilisateurService.URL + '/' + login
-    );
-  }
-
   getAll(): Observable<ClubUtilisateur[]> {
     return this.http.get<ClubUtilisateur[]>(ClubUtilisateurService.URL);
   }

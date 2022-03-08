@@ -11,12 +11,6 @@ export class EquipeUtilisateurService {
     'http://localhost:8080/sportify-boot/api/equipe-utilisateur';
   constructor(private http: HttpClient) {}
 
-  getType(login: string): Observable<EquipeUtilisateur> {
-    return this.http.get<EquipeUtilisateur>(
-      EquipeUtilisateurService.URL + '/' + login
-    );
-  }
-
   getAll(): Observable<EquipeUtilisateur[]> {
     return this.http.get<EquipeUtilisateur[]>(EquipeUtilisateurService.URL);
   }
