@@ -33,10 +33,10 @@ public class Utilisateur extends Compte {
 	
 	@Valid
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "client_numero", length = 50)),
-			@AttributeOverride(name = "rue", column = @Column(name = "client_rue", length = 200)),
-			@AttributeOverride(name = "codePostal", column = @Column(name = "client_code_postal", length = 20)),
-			@AttributeOverride(name = "ville", column = @Column(name = "client_ville", length = 100)) })
+	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "utilisateur_numero", length = 50)),
+			@AttributeOverride(name = "rue", column = @Column(name = "utilisateur_rue", length = 200)),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "utilisateur_code_postal", length = 20)),
+			@AttributeOverride(name = "ville", column = @Column(name = "utilisateur_ville", length = 100)) })
 	@JsonView(Views.Common.class)
 	private Adresse adresse;
 	
