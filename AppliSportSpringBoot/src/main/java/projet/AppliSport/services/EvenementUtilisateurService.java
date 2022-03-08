@@ -13,7 +13,6 @@ import projet.AppliSport.model.EvenementUtilisateur;
 import projet.AppliSport.model.EvenementUtilisateurKey;
 import projet.AppliSport.repositories.EvenementUtilisateurRepository;
 
-
 @Service
 public class EvenementUtilisateurService {
 
@@ -37,8 +36,10 @@ public class EvenementUtilisateurService {
 		if (!validator.validate(evenementUtilisateur).isEmpty()) {
 			throw new EvenementUtilisateurException("erreur de validation");
 		}
-		if(evenementUtilisateur.getDateDebut().isAfter(evenementUtilisateur.getDateFin())&&evenementUtilisateur.getDateDebut()!=null&&evenementUtilisateur.getDateFin()!=null) {
-			throw new EvenementUtilisateurException("dateDebut>dateFin");
+		if (evenementUtilisateur.getDateDebut() != null && evenementUtilisateur.getDateFin() != null) {
+			if (evenementUtilisateur.getDateDebut().isAfter(evenementUtilisateur.getDateFin())) {
+				throw new EvenementUtilisateurException("dateDebut>dateFin");
+			}
 		}
 	}
 

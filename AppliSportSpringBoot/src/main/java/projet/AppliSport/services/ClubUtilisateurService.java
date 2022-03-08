@@ -36,8 +36,10 @@ public class ClubUtilisateurService {
 		if (!validator.validate(clubUtilisateur).isEmpty()) {
 			throw new ClubUtilisateurException("erreur de validation");
 		}
-		if(clubUtilisateur.getDateDebut().isAfter(clubUtilisateur.getDateFin())&&clubUtilisateur.getDateDebut()!=null&&clubUtilisateur.getDateFin()!=null) {
-			throw new ClubUtilisateurException("dateDebut>dateFin");
+		if (clubUtilisateur.getDateDebut() != null && clubUtilisateur.getDateFin() != null) {
+			if (clubUtilisateur.getDateDebut().isAfter(clubUtilisateur.getDateFin())) {
+				throw new ClubUtilisateurException("dateDebut>dateFin");
+			}
 		}
 	}
 
