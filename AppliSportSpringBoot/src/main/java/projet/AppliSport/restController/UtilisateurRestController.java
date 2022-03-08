@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.UtilisateurException;
+import projet.AppliSport.model.Club;
+import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
 import projet.AppliSport.services.CustomUserDetailsService;
 import projet.AppliSport.services.UtilisateurService;
@@ -37,13 +39,83 @@ public class UtilisateurRestController {
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
 	
-	
+	// =================== Get All + tri  ======================== //
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Utilisateur> getAll() {
 		return utilisateurService.getAll();
 	}
 	
+	@GetMapping("id")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllOrderById() {
+		return  utilisateurService.getAllOrderById();
+	}
+	@GetMapping("nom")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllOrderByNom() {
+		return  utilisateurService.getAllOrderByNom();
+	}
+	
+	@GetMapping("prenom")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllOrderByPrenom() {
+		return  utilisateurService.getAllOrderByPrenom();
+	}
+	
+	@GetMapping("numero")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllOrderByNumTel() {
+		return utilisateurService.getAllOrderByNumTel();
+	
+	}
+	
+	@GetMapping("ville")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllOrderByVille() {
+		return utilisateurService.getAllOrderByVille();
+
+	}
+	
+	@GetMapping("cp")
+	@JsonView(Views.Common.class)
+	public List<Utilisateur> getAllOrderByCodePostal() {
+		return utilisateurService.getAllOrderByCodePostal();
+
+	}
+	
+	// =================== Get By ? ======================== //
+	
+		@GetMapping("/nom/{nom}")
+		@JsonView(Views.Common.class)
+		public List<Utilisateur> getByNom(@PathVariable String nom) {
+				return utilisateurService.getByNom(nom);
+		}
+		@GetMapping("/prenom/{prenom}")
+		@JsonView(Views.Common.class)
+		public List<Utilisateur> getByPrenom(@PathVariable String prenom) {
+				return utilisateurService.getByPrenom(prenom);
+		}
+		
+		@GetMapping("/numero/{num}")
+		@JsonView(Views.Common.class)
+		public List<Utilisateur> getByNumTel(@PathVariable String num) {
+				return utilisateurService.getByNumTel(num);
+		}
+		
+		@GetMapping("/ville/{ville}")
+		@JsonView(Views.Common.class)
+		public List<Utilisateur> getByVille(@PathVariable String ville) {
+				return utilisateurService.getByVille(ville);
+		}
+		
+		@GetMapping("/cp/{cp}")
+		@JsonView(Views.Common.class)
+		public List<Utilisateur> getByCodePostal(@PathVariable String cp) {
+				return utilisateurService.getByCodePostal(cp);
+		}
+	
+	// =================== Get By Id ======================== //
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Utilisateur getById(@PathVariable Long id) {
@@ -51,6 +123,21 @@ public class UtilisateurRestController {
 	}
 	
 	
+	@GetMapping("/{id}/profil")
+	@JsonView(Views.UtilisateurWithProfil.class)
+	public Utilisateur getByIdWithProfil(@PathVariable Long id) {
+		return utilisateurService.getById(id);
+	}
+	
+	@GetMapping("/{id}/interet")
+	@JsonView(Views.UtilisateurWithInteret.class)
+	public Utilisateur getByIdWithInteret(@PathVariable Long id) {
+		return utilisateurService.getByIdWithInteret(id);
+	}
+	
+	
+	
+	// =================== Get Clubs + tri ======================== //
 	@GetMapping("/{id}/club")
 	@JsonView(Views.UtilisateurWithClubUtilisateur.class)
 	public Utilisateur getByIdWithClubUtilisateur(@PathVariable Long id) {
@@ -80,6 +167,8 @@ public class UtilisateurRestController {
 	public Utilisateur getByIdWithClubUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
 		return utilisateurService.getByIdWithClubUtilisateurOrderByDateFinDesc(id);
 	}
+	
+	// =================== Get Evenements + tri ======================== //
 	
 	@GetMapping("/{id}/evenement")
 	@JsonView(Views.UtilisateurWithEvenementUtilisateur.class)
@@ -111,6 +200,8 @@ public class UtilisateurRestController {
 		return utilisateurService.getByIdWithEvenementUtilisateurOrderByDateFinDesc(id);
 	}
 	
+	// =================== Get Equipe + tri ======================== //
+	
 	@GetMapping("/{id}/equipe")
 	@JsonView(Views.UtilisateurWithEquipeUtilisateur.class)
 	public Utilisateur getByIdWithEquipeUtilisateur(@PathVariable Long id) {
@@ -141,17 +232,7 @@ public class UtilisateurRestController {
 		return utilisateurService.getByIdWithEquipeUtilisateurOrderByDateFinDesc(id);
 	}
 	
-	@GetMapping("/{id}/profil")
-	@JsonView(Views.UtilisateurWithProfil.class)
-	public Utilisateur getByIdWithProfil(@PathVariable Long id) {
-		return utilisateurService.getById(id);
-	}
 	
-	@GetMapping("/{id}/interet")
-	@JsonView(Views.UtilisateurWithInteret.class)
-	public Utilisateur getByIdWithInteret(@PathVariable Long id) {
-		return utilisateurService.getByIdWithInteret(id);
-	}
 	
 	
 	@PostMapping("")

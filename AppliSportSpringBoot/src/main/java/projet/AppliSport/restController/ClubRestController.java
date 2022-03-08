@@ -60,36 +60,47 @@ public class ClubRestController {
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Club> getAll() {
-		List<Club> list = clubService.getAll();
-		return list;
+		return clubService.getAll();
+		
+	}
+	
+	@GetMapping("id")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderById() {
+		return  clubService.getAllOrderById();
 	}
 	
 	@GetMapping("nom")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByClubNom() {
-		List<Club> list = clubService.getAllOrderByClubNom();
-		return list;
+		return  clubService.getAllOrderByClubNom();
+	}
+	
+	@GetMapping("numero")
+	@JsonView(Views.Common.class)
+	public List<Club> getAllOrderByNumTel() {
+		return clubService.getAllOrderByNumTel();
+	
 	}
 	
 	@GetMapping("sport")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderBySportClub() {
-		List<Club> list = clubService.getAllOrderBySportClub();
-		return list;
+		return clubService.getAllOrderBySportClub();
 	}
 	
 	@GetMapping("ville")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByVille() {
-		List<Club> list = clubService.getAllOrderByVille();
-		return list;
+		return clubService.getAllOrderByVille();
+
 	}
 	
 	@GetMapping("cp")
 	@JsonView(Views.Common.class)
 	public List<Club> getAllOrderByCodePostal() {
-		List<Club> list = clubService.getAllOrderByCodePostal();
-		return list;
+		return clubService.getAllOrderByCodePostal();
+
 	}
 	
 	
@@ -121,6 +132,12 @@ public class ClubRestController {
 			return clubService.getByClubNom(nom);
 	}
 	
+	@GetMapping("/numero/{num}")
+	@JsonView(Views.Common.class)
+	public List<Club> getByNumTel(@PathVariable String num) {
+			return clubService.getByNumTel(num);
+	}
+	
 	@GetMapping("/sport/{sport}")
 	@JsonView(Views.Common.class)
 	public List<Club> getBySportNom(@PathVariable String sport) {
@@ -129,13 +146,13 @@ public class ClubRestController {
 	
 	@GetMapping("/sport/{sport}/sport")
 	@JsonView(Views.Common.class)
-	public List<Club> getBySport(@RequestBody Sport sport) {
+	public List<Club> getBySport(@Valid @RequestBody Sport sport) {
 			return clubService.getBySportClub(sport);
 	}
 	
 	@GetMapping("/sport/{sport}/liste")
 	@JsonView(Views.Common.class)
-	public List<Club> getByListeSport(@RequestBody List<Sport> sports) {
+	public List<Club> getByListeSport(@Valid @RequestBody List<Sport> sports) {
 			return clubService.getByListeSport(sports);
 	}
 	

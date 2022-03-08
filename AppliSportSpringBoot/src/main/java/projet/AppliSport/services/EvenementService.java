@@ -1,5 +1,6 @@
 package projet.AppliSport.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Validator;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.EquipeException;
 import projet.AppliSport.exception.EvenementException;
+import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.repositories.EvenementRepository;
@@ -26,6 +28,46 @@ public class EvenementService {
 	@Autowired
 	private EvenementRepository evenementRepository;
 
+	
+	public List<Evenement> getAll() {
+		return evenementRepository.findAll();
+	}
+	public List<Evenement> getAllOrderById() {
+		return evenementRepository.findAllByOrderById();
+	}
+	
+	public List<Evenement> getAllOrderByNom() {
+		return evenementRepository.findAllByOrderByNom();
+	}
+	public List<Evenement> getAllOrderByClub() {
+		return evenementRepository.findAllByOrderByClub();
+	}
+	
+	public List<Evenement> getAllOrderByDateDebut() {
+		return evenementRepository.findAllByOrderByDateDebut();
+	}
+	public List<Evenement> getAllOrderByDateFin() {
+		return evenementRepository.findAllByOrderByDateFin();
+	}
+	
+	public List<Evenement> getByNom(String nom) {
+		return evenementRepository.findByNom(nom);
+	}
+	public List<Evenement> getByClubNom(String nom) {
+		return evenementRepository.findByClubNom(nom);
+	}
+	public List<Evenement> getByClub(Club club) {
+		return evenementRepository.findByClub(club);
+	}
+	
+	public List<Evenement> getByDateFutur(LocalDate date) {
+		return evenementRepository.findByDateFutur(date);
+	}
+	public List<Evenement> getByDatePasse(LocalDate date) {
+		return evenementRepository.findByDatePasse(date);
+	}
+	
+	
 	public Evenement getById(Long id) {
 		return evenementRepository.findById(id).orElseThrow(()->{
 			throw new EvenementException("evenement inconnu");
@@ -50,9 +92,6 @@ public class EvenementService {
 		return evenementRepository.findByIdWithEvenementUtilisateurOrderByDateFinDesc(id).orElseThrow(EvenementException::new);
 	}
 	
-	public List<Evenement> getAll() {
-		return evenementRepository.findAll();
-	}
 	
 	private void checkdata(Evenement evenement) {
 		if (!validator.validate(evenement).isEmpty()) {
