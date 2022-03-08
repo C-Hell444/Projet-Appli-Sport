@@ -1,5 +1,6 @@
 package projet.AppliSport.restController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import projet.AppliSport.exception.ProfilException;
 import projet.AppliSport.model.Profil;
+import projet.AppliSport.model.Sexe;
 import projet.AppliSport.services.ProfilService;
 import projet.AppliSport.views.Views;
 
@@ -33,13 +35,77 @@ public class ProfilRestController {
 	@Autowired
 	private ProfilService profilService;
 
+	// =================== Get All + tri  ======================== //
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Profil> getAll() {
 		List<Profil> profils = profilService.getAll();
 		return profils;
 	}
+	
+	// =================== Get By ? ======================== //
+	
+	@GetMapping("/poids/{poids}")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByPoids(@PathVariable double poids) {
+		return profilService.getByPoids(poids);
+	}
+	@GetMapping("/poids/{poids}/greater")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByPoidsGreaterThan(@PathVariable double poids) {
+		return profilService.getByPoidsGreaterThan(poids);
+	}
+	@GetMapping("/poids/{poids}/lesser")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByPoidsLesserThan(@PathVariable double poids) {
+		return profilService.getByPoidsLesserThan(poids);
+	}
+	
+	@GetMapping("/taille/{taille}")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByTaille(@PathVariable double taille) {
+		return profilService.getByTaille(taille);
+	}
+	@GetMapping("/taille/{taille}/greater")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByTailleGreaterThan(@PathVariable double taille) {
+		return profilService.getByTailleGreaterThan(taille);
+	}
+	@GetMapping("/taille/{taille}/lesser")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByTailleLesserThan(@PathVariable double taille) {
+		return profilService.getByTailleLesserThan(taille);
+	}
+	
+//	@GetMapping("/age/{age}")
+//	@JsonView(Views.Common.class)
+//	public List<Profil> getByDateNaissance(@PathVariable Long age) {
+//		LocalDate dateNaissance = LocalDate.now().minusYears(age);
+//		return profilService.getByDateNaissance(dateNaissance);
+//	}
+	@GetMapping("/age/{age}/greater")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByDateNaissanceGreaterThan(@PathVariable Long age) {
+		LocalDate dateNaissance = LocalDate.now().minusYears(age);
+		return profilService.getByDateNaissanceLesserThan(dateNaissance);
+	}
+	@GetMapping("/age/{age}/lesser")
+	@JsonView(Views.Common.class)
+	public List<Profil> getByDateNaissanceLesserThan(@PathVariable Long age) {
+		LocalDate dateNaissance = LocalDate.now().minusYears(age);
+		System.out.println(dateNaissance);
+		return profilService.getByDateNaissanceGreaterThan(dateNaissance);
+	}
+	
+	@GetMapping("/sexe/{sexe}")
+	@JsonView(Views.Common.class)
+	public List<Profil> getBySexe(@PathVariable Sexe sexe) {
+		return profilService.getBySexe(sexe);
+	}
+	
 
+	// =================== Get By Id ======================== //
+	
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Profil getById(@PathVariable Long id) {

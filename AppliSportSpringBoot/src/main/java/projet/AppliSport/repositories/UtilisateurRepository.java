@@ -45,7 +45,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	List<Utilisateur> findAllBySport(@Param("sport") Sport sport);
 	
 	
-	Optional<Utilisateur> findByProfilUtilisateur(Profil profilUtilisateur);
+	Optional<Utilisateur> findByProfilUtilisateur(Profil profil);
 	
 	
 	
@@ -108,6 +108,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	@Modifying
 	@Query("update Utilisateur u set u.profilUtilisateur=null where u.profilUtilisateur=:profil")
 	void setProfilToNull(@Param("profil") Profil profil);
+	
 	
 	
 	

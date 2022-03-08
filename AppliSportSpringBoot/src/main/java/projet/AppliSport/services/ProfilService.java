@@ -1,5 +1,6 @@
 package projet.AppliSport.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Validator;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import projet.AppliSport.exception.ProfilException;
 import projet.AppliSport.model.Profil;
+import projet.AppliSport.model.Sexe;
 import projet.AppliSport.repositories.ProfilRepository;
 import projet.AppliSport.repositories.UtilisateurRepository;
 
@@ -30,6 +32,51 @@ public class ProfilService {
 	{
 		return profilRepository.findAll();
 	}
+	
+	public List<Profil> getByPoids(double poids)
+	{
+		return profilRepository.findByPoids(poids);
+	}
+	public List<Profil> getByPoidsGreaterThan(double poids)
+	{
+		return profilRepository.findByPoidsGreaterThanEqual(poids);
+	}
+	public List<Profil> getByPoidsLesserThan(double poids)
+	{
+		return profilRepository.findByPoidsLessThan(poids);
+	}
+	
+	public List<Profil> getByTaille(double taille)
+	{
+		return profilRepository.findByTaille(taille);
+	}
+	public List<Profil> getByTailleGreaterThan(double taille)
+	{
+		return profilRepository.findByTailleGreaterThanEqual(taille);
+	}
+	public List<Profil> getByTailleLesserThan(double taille)
+	{
+		return profilRepository.findByTailleLessThan(taille);
+	}
+	
+	public List<Profil> getByDateNaissance(LocalDate dateNaissance)
+	{
+		return profilRepository.findByDateNaissance(dateNaissance);
+	}
+	public List<Profil> getByDateNaissanceGreaterThan(LocalDate dateNaissance)
+	{
+		return profilRepository.findByDateNaissanceGreaterThanEqual(dateNaissance);
+	}
+	public List<Profil> getByDateNaissanceLesserThan(LocalDate dateNaissance)
+	{
+		return profilRepository.findByDateNaissanceLessThan(dateNaissance);
+	}
+	
+	public List<Profil> getBySexe(Sexe sexe){
+		return profilRepository.findBySexe(sexe);
+	}
+
+	
 
 	
 	public Profil getById(Long id)
