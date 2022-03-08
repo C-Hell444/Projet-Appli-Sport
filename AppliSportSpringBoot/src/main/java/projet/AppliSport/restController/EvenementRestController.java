@@ -96,15 +96,17 @@ public class EvenementRestController {
 		return evenementService.getByClub(club);
 	}
 	
-	@GetMapping("/date-futur")
+	@GetMapping("/date/futur")
 	@JsonView(Views.Common.class)
-	public List<Evenement> getByDateFutur(@PathVariable LocalDate date) {
+	public List<Evenement> getByDateFutur() {
+		LocalDate date=LocalDate.now();
 		return evenementService.getByDateFutur(date);
 	}
 	
-	@GetMapping("/date-passe")
+	@GetMapping("/date/passe")
 	@JsonView(Views.Common.class)
-	public List<Evenement> getByDatePasse(@PathVariable LocalDate date) {
+	public List<Evenement> getByDatePasse() {
+		LocalDate date=LocalDate.now();
 		return evenementService.getByDatePasse(date);
 	}
 	

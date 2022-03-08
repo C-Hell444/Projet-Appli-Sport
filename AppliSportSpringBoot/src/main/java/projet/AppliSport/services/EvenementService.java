@@ -61,10 +61,10 @@ public class EvenementService {
 	}
 	
 	public List<Evenement> getByDateFutur(LocalDate date) {
-		return evenementRepository.findByDateFutur(date);
+		return evenementRepository.findByDateDebutGreaterThanEqual(date);
 	}
 	public List<Evenement> getByDatePasse(LocalDate date) {
-		return evenementRepository.findByDatePasse(date);
+		return evenementRepository.findByDateFinLessThanEqual(date);
 	}
 	
 	

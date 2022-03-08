@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
+import projet.AppliSport.model.Profil;
 
 public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 	
@@ -19,10 +20,11 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 	List<Evenement> findByClub(Club club);
 	@Query("select e from Evenement e where e.club.clubNom=:nom")
 	List<Evenement> findByClubNom(@Param("nom")String nom);
-	@Query("select e from Evenement e where e.dateDebut>=:date")
-	List<Evenement> findByDateFutur(@Param("date")LocalDate date);
-	@Query("select e from Evenement e where e.dateFin<:date")
-	List<Evenement> findByDatePasse(@Param("date")LocalDate date);
+
+	
+	List<Evenement> findByDateDebutGreaterThanEqual(LocalDate date);
+	
+	List<Evenement> findByDateFinLessThanEqual(LocalDate date);
 	
 	List<Evenement> findAllByOrderById();
 	List<Evenement> findAllByOrderByNom();
