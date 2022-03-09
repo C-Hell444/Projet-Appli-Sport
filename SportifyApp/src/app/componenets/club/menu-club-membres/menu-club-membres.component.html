@@ -103,20 +103,27 @@
               <th>Prenom</th>
               <th>Taille</th>
               <th>Poids</th>
+              <th>Date de naissance</th>
               <th>Moyenne globale des caractéristiques</th>
               <th>Date d'inscription</th>
               <th>Adresse</th>
               <th>Chercher des membres</th>
               <th>Supprimer</th>
             </tr>
-            <tr>
-              <td>nom membre1</td>
-              <td>prenom membre1</td>
-              <td>taille1</td>
-              <td>poids1</td>
-              <td>Moyenne globale des caractéristiques1</td>
-              <td>Date d'inscription1</td>
-              <td>Adresse1</td>
+            <tr *ngFor="let m of membres; let index = index">
+              <td>{{ m.nom }}</td>
+              <td>{{ m.prenom }}</td>
+              <td>{{ m.profilUtilisateur?.taille }} m</td>
+              <td>{{ m.profilUtilisateur?.poids }} kg</td>
+              <td>
+                {{ m.profilUtilisateur?.dateNaissance | date: "dd-MM-yyyy" }}
+              </td>
+              <td>{{ moyennes[index] }}</td>
+              <td>{{ datesInscription[index] | date: "dd-MM-yyyy" }}</td>
+              <td>
+                {{ m.adresse?.numero }} {{ m.adresse?.rue }}
+                {{ m.adresse?.codePostal }} {{ m.adresse?.ville }}
+              </td>
               <td>
                 <button
                   type="button"
@@ -148,60 +155,6 @@
                 </button>
               </td>
             </tr>
-            <!-- <tr>
-              <td>nom membre1</td>
-              <td>prenom membre1</td>
-              <td>taille1</td>
-              <td>poids1</td>
-              <td>Moyenne globale des caractéristiques1</td>
-              <td>Date d'inscription1</td>
-              <td>Adresse1</td>
-            </tr>
-            <tr>
-              <td>nom membre2</td>
-              <td>prenom membre2</td>
-              <td>taille2</td>
-              <td>poids2</td>
-              <td>Moyenne globale des caractéristiques2</td>
-              <td>Date d'inscription2</td>
-              <td>Adresse2</td>
-            </tr>
-            <tr>
-              <td>nom membre3</td>
-              <td>prenom membre3</td>
-              <td>taille3</td>
-              <td>poids3</td>
-              <td>Moyenne globale des caractéristiques3</td>
-              <td>Date d'inscription3</td>
-              <td>Adresse3</td>
-            </tr>
-            <tr>
-              <td>nom membre4</td>
-              <td>prenom membre4</td>
-              <td>taille4</td>
-              <td>poids4</td>
-              <td>Moyenne globale des caractéristiques4</td>
-              <td>Date d'inscription4</td>
-              <td>Adresse4</td>
-            </tr>
-            <tr>
-              <td>nom membre5</td>
-              <td>prenom membre5</td>
-              <td>taille5</td>
-              <td>poids5</td>
-              <td>Moyenne globale des caractéristiques5</td>
-              <td>Date d'inscription5</td>
-              <td>Adresse5</td>
-            </tr>
-            <tr>
-              <td>nom membre6</td>
-              <td>prenom membre6</td>
-              <td>taille6</td>
-              <td>poids6</td>
-              <td>Moyenne globale des caractéristiques6</td>
-              <td>Date d'inscription6</td>
-              <td>Adresse6</td>
-            </tr> -->
           </tbody>
         </table>
       </div>
