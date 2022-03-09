@@ -107,31 +107,13 @@
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom de l'évenement</th>
-              <th>Date de l'évenement</th>
+              <th>Date de début de l'évenement</th>
+              <th>Date de fin de l'évenement</th>
             </tr>
-            <tr>
-              <td>évenement1</td>
-              <td>date1</td>
-            </tr>
-            <tr>
-              <td>évenement2</td>
-              <td>date2</td>
-            </tr>
-            <tr>
-              <td>évenement3</td>
-              <td>date3</td>
-            </tr>
-            <tr>
-              <td>évenement4</td>
-              <td>date4</td>
-            </tr>
-            <tr>
-              <td>évenement5</td>
-              <td>date5</td>
-            </tr>
-            <tr>
-              <td>évenement6</td>
-              <td>date6</td>
+            <tr *ngFor="let e of evenements">
+              <td>{{ e.nom }}</td>
+              <td>{{ e.dateDebut }}</td>
+              <td>{{ e.dateFin }}</td>
             </tr>
           </tbody>
         </table>

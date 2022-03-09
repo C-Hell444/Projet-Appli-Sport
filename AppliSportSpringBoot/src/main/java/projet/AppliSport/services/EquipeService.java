@@ -48,6 +48,10 @@ public class EquipeService {
 		});
 	}
 	
+	public Equipe getByIdWithClub(Long id) {
+		return equipeRepository.findByIdWithClub(id).orElseThrow(EquipeException::new);
+	}
+	
 	public List<Equipe> getByNom(String nom){
 		return equipeRepository.findByNom(nom);
 	}
