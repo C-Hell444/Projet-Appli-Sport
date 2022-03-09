@@ -1,5 +1,5 @@
 export enum Sexe {
-  F = 'Femmme',
+  F = 'Femme',
   H = 'Homme',
   NB = 'Non-binaire',
 }
