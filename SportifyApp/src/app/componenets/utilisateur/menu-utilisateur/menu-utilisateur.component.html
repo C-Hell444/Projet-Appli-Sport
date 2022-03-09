@@ -145,15 +145,15 @@
             </tr>
             <tr>
               <td>Poids :</td>
-              <td>{{ profil.poids }}</td>
+              <td>{{ profil.poids }} kg</td>
             </tr>
             <tr>
               <td>Taille :</td>
-              <td>{{ profil.taille }}</td>
+              <td>{{ profil.taille }} m</td>
             </tr>
             <tr>
               <td>Date de naissance :</td>
-              <td>{{ profil.dateNaissance }}</td>
+              <td>{{ profil.dateNaissance | date: "dd-MM-yyyy" }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Caractéristiques</td>
