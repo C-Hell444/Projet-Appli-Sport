@@ -24,6 +24,11 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	List<Equipe> findAllByOrderByClub();
 	
 	
+	@Query("select e from Equipe e left join e.club where e.id=:id")
+	Optional<Equipe> findByIdWithClub(@Param("id") Long id);
+	
+	
+	
 	@Query("select e from Equipe e left join fetch e.equipe where e.id=:id")
 	Optional<Equipe> findByIdWithUtilisateur(@Param("id") Long id);
 	

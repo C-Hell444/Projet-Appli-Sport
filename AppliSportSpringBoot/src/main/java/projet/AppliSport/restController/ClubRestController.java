@@ -128,6 +128,12 @@ public class ClubRestController {
 		return clubService.getByIdWithEvenement(id);
 	}
 	
+	@GetMapping("/{id}/sport")
+	@JsonView(Views.ClubWithSport.class)
+	public Club getByIdWithSport(@PathVariable Long id) {
+		return clubService.getByIdWithSport(id);
+	}
+	
 	// =================== Get By ? ======================== //
 	
 	@GetMapping("/nom/{nom}")

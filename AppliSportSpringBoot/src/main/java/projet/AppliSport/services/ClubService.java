@@ -123,7 +123,9 @@ public class ClubService {
 	}
 	
 	
-	
+	public Club getByIdWithSport(Long id) {
+		return clubRepository.findByIdWithSport(id).orElseThrow(ClubException::new);
+	}
 	
 	
 	

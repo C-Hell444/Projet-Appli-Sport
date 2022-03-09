@@ -78,6 +78,10 @@ export class ClubService {
     return this.http.get<Club>(ClubService.URL + '/' + id);
   }
 
+  getByIdWithSport(id: number): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/' + id + '/sport');
+  }
+
   getByIdEquipe(id: number): Observable<Club> {
     return this.http.get<Club>(ClubService.URL + '/' + id + '/equipe');
   }
