@@ -44,13 +44,9 @@ export class MenuUtilisateurComponent implements OnInit {
               .getByIdWithCarac(this.utilisateurProfil.profilUtilisateur?.id!)
               .subscribe((resultProfil) => {
                 this.profil = resultProfil;
-                console.log(this.profil);
-
                 this.caracteristiqueService
                   .get(this.profil.caracteristique?.id!)
                   .subscribe((resultCarac) => (this.carac = resultCarac));
-
-                console.log(this.carac);
               });
           });
         this.utilisateurService
