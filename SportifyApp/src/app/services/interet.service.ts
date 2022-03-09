@@ -32,9 +32,14 @@ export class InteretService {
   public create(interet: Interet): Observable<Interet> {
     const interetEnJson = {
       id: interet.id,
-      utilisateur: interet.utilisateur,
-      sport: interet.sport,
     };
+
+    if (interet.sport) {
+      Object.assign(interetEnJson, { sport: { id: interet.sport.id } });
+    }
+    if (interet.utilisateur) {
+      Object.assign(interetEnJson, { sport: { id: interet.utilisateur.id } });
+    }
     return this.http.post<Interet>(InteretService.URL, interetEnJson);
   }
 }

@@ -128,9 +128,143 @@ export class UtilisateurService {
     return this.http.get<Utilisateur[]>(UtilisateurService.URL + '/cp/' + cp);
   }
 
-  getAllByListeSport(sports: Sport[]): Observable<Utilisateur[]> {
-    return this.http.get<Utilisateur[]>(
-      UtilisateurService.URL + '/profil/liste'
+  //---------------Get By Profil---------
+
+  getByProfilId(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(UtilisateurService.URL + '/profil/' + id);
+  }
+
+  //---------------Get By Id---------
+
+  getByIdWithProfil(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/profil'
+    );
+  }
+
+  getByIdWithInteret(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/interet'
+    );
+  }
+
+  //---------------Get By Id Avec Club + Tri---------
+
+  getByIdWithClubUtilisateur(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/club'
+    );
+  }
+
+  getByIdWithClubUtilisateurOrderByDateDebutAsc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/club/date-debut-asc'
+    );
+  }
+
+  getByIdWithClubUtilisateurOrderByDateDebutDesc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/club/date-debut-desc'
+    );
+  }
+
+  getByIdWithClubUtilisateurOrderByDateFinAsc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/club/date-fin-asc'
+    );
+  }
+
+  getByIdWithClubUtilisateurOrderByDateFinDesc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/club/date-fin-desc'
+    );
+  }
+
+  //---------------Get By Id Avec Evenement + Tri---------
+
+  getByIdWithEvenementUtilisateur(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/evenement'
+    );
+  }
+
+  getByIdWithEvenementUtilisateurOrderByDateDebutAsc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/evenement/date-debut-asc'
+    );
+  }
+
+  getByIdWithEvenementUtilisateurOrderByDateDebutDesc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/evenement/date-debut-desc'
+    );
+  }
+
+  getByIdWithEvenementUtilisateurOrderByDateFinAsc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/evenement/date-fin-asc'
+    );
+  }
+
+  getByIdWithEvenementUtilisateurOrderByDateFinDesc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/evenement/date-fin-desc'
+    );
+  }
+
+  //---------------Get By Id Avec Equipe + Tri---------
+
+  getByIdWithEquipeUtilisateur(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/equipe'
+    );
+  }
+
+  getByIdWithEquipeUtilisateurOrderByDateDebutAsc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/equipe/date-debut-asc'
+    );
+  }
+
+  getByIdWithEquipeUtilisateurOrderByDateDebutDesc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/equipe/date-debut-desc'
+    );
+  }
+
+  getByIdWithEquipeUtilisateurOrderByDateFinAsc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/equipe/date-fin-asc'
+    );
+  }
+
+  getByIdWithEquipeUtilisateurOrderByDateFinDesc(
+    id: number
+  ): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(
+      UtilisateurService.URL + '/' + id + '/equipe/date-fin-desc'
     );
   }
 }

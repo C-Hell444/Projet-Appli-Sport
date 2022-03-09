@@ -96,13 +96,13 @@ public class UtilisateurService {
 		return utilisateurRepository.findByProfilUtilisateur(profil).orElseThrow(UtilisateurException::new);
 	}
 	
-	public List<Utilisateur> getByListeProfil(List<Profil> profils) {
-		List<Utilisateur>clubs = new ArrayList<Utilisateur>();
-		for (Profil s:profils) {
-			clubs.add(getByProfilUtilisateur(s));
-		}
-		return clubs;
-	}
+//	public List<Utilisateur> getByListeProfil(List<Profil> profils) {
+//		List<Utilisateur>clubs = new ArrayList<Utilisateur>();
+//		for (Profil s:profils) {
+//			clubs.add(getByProfilUtilisateur(s));
+//		}
+//		return clubs;
+//	}
 
 	
 	

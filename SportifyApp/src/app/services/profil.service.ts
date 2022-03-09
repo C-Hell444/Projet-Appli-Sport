@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profil } from '../model/profil';
+import { Sexe } from '../model/sexe';
 
 @Injectable({
   providedIn: 'root',
@@ -33,9 +34,63 @@ export class ProfilService {
       taille: profil.taille,
       dateNaissance: profil.dateNaissance,
       sexe: profil.sexe,
-      caracteristique: profil.caracteristique,
-      utilisateur: profil.utilisateur,
     };
+    if (profil.caracteristique) {
+      Object.assign(profilEnJson, {
+        caracteristique: { id: profil.caracteristique.id },
+      });
+    }
+    if (profil.utilisateur) {
+      Object.assign(profilEnJson, {
+        caracteristique: { id: profil.utilisateur.id },
+      });
+    }
     return this.http.post<Profil>(ProfilService.URL, profilEnJson);
+  }
+
+  // =================== Get By ? ======================== //
+
+  getByPoids(poids: number): Observable<Profil> {
+    return this.http.get<Profil>(ProfilService.URL + '/poids/' + poids);
+  }
+  getByPoidsGreaterThan(poids: number): Observable<Profil> {
+    return this.http.get<Profil>(
+      ProfilService.URL + '/poids/' + poids + '/greater'
+    );
+  }
+  getByPoidsLessThan(poids: number): Observable<Profil> {
+    return this.http.get<Profil>(
+      ProfilService.URL + '/poids/' + poids + '/less'
+    );
+  }
+
+  getByTaille(taille: number): Observable<Profil> {
+    return this.http.get<Profil>(ProfilService.URL + '/taille/' + taille);
+  }
+  getByTailleGreaterThan(taille: number): Observable<Profil> {
+    return this.http.get<Profil>(
+      ProfilService.URL + '/taille/' + taille + '/greater'
+    );
+  }
+  getByTailleLessThan(taille: number): Observable<Profil> {
+    return this.http.get<Profil>(
+      ProfilService.URL + '/taille/' + taille + '/less'
+    );
+  }
+
+  getBySexe(sexe: Sexe): Observable<Profil> {
+    return this.http.get<Profil>(ProfilService.URL + '/sexe/' + sexe);
+  }
+  getByAgeGreaterThan(age: number): Observable<Profil> {
+    return this.http.get<Profil>(
+      ProfilService.URL + '/age/' + age + '/greater'
+    );
+  }
+  getByAgeLessThan(age: number): Observable<Profil> {
+    return this.http.get<Profil>(ProfilService.URL + '/age/' + age + '/less');
+  }
+  // =================== Get By Id ======================== //
+  getByIdWithUtilisateur(id: number): Observable<Profil> {
+    return this.http.get<Profil>(ProfilService.URL + '/' + id + '/utilisateur');
   }
 }
