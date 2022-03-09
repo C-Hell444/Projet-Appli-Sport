@@ -1,3 +1,7 @@
+import { Caracteristique } from './../../../model/caracteristique';
+import { CaracteristiqueService } from './../../../services/caracteristique.service';
+import { ProfilService } from './../../../services/profil.service';
+import { Profil } from './../../../model/profil';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { Compte } from './../../../model/compte';
 import { CompteService } from './../../../services/compte.service';
@@ -12,23 +16,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuUtilisateurComponent implements OnInit {
   compte: Compte = new Compte();
-
   utilisateurProfil: Utilisateur = new Utilisateur();
+  profil: Profil = new Profil();
+  carac: Caracteristique = new Caracteristique();
 
   constructor(
     private compteService: CompteService,
-    private utilisateurService: UtilisateurService
+    private utilisateurService: UtilisateurService,
+    private profilService: ProfilService,
+    private caracteristiqueService: CaracteristiqueService
   ) {}
 
   ngOnInit(): void {
     this.compteService
       .getType(localStorage.getItem('login')!)
-      .subscribe((result) => {
-        this.compte = result;
+      .subscribe((resultCompte) => {
+        this.compte = resultCompte;
         this.utilisateurService
           .getByIdWithProfil(this.compte.id!)
-          .subscribe((ok) => {
-            this.utilisateurProfil = ok;
+          .subscribe((resultUtilisateur) => {
+            this.utilisateurProfil = resultUtilisateur;
+            this.profilService
+              .get(this.utilisateurProfil.profilUtilisateur?.id!)
+              .subscribe((resultProfil) => {
+                this.profil = resultProfil;
+                console.log(this.profil);
+              });
           });
       });
   }

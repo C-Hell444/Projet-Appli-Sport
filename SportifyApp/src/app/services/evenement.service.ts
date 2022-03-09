@@ -40,6 +40,11 @@ export class EvenementService {
   getAll(): Observable<Evenement[]> {
     return this.http.get<Evenement[]>(EvenementService.URL);
   }
+
+  getAllWithClub(): Observable<Evenement[]> {
+    return this.http.get<Evenement[]>(EvenementService.URL + '/club');
+  }
+
   getAllOrderById(): Observable<Evenement[]> {
     return this.http.get<Evenement[]>(EvenementService.URL + '/id');
   }
