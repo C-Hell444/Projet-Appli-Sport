@@ -26,6 +26,7 @@ import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Evenement;
 import projet.AppliSport.model.Utilisateur;
+import projet.AppliSport.services.ClubService;
 import projet.AppliSport.services.EvenementService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
@@ -41,6 +42,8 @@ public class EvenementRestController {
 	@Autowired
 	private UtilisateurService utilisateurService;
 
+	@Autowired ClubService clubService;
+	
 	// =================== Get All + tri ======================== //
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -84,13 +87,13 @@ public class EvenementRestController {
 		return evenementService.getByNom(nom);
 	}
 
-	@GetMapping("/club/{nom}")
+	@GetMapping("/club/nom/{nom}")
 	@JsonView(Views.EvenementWithClub.class)
 	public List<Evenement> getByClubNom(@PathVariable String nom) {
 		return evenementService.getByClubNom(nom);
 	}
 
-	@GetMapping("/club/objet")
+	@GetMapping("/club/{id}")
 	@JsonView(Views.EvenementWithClub.class)
 	public List<Evenement> getByClub( @RequestBody Club club) {
 		return evenementService.getByClub(club);

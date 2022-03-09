@@ -133,6 +133,8 @@
               <th>Numéro du téléphone</th>
               <th>Sport</th>
               <th>Adresse</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
             <tr *ngFor="let c of clubsObservable | async">
               <td>{{ c.clubNom }}</td>
@@ -142,6 +144,12 @@
               <td>
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
                 {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}
+              </td>
+              <td>
+                <button type="button" class="btn btn-warning">modifier</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">supprimer</button>
               </td>
             </tr>
             <!-- <tr>

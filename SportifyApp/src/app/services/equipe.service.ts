@@ -52,10 +52,10 @@ export class EquipeService {
     return this.http.get<Equipe[]>(EquipeService.URL + '/nom/' + nom);
   }
   getByClubNom(nom: string): Observable<Equipe[]> {
-    return this.http.get<Equipe[]>(EquipeService.URL + '/club/' + nom);
+    return this.http.get<Equipe[]>(EquipeService.URL + '/club/nom/' + nom);
   }
-  getByClub(club: Club): Observable<Equipe[]> {
-    return this.http.get<Equipe[]>(EquipeService.URL + '/club/objet');
+  getByClub(id: number): Observable<Equipe[]> {
+    return this.http.get<Equipe[]>(EquipeService.URL + '/club/' + id);
   }
 
   // =================== Get By Id ======================== //

@@ -130,12 +130,20 @@
               <th>Nom du club</th>
               <th>Nom du membre</th>
               <th>Prenom du membre</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
             <tr *ngFor="let e of equipesObservable | async">
               <td>{{ e.nom }}</td>
               <td>{{ e.club }}</td>
-              <!-- <td>{{e.equipe!.id.utilisateur.nom}}</td>
-              <td>{{e.equipe!.id.utilisateur.prenom}}</td> -->
+              <td>{{ e.equipe }}</td>
+              <td>{{ e.equipe }}</td>
+              <td>
+                <button type="button" class="btn btn-warning">modifier</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">supprimer</button>
+              </td>
             </tr>
             <!-- <tr>
               <td>équipe1</td>

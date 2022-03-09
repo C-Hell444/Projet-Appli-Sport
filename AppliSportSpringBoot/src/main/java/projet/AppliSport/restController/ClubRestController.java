@@ -30,6 +30,7 @@ import projet.AppliSport.services.ClubService;
 import projet.AppliSport.services.CustomUserDetailsService;
 import projet.AppliSport.services.EquipeService;
 import projet.AppliSport.services.EvenementService;
+import projet.AppliSport.services.SportService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
 
@@ -51,6 +52,9 @@ public class ClubRestController {
 	
 	@Autowired
 	private EquipeService equipeService;
+	
+	@Autowired
+	private SportService sportService;
 	
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
@@ -138,23 +142,23 @@ public class ClubRestController {
 			return clubService.getByNumTel(num);
 	}
 	
-	@GetMapping("/sport/{sport}")
+	@GetMapping("/sport/nom/{sport}")
 	@JsonView(Views.ClubWithSport.class)
 	public List<Club> getBySportNom(@PathVariable String sport) {
 			return clubService.getBySportNom(sport);
 	}
 	
-	@GetMapping("/sport/objet")
+	@GetMapping("/sport/{id}")
 	@JsonView(Views.ClubWithSport.class)
-	public List<Club> getBySport( @RequestBody Sport sport) {
-			return clubService.getBySportClub(sport);
+	public List<Club> getBySport( @PathVariable Long id) {
+			return clubService.getBySportClub(sportService.getById(id));
 	}
 	
-	@GetMapping("/sport/liste")
-	@JsonView(Views.ClubWithSport.class)
-	public List<Club> getByListeSport( @RequestBody List<Sport> sports) {
-			return clubService.getByListeSport(sports);
-	}
+//	@GetMapping("/sport/liste")
+//	@JsonView(Views.ClubWithSport.class)
+//	public List<Club> getByListeSport( @RequestBody List<Sport> sports) {
+//			return clubService.getByListeSport(sports);
+//	}
 	
 	
 	@GetMapping("/ville/{ville}")

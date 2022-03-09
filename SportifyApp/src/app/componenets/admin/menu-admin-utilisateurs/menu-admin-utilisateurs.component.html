@@ -133,6 +133,8 @@
               <th>Mail</th>
               <th>Numéro de téléphone</th>
               <th>Adresse</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
             <tr *ngFor="let u of utilisateursObservable | async">
               <td>{{ u.nom }}</td>
@@ -142,6 +144,12 @@
               <td>
                 {{ u.adresse!.numero }} {{ u.adresse!.rue }}
                 {{ u.adresse!.ville }} {{ u.adresse!.codePostal }}
+              </td>
+              <td>
+                <button type="button" class="btn btn-warning">modifier</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">supprimer</button>
               </td>
             </tr>
             <!-- <tr>

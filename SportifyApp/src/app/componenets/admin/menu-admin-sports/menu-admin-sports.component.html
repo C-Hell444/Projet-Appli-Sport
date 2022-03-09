@@ -128,10 +128,18 @@
             <tr class="bg-warning text-dark">
               <th>Nom du sport</th>
               <th>Nom du club</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
             <tr *ngFor="let s of sportsObservable | async">
               <td>{{ s.nom }}</td>
               <td>{{ s.clubs }}</td>
+              <td>
+                <button type="button" class="btn btn-warning">modifier</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">supprimer</button>
+              </td>
             </tr>
             <!-- <tr>
               <td>sport1</td>
