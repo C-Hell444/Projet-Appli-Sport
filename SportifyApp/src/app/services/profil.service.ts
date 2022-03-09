@@ -14,7 +14,6 @@ export class ProfilService {
   public getAll(): Observable<Profil[]> {
     return this.http.get<Profil[]>(ProfilService.URL);
   }
-
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(ProfilService.URL + '/' + id);
   }
@@ -90,6 +89,10 @@ export class ProfilService {
     return this.http.get<Profil>(ProfilService.URL + '/age/' + age + '/less');
   }
   // =================== Get By Id ======================== //
+
+  getByIdWithCarac(id: number): Observable<Profil> {
+    return this.http.get<Profil>(ProfilService.URL + '/' + id + '/carac');
+  }
   getByIdWithUtilisateur(id: number): Observable<Profil> {
     return this.http.get<Profil>(ProfilService.URL + '/' + id + '/utilisateur');
   }

@@ -43,6 +43,7 @@ public class ProfilRestController {
 		return profils;
 	}
 	
+	
 	// =================== Get By ? ======================== //
 	
 	@GetMapping("/poids/{poids}")
@@ -109,6 +110,12 @@ public class ProfilRestController {
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Profil getById(@PathVariable Long id) {
+		return profilService.getById(id);
+	}
+	
+	@GetMapping("/{id}/carac")
+	@JsonView(Views.ProfilWithCaracteristique.class)
+	public Profil getByIdWithCarac(@PathVariable Long id) {
 		return profilService.getById(id);
 	}
 	

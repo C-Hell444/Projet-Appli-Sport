@@ -145,15 +145,15 @@
             </tr>
             <tr>
               <td>Poids :</td>
-              <td>{{ utilisateurProfil.profilUtilisateur?.poids }}</td>
+              <td>{{ profil.poids }}</td>
             </tr>
             <tr>
               <td>Taille :</td>
-              <td>{{ utilisateurProfil.profilUtilisateur?.taille }}</td>
+              <td>{{ profil.taille }}</td>
             </tr>
             <tr>
               <td>Date de naissance :</td>
-              <td>{{ utilisateurProfil.profilUtilisateur?.dateNaissance }}</td>
+              <td>{{ profil.dateNaissance }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Caractéristiques</td>
@@ -162,40 +162,40 @@
             <tr>
               <td>Collectif :</td>
               <td>
-                {{ profil.caracteristique?.collectif }}
+                {{ carac.collectif }}
               </td>
             </tr>
             <tr>
               <td>Creativité :</td>
-              <td>{{ profil.caracteristique?.creativite }}</td>
+              <td>{{ carac.creativite }}</td>
             </tr>
             <tr>
               <td>Determination :</td>
-              <td>{{ profil.caracteristique?.determination }}</td>
+              <td>{{ carac.determination }}</td>
             </tr>
             <tr>
               <td>Patience :</td>
-              <td>{{ profil.caracteristique?.patience }}</td>
+              <td>{{ carac.patience }}</td>
             </tr>
             <tr>
               <td>Detente :</td>
-              <td>{{ profil.caracteristique?.detente }}</td>
+              <td>{{ carac.detente }}</td>
             </tr>
             <tr>
               <td>Agilité :</td>
-              <td>{{ profil.caracteristique?.agilite }}</td>
+              <td>{{ carac.agilite }}</td>
             </tr>
             <tr>
               <td>Puissance :</td>
-              <td>{{ profil.caracteristique?.puissance }}</td>
+              <td>{{ carac.puissance }}</td>
             </tr>
             <tr>
               <td>Vitesse :</td>
-              <td>{{ profil.caracteristique?.vitesse }}</td>
+              <td>{{ carac.vitesse }}</td>
             </tr>
             <tr>
               <td>Endurance :</td>
-              <td>{{ profil.caracteristique?.endurance }}</td>
+              <td>{{ carac.endurance }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Intérêts</td>
@@ -203,7 +203,9 @@
             </tr>
             <tr>
               <td>Sports :</td>
-              <td>1111111</td>
+              <td *ngFor="let i of interets">
+                {{ i.sport?.nom }}
+              </td>
             </tr>
           </tbody>
         </table>

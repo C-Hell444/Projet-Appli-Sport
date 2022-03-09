@@ -1,3 +1,5 @@
+import { Interet } from './../../../model/interet';
+import { InteretService } from './../../../services/interet.service';
 import { Caracteristique } from './../../../model/caracteristique';
 import { CaracteristiqueService } from './../../../services/caracteristique.service';
 import { ProfilService } from './../../../services/profil.service';
@@ -17,8 +19,10 @@ import { Component, OnInit } from '@angular/core';
 export class MenuUtilisateurComponent implements OnInit {
   compte: Compte = new Compte();
   utilisateurProfil: Utilisateur = new Utilisateur();
+  utilisateurInteret: Utilisateur = new Utilisateur();
   profil: Profil = new Profil();
   carac: Caracteristique = new Caracteristique();
+  interets: Interet[] = new Array<Interet>();
 
   constructor(
     private compteService: CompteService,
@@ -34,14 +38,26 @@ export class MenuUtilisateurComponent implements OnInit {
         this.compte = resultCompte;
         this.utilisateurService
           .getByIdWithProfil(this.compte.id!)
-          .subscribe((resultUtilisateur) => {
-            this.utilisateurProfil = resultUtilisateur;
+          .subscribe((resultUtilisateurProfil) => {
+            this.utilisateurProfil = resultUtilisateurProfil;
             this.profilService
-              .get(this.utilisateurProfil.profilUtilisateur?.id!)
+              .getByIdWithCarac(this.utilisateurProfil.profilUtilisateur?.id!)
               .subscribe((resultProfil) => {
                 this.profil = resultProfil;
                 console.log(this.profil);
+
+                this.caracteristiqueService
+                  .get(this.profil.caracteristique?.id!)
+                  .subscribe((resultCarac) => (this.carac = resultCarac));
+
+                console.log(this.carac);
               });
+          });
+        this.utilisateurService
+          .getByIdWithInteret(this.compte.id!)
+          .subscribe((resultUtilisateurInteret) => {
+            this.utilisateurInteret = resultUtilisateurInteret;
+            this.interets = this.utilisateurInteret.interets!;
           });
       });
   }
