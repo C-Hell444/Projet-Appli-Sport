@@ -8,7 +8,7 @@ import { Sexe } from '../model/sexe';
   providedIn: 'root',
 })
 export class ProfilService {
-  static URL: string = 'http://localhost:8080/boot/api/profil';
+  static URL: string = 'http://localhost:8080/sportify-boot/api/profil';
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<Profil[]> {

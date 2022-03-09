@@ -50,6 +50,11 @@ public class EvenementRestController {
 	public List<Evenement> getAllEvenement() {
 		return evenementService.getAll();
 	}
+	@GetMapping("/club")
+	@JsonView(Views.EvenementWithClub.class)
+	public List<Evenement> getAllEvenementWithClub() {
+		return evenementService.getAll();
+	}
 	@GetMapping("/id")
 	@JsonView(Views.Common.class)
 	public List<Evenement> getAllOrderById() {
@@ -62,7 +67,7 @@ public class EvenementRestController {
 		return evenementService.getAllOrderByNom();
 	}
 
-	@GetMapping("/club")
+	@GetMapping("/club/order")
 	@JsonView(Views.EvenementWithClub.class)
 	public List<Evenement> getAllOrderByClub() {
 		return evenementService.getAllOrderByClub();
