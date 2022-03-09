@@ -122,7 +122,12 @@
         <h5 class="mb-0 w-75 p-3 mx-auto">Voici vos notifications</h5>
 
         <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-primary position-relative">
+          <button
+            type="button"
+            class="btn btn-primary position-relative"
+            [routerLink]="['/menu-admin-utilisateurs']"
+            routerLinkActive="active"
+          >
             Utilisateurs
             <span
               class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
@@ -130,7 +135,12 @@
               <span class="visually-hidden">New alerts</span>
             </span>
           </button>
-          <button type="button" class="btn btn-primary position-relative">
+          <button
+            type="button"
+            class="btn btn-primary position-relative"
+            [routerLink]="['/menu-admin-sports']"
+            routerLinkActive="active"
+          >
             Sports
             <span
               class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
@@ -138,7 +148,12 @@
               <span class="visually-hidden">New alerts</span>
             </span>
           </button>
-          <button type="button" class="btn btn-primary position-relative">
+          <button
+            type="button"
+            class="btn btn-primary position-relative"
+            [routerLink]="['/menu-admin-clubs']"
+            routerLinkActive="active"
+          >
             Clubs
             <span
               class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
@@ -146,7 +161,12 @@
               <span class="visually-hidden">New alerts</span>
             </span>
           </button>
-          <button type="button" class="btn btn-primary position-relative">
+          <button
+            type="button"
+            class="btn btn-primary position-relative"
+            [routerLink]="['/menu-admin-equipes']"
+            routerLinkActive="active"
+          >
             Equipes
             <span
               class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
@@ -154,7 +174,12 @@
               <span class="visually-hidden">New alerts</span>
             </span>
           </button>
-          <button type="button" class="btn btn-primary position-relative">
+          <button
+            type="button"
+            class="btn btn-primary position-relative"
+            [routerLink]="['/menu-admin-evenements']"
+            routerLinkActive="active"
+          >
             Evenements
             <span
               class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"

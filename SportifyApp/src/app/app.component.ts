@@ -29,4 +29,8 @@ export class AppComponent {
   get login() {
     return localStorage.getItem('login');
   }
+
+  get profilConnectedUrl() {
+    return '/menu-' + localStorage.getItem('type');
+  }
 }

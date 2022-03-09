@@ -53,13 +53,14 @@ export class ConnexionComponent implements OnInit {
             .getType(this.form.controls['login'].value)
             .subscribe((result) => {
               this.compte = result;
-              if (this.compte.type == 'admin') {
-                this.router.navigateByUrl('/menu-admin');
-              } else if (this.compte.type == 'utilisateur') {
-                this.router.navigateByUrl('/menu-utilisateur');
-              } else if (this.compte.type == 'club') {
-                this.router.navigateByUrl('/menu-club');
-              }
+              // if (this.compte.type == 'admin') {
+              //   this.router.navigateByUrl('/menu-admin');
+              // } else if (this.compte.type == 'utilisateur') {
+              //   this.router.navigateByUrl('/menu-utilisateur');
+              // } else if (this.compte.type == 'club') {
+              //   this.router.navigateByUrl('/menu-club');
+              // }
+              this.router.navigateByUrl('/accueil');
               localStorage.setItem('type', this.compte.type!);
             });
         },

@@ -171,7 +171,7 @@
       </a>
     </nav>
     <nav *ngIf="authenticated" class="navbar navbar-light">
-      <li class="nav-item dropdown">
+      <div class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle h5"
           id="navbarDropdown"
@@ -189,19 +189,19 @@
           Bienvenue {{ login }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <!-- <li>
+          <li>
             <a
               class="dropdown-item"
-              [routerLink]="['/accueil']"
+              [routerLink]="[profilConnectedUrl]"
               routerLinkActive="active"
               >Profil</a
             >
-          </li> -->
+          </li>
           <li>
             <a class="dropdown-item" (click)="logout()">Se déconnecter</a>
           </li>
         </ul>
-      </li>
+      </div>
     </nav>
   </div>
 </div>
