@@ -127,7 +127,11 @@ public class EvenementRestController {
 	public Evenement getById(@PathVariable Long id) {
 		return evenementService.getById(id);
 	}
-
+	@GetMapping("/{id}/club")
+	@JsonView(Views.EvenementWithClub.class)
+	public Evenement getByIdWithClub(@PathVariable Long id) {
+		return evenementService.getByIdWithClub(id);
+	}
 	
 	// =================== Get Utilisateurs + tri ======================== //
 	

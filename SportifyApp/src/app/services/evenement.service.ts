@@ -88,6 +88,10 @@ export class EvenementService {
     return this.http.get<Evenement>(EvenementService.URL + '/' + id);
   }
 
+  getByIdWithClub(id: number): Observable<Evenement> {
+    return this.http.get<Evenement>(EvenementService.URL + '/' + id + '/club');
+  }
+
   // =================== Get Utilisateurs + tri ======================== //
 
   getByIdWithUtilisateur(id: number): Observable<Evenement> {

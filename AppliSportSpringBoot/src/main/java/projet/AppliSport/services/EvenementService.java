@@ -77,6 +77,9 @@ public class EvenementService {
 		});
 	}
 
+	public Evenement getByIdWithClub(Long id) {
+		return evenementRepository.findByIdWithClub(id).orElseThrow(EvenementException::new);
+	}
 	public Evenement getByIdWithUtilisateur(Long id) {
 		return evenementRepository.findByIdWithUtilisateur(id).orElseThrow(EvenementException::new);
 	}
@@ -145,4 +148,5 @@ public class EvenementService {
 		delete(getById(id));
 	}
 
+	
 }

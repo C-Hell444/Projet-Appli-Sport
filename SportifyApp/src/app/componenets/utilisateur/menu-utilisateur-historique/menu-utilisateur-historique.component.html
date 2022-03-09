@@ -108,16 +108,16 @@
               <th>Date d'inscription</th>
               <th>Date de désinscription</th>
             </tr>
-            <tr *ngFor="let c of clubs">
-              <td>{{ c.id?.club?.clubNom }}</td>
-              <td>{{ c.id?.club?.sportClub }}</td>
+            <tr *ngFor="let c of clubLength">
+              <td>{{ clubs[c].clubNom }}</td>
+              <td>{{ clubs[c].sportClub?.nom }}</td>
               <td>
-                {{ c.id?.club?.adresse?.numero }}
-                {{ c.id?.club?.adresse?.rue }} {{ c.id?.club?.adresse?.ville }}
-                {{ c.id?.club?.adresse?.codePostal }}
+                {{ clubs[c].adresse?.numero }}
+                {{ clubs[c].adresse?.rue }} {{ clubs[c].adresse?.ville }}
+                {{ clubs[c].adresse?.codePostal }}
               </td>
-              <td>{{ c.dateDebut }}</td>
-              <td>{{ c.dateFin }}</td>
+              <td>{{ clubsUtilisateur[c].dateDebut }}</td>
+              <td>{{ clubsUtilisateur[c].dateFin }}</td>
             </tr>
           </tbody>
         </table>
@@ -133,52 +133,15 @@
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom de l'équipe</th>
-              <th>Sport</th>
               <th>Nom du club</th>
               <th>Date d'inscription</th>
               <th>Date de désinscription</th>
             </tr>
-            <tr>
-              <td>equipe1</td>
-              <td>sport1</td>
-              <td>club1</td>
-              <td>Date d'inscription1</td>
-              <td>Date de désinscription1</td>
-            </tr>
-            <tr>
-              <td>equipe2</td>
-              <td>sport2</td>
-              <td>club2</td>
-              <td>Date d'inscription2</td>
-              <td>Date de désinscription2</td>
-            </tr>
-            <tr>
-              <td>equipe3</td>
-              <td>sport3</td>
-              <td>club3</td>
-              <td>Date d'inscription3</td>
-              <td>Date de désinscription3</td>
-            </tr>
-            <tr>
-              <td>equipe4</td>
-              <td>sport4</td>
-              <td>club4</td>
-              <td>Date d'inscription4</td>
-              <td>Date de désinscription4</td>
-            </tr>
-            <tr>
-              <td>equipe5</td>
-              <td>sport5</td>
-              <td>club5</td>
-              <td>Date d'inscription5</td>
-              <td>Date de désinscription5</td>
-            </tr>
-            <tr>
-              <td>equipe6</td>
-              <td>sport6</td>
-              <td>club6</td>
-              <td>Date d'inscription6</td>
-              <td>Date de désinscription6</td>
+            <tr *ngFor="let e of equipeLength">
+              <td>{{ equipes[e].nom }}</td>
+              <td>{{ equipes[e].club?.clubNom }}</td>
+              <td>{{ equipesUtilisateur[e].dateDebut }}</td>
+              <td>{{ equipesUtilisateur[e].dateFin }}</td>
             </tr>
           </tbody>
         </table>
@@ -194,31 +157,15 @@
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom de l'évenement</th>
-              <th>Date de l'évenement</th>
+              <th>Organisateur</th>
+              <th>Début de l'évenement</th>
+              <th>Fin de l'évenement</th>
             </tr>
-            <tr>
-              <td>évenement1</td>
-              <td>date1</td>
-            </tr>
-            <tr>
-              <td>évenement2</td>
-              <td>date2</td>
-            </tr>
-            <tr>
-              <td>évenement3</td>
-              <td>date3</td>
-            </tr>
-            <tr>
-              <td>évenement4</td>
-              <td>date4</td>
-            </tr>
-            <tr>
-              <td>évenement5</td>
-              <td>date5</td>
-            </tr>
-            <tr>
-              <td>évenement6</td>
-              <td>date6</td>
+            <tr *ngFor="let e of evenementLength">
+              <td>{{ evenements[e].nom }}</td>
+              <td>{{ evenements[e].club?.clubNom }}</td>
+              <td>{{ evenementsUtilisateur[e].dateDebut }}</td>
+              <td>{{ evenementsUtilisateur[e].dateFin }}</td>
             </tr>
           </tbody>
         </table>

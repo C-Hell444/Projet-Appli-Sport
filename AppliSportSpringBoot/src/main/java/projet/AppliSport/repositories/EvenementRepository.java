@@ -48,5 +48,8 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long>{
 	@Query("select e from Evenement e left join fetch e.participants p where e.id=:id order by p.dateFin desc")
 	Optional<Evenement> findByIdWithEvenementUtilisateurOrderByDateFinDesc(@Param("id") Long id);
 	
+	@Query("select e from Evenement e left join e.club where e.id=:id")
+	Optional<Evenement> findByIdWithClub(@Param("id") Long id);
+	
 
 }
