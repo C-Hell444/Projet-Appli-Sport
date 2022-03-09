@@ -39,7 +39,22 @@ export class EvenementUtilisateurService {
   create(
     EvenementUtilisateur: EvenementUtilisateur
   ): Observable<EvenementUtilisateur> {
-    const EvenementUtilisateurEnJson = { identifiant: EvenementUtilisateur.id };
+    const EvenementUtilisateurEnJson = {
+      dateDebut: EvenementUtilisateur.dateDebut,
+      dateFin: EvenementUtilisateur.dateFin,
+    };
+    if (EvenementUtilisateur.id) {
+      if (EvenementUtilisateur.id.evenement) {
+        Object.assign(EvenementUtilisateurEnJson, {
+          Evenement: { id: EvenementUtilisateur.id.evenement.id },
+        });
+      }
+      if (EvenementUtilisateur.id.utilisateur) {
+        Object.assign(EvenementUtilisateurEnJson, {
+          utilisateur: { id: EvenementUtilisateur.id.utilisateur.id },
+        });
+      }
+    }
     return this.http.post<EvenementUtilisateur>(
       EvenementUtilisateurService.URL,
       EvenementUtilisateurEnJson

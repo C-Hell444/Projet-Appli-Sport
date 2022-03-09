@@ -24,6 +24,7 @@ import projet.AppliSport.exception.EquipeException;
 import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Equipe;
 import projet.AppliSport.model.Utilisateur;
+import projet.AppliSport.services.ClubService;
 import projet.AppliSport.services.EquipeService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
@@ -38,6 +39,9 @@ public class EquipeRestController {
 	
 	@Autowired
 	private UtilisateurService utilisateurService;
+	
+	@Autowired
+	private ClubService clubService;
 
 	// =================== Get All + tri  ======================== //
 	@GetMapping("")
@@ -72,15 +76,15 @@ public class EquipeRestController {
 			return equipeService.getByNom(nom);
 	}
 	
-	@GetMapping("/club/{nom}")
+	@GetMapping("/club/nom/{nom}")
 	@JsonView(Views.EquipeWithClub.class)
 	public List<Equipe> getByClubNom(@PathVariable String nom) {
 			return equipeService.getByClubNom(nom);
 	}
-	@GetMapping("/club/objet")
+	@GetMapping("/club/{id}")
 	@JsonView(Views.EquipeWithClub.class)
-	public List<Equipe> getByClub( @RequestBody Club club) {
-			return equipeService.getByClub(club);
+	public List<Equipe> getByClub( @PathVariable Long id) {
+			return equipeService.getByClub(clubService.getById(id));
 	}
 	
 	
