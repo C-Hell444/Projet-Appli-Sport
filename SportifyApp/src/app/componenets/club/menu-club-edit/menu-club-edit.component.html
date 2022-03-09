@@ -1,1 +1,150 @@
-<p>menu-club-edit works!</p>
+<div id="DivContenu">
+  <br /><br /><br />
+  <br /><br />
+  <div class="d-flex align-items-start justify-content-center">
+    <div
+      class="nav flex-column nav-pills me-3 h3"
+      id="v-pills-tab"
+      role="tablist"
+      aria-orientation="vertical"
+    >
+      <button
+        class="nav-link"
+        id="v-pills-home-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-home"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-home"
+        aria-selected="true"
+        [routerLink]="['/menu-club']"
+        routerLinkActive="active"
+      >
+        Profil
+      </button>
+      <button
+        class="nav-link"
+        id="v-pills-profile-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-profile"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-profile"
+        aria-selected="false"
+        [routerLink]="['/menu-club-membres']"
+        routerLinkActive="active"
+      >
+        Membres
+      </button>
+      <button
+        class="nav-link"
+        id="v-pills-messages-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-messages"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-messages"
+        aria-selected="false"
+        [routerLink]="['/menu-club-equipes']"
+        routerLinkActive="active"
+      >
+        Equipes
+      </button>
+      <button
+        class="nav-link"
+        id="v-pills-messages-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-messages"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-messages"
+        aria-selected="false"
+        [routerLink]="['/menu-club-evenements']"
+        routerLinkActive="active"
+      >
+        Evenements
+      </button>
+      <button
+        class="nav-link"
+        id="v-pills-settings-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-settings"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-settings"
+        aria-selected="false"
+        [routerLink]="['/menu-club-historique']"
+        routerLinkActive="active"
+      >
+        Historique
+      </button>
+    </div>
+    <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
+      <div class="d-flex justify-content-around">
+        <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
+        <a [routerLink]="['/menu-club']" routerLinkActive="active"
+          ><img
+            src="assets/img/retour.png"
+            width="100"
+            height="100"
+            class="d-inline-block align-top"
+            alt="tweeter"
+        /></a>
+      </div>
+      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+        Les informations de votre club
+      </p>
+      <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
+        <table class="table table-hover table-borderless fs-4">
+          <tbody>
+            <tr>
+              <td>Nom du club :</td>
+              <td>1111111</td>
+            </tr>
+            <tr>
+              <td>Mail :</td>
+              <td>1111111</td>
+            </tr>
+            <tr>
+              <td>Numéro de téléphone :</td>
+              <td>1111111</td>
+            </tr>
+            <tr>
+              <td class="fst-italic fs-4 fw-bold">Adresse</td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Numéro :</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Rue :</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Ville :</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Code postal :</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Sport :</td>
+              <td>1111111</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ********************************************************** -->
+
+<div class="DivEspace3">
+  <br />
+  <br />
+  <hr />
+</div>
