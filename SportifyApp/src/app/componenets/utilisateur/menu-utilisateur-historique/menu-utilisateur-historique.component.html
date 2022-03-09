@@ -108,47 +108,16 @@
               <th>Date d'inscription</th>
               <th>Date de désinscription</th>
             </tr>
-            <tr>
-              <td>club1</td>
-              <td>sport1</td>
-              <td>adresse1</td>
-              <td>Date d'inscription1</td>
-              <td>Date de désinscription1</td>
-            </tr>
-            <tr>
-              <td>club2</td>
-              <td>sport2</td>
-              <td>adresse2</td>
-              <td>Date d'inscription2</td>
-              <td>Date de désinscription2</td>
-            </tr>
-            <tr>
-              <td>club3</td>
-              <td>sport3</td>
-              <td>adresse3</td>
-              <td>Date d'inscription3</td>
-              <td>Date de désinscription3</td>
-            </tr>
-            <tr>
-              <td>club3</td>
-              <td>sport4</td>
-              <td>adresse4</td>
-              <td>Date d'inscription4</td>
-              <td>Date de désinscription4</td>
-            </tr>
-            <tr>
-              <td>club5</td>
-              <td>sport5</td>
-              <td>adresse5</td>
-              <td>Date d'inscription5</td>
-              <td>Date de désinscription5</td>
-            </tr>
-            <tr>
-              <td>club6</td>
-              <td>sport6</td>
-              <td>adresse6</td>
-              <td>Date d'inscription6</td>
-              <td>Date de désinscription6</td>
+            <tr *ngFor="let c of clubs">
+              <td>{{ c.id?.club?.clubNom }}</td>
+              <td>{{ c.id?.club?.sportClub }}</td>
+              <td>
+                {{ c.id?.club?.adresse?.numero }}
+                {{ c.id?.club?.adresse?.rue }} {{ c.id?.club?.adresse?.ville }}
+                {{ c.id?.club?.adresse?.codePostal }}
+              </td>
+              <td>{{ c.dateDebut }}</td>
+              <td>{{ c.dateFin }}</td>
             </tr>
           </tbody>
         </table>
