@@ -64,6 +64,10 @@ export class EquipeService {
     return this.http.get<Equipe>(EquipeService.URL + '/' + id);
   }
 
+  getByIdWithClub(id: number): Observable<Equipe> {
+    return this.http.get<Equipe>(EquipeService.URL + '/' + id + '/club');
+  }
+
   // =================== Get Utilisateurs + tri ======================== //
 
   getByIdWithUtilisateur(id: number): Observable<Equipe> {

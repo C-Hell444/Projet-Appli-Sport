@@ -663,8 +663,8 @@ public class ConsoleService implements CommandLineRunner {
 		clubUtilisateur1.setDateFin(LocalDate.parse("2023-01-01"));
 		clubUtilisateurService.createOrUpdate(clubUtilisateur1);
 
-		clubUtilisateurKey2.setClub(club1);
-		clubUtilisateurKey2.setUtilisateur(utilisateur2);
+		clubUtilisateurKey2.setClub(club2);
+		clubUtilisateurKey2.setUtilisateur(utilisateur1);
 		clubUtilisateur2.setClubUtilisateurKey(clubUtilisateurKey2);
 		clubUtilisateur2.setDateDebut(LocalDate.parse("2020-02-01"));
 		clubUtilisateur2.setDateFin(LocalDate.parse("2023-02-01"));

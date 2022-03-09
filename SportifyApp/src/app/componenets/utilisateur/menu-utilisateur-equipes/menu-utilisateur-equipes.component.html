@@ -107,38 +107,11 @@
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom de l'équipe</th>
-              <th>Sport</th>
               <th>Nom du club</th>
             </tr>
-            <tr>
-              <td>equipe1</td>
-              <td>sport1</td>
-              <td>club1</td>
-            </tr>
-            <tr>
-              <td>equipe2</td>
-              <td>sport2</td>
-              <td>club2</td>
-            </tr>
-            <tr>
-              <td>equipe3</td>
-              <td>sport3</td>
-              <td>club3</td>
-            </tr>
-            <tr>
-              <td>equipe4</td>
-              <td>sport4</td>
-              <td>club4</td>
-            </tr>
-            <tr>
-              <td>equipe5</td>
-              <td>sport5</td>
-              <td>club5</td>
-            </tr>
-            <tr>
-              <td>equipe6</td>
-              <td>sport6</td>
-              <td>club6</td>
+            <tr *ngFor="let e of equipes">
+              <td>{{ e.nom }}</td>
+              <td>{{ e.club?.clubNom }}</td>
             </tr>
           </tbody>
         </table>

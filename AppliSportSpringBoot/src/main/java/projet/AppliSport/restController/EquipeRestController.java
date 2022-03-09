@@ -96,6 +96,12 @@ public class EquipeRestController {
 		return equipeService.getById(id);
 	}
 	
+	@GetMapping("/{id}/club")
+	@JsonView(Views.EquipeWithClub.class)
+	public Equipe getByIdWithClub(@PathVariable Long id) {
+		return equipeService.getByIdWithClub(id);
+	}
+	
 	
 	// =================== Get Utilisateurs + tri ======================== //
 	

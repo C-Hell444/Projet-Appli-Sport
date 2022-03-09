@@ -44,7 +44,8 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 
 	
 	
-	
+	@Query("select c from Club c left join c.sportClub where c.id=:id")
+	Optional<Club> findByIdWithSport(@Param("id") Long id);
 	
 	
 	
