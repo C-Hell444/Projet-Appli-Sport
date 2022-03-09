@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.csrf().disable()
 		.authorizeHttpRequests()
+			.antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
 			.antMatchers(HttpMethod.GET ,"/api/user/**").hasAnyAuthority("Utilisateur","Admin", "Club")
 			.antMatchers("/api/user/**").hasAnyAuthority("Utilisateur","Admin")
 			.antMatchers(HttpMethod.GET ,"/api/sport/**").hasAnyAuthority("Utilisateur","Admin", "Club")
@@ -49,7 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/caracteristique/**").hasAnyAuthority("Utilisateur", "Admin")
 			.antMatchers("/api/auth/**").permitAll()
 			.antMatchers("/api/compte/**").permitAll()
-			.antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
 			.anyRequest().authenticated()
 		.and()
 			.httpBasic();

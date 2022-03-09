@@ -131,13 +131,21 @@
               <th>Nom du club</th>
               <th>Nom du participant</th>
               <th>Prenom du participant</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
             <tr *ngFor="let e of evenementsObservable | async">
               <td>{{ e.nom }}</td>
               <td>{{ e.dateDebut }}</td>
               <td>{{ e.club }}</td>
-              <!-- <td>{{e.participants.nom}}</td>
-              <td>{{e.participants.prenom}}</td> -->
+              <td>{{ e.participants }}</td>
+              <td>{{ e.participants }}</td>
+              <td>
+                <button type="button" class="btn btn-warning">modifier</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">supprimer</button>
+              </td>
             </tr>
             <!-- <tr>
               <td>évenement1</td>
