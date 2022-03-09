@@ -7,7 +7,8 @@ import { Caracteristique } from '../model/caracteristique';
   providedIn: 'root',
 })
 export class CaracteristiqueService {
-  static URL: string = 'http://localhost:8080/boot/api/caracteristique';
+  static URL: string =
+    'http://localhost:8080/sportify-boot/api/caracteristique';
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<Caracteristique[]> {
