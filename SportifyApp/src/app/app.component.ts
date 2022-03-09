@@ -10,20 +10,23 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'SportifyApp';
 
-  constructor() {
-    localStorage.clear();
+  constructor(
+    private authService: AuthentificationService,
+    private router: Router
+  ) {
+    // localStorage.clear();
   }
 
-  // get authenticated() {
-  //   return this.authService.isAuthenticated();
-  // }
+  get authenticated() {
+    return this.authService.isAuthenticated();
+  }
 
-  // logout() {
-  //   localStorage.clear();
-  //   this.router.navigateByUrl('/acceuil');
-  // }
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/accueil');
+  }
 
-  // get login() {
-  //   return localStorage.getItem('login');
-  // }
+  get login() {
+    return localStorage.getItem('login');
+  }
 }

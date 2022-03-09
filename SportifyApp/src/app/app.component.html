@@ -153,8 +153,9 @@
     </nav>
   </div>
   <div id="DivTopInscriConnection">
-    <nav class="navbar navbar-light">
+    <nav *ngIf="!authenticated" class="navbar navbar-light">
       <a
+        *ngIf="!authenticated"
         class="navbar-brand h6"
         [routerLink]="['/connexion']"
         routerLinkActive="active"
@@ -168,6 +169,39 @@
         />
         Se connecter / S'inscrire
       </a>
+    </nav>
+    <nav *ngIf="authenticated" class="navbar navbar-light">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle h5"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="assets/img/person-check-fill.svg"
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+            alt="SeConnecter"
+          />
+          Bienvenue {{ login }}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <li>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/accueil']"
+              routerLinkActive="active"
+              >Profil</a
+            >
+          </li> -->
+          <li>
+            <a class="dropdown-item" (click)="logout()">Se déconnecter</a>
+          </li>
+        </ul>
+      </li>
     </nav>
   </div>
 </div>
