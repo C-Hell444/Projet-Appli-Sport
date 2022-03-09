@@ -106,9 +106,9 @@
               <th>Chercher des membres</th>
               <th>Supprimer</th>
             </tr>
-            <tr>
-              <td>equipe1</td>
-              <td>nom1</td>
+            <tr *ngFor="let e of club.equipes; let index = index">
+              <td>{{ e.nom }}</td>
+              <td>nom</td>
               <td>prenom1</td>
               <td>date d'inscription1</td>
               <td>
