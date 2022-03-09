@@ -10,6 +10,7 @@ export class Club extends Compte {
   private _numTel: string | undefined;
   private _clubNom: string | undefined;
   private _sportClub: Sport | undefined;
+  private _sport: number | undefined;
   private _listeMembres: ClubUtilisateur[] | undefined;
   private _equipes: Equipe[] | undefined;
   private _evenements: Evenement[] | undefined;
@@ -19,6 +20,7 @@ export class Club extends Compte {
     numTel?: string,
     clubNom?: string,
     sportClub?: Sport,
+    sport?: number,
     listeMembres?: ClubUtilisateur[],
     equipes?: Equipe[],
     evenements?: Evenement[]
@@ -28,6 +30,7 @@ export class Club extends Compte {
     this._numTel = numTel;
     this._clubNom = clubNom;
     this._sportClub = sportClub;
+    this._sport = sport;
     this._listeMembres = listeMembres;
     this._equipes = equipes;
     this._evenements = evenements;
@@ -63,6 +66,14 @@ export class Club extends Compte {
    */
   public get sportClub(): Sport | undefined {
     return this._sportClub;
+  }
+
+  /**
+   * Getter sport
+   * @return {number }
+   */
+  public get sport(): number | undefined {
+    return this._sport;
   }
 
   /**
@@ -119,6 +130,14 @@ export class Club extends Compte {
    */
   public set sportClub(value: Sport | undefined) {
     this._sportClub = value;
+  }
+
+  /**
+   * Setter sport
+   * @param {number} value
+   */
+  public set sport(value: number | undefined) {
+    this._sport = value;
   }
 
   /**

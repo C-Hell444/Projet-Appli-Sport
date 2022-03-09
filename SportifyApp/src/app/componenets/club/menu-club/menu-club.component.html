@@ -99,15 +99,15 @@
           <tbody>
             <tr>
               <td>Nom du club :</td>
-              <td>1111111</td>
+              <td>{{ club.clubNom }}</td>
             </tr>
             <tr>
               <td>Mail :</td>
-              <td>1111111</td>
+              <td>{{ club.mail }}</td>
             </tr>
             <tr>
               <td>Numéro de téléphone :</td>
-              <td>1111111</td>
+              <td>{{ club.numTel }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Adresse</td>
@@ -116,23 +116,23 @@
 
             <tr>
               <td>Numéro :</td>
-              <td>1</td>
+              <td>{{ club.adresse!.numero }}</td>
             </tr>
             <tr>
               <td>Rue :</td>
-              <td>1</td>
+              <td>{{ club.adresse!.rue }}</td>
             </tr>
             <tr>
               <td>Ville :</td>
-              <td>1</td>
+              <td>{{ club.adresse!.ville }}</td>
             </tr>
             <tr>
               <td>Code postal :</td>
-              <td>1</td>
+              <td>{{ club.adresse!.codePostal }}</td>
             </tr>
             <tr>
               <td>Sport :</td>
-              <td>1111111</td>
+              <td>{{ club.sportClub!.nom }}</td>
             </tr>
           </tbody>
         </table>
