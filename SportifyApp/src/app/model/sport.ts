@@ -1,3 +1,4 @@
+import { Caracteristique } from './caracteristique';
 import { Club } from './club';
 import { Interet } from './interet';
 
@@ -6,12 +7,20 @@ export class Sport {
   private _nom: string | undefined;
   private _clubs: Club[] | undefined;
   private _interets: Interet[] | undefined;
+  private _caracteristique: Caracteristique | undefined;
 
-  constructor(id?: number, nom?: string, clubs?: Club[], interets?: Interet[]) {
+  constructor(
+    id?: number,
+    nom?: string,
+    clubs?: Club[],
+    interets?: Interet[],
+    caracteristique?: Caracteristique
+  ) {
     this._id = id;
     this._nom = nom;
     this._clubs = clubs;
     this._interets = interets;
+    this._caracteristique = caracteristique;
   }
 
   /**
@@ -76,5 +85,21 @@ export class Sport {
    */
   public set interets(value: Interet[] | undefined) {
     this._interets = value;
+  }
+
+  /**
+   * Getter caracteristique
+   * @return {Caracteristique }
+   */
+  public get caracteristique(): Caracteristique | undefined {
+    return this._caracteristique;
+  }
+
+  /**
+   * Setter caracteristique
+   * @param {Caracteristique } value
+   */
+  public set caracteristique(value: Caracteristique | undefined) {
+    this._caracteristique = value;
   }
 }
