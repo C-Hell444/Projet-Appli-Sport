@@ -55,7 +55,7 @@ public class ProfilRestController {
 	public List<Profil> getByPoidsGreaterThan(@PathVariable double poids) {
 		return profilService.getByPoidsGreaterThan(poids);
 	}
-	@GetMapping("/poids/{poids}/lesser")
+	@GetMapping("/poids/{poids}/less")
 	@JsonView(Views.Common.class)
 	public List<Profil> getByPoidsLesserThan(@PathVariable double poids) {
 		return profilService.getByPoidsLesserThan(poids);
@@ -71,7 +71,7 @@ public class ProfilRestController {
 	public List<Profil> getByTailleGreaterThan(@PathVariable double taille) {
 		return profilService.getByTailleGreaterThan(taille);
 	}
-	@GetMapping("/taille/{taille}/lesser")
+	@GetMapping("/taille/{taille}/less")
 	@JsonView(Views.Common.class)
 	public List<Profil> getByTailleLesserThan(@PathVariable double taille) {
 		return profilService.getByTailleLesserThan(taille);
@@ -85,13 +85,13 @@ public class ProfilRestController {
 //	}
 	@GetMapping("/age/{age}/greater")
 	@JsonView(Views.Common.class)
-	public List<Profil> getByDateNaissanceGreaterThan(@PathVariable Long age) {
+	public List<Profil> getByAgeGreaterThan(@PathVariable Long age) {
 		LocalDate dateNaissance = LocalDate.now().minusYears(age);
 		return profilService.getByDateNaissanceLesserThan(dateNaissance);
 	}
-	@GetMapping("/age/{age}/lesser")
+	@GetMapping("/age/{age}/less")
 	@JsonView(Views.Common.class)
-	public List<Profil> getByDateNaissanceLesserThan(@PathVariable Long age) {
+	public List<Profil> getByAgeLesserThan(@PathVariable Long age) {
 		LocalDate dateNaissance = LocalDate.now().minusYears(age);
 		System.out.println(dateNaissance);
 		return profilService.getByDateNaissanceGreaterThan(dateNaissance);
