@@ -29,9 +29,56 @@ export class SportService {
   public create(sport: Sport): Observable<Sport> {
     const sportEnJson = {
       nom: sport.nom,
-      clubs: sport.clubs,
-      interets: sport.interets,
     };
+    if (sport.caracteristique) {
+      Object.assign(sportEnJson, {
+        caracteristique: {
+          id: sport.caracteristique.id,
+        },
+      });
+    }
     return this.http.post<Sport>(SportService.URL, sportEnJson);
+  }
+
+  public getByIdWithClub(id: number): Observable<Sport> {
+    return this.http.get<Sport>(SportService.URL + '/' + id + '/club');
+  }
+
+  public getByIdWithInteret(id: number): Observable<Sport> {
+    return this.http.get<Sport>(SportService.URL + '/' + id + '/interet');
+  }
+
+  public getAllByCaracteristique(
+    collectif: number,
+    creativite: number,
+    determination: number,
+    patience: number,
+    detente: number,
+    agilite: number,
+    puissance: number,
+    vitesse: number,
+    endurance: number
+  ): Observable<Sport[]> {
+    return this.http.get<Sport[]>(
+      SportService.URL +
+        '/caracteristique/' +
+        collectif +
+        '/' +
+        creativite +
+        '/' +
+        determination +
+        '/' +
+        patience +
+        '/' +
+        detente +
+        '/' +
+        agilite +
+        '/' +
+        puissance +
+        '/' +
+        vitesse +
+        '/' +
+        endurance
+    );
   }
 }
