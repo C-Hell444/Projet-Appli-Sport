@@ -108,19 +108,19 @@
             </tr>
             <tr>
               <td>Nom :</td>
-              <td>1111111</td>
+              <td>{{ utilisateurProfil.nom }}</td>
             </tr>
             <tr>
               <td>Prenom :</td>
-              <td>1111111</td>
+              <td>{{ utilisateurProfil.prenom }}</td>
             </tr>
             <tr>
               <td>Mail :</td>
-              <td></td>
+              <td>{{ utilisateurProfil.mail }}</td>
             </tr>
             <tr>
               <td>Numéro de téléphone :</td>
-              <td>1111111</td>
+              <td>{{ utilisateurProfil.numTel }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Adresse</td>
@@ -129,31 +129,31 @@
 
             <tr>
               <td>Numéro :</td>
-              <td>1</td>
+              <td>{{ utilisateurProfil.adresse?.numero }}</td>
             </tr>
             <tr>
               <td>Rue :</td>
-              <td>1</td>
+              <td>{{ utilisateurProfil.adresse?.rue }}</td>
             </tr>
             <tr>
               <td>Ville :</td>
-              <td>1</td>
+              <td>{{ utilisateurProfil.adresse?.ville }}</td>
             </tr>
             <tr>
               <td>Code postal :</td>
-              <td>1</td>
+              <td>{{ utilisateurProfil.adresse?.codePostal }}</td>
             </tr>
             <tr>
               <td>Poids :</td>
-              <td>1111111</td>
+              <td>{{ utilisateurProfil.profilUtilisateur?.poids }}</td>
             </tr>
             <tr>
               <td>Taille :</td>
-              <td>1111111</td>
+              <td>{{ utilisateurProfil.profilUtilisateur?.taille }}</td>
             </tr>
             <tr>
               <td>Date de naissance :</td>
-              <td>1111111</td>
+              <td>{{ utilisateurProfil.profilUtilisateur?.dateNaissance }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Caractéristiques</td>
@@ -161,39 +161,41 @@
             </tr>
             <tr>
               <td>Collectif :</td>
-              <td>1111111</td>
+              <td>
+                {{ profil.caracteristique?.collectif }}
+              </td>
             </tr>
             <tr>
               <td>Creativité :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.creativite }}</td>
             </tr>
             <tr>
               <td>Determination :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.determination }}</td>
             </tr>
             <tr>
               <td>Patience :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.patience }}</td>
             </tr>
             <tr>
               <td>Detente :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.detente }}</td>
             </tr>
             <tr>
               <td>Agilité :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.agilite }}</td>
             </tr>
             <tr>
               <td>Puissance :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.puissance }}</td>
             </tr>
             <tr>
               <td>Vitesse :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.vitesse }}</td>
             </tr>
             <tr>
               <td>Endurance :</td>
-              <td>1111111</td>
+              <td>{{ profil.caracteristique?.endurance }}</td>
             </tr>
             <tr>
               <td class="fst-italic fs-4 fw-bold">Intérêts</td>
