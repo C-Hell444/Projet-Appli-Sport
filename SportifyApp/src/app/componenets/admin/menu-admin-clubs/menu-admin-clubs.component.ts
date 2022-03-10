@@ -15,6 +15,10 @@ export class MenuAdminClubsComponent implements OnInit {
   constructor(private clubService: ClubService) {}
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll(): void {
     this.clubService.getAll().subscribe((ok) => {
       this.clubs = ok;
       for (let c of this.clubs) {
@@ -22,6 +26,14 @@ export class MenuAdminClubsComponent implements OnInit {
           this.clubs2.push(res);
         });
       }
+    });
+  }
+
+  delete(id: number) {
+    this.clubService.delete(id).subscribe((ok) => {
+      this.clubs = [];
+      this.clubs2 = [];
+      this.getAll();
     });
   }
 }
