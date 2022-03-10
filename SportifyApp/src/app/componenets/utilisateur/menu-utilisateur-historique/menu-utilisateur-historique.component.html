@@ -112,34 +112,53 @@
             alt="tweeter"
         /></a>
       </div>
-    <div id="menuDrop">
-      <div id="titreOnglet">
-      <p  class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-        Historique
-      </p>
-      </div>
-      <div class="dropend">
-      <button type="button" class="btn btn-outline-primary nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Choisissez une historique</button>
-        <ul  class="dropdown-menu">
-          <li  class="dropdown-item" (click)="triAscClub()">Clubs</li>
-          <li  class="dropdown-item" (click)="triAscEquipe()">Equipes</li>
-          <li  class="dropdown-item" (click)="triAscEvenement()">Evenements</li>
-        </ul>
+      <div id="menuDrop">
+        <div id="titreOnglet">
+          <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+            Historique
+          </p>
+        </div>
+        <div class="dropend">
+          <button
+            type="button"
+            class="btn btn-outline-primary nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Choisissez une historique
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triAscClub()">Clubs</li>
+            <li class="dropdown-item" (click)="triAscEquipe()">Equipes</li>
+            <li class="dropdown-item" (click)="triAscEvenement()">
+              Evenements
+            </li>
+          </ul>
         </div>
       </div>
-      <p *ngIf="afficheClubs" class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+      <p
+        *ngIf="afficheClubs"
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+      >
         Vous êtes inscrit aux clubs suivants
       </p>
 
-      <div *ngIf="afficheClubs" class="col-md-3 align-items-center w-75 p-3 mx-auto">
+      <div
+        *ngIf="afficheClubs"
+        class="col-md-3 align-items-center w-75 p-3 mx-auto"
+      >
         <div class="dropdown">
-          <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
-            <ul  class="dropdown-menu">
-              <li  class="dropdown-item" (click)="triAscClub()">Récent</li>
-              <li  class="dropdown-item" (click)="triDescClub()">Ancien</li>
-            </ul>
-          </div>
-
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Trier
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triAscClub()">Récent</li>
+            <li class="dropdown-item" (click)="triDescClub()">Ancien</li>
+          </ul>
+        </div>
 
         <table class="table table-striped table-hover fs-4">
           <tbody>
@@ -168,17 +187,29 @@
           </tbody>
         </table>
       </div>
-      <p *ngIf="afficheEquipes" class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+      <p
+        *ngIf="afficheEquipes"
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+      >
         Vous faites partie des équipes suivantes
       </p>
-      <div *ngIf="afficheEquipes" class="col-md-3 align-items-center w-75 p-3 mx-auto">
-          <div class="dropdown">
-            <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
-              <ul  class="dropdown-menu">
-                <li  class="dropdown-item" (click)="triAscEquipe()">Récent</li>
-                <li  class="dropdown-item" (click)="triDescEquipe()">Ancien</li>
-              </ul>
-            </div>
+      <div
+        *ngIf="afficheEquipes"
+        class="col-md-3 align-items-center w-75 p-3 mx-auto"
+      >
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Trier
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triAscEquipe()">Récent</li>
+            <li class="dropdown-item" (click)="triDescEquipe()">Ancien</li>
+          </ul>
+        </div>
         <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
@@ -203,17 +234,29 @@
         </table>
       </div>
 
-      <p *ngIf="afficheEvents" class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+      <p
+        *ngIf="afficheEvents"
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+      >
         Vous êtes inscrit aux évenements suivants
       </p>
-      <div *ngIf="afficheEvents" class="col-md-3 align-items-center w-75 p-3 mx-auto">
+      <div
+        *ngIf="afficheEvents"
+        class="col-md-3 align-items-center w-75 p-3 mx-auto"
+      >
         <div class="dropdown">
-          <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
-            <ul  class="dropdown-menu">
-              <li  class="dropdown-item" (click)="triAscEvenement()">Récent</li>
-              <li  class="dropdown-item" (click)="triDescEvenement()">Ancien</li>
-            </ul>
-          </div>
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Trier
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triAscEvenement()">Récent</li>
+            <li class="dropdown-item" (click)="triDescEvenement()">Ancien</li>
+          </ul>
+        </div>
         <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
@@ -240,12 +283,13 @@
         </table>
       </div>
     </div>
-</div>
+  </div>
 
-<!-- ********************************************************** -->
+  <!-- ********************************************************** -->
 
-<div class="DivEspace3">
-  <br />
-  <br />
-  <hr />
+  <div class="DivEspace3">
+    <br />
+    <br />
+    <hr />
+  </div>
 </div>

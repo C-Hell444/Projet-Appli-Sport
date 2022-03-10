@@ -161,7 +161,7 @@
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
                 {{ c.adresse!.codePostal }} {{ c.adresse!.ville }}
               </td>
-              <td>
+              <td *ngIf="clubUtilisateur[index].dateFin == null">
                 <button type="button" (click)="showEquipe(c.id!, c.clubNom!)">
                   <img
                     src="assets/img/recherche.png"
@@ -172,7 +172,7 @@
                   />
                 </button>
               </td>
-              <td>
+              <td *ngIf="clubUtilisateur[index].dateFin == null">
                 <button
                   type="button"
                   (click)="showEvenement(c.id!, c.clubNom!)"

@@ -1100,70 +1100,70 @@ public class ConsoleService implements CommandLineRunner {
 	private void initEvenementUtilisateur() {
 		evenementUtilisateurKey1.setEvenement(evenement1);
 		evenementUtilisateurKey1.setUtilisateur(utilisateur1);
-		evenementUtilisateur1.setId(evenementUtilisateurKey1);
+		evenementUtilisateur1.setEvenementUtilisateurKey(evenementUtilisateurKey1);
 		evenementUtilisateur1.setDateDebut(evenement1.getDateDebut());
 		evenementUtilisateur1.setDateFin(evenement1.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur1);
 
 		evenementUtilisateurKey2.setEvenement(evenement2);
 		evenementUtilisateurKey2.setUtilisateur(utilisateur2);
-		evenementUtilisateur2.setId(evenementUtilisateurKey2);
+		evenementUtilisateur2.setEvenementUtilisateurKey(evenementUtilisateurKey2);
 		evenementUtilisateur2.setDateDebut(evenement2.getDateDebut());
 		evenementUtilisateur2.setDateFin(evenement2.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur2);
 
 		evenementUtilisateurKey3.setEvenement(evenement3);
 		evenementUtilisateurKey3.setUtilisateur(utilisateur3);
-		evenementUtilisateur3.setId(evenementUtilisateurKey3);
+		evenementUtilisateur3.setEvenementUtilisateurKey(evenementUtilisateurKey3);
 		evenementUtilisateur3.setDateDebut(evenement3.getDateDebut());
 		evenementUtilisateur3.setDateFin(evenement3.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur3);
 
 		evenementUtilisateurKey4.setEvenement(evenement3);
 		evenementUtilisateurKey4.setUtilisateur(utilisateur4);
-		evenementUtilisateur4.setId(evenementUtilisateurKey4);
+		evenementUtilisateur4.setEvenementUtilisateurKey(evenementUtilisateurKey4);
 		evenementUtilisateur4.setDateDebut(evenement3.getDateDebut());
 		evenementUtilisateur4.setDateFin(evenement3.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur4);
 
 		evenementUtilisateurKey5.setEvenement(evenement4);
 		evenementUtilisateurKey5.setUtilisateur(utilisateur5);
-		evenementUtilisateur5.setId(evenementUtilisateurKey5);
+		evenementUtilisateur5.setEvenementUtilisateurKey(evenementUtilisateurKey5);
 		evenementUtilisateur5.setDateDebut(evenement4.getDateDebut());
 		evenementUtilisateur5.setDateFin(evenement4.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur5);
 
 		evenementUtilisateurKey6.setEvenement(evenement5);
 		evenementUtilisateurKey6.setUtilisateur(utilisateur6);
-		evenementUtilisateur6.setId(evenementUtilisateurKey6);
+		evenementUtilisateur6.setEvenementUtilisateurKey(evenementUtilisateurKey6);
 		evenementUtilisateur6.setDateDebut(evenement5.getDateDebut());
 		evenementUtilisateur6.setDateFin(evenement5.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur6);
 		
 		evenementUtilisateurKey7.setEvenement(evenement1);
 		evenementUtilisateurKey7.setUtilisateur(utilisateur7);
-		evenementUtilisateur7.setId(evenementUtilisateurKey7);
+		evenementUtilisateur7.setEvenementUtilisateurKey(evenementUtilisateurKey7);
 		evenementUtilisateur7.setDateDebut(evenement1.getDateDebut());
 		evenementUtilisateur7.setDateFin(evenement1.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur7);
 
 		evenementUtilisateurKey8.setEvenement(evenement2);
 		evenementUtilisateurKey8.setUtilisateur(utilisateur8);
-		evenementUtilisateur8.setId(evenementUtilisateurKey8);
+		evenementUtilisateur8.setEvenementUtilisateurKey(evenementUtilisateurKey8);
 		evenementUtilisateur8.setDateDebut(evenement2.getDateDebut());
 		evenementUtilisateur8.setDateFin(evenement2.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur8);
 		
 		evenementUtilisateurKey9.setEvenement(evenement1);
 		evenementUtilisateurKey9.setUtilisateur(utilisateur9);
-		evenementUtilisateur9.setId(evenementUtilisateurKey9);
+		evenementUtilisateur9.setEvenementUtilisateurKey(evenementUtilisateurKey9);
 		evenementUtilisateur9.setDateDebut(evenement1.getDateDebut());
 		evenementUtilisateur9.setDateFin(evenement1.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur9);
 
 		evenementUtilisateurKey10.setEvenement(evenement2);
 		evenementUtilisateurKey10.setUtilisateur(utilisateur10);
-		evenementUtilisateur10.setId(evenementUtilisateurKey10);
+		evenementUtilisateur10.setEvenementUtilisateurKey(evenementUtilisateurKey10);
 		evenementUtilisateur10.setDateDebut(evenement2.getDateDebut());
 		evenementUtilisateur10.setDateFin(evenement2.getDateFin());
 		evenementUtilisateurService.createOrUpdate(evenementUtilisateur10);

@@ -62,9 +62,9 @@ public class EvenementUtilisateurRestController {
 	@PutMapping("/{idEvenement}/{idUser}")
 	@JsonView(Views.Common.class)
 	public EvenementUtilisateur update(@PathVariable("idEvenement") Long idEvenement,@PathVariable("idUser") Long idUser, @Valid @RequestBody EvenementUtilisateur evenementUtilisateur, BindingResult br) {
-		if (evenementUtilisateur.getId() == null || 
-				idEvenement != evenementUtilisateur.getId().getEvenement().getId() || 
-				idUser != evenementUtilisateur.getId().getUtilisateur().getId()||
+		if (evenementUtilisateur.getEvenementUtilisateurKey() == null || 
+				idEvenement != evenementUtilisateur.getEvenementUtilisateurKey().getEvenement().getId() || 
+				idUser != evenementUtilisateur.getEvenementUtilisateurKey().getUtilisateur().getId()||
 				br.hasErrors()) {
 			throw new EvenementUtilisateurException();
 		}
@@ -74,7 +74,7 @@ public class EvenementUtilisateurRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public EvenementUtilisateur update(@PathVariable EvenementUtilisateurKey id, @Valid @RequestBody EvenementUtilisateur evenementUtilisateur, BindingResult br) {
-		if (evenementUtilisateur.getId() == null || id != evenementUtilisateur.getId() || br.hasErrors()) {
+		if (evenementUtilisateur.getEvenementUtilisateurKey() == null || id != evenementUtilisateur.getEvenementUtilisateurKey() || br.hasErrors()) {
 			throw new EvenementUtilisateurException();
 		}
 		return evenementUtilisateurService.createOrUpdate(evenementUtilisateur);

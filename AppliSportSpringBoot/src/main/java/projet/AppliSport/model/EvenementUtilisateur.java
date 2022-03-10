@@ -45,11 +45,11 @@ public class EvenementUtilisateur {
 		this.id = id;
 	}
 
-	public EvenementUtilisateurKey getId() {
+	public EvenementUtilisateurKey getEvenementUtilisateurKey() {
 		return id;
 	}
 
-	public void setId(EvenementUtilisateurKey id) {
+	public void setEvenementUtilisateurKey(EvenementUtilisateurKey id) {
 		this.id = id;
 	}
 
@@ -86,4 +86,5 @@ public class EvenementUtilisateur {
 		return Objects.equals(id, other.id);
 	}
 
+	
 }
