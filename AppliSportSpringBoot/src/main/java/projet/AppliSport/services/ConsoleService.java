@@ -85,6 +85,11 @@ public class ConsoleService implements CommandLineRunner {
 	static Caracteristique caracteristique10 = new Caracteristique();
 	static Caracteristique caracteristique11 = new Caracteristique();
 	static Caracteristique caracteristique12 = new Caracteristique();
+	static Caracteristique caracteristique13 = new Caracteristique();
+	static Caracteristique caracteristique14 = new Caracteristique();
+	static Caracteristique caracteristique15 = new Caracteristique();
+	static Caracteristique caracteristique16 = new Caracteristique();
+	static Caracteristique caracteristique17 = new Caracteristique();
 
 	static Profil profil1 = new Profil();
 	static Profil profil2 = new Profil();
@@ -451,6 +456,61 @@ public class ConsoleService implements CommandLineRunner {
 		caracteristique12.setPuissance(0);
 		caracteristique12.setVitesse(0);
 		caracteristiqueService.createOrUpdate(caracteristique12);
+		
+		caracteristique13.setAgilite(2);
+		caracteristique13.setCollectif(3);
+		caracteristique13.setCreativite(0);
+		caracteristique13.setDetente(0);
+		caracteristique13.setDetermination(0);
+		caracteristique13.setEndurance(5);
+		caracteristique13.setPatience(0);
+		caracteristique13.setPuissance(1);
+		caracteristique13.setVitesse(2);
+		caracteristiqueService.createOrUpdate(caracteristique13);
+		
+		caracteristique14.setAgilite(2);
+		caracteristique14.setCollectif(3);
+		caracteristique14.setCreativite(2);
+		caracteristique14.setDetente(2);
+		caracteristique14.setDetermination(1);
+		caracteristique14.setEndurance(1);
+		caracteristique14.setPatience(2);
+		caracteristique14.setPuissance(2);
+		caracteristique14.setVitesse(0);
+		caracteristiqueService.createOrUpdate(caracteristique14);
+		
+		caracteristique15.setAgilite(1);
+		caracteristique15.setCollectif(3);
+		caracteristique15.setCreativite(1);
+		caracteristique15.setDetente(0);
+		caracteristique15.setDetermination(5);
+		caracteristique15.setEndurance(2);
+		caracteristique15.setPatience(4);
+		caracteristique15.setPuissance(4);
+		caracteristique15.setVitesse(0);
+		caracteristiqueService.createOrUpdate(caracteristique15);
+		
+		caracteristique16.setAgilite(2);
+		caracteristique16.setCollectif(3);
+		caracteristique16.setCreativite(4);
+		caracteristique16.setDetente(0);
+		caracteristique16.setDetermination(0);
+		caracteristique16.setEndurance(1);
+		caracteristique16.setPatience(2);
+		caracteristique16.setPuissance(0);
+		caracteristique16.setVitesse(0);
+		caracteristiqueService.createOrUpdate(caracteristique16);
+		
+		caracteristique17.setAgilite(2);
+		caracteristique17.setCollectif(0);
+		caracteristique17.setCreativite(0);
+		caracteristique17.setDetente(0);
+		caracteristique17.setDetermination(2);
+		caracteristique17.setEndurance(0);
+		caracteristique17.setPatience(2);
+		caracteristique17.setPuissance(0);
+		caracteristique17.setVitesse(0);
+		caracteristiqueService.createOrUpdate(caracteristique17);
 	}
 
 	private void initProfil() {
@@ -666,23 +726,23 @@ public class ConsoleService implements CommandLineRunner {
 	private void initSport() {
 
 		sport1.setNom("Football");
-		sport1.setCaracteristique(caracteristique10);
+		sport1.setCaracteristique(caracteristique13);
 		sportService.createOrUpdate(sport1);
 
 		sport2.setNom("Handball");
-		sport2.setCaracteristique(caracteristique11);
+		sport2.setCaracteristique(caracteristique14);
 		sportService.createOrUpdate(sport2);
 
 		sport3.setNom("Rugby");
-		sport3.setCaracteristique(caracteristique12);
+		sport3.setCaracteristique(caracteristique15);
 		sportService.createOrUpdate(sport3);
 		
 		sport4.setNom("Natation");
-		sport4.setCaracteristique(caracteristique12);
+		sport4.setCaracteristique(caracteristique16);
 		sportService.createOrUpdate(sport4);
 		
 		sport5.setNom("Triathlon");
-		sport5.setCaracteristique(caracteristique12);
+		sport5.setCaracteristique(caracteristique17);
 		sportService.createOrUpdate(sport5);
 	}
 
@@ -691,7 +751,7 @@ public class ConsoleService implements CommandLineRunner {
 		club1.setIdentifiant("club1");
 		club1.setMdp("club1");
 		club1.setMail("club1@gmail.com");
-		club1.setClubNom("Paris");
+		club1.setClubNom("PSG");
 		club1.setNumTel("0606060606");
 		club1.setAdresse(adresse1);
 		club1.setSportClub(sport1);
@@ -700,7 +760,7 @@ public class ConsoleService implements CommandLineRunner {
 		club2.setIdentifiant("club2");
 		club2.setMdp("club2");
 		club2.setMail("club2@gmail.com");
-		club2.setClubNom("Bordeau");
+		club2.setClubNom("Marseille");
 		club2.setNumTel("0632781971");
 		club2.setAdresse(adresse2);
 		club2.setSportClub(sport2);
@@ -709,7 +769,7 @@ public class ConsoleService implements CommandLineRunner {
 		club3.setIdentifiant("club3");
 		club3.setMdp("club3");
 		club3.setMail("club3@gmail.com");
-		club3.setClubNom("Toulouse");
+		club3.setClubNom("Toulouse FC");
 		club3.setNumTel("0657972412");
 		club3.setAdresse(adresse3);
 		club3.setSportClub(sport3);
@@ -718,7 +778,7 @@ public class ConsoleService implements CommandLineRunner {
 		club4.setIdentifiant("club4");
 		club4.setMdp("club4");
 		club4.setMail("club4@gmail.com");
-		club4.setClubNom("Nantes");
+		club4.setClubNom("Les Canaries");
 		club4.setNumTel("0606060606");
 		club4.setAdresse(adresse4);
 		club4.setSportClub(sport1);
@@ -727,7 +787,7 @@ public class ConsoleService implements CommandLineRunner {
 		club5.setIdentifiant("club5");
 		club5.setMdp("club5");
 		club5.setMail("club5@gmail.com");
-		club5.setClubNom("Marseille");
+		club5.setClubNom("Les no stress");
 		club5.setNumTel("0606060606");
 		club5.setAdresse(adresse5);
 		club5.setSportClub(sport2);
@@ -736,7 +796,7 @@ public class ConsoleService implements CommandLineRunner {
 		club6.setIdentifiant("club6");
 		club6.setMdp("club6");
 		club6.setMail("club6@gmail.com");
-		club6.setClubNom("Bastia");
+		club6.setClubNom("Les Manchots");
 		club6.setNumTel("0606060606");
 		club6.setAdresse(adresse6);
 		club6.setSportClub(sport3);
@@ -866,84 +926,84 @@ public class ConsoleService implements CommandLineRunner {
 		clubUtilisateurKey1.setUtilisateur(utilisateur1);
 		clubUtilisateur1.setClubUtilisateurKey(clubUtilisateurKey1);
 		clubUtilisateur1.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur1.setDateFin(LocalDate.parse("2023-01-01"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur1);
 
 		clubUtilisateurKey2.setClub(club2);
 		clubUtilisateurKey2.setUtilisateur(utilisateur2);
 		clubUtilisateur2.setClubUtilisateurKey(clubUtilisateurKey2);
 		clubUtilisateur2.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur2.setDateFin(LocalDate.parse("2023-02-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur2);
 
 		clubUtilisateurKey3.setClub(club1);
 		clubUtilisateurKey3.setUtilisateur(utilisateur3);
 		clubUtilisateur3.setClubUtilisateurKey(clubUtilisateurKey3);
 		clubUtilisateur3.setDateDebut(LocalDate.parse("2020-03-01"));
-		clubUtilisateur3.setDateFin(LocalDate.parse("2023-03-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur3);
 
 		clubUtilisateurKey4.setClub(club2);
 		clubUtilisateurKey4.setUtilisateur(utilisateur4);
 		clubUtilisateur4.setClubUtilisateurKey(clubUtilisateurKey4);
 		clubUtilisateur4.setDateDebut(LocalDate.parse("2020-04-01"));
-		clubUtilisateur4.setDateFin(LocalDate.parse("2023-04-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur4);
 
 		clubUtilisateurKey5.setClub(club2);
 		clubUtilisateurKey5.setUtilisateur(utilisateur5);
 		clubUtilisateur5.setClubUtilisateurKey(clubUtilisateurKey5);
 		clubUtilisateur5.setDateDebut(LocalDate.parse("2020-05-01"));
-		clubUtilisateur5.setDateFin(LocalDate.parse("2023-05-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur5);
 
 		clubUtilisateurKey6.setClub(club2);
 		clubUtilisateurKey6.setUtilisateur(utilisateur6);
 		clubUtilisateur6.setClubUtilisateurKey(clubUtilisateurKey6);
 		clubUtilisateur6.setDateDebut(LocalDate.parse("2020-06-01"));
-		clubUtilisateur6.setDateFin(LocalDate.parse("2023-06-01"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur6);
 		
 		clubUtilisateurKey7.setClub(club1);
 		clubUtilisateurKey7.setUtilisateur(utilisateur7);
 		clubUtilisateur7.setClubUtilisateurKey(clubUtilisateurKey7);
 		clubUtilisateur7.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur7.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur7);
 
 		clubUtilisateurKey8.setClub(club2);
 		clubUtilisateurKey8.setUtilisateur(utilisateur8);
 		clubUtilisateur8.setClubUtilisateurKey(clubUtilisateurKey8);
 		clubUtilisateur8.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur8.setDateFin(LocalDate.parse("2023-02-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur8);
 		
 		clubUtilisateurKey9.setClub(club1);
 		clubUtilisateurKey9.setUtilisateur(utilisateur9);
 		clubUtilisateur9.setClubUtilisateurKey(clubUtilisateurKey9);
 		clubUtilisateur9.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur9.setDateFin(LocalDate.parse("2023-01-01"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur9);
 
 		clubUtilisateurKey10.setClub(club2);
 		clubUtilisateurKey10.setUtilisateur(utilisateur10);
 		clubUtilisateur10.setClubUtilisateurKey(clubUtilisateurKey10);
 		clubUtilisateur10.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur10.setDateFin(LocalDate.parse("2023-02-01"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur10);
 		
 		clubUtilisateurKey11.setClub(club1);
 		clubUtilisateurKey11.setUtilisateur(utilisateur11);
 		clubUtilisateur11.setClubUtilisateurKey(clubUtilisateurKey11);
 		clubUtilisateur11.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur11.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur1);
 
 		clubUtilisateurKey12.setClub(club2);
 		clubUtilisateurKey12.setUtilisateur(utilisateur12);
 		clubUtilisateur12.setClubUtilisateurKey(clubUtilisateurKey12);
 		clubUtilisateur12.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur12.setDateFin(LocalDate.parse("2023-02-01"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur12);
 		
 		
@@ -955,84 +1015,84 @@ public class ConsoleService implements CommandLineRunner {
 		equipeUtilisateurKey1.setUtilisateur(utilisateur1);
 		equipeUtilisateur1.setEquipeUtilisateurKey(equipeUtilisateurKey1);
 		equipeUtilisateur1.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur1.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur1);
 
 		equipeUtilisateurKey2.setEquipe(equipe1);
 		equipeUtilisateurKey2.setUtilisateur(utilisateur2);
 		equipeUtilisateur2.setEquipeUtilisateurKey(equipeUtilisateurKey2);
 		equipeUtilisateur2.setDateDebut(LocalDate.parse("2020-02-01"));
-		equipeUtilisateur2.setDateFin(LocalDate.parse("2023-02-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur2);
 
 		equipeUtilisateurKey3.setEquipe(equipe2);
 		equipeUtilisateurKey3.setUtilisateur(utilisateur3);
 		equipeUtilisateur3.setEquipeUtilisateurKey(equipeUtilisateurKey3);
 		equipeUtilisateur3.setDateDebut(LocalDate.parse("2020-03-01"));
-		equipeUtilisateur3.setDateFin(LocalDate.parse("2023-03-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur3);
 
 		equipeUtilisateurKey4.setEquipe(equipe2);
 		equipeUtilisateurKey4.setUtilisateur(utilisateur4);
 		equipeUtilisateur4.setEquipeUtilisateurKey(equipeUtilisateurKey4);
 		equipeUtilisateur4.setDateDebut(LocalDate.parse("2020-04-01"));
-		equipeUtilisateur4.setDateFin(LocalDate.parse("2023-04-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur4);
 
 		equipeUtilisateurKey5.setEquipe(equipe3);
 		equipeUtilisateurKey5.setUtilisateur(utilisateur5);
 		equipeUtilisateur5.setEquipeUtilisateurKey(equipeUtilisateurKey5);
 		equipeUtilisateur5.setDateDebut(LocalDate.parse("2020-05-01"));
-		equipeUtilisateur5.setDateFin(LocalDate.parse("2023-05-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur5);
 
 		equipeUtilisateurKey6.setEquipe(equipe3);
 		equipeUtilisateurKey6.setUtilisateur(utilisateur6);
 		equipeUtilisateur6.setEquipeUtilisateurKey(equipeUtilisateurKey6);
 		equipeUtilisateur6.setDateDebut(LocalDate.parse("2020-06-01"));
-		equipeUtilisateur6.setDateFin(LocalDate.parse("2023-06-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur6);
 		
 		equipeUtilisateurKey7.setEquipe(equipe1);
 		equipeUtilisateurKey7.setUtilisateur(utilisateur7);
 		equipeUtilisateur7.setEquipeUtilisateurKey(equipeUtilisateurKey7);
 		equipeUtilisateur7.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur7.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur7);
 		
 		equipeUtilisateurKey8.setEquipe(equipe2);
 		equipeUtilisateurKey8.setUtilisateur(utilisateur8);
 		equipeUtilisateur8.setEquipeUtilisateurKey(equipeUtilisateurKey8);
 		equipeUtilisateur8.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur8.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur8);
 		
 		equipeUtilisateurKey9.setEquipe(equipe1);
 		equipeUtilisateurKey9.setUtilisateur(utilisateur9);
 		equipeUtilisateur9.setEquipeUtilisateurKey(equipeUtilisateurKey9);
 		equipeUtilisateur9.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur9.setDateFin(LocalDate.parse("2023-01-01"));
+	
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur7);
 		
 		equipeUtilisateurKey10.setEquipe(equipe2);
 		equipeUtilisateurKey10.setUtilisateur(utilisateur10);
 		equipeUtilisateur10.setEquipeUtilisateurKey(equipeUtilisateurKey10);
 		equipeUtilisateur10.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur10.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur10);
 		
 		equipeUtilisateurKey11.setEquipe(equipe1);
 		equipeUtilisateurKey11.setUtilisateur(utilisateur11);
 		equipeUtilisateur11.setEquipeUtilisateurKey(equipeUtilisateurKey11);
 		equipeUtilisateur11.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur11.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur11);
 		
 		equipeUtilisateurKey12.setEquipe(equipe2);
 		equipeUtilisateurKey12.setUtilisateur(utilisateur12);
 		equipeUtilisateur12.setEquipeUtilisateurKey(equipeUtilisateurKey12);
 		equipeUtilisateur12.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur12.setDateFin(LocalDate.parse("2023-01-01"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur12);
 
 	}
