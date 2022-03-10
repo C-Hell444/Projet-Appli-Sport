@@ -88,11 +88,11 @@ export const routes: Routes = [
     component: MenuClubMembresComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-club-membres-edit',
-    component: MenuClubMembresEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-club-membres-edit',
+  //   component: MenuClubMembresEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-club-equipes',
     component: MenuClubEquipesComponent,
