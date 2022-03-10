@@ -97,9 +97,9 @@ export class ClubService {
   getBySportNom(nom: string): Observable<Club> {
     return this.http.get<Club>(ClubService.URL + '/sport/nom' + nom);
   }
-  getSport(id: number): Observable<Club> {
-    return this.http.get<Club>(ClubService.URL + '/sport/' + id);
-  }
+  // getSport(id: number): Observable<Club> {
+  //   return this.http.get<Club>(ClubService.URL + '/sport/' + id);
+  // }
   getSportListe(sports: Sport[]): Observable<Club> {
     return this.http.get<Club>(ClubService.URL + '/sport/liste');
   }
@@ -161,5 +161,9 @@ export class ClubService {
     return this.http.get<Club>(
       ClubService.URL + '/' + id + '/evenement/date-fin-desc'
     );
+  }
+
+  getAllByIdSport(id: number): Observable<Club[]> {
+    return this.http.get<Club[]>(ClubService.URL + '/sport/' + id);
   }
 }
