@@ -38,26 +38,27 @@ export class EquipeUtilisateurService {
     );
   }
 
-  create(EquipeUtilisateur: EquipeUtilisateur): Observable<EquipeUtilisateur> {
-    const EquipeUtilisateurEnJson = {
-      dateDebut: EquipeUtilisateur.dateDebut,
-      dateFin: EquipeUtilisateur.dateFin,
+  create(equipeUtilisateur: EquipeUtilisateur): Observable<EquipeUtilisateur> {
+    const equipeUtilisateurEnJson = {
+      dateDebut: equipeUtilisateur.dateDebut,
+      dateFin: null,
     };
-    if (EquipeUtilisateur.id) {
-      if (EquipeUtilisateur.id.equipe) {
-        Object.assign(EquipeUtilisateurEnJson, {
-          equipe: { id: EquipeUtilisateur.id.equipe.id },
-        });
-      }
-      if (EquipeUtilisateur.id.utilisateur) {
-        Object.assign(EquipeUtilisateurEnJson, {
-          utilisateur: { id: EquipeUtilisateur.id.utilisateur.id },
-        });
-      }
+    if (equipeUtilisateur.id) {
+      Object.assign(equipeUtilisateurEnJson, {
+        id: {
+          equipe: {
+            id: equipeUtilisateur.id!.equipe!.id,
+          },
+          utilisateur: {
+            type: 'utilisateur',
+            id: equipeUtilisateur.id!.utilisateur!.id,
+          },
+        },
+      });
     }
     return this.http.post<EquipeUtilisateur>(
       EquipeUtilisateurService.URL,
-      EquipeUtilisateurEnJson
+      equipeUtilisateurEnJson
     );
   }
 }

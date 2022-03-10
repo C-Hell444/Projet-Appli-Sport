@@ -44,16 +44,15 @@ export class EvenementUtilisateurService {
       dateFin: EvenementUtilisateur.dateFin,
     };
     if (EvenementUtilisateur.id) {
-      if (EvenementUtilisateur.id.evenement) {
-        Object.assign(EvenementUtilisateurEnJson, {
-          Evenement: { id: EvenementUtilisateur.id.evenement.id },
-        });
-      }
-      if (EvenementUtilisateur.id.utilisateur) {
-        Object.assign(EvenementUtilisateurEnJson, {
-          utilisateur: { id: EvenementUtilisateur.id.utilisateur.id },
-        });
-      }
+      Object.assign(EvenementUtilisateurEnJson, {
+        id: {
+          evenement: { id: EvenementUtilisateur.id.evenement!.id },
+          utilisateur: {
+            type: 'utilisateur',
+            id: EvenementUtilisateur.id.utilisateur!.id,
+          },
+        },
+      });
     }
     return this.http.post<EvenementUtilisateur>(
       EvenementUtilisateurService.URL,
