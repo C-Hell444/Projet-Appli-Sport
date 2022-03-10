@@ -89,17 +89,19 @@ export class MenuClubMembresComponent implements OnInit {
   }
 
   delete(cu: ClubUtilisateur) {
-    cu.dateFin = new Date();
-
+    let d = new Date();
+    cu.dateFin = d;
     this.clubUtilisateurService
-      .updateByIds(this.club.id!, cu.id?.utilisateur?.id!)
+      .updateByIds(this.club.id!, cu.id?.utilisateur?.id!, cu)
       .subscribe((ok) => {
+        cu = ok;
         this.membres = [];
         this.profils = [];
         this.caracteristiques = [];
         this.datesInscription = [];
         this.moyennes = [];
         this.getAll();
+        console.log(cu);
       });
   }
 }

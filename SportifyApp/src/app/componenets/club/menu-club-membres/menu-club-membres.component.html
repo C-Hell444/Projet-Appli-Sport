@@ -110,21 +110,34 @@
               <th>Chercher des membres</th>
               <th>Supprimer</th>
             </tr>
+            <div></div>
             <tr *ngFor="let m of membres; let index = index">
-              <td>{{ m.nom }}</td>
-              <td>{{ m.prenom }}</td>
-              <td>{{ m.profilUtilisateur?.taille }} m</td>
-              <td>{{ m.profilUtilisateur?.poids }} kg</td>
-              <td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
+                {{ m.nom }}
+              </td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
+                {{ m.prenom }}
+              </td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
+                {{ m.profilUtilisateur?.taille }} m
+              </td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
+                {{ m.profilUtilisateur?.poids }} kg
+              </td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
                 {{ m.profilUtilisateur?.dateNaissance | date: "dd-MM-yyyy" }}
               </td>
-              <td>{{ moyennes[index] | number: "1.0-1" }}</td>
-              <td>{{ datesInscription[index] | date: "dd-MM-yyyy" }}</td>
-              <td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
+                {{ moyennes[index] | number: "1.0-1" }}
+              </td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
+                {{ datesInscription[index] | date: "dd-MM-yyyy" }}
+              </td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
                 {{ m.adresse?.numero }} {{ m.adresse?.rue }}
                 {{ m.adresse?.codePostal }} {{ m.adresse?.ville }}
               </td>
-              <td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
                 <button
                   type="button"
                   [routerLink]="['/menu-club-membres-edit']"
@@ -139,7 +152,7 @@
                   />
                 </button>
               </td>
-              <td>
+              <td *ngIf="club.listeMembres![index].dateFin == null">
                 <button
                   (click)="delete(club.listeMembres![index])"
                   type="button"

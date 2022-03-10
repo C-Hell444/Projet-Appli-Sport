@@ -26,10 +26,29 @@ export class ClubUtilisateurService {
     );
   }
 
-  updateByIds(idClub: number, idUser: number): Observable<ClubUtilisateur> {
+  updateByIds(
+    idClub: number,
+    idUser: number,
+    ClubUtilisateur: ClubUtilisateur
+  ): Observable<ClubUtilisateur> {
+    const ClubUtilisateurEnJson = {
+      dateDebut: ClubUtilisateur.dateDebut,
+      dateFin: ClubUtilisateur.dateFin,
+    };
+
+    Object.assign(ClubUtilisateurEnJson, {
+      id: {
+        utilisateur: {
+          type: 'utilisateur',
+          id: idUser,
+        },
+        club: { type: 'club', id: idClub },
+      },
+    });
+
     return this.http.put<ClubUtilisateur>(
       ClubUtilisateurService.URL + '/' + idClub + '/' + idUser,
-      ClubUtilisateur
+      ClubUtilisateurEnJson
     );
   }
 
@@ -56,10 +75,28 @@ export class ClubUtilisateurService {
         },
       });
     }
-
     return this.http.post<ClubUtilisateur>(
       ClubUtilisateurService.URL,
       ClubUtilisateurEnJson
     );
+  }
+
+  private ClubUtilisateurToJson(ClubUtilisateur: ClubUtilisateur) {
+    const ClubUtilisateurEnJson = {
+      dateDebut: ClubUtilisateur.dateDebut,
+      dateFin: ClubUtilisateur.dateFin,
+    };
+    if (ClubUtilisateur.id) {
+      Object.assign(ClubUtilisateurEnJson, {
+        id: {
+          utilisateur: {
+            type: 'utilisateur',
+            id: ClubUtilisateur.id.utilisateur!.id,
+          },
+          club: { type: 'club', id: ClubUtilisateur.id.club!.id },
+        },
+      });
+    }
+    return ClubUtilisateurEnJson;
   }
 }
