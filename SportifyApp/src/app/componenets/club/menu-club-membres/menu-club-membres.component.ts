@@ -1,3 +1,5 @@
+import { ClubUtilisateur } from './../../../model/club-utilisateur';
+import { ClubUtilisateurService } from './../../../services/club-utilisateur.service';
 import { CaracteristiqueService } from './../../../services/caracteristique.service';
 import { ProfilService } from './../../../services/profil.service';
 import { Profil } from './../../../model/profil';
@@ -9,6 +11,7 @@ import { Compte } from './../../../model/compte';
 import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from 'src/app/model/utilisateur';
 import { Caracteristique } from 'src/app/model/caracteristique';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-menu-club-membres',
@@ -18,6 +21,7 @@ import { Caracteristique } from 'src/app/model/caracteristique';
 export class MenuClubMembresComponent implements OnInit {
   compte: Compte = new Compte();
   club: Club = new Club();
+
   membres: Array<Utilisateur> = [];
   profils: Array<Profil> = [];
   caracteristiques: Array<Caracteristique> = [];
@@ -30,7 +34,8 @@ export class MenuClubMembresComponent implements OnInit {
     private clubService: ClubService,
     private utilisateurService: UtilisateurService,
     private profilService: ProfilService,
-    private caracteristiqueService: CaracteristiqueService
+    private caracteristiqueService: CaracteristiqueService,
+    private clubUtilisateurService: ClubUtilisateurService
   ) {}
 
   ngOnInit(): void {
@@ -83,11 +88,18 @@ export class MenuClubMembresComponent implements OnInit {
       });
   }
 
-  delete(id: number) {
-    this.membres = [];
-    this.profils = [];
-    this.caracteristiques = [];
-    this.datesInscription = [];
-    this.moyennes = [];
+  delete(cu: ClubUtilisateur) {
+    cu.dateFin = new Date();
+
+    this.clubUtilisateurService
+      .updateByIds(this.club.id!, cu.id?.utilisateur?.id!)
+      .subscribe((ok) => {
+        this.membres = [];
+        this.profils = [];
+        this.caracteristiques = [];
+        this.datesInscription = [];
+        this.moyennes = [];
+        this.getAll();
+      });
   }
 }

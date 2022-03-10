@@ -1,3 +1,4 @@
+import { ClubUtilisateurKey } from './../model/club-utilisateur-key';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,9 +26,16 @@ export class ClubUtilisateurService {
     );
   }
 
+  updateByIds(idClub: number, idUser: number): Observable<ClubUtilisateur> {
+    return this.http.put<ClubUtilisateur>(
+      ClubUtilisateurService.URL + '/' + idClub + '/' + idUser,
+      ClubUtilisateur
+    );
+  }
+
   update(ClubUtilisateur: ClubUtilisateur): Observable<ClubUtilisateur> {
     return this.http.put<ClubUtilisateur>(
-      ClubUtilisateurService.URL + '/' + ClubUtilisateur.id,
+      ClubUtilisateurService.URL,
       ClubUtilisateur
     );
   }

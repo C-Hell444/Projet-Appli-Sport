@@ -135,22 +135,21 @@
                     width="50"
                     height="50"
                     class="d-inline-block align-top"
-                    alt="add-user"
+                    alt="look-user"
                   />
                 </button>
               </td>
               <td>
                 <button
+                  (click)="delete(club.listeMembres![index])"
                   type="button"
-                  [routerLink]="['/menu-club-equipes-edit']"
-                  routerLinkActive="active"
                 >
                   <img
                     src="assets/img/supprimer.png"
                     width="50"
                     height="50"
                     class="d-inline-block align-top"
-                    alt="add-user"
+                    alt="delete-user"
                   />
                 </button>
               </td>

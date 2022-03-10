@@ -44,7 +44,7 @@ public class ClubUtilisateurRestController {
 
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
-	public ClubUtilisateur getById(@PathVariable ClubUtilisateurKey id) {
+	public ClubUtilisateur getById(@RequestBody ClubUtilisateurKey id) {
 		return clubUtilisateurService.getById(id);
 	}
 	
@@ -58,11 +58,32 @@ public class ClubUtilisateurRestController {
 		}
 		return clubUtilisateurService.createOrUpdate(clubUtilisateur);
 	}
+	
+	@PutMapping("/{idClub}/{idUser}")
+	@JsonView(Views.Common.class)
+	public ClubUtilisateur update(@PathVariable("idClub") Long idClub,@PathVariable("idUser") Long idUser, @Valid @RequestBody ClubUtilisateur clubUtilisateur, BindingResult br) {
+		if (clubUtilisateur.getClubUtilisateurKey() == null || 
+				idClub != clubUtilisateur.getClubUtilisateurKey().getClub().getId() || 
+				idUser != clubUtilisateur.getClubUtilisateurKey().getUtilisateur().getId()||
+				br.hasErrors()) {
+			throw new ClubUtilisateurException();
+		}
+		return clubUtilisateurService.createOrUpdate(clubUtilisateur);
+	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
-	public ClubUtilisateur update(@PathVariable ClubUtilisateurKey id, @Valid @RequestBody ClubUtilisateur clubUtilisateur, BindingResult br) {
+	public ClubUtilisateur update(@RequestBody ClubUtilisateurKey id, @Valid @RequestBody ClubUtilisateur clubUtilisateur, BindingResult br) {
 		if (clubUtilisateur.getClubUtilisateurKey() == null || id != clubUtilisateur.getClubUtilisateurKey() || br.hasErrors()) {
+			throw new ClubUtilisateurException();
+		}
+		return clubUtilisateurService.createOrUpdate(clubUtilisateur);
+	}
+	
+	@PutMapping("")
+	@JsonView(Views.Common.class)
+	public ClubUtilisateur update( @Valid @RequestBody ClubUtilisateur clubUtilisateur, BindingResult br) {
+		if (clubUtilisateur.getClubUtilisateurKey() == null|| br.hasErrors()) {
 			throw new ClubUtilisateurException();
 		}
 		return clubUtilisateurService.createOrUpdate(clubUtilisateur);
