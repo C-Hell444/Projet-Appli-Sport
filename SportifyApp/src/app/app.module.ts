@@ -54,7 +54,7 @@ import { MenuAdminEvenementsEditComponent } from './componenets/admin/menu-admin
 import { MenuAdminHistoriqueEditComponent } from './componenets/admin/menu-admin-historique-edit/menu-admin-historique-edit.component';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { MenuUtilisateurSuggestionsComponent } from './componenets/utilisateur/menu-utilisateur-suggestions/menu-utilisateur-suggestions.component';
-
+import * as moment from 'moment';
 @NgModule({
   declarations: [
     AppComponent,

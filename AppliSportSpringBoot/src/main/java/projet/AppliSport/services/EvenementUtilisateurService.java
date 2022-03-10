@@ -50,7 +50,7 @@ public class EvenementUtilisateurService {
 		checkData(evenementUtilisateur);
 		EvenementUtilisateur evenementUtilisateurEnBase = new EvenementUtilisateur();
 		try {
-			evenementUtilisateurEnBase = this.getById(evenementUtilisateur.getId());
+			evenementUtilisateurEnBase = this.getById(evenementUtilisateur.getEvenementUtilisateurKey());
 			evenementUtilisateurEnBase.setDateDebut(evenementUtilisateur.getDateDebut());
 			evenementUtilisateurEnBase.setDateFin(evenementUtilisateur.getDateFin());
 			return evenementUtilisateurRepository.save(evenementUtilisateurEnBase);
@@ -63,11 +63,11 @@ public class EvenementUtilisateurService {
 		if (evenementUtilisateur == null) {
 			throw new EvenementUtilisateurException("evenementutilisateur non saisi");
 		}
-		if (evenementUtilisateur.getId().getEvenement().getId() == null
-				|| evenementUtilisateur.getId().getUtilisateur().getId() == null) {
+		if (evenementUtilisateur.getEvenementUtilisateurKey().getEvenement().getId() == null
+				|| evenementUtilisateur.getEvenementUtilisateurKey().getUtilisateur().getId() == null) {
 			throw new EvenementUtilisateurException("suppression d'un evenementutilisateur invalide");
 		}
-		EvenementUtilisateur evenementUtilisateurEnBase = getById(evenementUtilisateur.getId());
+		EvenementUtilisateur evenementUtilisateurEnBase = getById(evenementUtilisateur.getEvenementUtilisateurKey());
 		evenementUtilisateurRepository.delete(evenementUtilisateurEnBase);
 	}
 

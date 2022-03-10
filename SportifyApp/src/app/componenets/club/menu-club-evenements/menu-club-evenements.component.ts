@@ -8,6 +8,7 @@ import { ClubService } from 'src/app/services/club.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { EvenementService } from 'src/app/services/evenement.service';
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-menu-club-evenements',
@@ -19,7 +20,10 @@ export class MenuClubEvenementsComponent implements OnInit {
   club: Club = new Club();
   evenement: Evenement = new Evenement();
   membresEvenement: Array<Utilisateur> = [];
+  eventUtilisateurs: Array<EvenementUtilisateur> = [];
   longueur: number = 0;
+  dateJour: moment.Moment = moment();
+  dates: Array<moment.Moment> = [];
 
   tab: boolean = true;
   nomEvenement: string = '';
@@ -40,6 +44,7 @@ export class MenuClubEvenementsComponent implements OnInit {
     this.nomEvenement = nom;
     this.tab = false;
     this.membresEvenement = [];
+    this.eventUtilisateurs = [];
     this.evenementService.getByIdWithUtilisateur(id).subscribe((resultat) => {
       this.evenement = resultat;
       this.longueur = this.evenement.participants!.length;
@@ -50,6 +55,8 @@ export class MenuClubEvenementsComponent implements OnInit {
           )
           .subscribe((user) => {
             this.membresEvenement.push(user);
+            this.eventUtilisateurs.push(this.evenement.participants![i]);
+            this.dates.push(moment(this.evenement.participants![i].dateFin));
           });
       }
     });

@@ -94,130 +94,169 @@
         /></a>
       </div>
       <div id="menuDrop">
-      <div id="titreOnglet">
-      <p  class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-        Historique
-      </p>
-      </div>
-      <div class="dropend ">
-      <button type="button" class="btn btn-outline-primary nav-link dropdown-toggle" data-bs-toggle="dropdown">Choisir une historique</button>
-        <ul  class="dropdown-menu">
-          <li  id="membresTable" class="dropdown-item" (click)="triAscUser()">Membres</li>
-          <li  class="dropdown-item" (click)="triAscEquipe()">Equipes</li>
-          <li  class="dropdown-item" (click)="triAscEvent()">Evenements</li>
-        </ul>
-      </div>
-      </div>
-<br>
-    <p *ngIf="afficheMembres" class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-      Liste de vos membres
-    </p>
-    <div *ngIf="afficheMembres" class="col-md-3 align-items-center w-75 p-3 mx-auto">
-      <div class="dropdown">
-        <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
-          <ul  class="dropdown-menu">
-            <li  class="dropdown-item" (click)="triAscUser()">Récent</li>
-            <li  class="dropdown-item" (click)="triDescUser()">Ancien</li>
+        <div id="titreOnglet">
+          <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+            Historique
+          </p>
+        </div>
+        <div class="dropend">
+          <button
+            type="button"
+            class="btn btn-outline-primary nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+          >
+            Choisir une historique
+          </button>
+          <ul class="dropdown-menu">
+            <li id="membresTable" class="dropdown-item" (click)="triDescUser()">
+              Membres
+            </li>
+            <li class="dropdown-item" (click)="triDescEquipe()">Equipes</li>
+            <li class="dropdown-item" (click)="triDescEvent()">Evenements</li>
           </ul>
         </div>
-        <table  class="table table-striped table-hover fs-4">
+      </div>
+      <br />
+      <p
+        *ngIf="afficheMembres"
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+      >
+        Liste de vos membres
+      </p>
+      <div
+        *ngIf="afficheMembres"
+        class="col-md-3 align-items-center w-75 p-3 mx-auto"
+      >
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Trier
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triDescUser()">Récent</li>
+            <li class="dropdown-item" (click)="triAscUser()">Ancien</li>
+          </ul>
+        </div>
+        <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom</th>
               <th>Prenom</th>
-              <th>Taille</th>
-              <th>Poids</th>
-              <th>Date de naissance</th>
               <th>Date d'inscription</th>
               <th>Date de désinscription</th>
               <th>Adresse</th>
             </tr>
-            <tr *ngFor="let u of utilisateurProfils; let index = index">
-              <td>{{ utilisateurs[index].id?.utilisateur?.nom }}</td>
-              <td>{{ utilisateurs[index].id?.utilisateur?.prenom }}</td>
-              <td>{{ u.taille }} m</td>
-              <td>{{ u.poids }} kg</td>
-              <td>{{ u.dateNaissance }}</td>
-              <td>{{ utilisateurs[index].dateDebut }}</td>
-              <td>{{ utilisateurs[index].dateFin }}</td>
+
+            <tr *ngFor="let u of utilisateurs; let index = index">
+              <td>{{ u.nom }}</td>
+              <td>{{ u.prenom }}</td>
+              <td>{{ clubUtilisateurs[index].dateDebut }}</td>
+              <td>{{ clubUtilisateurs[index].dateFin }}</td>
               <td>
-                {{ utilisateurs[index].id?.utilisateur?.adresse?.numero }}
-                {{ utilisateurs[index].id?.utilisateur?.adresse?.rue }}
-                {{ utilisateurs[index].id?.utilisateur?.adresse?.ville }}
-                {{ utilisateurs[index].id?.utilisateur?.adresse?.codePostal }}
+                {{ u.adresse?.numero }}
+                {{ u.adresse?.rue }}
+                {{ u.adresse?.ville }}
+                {{ u.adresse?.codePostal }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p *ngIf="afficheEquipes" class="fs-3 fw-bold align-items-start w-75 p-3 mx-auto">
+      <p
+        *ngIf="afficheEquipes"
+        class="fs-3 fw-bold align-items-start w-75 p-3 mx-auto"
+      >
         Liste de vos équipes
       </p>
-      <div *ngIf="afficheEquipes" class="col-md-3 align-items-center w-75 p-3 mx-auto">
+      <div
+        *ngIf="afficheEquipes"
+        class="col-md-3 align-items-center w-75 p-3 mx-auto"
+      >
         <div class="dropdown">
-          <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
-            <ul  class="dropdown-menu">
-              <li  class="dropdown-item" (click)="triAscEquipe()">Récent</li>
-              <li  class="dropdown-item" (click)="triDescEquipe()">Ancien</li>
-            </ul>
-          </div>
-          <table class="table table-striped table-hover fs-4">
-            <tbody>
-              <tr class="bg-warning text-dark">
-                <th>Nom de l'équipe</th>
-                <th>Nom du membre</th>
-                <th>Prenom du membre</th>
-                <th>Date d'inscription du membre</th>
-                <th>Date de désinscription</th>
-              </tr>
-              <tr *ngFor="let e of equipeMembres; let index = index">
-                <td>{{ equipes[index].nom }}</td>
-                <td>{{ e.nom }}</td>
-                <td>{{ e.prenom }}</td>
-                <td>{{ equipeUtilisateurs[index].dateDebut }}</td>
-                <td>{{ equipeUtilisateurs[index].dateFin }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Trier
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triDescEquipe()">Récent</li>
+            <li class="dropdown-item" (click)="triAscEquipe()">Ancien</li>
+          </ul>
         </div>
-        <p *ngIf="afficheEvents"  class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-          Liste de vos évenements
-        </p>
-        <div *ngIf="afficheEvents" class="col-md-3 align-items-center w-75 p-3 mx-auto">
-          <div class="dropdown">
-            <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
-              <ul  class="dropdown-menu">
-                <li  class="dropdown-item" (click)="triAscEvent()">Récent</li>
-                <li  class="dropdown-item" (click)="triDescEvent()">Ancien</li>
-              </ul>
-            </div>
-          <table  class="table table-striped table-hover fs-4">
-            <tbody>
-              <tr class="bg-warning text-dark">
-                <th>Nom de l'évenement</th>
-                <th>Nom du participant</th>
-                <th>Prenom du participant</th>
-                <th>Date de l'évenement</th>
-                <th>Date de fin de l'évenement</th>
-              </tr>
-              <tr *ngFor="let e of eventMembres; let index = index">
-                <td>{{ events[index].nom }}</td>
-                <td>{{ e.nom }}</td>
-                <td>{{ e.prenom }}</td>
-                <td>{{ eventUtilisateurs[index].dateDebut }}</td>
-                <td>{{ eventUtilisateurs[index].dateFin }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <table class="table table-striped table-hover fs-4">
+          <tbody>
+            <tr class="bg-warning text-dark">
+              <th>Nom de l'équipe</th>
+              <th>Nom du membre</th>
+              <th>Prenom du membre</th>
+              <th>Date d'inscription du membre</th>
+              <th>Date de désinscription</th>
+            </tr>
+            <tr *ngFor="let e of equipeMembres; let index = index">
+              <td>{{ equipes[index].nom }}</td>
+              <td>{{ e.nom }}</td>
+              <td>{{ e.prenom }}</td>
+              <td>{{ equipeUtilisateurs[index].dateDebut }}</td>
+              <td>{{ equipeUtilisateurs[index].dateFin }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p
+        *ngIf="afficheEvents"
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+      >
+        Liste de vos évenements
+      </p>
+      <div
+        *ngIf="afficheEvents"
+        class="col-md-3 align-items-center w-75 p-3 mx-auto"
+      >
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle btn-lg"
+            data-bs-toggle="dropdown"
+          >
+            Trier
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="triDescEvent()">Récent</li>
+            <li class="dropdown-item" (click)="triAscEvent()">Ancien</li>
+          </ul>
         </div>
+        <table class="table table-striped table-hover fs-4">
+          <tbody>
+            <tr class="bg-warning text-dark">
+              <th>Nom de l'évenement</th>
+              <th>Nom du participant</th>
+              <th>Prenom du participant</th>
+              <th>Date de l'évenement</th>
+              <th>Date de fin de l'évenement</th>
+            </tr>
+            <tr *ngFor="let e of eventMembres; let index = index">
+              <td>{{ events[index].nom }}</td>
+              <td>{{ e.nom }}</td>
+              <td>{{ e.prenom }}</td>
+              <td>{{ eventUtilisateurs[index].dateDebut }}</td>
+              <td>{{ eventUtilisateurs[index].dateFin }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
 
-    <!-- ********************************************************** -->
+  <!-- ********************************************************** -->
 
-    <div class="DivEspace3">
-      <br />
-      <br />
-      <hr />
-    </div>
+  <div class="DivEspace3">
+    <br />
+    <br />
+    <hr />
+  </div>
 </div>

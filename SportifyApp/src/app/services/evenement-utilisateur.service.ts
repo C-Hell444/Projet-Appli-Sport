@@ -43,7 +43,7 @@ export class EvenementUtilisateurService {
           type: 'utilisateur',
           id: idUser,
         },
-        equipe: { id: idEvenement },
+        evenement: { id: idEvenement },
       },
     });
     return this.http.put<EvenementUtilisateur>(

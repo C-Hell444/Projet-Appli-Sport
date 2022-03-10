@@ -54,14 +54,16 @@ export class MenuUtilisateurEquipesComponent implements OnInit {
   }
 
   delete(eu: EquipeUtilisateur) {
-    let d = new Date();
-    eu.dateFin = d;
+    console.log(eu.dateFin);
+    eu.dateFin = new Date();
+    console.log(eu.dateFin);
     this.equipeUtilisateurService
       .updateByIds(eu.id?.equipe?.id!, this.utilisateur.id!, eu)
       .subscribe((ok) => {
         eu = ok;
         this.equipes = [];
         this.equipeUtilisateurs = [];
+        console.log(eu.dateFin);
         this.getAll();
       });
   }

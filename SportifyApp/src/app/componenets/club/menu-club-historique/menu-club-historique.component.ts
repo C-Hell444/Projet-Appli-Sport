@@ -26,7 +26,8 @@ export class MenuClubHistoriqueComponent implements OnInit {
   compte: Compte = new Compte();
 
   clubUtilisateur: Club = new Club();
-  utilisateurs: Array<ClubUtilisateur> = [];
+  clubUtilisateurs: Array<ClubUtilisateur> = [];
+  utilisateurs: Array<Utilisateur> = [];
   utilisateurProfils: Array<Profil> = [];
 
   clubEquipe: Club = new Club();
@@ -55,14 +56,40 @@ export class MenuClubHistoriqueComponent implements OnInit {
     private evenementService: EvenementService
   ) {}
 
-  ngOnInit(): void {
-    this.triDescUser();
-    this.triDescEquipe();
+  ngOnInit(): void {}
 
-    this.triDescEvent();
+  triDescUser(): void {
+    this.clubUtilisateurs = [];
+    this.utilisateurs = [];
+    this.afficheMembres = true;
+    this.afficheEquipes = false;
+    this.afficheEvents = false;
+
+    this.compteService
+      .getType(localStorage.getItem('login')!)
+      .subscribe((resultCompte) => {
+        this.compte = resultCompte;
+        this.clubService
+          .getByIdUtilisateurOrderByDateDebutDesc(this.compte.id!)
+          .subscribe((resultUser) => {
+            this.clubUtilisateur = resultUser;
+            for (
+              let i = 0;
+              i < this.clubUtilisateur.listeMembres?.length!;
+              i++
+            ) {
+              this.clubUtilisateurs.push(this.clubUtilisateur.listeMembres![i]);
+
+              this.utilisateurs.push(
+                this.clubUtilisateur.listeMembres![i].id?.utilisateur!
+              );
+            }
+          });
+      });
   }
 
   triAscUser(): void {
+    this.clubUtilisateurs = [];
     this.utilisateurs = [];
     this.afficheMembres = true;
     this.afficheEquipes = false;
@@ -75,45 +102,52 @@ export class MenuClubHistoriqueComponent implements OnInit {
         this.clubService
           .getByIdUtilisateurOrderByDateDebutAsc(this.compte.id!)
           .subscribe((resultUser) => {
+            console.log(resultUser);
             this.clubUtilisateur = resultUser;
-            this.utilisateurs = this.clubUtilisateur.listeMembres!;
             for (
               let i = 0;
               i < this.clubUtilisateur.listeMembres?.length!;
               i++
             ) {
-              this.utilisateurProfils = [];
-              this.utilisateurService
-                .getByIdWithProfil(this.utilisateurs[i]!.id?.utilisateur?.id!)
-                .subscribe((profil) => {
-                  this.utilisateurProfils.push(profil.profilUtilisateur!);
-                });
+              this.clubUtilisateurs.push(this.clubUtilisateur.listeMembres![i]);
+
+              this.utilisateurs.push(
+                this.clubUtilisateur.listeMembres![i].id?.utilisateur!
+              );
             }
           });
       });
   }
-  triDescUser(): void {
-    this.utilisateurs = [];
+  triDescEquipe(): void {
+    this.equipes = [];
+    this.equipeUtilisateurs = [];
+    this.equipeMembres = [];
+    this.afficheMembres = false;
+    this.afficheEquipes = true;
+    this.afficheEvents = false;
 
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
         this.compte = resultCompte;
+
         this.clubService
-          .getByIdUtilisateurOrderByDateDebutDesc(this.compte.id!)
+          .getByIdEquipe(this.compte.id!)
           .subscribe((resultUser) => {
-            this.clubUtilisateur = resultUser;
-            this.utilisateurs = this.clubUtilisateur.listeMembres!;
-            for (
-              let i = 0;
-              i < this.clubUtilisateur.listeMembres?.length!;
-              i++
-            ) {
-              this.utilisateurProfils = [];
-              this.utilisateurService
-                .getByIdWithProfil(this.utilisateurs[i]!.id?.utilisateur?.id!)
-                .subscribe((profil) => {
-                  this.utilisateurProfils.push(profil.profilUtilisateur!);
+            this.clubEquipe = resultUser;
+            for (let i = 0; i < this.clubEquipe.equipes!.length!; i++) {
+              this.equipeService
+                .getByIdWithUtilisateurOrderByDateDebutDesc(
+                  this.clubEquipe.equipes![i].id!
+                )
+                .subscribe((resultEquipe) => {
+                  for (let j = 0; j < resultEquipe.equipe?.length!; j++) {
+                    this.equipes.push(this.clubEquipe.equipes![i]);
+                    this.equipeUtilisateurs.push(resultEquipe.equipe![j]);
+                    this.equipeMembres.push(
+                      resultEquipe.equipe![j].id?.utilisateur!
+                    );
+                  }
                 });
             }
           });
@@ -147,45 +181,9 @@ export class MenuClubHistoriqueComponent implements OnInit {
                   for (let j = 0; j < resultEquipe.equipe?.length!; j++) {
                     this.equipes.push(this.clubEquipe.equipes![i]);
                     this.equipeUtilisateurs.push(resultEquipe.equipe![j]);
-                    this.utilisateurService
-                      .get(resultEquipe.equipe![j].id?.utilisateur?.id!)
-                      .subscribe((user) => {
-                        this.equipeMembres.push(user);
-                      });
-                  }
-                });
-            }
-          });
-      });
-  }
-
-  triDescEquipe(): void {
-    this.equipes = [];
-    this.equipeUtilisateurs = [];
-    this.equipeMembres = [];
-    this.compteService
-      .getType(localStorage.getItem('login')!)
-      .subscribe((resultCompte) => {
-        this.compte = resultCompte;
-
-        this.clubService
-          .getByIdEquipe(this.compte.id!)
-          .subscribe((resultUser) => {
-            this.clubEquipe = resultUser;
-            for (let i = 0; i < this.clubEquipe.equipes!.length!; i++) {
-              this.equipeService
-                .getByIdWithUtilisateurOrderByDateDebutDesc(
-                  this.clubEquipe.equipes![i].id!
-                )
-                .subscribe((resultEquipe) => {
-                  for (let j = 0; j < resultEquipe.equipe?.length!; j++) {
-                    this.equipes.push(this.clubEquipe.equipes![i]);
-                    this.equipeUtilisateurs.push(resultEquipe.equipe![j]);
-                    this.utilisateurService
-                      .get(resultEquipe.equipe![j].id?.utilisateur?.id!)
-                      .subscribe((user) => {
-                        this.equipeMembres.push(user);
-                      });
+                    this.equipeMembres.push(
+                      resultEquipe.equipe![j].id?.utilisateur!
+                    );
                   }
                 });
             }
@@ -219,11 +217,9 @@ export class MenuClubHistoriqueComponent implements OnInit {
                   for (let j = 0; j < resultEvent.participants!.length!; j++) {
                     this.events.push(this.clubEvent.evenements![i]);
                     this.eventUtilisateurs.push(resultEvent.participants![j]);
-                    this.utilisateurService
-                      .get(resultEvent.participants![j].id?.utilisateur?.id!)
-                      .subscribe((user) => {
-                        this.eventMembres.push(user);
-                      });
+                    this.eventMembres.push(
+                      resultEvent.participants![j].id?.utilisateur!
+                    );
                   }
                 });
             }
@@ -235,6 +231,9 @@ export class MenuClubHistoriqueComponent implements OnInit {
     this.events = [];
     this.eventUtilisateurs = [];
     this.eventMembres = [];
+    this.afficheMembres = false;
+    this.afficheEquipes = false;
+    this.afficheEvents = true;
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
@@ -252,11 +251,9 @@ export class MenuClubHistoriqueComponent implements OnInit {
                   for (let j = 0; j < resultEvent.participants!.length!; j++) {
                     this.events.push(this.clubEvent.evenements![i]);
                     this.eventUtilisateurs.push(resultEvent.participants![j]);
-                    this.utilisateurService
-                      .get(resultEvent.participants![j].id?.utilisateur?.id!)
-                      .subscribe((user) => {
-                        this.eventMembres.push(user);
-                      });
+                    this.eventMembres.push(
+                      resultEvent.participants![j].id?.utilisateur!
+                    );
                   }
                 });
             }

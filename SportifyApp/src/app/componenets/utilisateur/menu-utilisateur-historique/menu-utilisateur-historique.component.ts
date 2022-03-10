@@ -68,8 +68,8 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
           .getByIdWithClubUtilisateurOrderByDateDebutAsc(this.compte.id!)
           .subscribe((resultClub) => {
             this.utilisateurClub = resultClub;
-            this.clubsUtilisateur = this.utilisateurClub.clubs!;
             for (let i = 0; i < this.utilisateurClub.clubs?.length!; i++) {
+              this.clubsUtilisateur.push(resultClub.clubs![i]);
               this.clubService
                 .getByIdWithSport(this.utilisateurClub.clubs![i].id?.club?.id!)
                 .subscribe((club) => {
@@ -90,8 +90,8 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
           .getByIdWithClubUtilisateurOrderByDateDebutDesc(this.compte.id!)
           .subscribe((resultClub) => {
             this.utilisateurClub = resultClub;
-            this.clubsUtilisateur = this.utilisateurClub.clubs!;
             for (let i = 0; i < this.utilisateurClub.clubs?.length!; i++) {
+              this.clubsUtilisateur.push(resultClub.clubs![i]);
               this.clubService
                 .getByIdWithSport(this.utilisateurClub.clubs![i].id?.club?.id!)
                 .subscribe((club) => {
@@ -117,8 +117,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
           .getByIdWithEquipeUtilisateurOrderByDateDebutAsc(this.compte.id!)
           .subscribe((resultEquipe) => {
             this.utilisateurEquipe = resultEquipe;
-            this.equipesUtilisateur = this.utilisateurEquipe.equipes!;
+
             for (let i = 0; i < this.utilisateurEquipe.equipes?.length!; i++) {
+              this.equipesUtilisateur.push(resultEquipe.equipes![i]);
               this.equipeService
                 .getByIdWithClub(
                   this.utilisateurEquipe.equipes![i].id?.equipe?.id!
@@ -147,8 +148,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
           .getByIdWithEquipeUtilisateurOrderByDateDebutDesc(this.compte.id!)
           .subscribe((resultEquipe) => {
             this.utilisateurEquipe = resultEquipe;
-            this.equipesUtilisateur = this.utilisateurEquipe.equipes!;
+
             for (let i = 0; i < this.utilisateurEquipe.equipes?.length!; i++) {
+              this.equipesUtilisateur.push(resultEquipe.equipes![i]);
               this.equipeService
                 .getByIdWithClub(
                   this.utilisateurEquipe.equipes![i].id?.equipe?.id!
@@ -181,15 +183,18 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
           .getByIdWithEvenementUtilisateurOrderByDateDebutAsc(this.compte.id!)
           .subscribe((resultEvenement) => {
             this.utilisateurEvent = resultEvenement;
-            this.evenementsUtilisateur = this.utilisateurEvent.evenements!;
+
             for (
               let i = 0;
               i < this.utilisateurEvent.evenements?.length!;
               i++
             ) {
+              this.evenementsUtilisateur.push(
+                this.utilisateurEvent.evenements![i]
+              );
               this.evenementService
                 .getByIdWithClub(
-                  this.utilisateurEvent.evenements![i].id?.evenement?.id!
+                  resultEvenement.evenements![i].id?.evenement?.id!
                 )
                 .subscribe((evenement) => {
                   this.evenements.push(evenement);
@@ -215,15 +220,18 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
           .getByIdWithEvenementUtilisateurOrderByDateDebutDesc(this.compte.id!)
           .subscribe((resultEvenement) => {
             this.utilisateurEvent = resultEvenement;
-            this.evenementsUtilisateur = this.utilisateurEvent.evenements!;
+
             for (
               let i = 0;
               i < this.utilisateurEvent.evenements?.length!;
               i++
             ) {
+              this.evenementsUtilisateur.push(
+                this.utilisateurEvent.evenements![i]
+              );
               this.evenementService
                 .getByIdWithClub(
-                  this.utilisateurEvent.evenements![i].id?.evenement?.id!
+                  resultEvenement.evenements![i].id?.evenement?.id!
                 )
                 .subscribe((evenement) => {
                   this.evenements.push(evenement);

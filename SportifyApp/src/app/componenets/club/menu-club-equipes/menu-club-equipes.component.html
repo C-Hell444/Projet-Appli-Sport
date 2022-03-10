@@ -151,15 +151,23 @@
               <th>Poids</th>
               <th>Adresse</th>
             </tr>
-            <tr *ngFor="let m of membresEquipe">
-              <td>{{ m.nom }}</td>
-              <td>{{ m.prenom }}</td>
-              <td>
+            <tr *ngFor="let m of membresEquipe; let index = index">
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                {{ m.nom }}
+              </td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                {{ m.prenom }}
+              </td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
                 {{ m.profilUtilisateur?.dateNaissance | date: "dd-MM-yyyy" }}
               </td>
-              <td>{{ m.profilUtilisateur?.taille }} m</td>
-              <td>{{ m.profilUtilisateur?.poids }} kg</td>
-              <td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                {{ m.profilUtilisateur?.taille }} m
+              </td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                {{ m.profilUtilisateur?.poids }} kg
+              </td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
                 {{ m.adresse?.numero }} {{ m.adresse?.rue }}
                 {{ m.adresse?.codePostal }} {{ m.adresse?.ville }}
               </td>

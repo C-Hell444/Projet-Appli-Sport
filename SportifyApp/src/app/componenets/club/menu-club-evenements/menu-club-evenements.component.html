@@ -155,15 +155,19 @@
               <th>Poids</th>
               <th>Adresse</th>
             </tr>
-            <tr *ngFor="let m of membresEvenement">
-              <td>{{ m.nom }}</td>
-              <td>{{ m.prenom }}</td>
-              <td>
+            <tr *ngFor="let m of membresEvenement; let index = index">
+              <td *ngIf="dates[index] > this.dateJour">{{ m.nom }}</td>
+              <td *ngIf="dates[index] > this.dateJour">{{ m.prenom }}</td>
+              <td *ngIf="dates[index] > this.dateJour">
                 {{ m.profilUtilisateur?.dateNaissance | date: "dd-MM-yyyy" }}
               </td>
-              <td>{{ m.profilUtilisateur?.taille }} m</td>
-              <td>{{ m.profilUtilisateur?.poids }} kg</td>
-              <td>
+              <td *ngIf="dates[index] > this.dateJour">
+                {{ m.profilUtilisateur?.taille }} m
+              </td>
+              <td *ngIf="dates[index] > this.dateJour">
+                {{ m.profilUtilisateur?.poids }} kg
+              </td>
+              <td *ngIf="dates[index] > this.dateJour">
                 {{ m.adresse?.numero }} {{ m.adresse?.rue }}
                 {{ m.adresse?.codePostal }} {{ m.adresse?.ville }}
               </td>

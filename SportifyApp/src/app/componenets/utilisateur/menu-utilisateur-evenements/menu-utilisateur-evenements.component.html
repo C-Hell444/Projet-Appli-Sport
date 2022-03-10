@@ -126,16 +126,16 @@
               <th>Se désinscrire</th>
             </tr>
             <tr *ngFor="let e of evenements; let index = index">
-              <td *ngIf="e.dateFin! < dateJour">
+              <td *ngIf="dates[index] > this.dateJour">
                 {{ e.nom }}
               </td>
-              <td *ngIf="dates[index] > dateJour">
+              <td *ngIf="dates[index] > this.dateJour">
                 {{ e.dateDebut | date: "dd-MM-yyyy" }}
               </td>
-              <td *ngIf="dates[index] > dateJour">
+              <td *ngIf="dates[index] > this.dateJour">
                 {{ e.dateFin | date: "dd-MM-yyyy" }}
               </td>
-              <td *ngIf="dates[index] > dateJour">
+              <td *ngIf="dates[index] > this.dateJour">
                 <button
                   (click)="delete(evenementUtilisateurs[index])"
                   type="button"

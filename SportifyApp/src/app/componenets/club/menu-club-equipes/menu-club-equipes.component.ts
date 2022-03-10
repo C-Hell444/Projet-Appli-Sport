@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Club } from 'src/app/model/club';
 import { ClubService } from 'src/app/services/club.service';
+import { EquipeUtilisateur } from 'src/app/model/equipe-utilisateur';
 
 @Component({
   selector: 'app-menu-club-equipes',
@@ -19,6 +20,7 @@ export class MenuClubEquipesComponent implements OnInit {
   club: Club = new Club();
   equipe: Equipe = new Equipe();
   membresEquipe: Array<Utilisateur> = [];
+  equipeUtilisateurs: Array<EquipeUtilisateur> = [];
   longueur: number = 0;
 
   tab: boolean = true;
@@ -40,6 +42,8 @@ export class MenuClubEquipesComponent implements OnInit {
     this.nomEquipe = nom;
     this.tab = false;
     this.membresEquipe = [];
+    this.equipeUtilisateurs = [];
+
     this.equipeService.getByIdWithUtilisateur(id).subscribe((resultat) => {
       this.equipe = resultat;
       this.longueur = this.equipe.equipe!.length;
@@ -48,6 +52,7 @@ export class MenuClubEquipesComponent implements OnInit {
           .getByIdWithProfil(this.equipe.equipe![i].id?.utilisateur?.id!)
           .subscribe((user) => {
             this.membresEquipe.push(user);
+            this.equipeUtilisateurs.push(this.equipe.equipe![i]);
           });
       }
     });

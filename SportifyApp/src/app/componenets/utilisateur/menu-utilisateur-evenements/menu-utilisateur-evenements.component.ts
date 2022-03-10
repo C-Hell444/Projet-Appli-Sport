@@ -7,6 +7,7 @@ import { Evenement } from './../../../model/evenement';
 import { Utilisateur } from './../../../model/utilisateur';
 import { Compte } from './../../../model/compte';
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-menu-utilisateur-evenements',
@@ -19,14 +20,16 @@ export class MenuUtilisateurEvenementsComponent implements OnInit {
   evenementUtilisateurs: Array<EvenementUtilisateur> = [];
   evenements: Array<Evenement> = [];
   longueur: number = 0;
-  dateJour: Date = new Date();
-  date: Date = new Date();
-  dates: Array<Date> = [];
+
+  dateJour: moment.Moment = moment();
+
+  dates: Array<moment.Moment> = [];
 
   constructor(
     private compteService: CompteService,
     private utilisateurService: UtilisateurService,
-    private equipeService: EvenementService,
+
+    private evenementService: EvenementService,
     private evenementUtilisateurService: EvenementUtilisateurService
   ) {}
 
@@ -45,28 +48,30 @@ export class MenuUtilisateurEvenementsComponent implements OnInit {
             this.utilisateur = res;
             this.evenementUtilisateurs = this.utilisateur.evenements!;
             this.longueur = this.utilisateur.evenements!.length;
-
             for (let i = 0; i < this.longueur; i++) {
-              this.dates.push(this.utilisateur.evenements![i].dateFin!);
-              this.equipeService
+              this.dates.push(moment(this.evenementUtilisateurs[i].dateFin));
+              console.log(this.dates);
+              this.evenementService
                 .get(this.utilisateur.evenements![i].id?.evenement?.id!)
                 .subscribe((evenement) => {
                   this.evenements.push(evenement);
-                  console.log(this.evenements);
                 });
             }
           });
       });
   }
   delete(eu: EvenementUtilisateur) {
-    let d = new Date();
-    eu.dateFin = d;
+    console.log(eu.dateFin);
+    eu.dateFin = new Date();
+    console.log(eu.dateFin);
     this.evenementUtilisateurService
       .updateByIds(eu.id?.evenement?.id!, this.utilisateur.id!, eu)
       .subscribe((ok) => {
         eu = ok;
         this.evenements = [];
         this.evenementUtilisateurs = [];
+        this.dates = [];
+        console.log(eu.dateFin);
         this.getAll();
       });
   }
