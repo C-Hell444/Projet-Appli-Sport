@@ -1,3 +1,5 @@
+import { EvenementService } from './../../../services/evenement.service';
+import { EquipeService } from './../../../services/equipe.service';
 import { ClubUtilisateurKey } from './../../../model/club-utilisateur-key';
 import { ClubUtilisateurService } from './../../../services/club-utilisateur.service';
 import { SportService } from './../../../services/sport.service';
@@ -14,6 +16,7 @@ import { Utilisateur } from './../../../model/utilisateur';
 import { Compte } from './../../../model/compte';
 import { Component, OnInit } from '@angular/core';
 import { ClubUtilisateur } from 'src/app/model/club-utilisateur';
+import { Evenement } from 'src/app/model/evenement';
 
 @Component({
   selector: 'app-menu-utilisateur-suggestions',
@@ -39,6 +42,11 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
 
   partenaires: Array<Utilisateur> = [];
 
+  longueur: number = 0;
+
+  clubsUtilisateur: Array<Club> = [];
+  clubPresent: boolean = false;
+
   constructor(
     private compteService: CompteService,
     private utilisateurService: UtilisateurService,
@@ -46,7 +54,8 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
     private profilService: ProfilService,
     private caracteristiqueService: CaracteristiqueService,
     private sportService: SportService,
-    private clubUtilisateurService: ClubUtilisateurService
+    private clubUtilisateurService: ClubUtilisateurService,
+    private evenementService: EvenementService
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +66,19 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
       .getType(localStorage.getItem('login')!)
       .subscribe((result) => {
         this.compte = result;
+        this.utilisateurService
+          .getByIdWithClubUtilisateur(this.compte.id!)
+          .subscribe((res) => {
+            this.utilisateur = res;
+            this.longueur = res.clubs!.length;
+            for (let i = 0; i < this.longueur; i++) {
+              this.clubService
+                .get(this.utilisateur.clubs![i].id?.club?.id!)
+                .subscribe((club) => {
+                  this.clubsUtilisateur.push(club);
+                });
+            }
+          });
         this.utilisateurService
           .getByIdWithProfil(result.id!)
           .subscribe((res) => {
@@ -96,7 +118,17 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
     this.clubs = [];
     this.nomSport = nom;
     this.clubService.getAllByIdSport(id).subscribe((res) => {
-      this.clubs = res;
+      res.forEach((e) => {
+        this.clubPresent = false;
+        for (let i = 0; i < this.clubsUtilisateur.length; i++) {
+          if (this.clubsUtilisateur[i].id == e.id) {
+            this.clubPresent = true;
+          }
+        }
+        if (this.clubPresent == false) {
+          this.clubs.push(e);
+        }
+      });
     });
   }
 
@@ -114,6 +146,7 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
         this.cu.id = this.cuk;
         this.cu.dateDebut = d;
         this.clubUtilisateurService.create(this.cu).subscribe((ok) => {
+          this.ngOnInit();
           this.afficheClub = false;
           this.afficheSport = true;
         });
