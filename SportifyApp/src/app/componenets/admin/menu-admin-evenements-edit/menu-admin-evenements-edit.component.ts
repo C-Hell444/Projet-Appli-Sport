@@ -56,13 +56,11 @@ export class MenuAdminEvenementsEditComponent implements OnInit {
                 Validators.required,
                 Validators.maxLength(30),
               ]),
-              // nomClub: new FormControl(this.club, [
-              //   Validators.required,
-              //   Validators.maxLength(30),
-              // ]),
-              membre: new FormControl(this.membres, [
+              dateDebut: new FormControl(this.evenement.dateDebut, [
                 Validators.required,
-                Validators.maxLength(30),
+              ]),
+              dateFin: new FormControl(this.evenement.dateFin, [
+                Validators.required,
               ]),
             });
           });
@@ -76,6 +74,14 @@ export class MenuAdminEvenementsEditComponent implements OnInit {
       if (control!.hasError('required')) return 'Nom evenement est obligatoire';
       else if (control!.hasError('maxlength'))
         return 'Nom evenement ne doit pas faire plus de 30 caracteres';
+    }
+    return '';
+  }
+
+  get errorDate(): string {
+    let control = this.form.get('evenement');
+    if (control!.invalid) {
+      if (control!.hasError('required')) return 'Dateobligatoire';
     }
     return '';
   }
@@ -100,6 +106,9 @@ export class MenuAdminEvenementsEditComponent implements OnInit {
   }
 
   public save() {
+    this.evenement.nom = this.form.controls['evenement'].value;
+    this.evenement.dateDebut = this.form.controls['dateDebut'].value;
+    this.evenement.dateFin = this.form.controls['dateFin'].value;
     this.evenementService.update(this.evenement).subscribe((ok) => {
       console.log(this.evenement);
       this.router.navigate(['/menu-admin-evenements']);

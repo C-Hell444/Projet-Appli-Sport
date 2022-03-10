@@ -37,13 +37,14 @@ export class AuthentificationService {
 
   public checkUsername(username: string): Observable<boolean> {
     return this.http.get<boolean>(
-      'http://localhost:8080/sportify-boot/api/auth/search/' + username
+      'http://localhost:8080/sportify-boot/api/auth/search/identifiant/' +
+        username
     );
   }
 
   public checkMail(mail: string): Observable<boolean> {
     return this.http.get<boolean>(
-      'http://localhost:8080/sportify-boot/api/auth/search/' + mail
+      'http://localhost:8080/sportify-boot/api/auth/search/mail/' + mail
     );
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////

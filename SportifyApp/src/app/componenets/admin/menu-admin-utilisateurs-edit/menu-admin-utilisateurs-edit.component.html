@@ -129,6 +129,7 @@
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
         <form
+          *ngIf="form"
           class="was-validated row g-3"
           (ngSubmit)="save()"
           [formGroup]="form"
@@ -289,22 +290,22 @@
             <input
               type="text"
               class="form-control is-invalid"
-              placeholder="Code postale"
+              placeholder="Code postal"
               id="cp"
               required
-              formControlName="codePostale"
+              formControlName="codePostal"
             />
             <div
               class="invalid-feedback"
               *ngIf="
-                form.controls['codePostale'].dirty &&
-                form.controls['codePostale'].invalid
+                form.controls['codePostal'].dirty &&
+                form.controls['codePostal'].invalid
               "
             >
               {{ errorCp }}
             </div>
           </div>
-
+          <!--
           <div class="col-md-12">
             <label for="validationServer01" class="form-label">Poids</label>
             <input
@@ -367,6 +368,8 @@
               {{ errorDateNaissance }}
             </div>
           </div>
+          -->
+
           <!-- <div class="col-12 h4">Caractéristiques</div>
           <div class="col-md-12">
             <label for="validationServer01" class="form-label">Collectif</label>

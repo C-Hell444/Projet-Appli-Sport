@@ -125,6 +125,7 @@
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
         <form
+          *ngIf="form"
           class="was-validated row g-3"
           (ngSubmit)="save()"
           [formGroup]="form"
@@ -152,73 +153,51 @@
             </div>
           </div>
 
-          <!-- <div class="col-md-12">
-            <label for="validationServer03" class="form-label"
-              >Nom du club</label
-            >
-            <input
-              type="text"
-              class="form-control is-invalid"
-              placeholder="Nom du club"
-              id="nomClub"
-              required
-              formControlName="nomClub"
-            />
-            <div
-              class="invalid-feedback"
-              *ngIf="
-                form.controls['nomClub'].dirty &&
-                form.controls['nomClub'].invalid
-              "
-            >
-              {{ errorNomClub }}
-            </div>
-          </div> -->
-
           <div class="col-md-12">
-            <label for="validationServer03" class="form-label"
-              >Liste des participants</label
+            <label for="validationServer01" class="form-label"
+              >Date de début</label
             >
             <input
-              type="text"
+              type="date"
               class="form-control is-invalid"
-              placeholder="Liste des participants"
-              id="mebmbre"
+              placeholder="dateDebut"
+              id="dateDebut"
               required
-              formControlName="membre"
+              formControlName="dateDebut"
             />
             <div
               class="invalid-feedback"
               *ngIf="
-                form.controls['membre'].dirty && form.controls['membre'].invalid
+                form.controls['dateDebut'].dirty &&
+                form.controls['dateDebut'].invalid
               "
             >
-              {{ errorMembre }}
+              {{ errorDate }}
             </div>
           </div>
 
-          <!-- <div class="col-md-12">
-            <label for="validationServer03" class="form-label"
-              >Prenom membre</label
+          <div class="col-md-12">
+            <label for="validationServer01" class="form-label"
+              >Date de fin</label
             >
             <input
-              type="text"
+              type="date"
               class="form-control is-invalid"
-              placeholder="Prenom membre"
-              id="prenom"
+              placeholder="dateFin"
+              id="dateFin"
               required
-              formControlName="prenom"
+              formControlName="dateFin"
             />
             <div
               class="invalid-feedback"
               *ngIf="
-                form.controls['prenom'].dirty && form.controls['prenom'].invalid
+                form.controls['dateFin'].dirty &&
+                form.controls['dateFin'].invalid
               "
             >
-              {{ errorPrenom }}
+              {{ errorDate }}
             </div>
-          </div> -->
-
+          </div>
           <div class="col-12">
             <button
               class="btn btn-primary"

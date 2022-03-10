@@ -60,6 +60,7 @@ export class MenuClubMembresComponent implements OnInit {
                   this.club.listeMembres![i].id?.utilisateur?.id!
                 )
                 .subscribe((user) => {
+                  console.log(this.cluUtilisateur);
                   this.cluUtilisateur.push(this.club.listeMembres![i]);
                   this.membres.push(user);
                   this.profilService

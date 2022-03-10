@@ -20,7 +20,27 @@ export class ClubService {
   }
 
   update(Club: Club): Observable<Club> {
-    return this.http.put<Club>(ClubService.URL + '/' + Club.id, Club);
+    const ClubEnJson = {
+      identifiant: Club.identifiant,
+      mdp: Club.mdp,
+      mail: Club.mail,
+      clubNom: Club.clubNom,
+    };
+
+    if (Club.adresse) {
+      Object.assign(ClubEnJson, {
+        adresse: {
+          numero: Club.adresse.numero,
+          rue: Club.adresse.rue,
+          codePostal: Club.adresse.codePostal,
+          ville: Club.adresse.ville,
+        },
+      });
+    }
+    if (Club.sportClub) {
+      Object.assign(ClubEnJson, { sport: { id: Club.sportClub.id } });
+    }
+    return this.http.put<Club>(ClubService.URL + '/' + Club.id, ClubEnJson);
   }
 
   create(Club: Club): Observable<Club> {

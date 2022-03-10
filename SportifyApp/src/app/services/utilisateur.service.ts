@@ -28,9 +28,35 @@ export class UtilisateurService {
   }
 
   update(utilisateur: Utilisateur): Observable<Utilisateur> {
+    const UtilisateurEnJson = {
+      type: 'utilisateur',
+      identifiant: utilisateur.identifiant,
+      mdp: utilisateur.mdp,
+      mail: utilisateur.mail,
+      nom: utilisateur.nom,
+      prenom: utilisateur.prenom,
+      numTel: utilisateur.numTel,
+    };
+    if (utilisateur.adresse) {
+      Object.assign(UtilisateurEnJson, {
+        adresse: {
+          numero: utilisateur.adresse.numero,
+          rue: utilisateur.adresse.rue,
+          codePostal: utilisateur.adresse.codePostal,
+          ville: utilisateur.adresse.ville,
+        },
+      });
+    }
+    if (utilisateur.profilUtilisateur) {
+      Object.assign(UtilisateurEnJson, {
+        profil: {
+          id: utilisateur.profilUtilisateur.id,
+        },
+      });
+    }
     return this.http.put<Utilisateur>(
       UtilisateurService.URL + '/' + utilisateur.id,
-      Utilisateur
+      UtilisateurEnJson
     );
   }
 
@@ -38,6 +64,7 @@ export class UtilisateurService {
     const UtilisateurEnJson = {
       type: 'utilisateur',
       identifiant: utilisateur.identifiant,
+      mdp: utilisateur.mdp,
       mail: utilisateur.mail,
       nom: utilisateur.nom,
       prenom: utilisateur.prenom,

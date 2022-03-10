@@ -59,10 +59,10 @@ export class MenuAdminEquipesEditComponent implements OnInit {
               //   Validators.required,
               //   Validators.maxLength(30),
               // ]),
-              membre: new FormControl(this.membres, [
-                Validators.required,
-                Validators.maxLength(30),
-              ]),
+              // membre: new FormControl(this.membres, [
+              //   Validators.required,
+              //  Validators.maxLength(30),
+              // ]),
             });
           });
       }
@@ -99,6 +99,7 @@ export class MenuAdminEquipesEditComponent implements OnInit {
   }
 
   public save() {
+    this.equipe.nom = this.form.controls['equipe'].value;
     this.equipeService.update(this.equipe).subscribe((ok) => {
       console.log(this.equipe);
       this.router.navigate(['/menu-admin-equipes']);
