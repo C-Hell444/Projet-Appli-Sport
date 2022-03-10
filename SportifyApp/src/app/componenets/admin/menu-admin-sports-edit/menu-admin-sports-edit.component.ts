@@ -34,10 +34,6 @@ export class MenuAdminSportsEditComponent implements OnInit {
             this.nomsClub.push(c.clubNom!);
           }
           this.form = new FormGroup({
-            nomClub: new FormControl(this.nomsClub, [
-              Validators.required,
-              Validators.maxLength(30),
-            ]),
             sport: new FormControl(this.sport.nom, [
               Validators.required,
               Validators.maxLength(30),
@@ -77,6 +73,7 @@ export class MenuAdminSportsEditComponent implements OnInit {
     return '';
   }
   save() {
+    this.sport.nom = this.form.controls['sport'].value;
     this.sportService.update(this.sport).subscribe((ok) => {
       console.log(this.sport);
       this.router.navigate(['/menu-admin-sports']);

@@ -125,6 +125,7 @@
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
         <form
+          *ngIf="form"
           class="was-validated row g-3"
           (ngSubmit)="save()"
           [formGroup]="form"

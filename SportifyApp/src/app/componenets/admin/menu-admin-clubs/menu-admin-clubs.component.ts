@@ -11,7 +11,7 @@ import { ClubService } from 'src/app/services/club.service';
 export class MenuAdminClubsComponent implements OnInit {
   clubsObservable!: Observable<Club[]>;
   clubs: Club[] = [];
-  clubs2: Club[] = [];
+
   constructor(private clubService: ClubService) {}
 
   ngOnInit(): void {
@@ -20,10 +20,9 @@ export class MenuAdminClubsComponent implements OnInit {
 
   getAll(): void {
     this.clubService.getAll().subscribe((ok) => {
-      this.clubs = ok;
-      for (let c of this.clubs) {
+      for (let c of ok) {
         this.clubService.getByIdWithSport(c.id!).subscribe((res) => {
-          this.clubs2.push(res);
+          this.clubs.push(res);
         });
       }
     });
@@ -32,7 +31,7 @@ export class MenuAdminClubsComponent implements OnInit {
   delete(id: number) {
     this.clubService.delete(id).subscribe((ok) => {
       this.clubs = [];
-      this.clubs2 = [];
+
       this.getAll();
     });
   }

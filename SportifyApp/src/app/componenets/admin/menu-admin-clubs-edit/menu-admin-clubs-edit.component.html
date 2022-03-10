@@ -125,6 +125,7 @@
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
         <form
+          *ngIf="form"
           class="was-validated row g-3"
           (ngSubmit)="save()"
           [formGroup]="form"
@@ -193,7 +194,7 @@
               {{ errorTel }}
             </div>
           </div>
-
+          <!--
           <div class="col-md-12">
             <label for="validationServer01" class="form-label">Sport</label>
             <input
@@ -213,7 +214,7 @@
               sport obligatoire
             </div>
           </div>
-
+-->
           <div class="col-12 h4">Adresse</div>
 
           <div class="col-md-3">
@@ -284,13 +285,13 @@
               placeholder="Code postale"
               id="cp"
               required
-              formControlName="codePostale"
+              formControlName="codePostal"
             />
             <div
               class="invalid-feedback"
               *ngIf="
-                form.controls['codePostale'].dirty &&
-                form.controls['codePostale'].invalid
+                form.controls['codePostal'].dirty &&
+                form.controls['codePostal'].invalid
               "
             >
               {{ errorCp }}

@@ -121,10 +121,11 @@
         </a>
       </div>
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-        La liste des clubs pour le soprt : {{ sport.nom }}
+        La liste des clubs pour le sport : {{ sport.nom }}
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
         <form
+          *ngIf="form"
           class="was-validated row g-3"
           (ngSubmit)="save()"
           [formGroup]="form"
@@ -146,27 +147,6 @@
               "
             >
               {{ errorSport }}
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <label for="validationServer03" class="form-label">Club</label>
-            <input
-              type="text"
-              class="form-control is-invalid"
-              placeholder="Club"
-              id="club"
-              required
-              formControlName="nomClub"
-            />
-            <div
-              class="invalid-feedback"
-              *ngIf="
-                form.controls['nomClub'].dirty &&
-                form.controls['nomClub'].invalid
-              "
-            >
-              {{ errorNomClub }}
             </div>
           </div>
 

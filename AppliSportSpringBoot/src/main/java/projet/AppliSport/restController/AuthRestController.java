@@ -78,12 +78,12 @@ public class AuthRestController {
 		return (Admin) customUserDetailsService.createOrUpdate(admin);
 	}
 	
-	@GetMapping("/search/{identifiant}")
+	@GetMapping("/search/identifiant/{identifiant}")
 	public boolean usernameDejaUtilise(@PathVariable String identifiant) {
 		return compteRepository.findByIdentifiant(identifiant).isPresent();
 	}
 	
-	@GetMapping("/search/{mail}")
+	@GetMapping("/search/mail/{mail}")
 	public boolean mailDejaUtilise(@PathVariable String mail) {
 		return compteRepository.findByMail(mail).isPresent();
 	}

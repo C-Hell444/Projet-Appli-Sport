@@ -35,7 +35,7 @@ export class MenuAdminClubsEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.clubService.getByIdWithSport(params['id']).subscribe((result) => {
+        this.clubService.get(params['id']).subscribe((result) => {
           this.club = result;
           this.form = new FormGroup({
             mail: new FormControl(
@@ -58,10 +58,10 @@ export class MenuAdminClubsEditComponent implements OnInit {
               Validators.required,
               Validators.maxLength(30),
             ]),
-            sport: new FormControl(this.club.sportClub?.nom, [
-              Validators.required,
-              Validators.maxLength(30),
-            ]),
+            // sport: new FormControl(this.club.sportClub?.nom, [
+            // Validators.required,
+            //Validators.maxLength(30),
+            // ]),
             numero: new FormControl(this.club.adresse?.numero, [
               Validators.required,
               Validators.maxLength(30),
@@ -74,7 +74,7 @@ export class MenuAdminClubsEditComponent implements OnInit {
               Validators.required,
               Validators.maxLength(100),
             ]),
-            codePostale: new FormControl(this.club.adresse?.codePostal, [
+            codePostal: new FormControl(this.club.adresse?.codePostal, [
               Validators.required,
               Validators.maxLength(30),
             ]),
@@ -152,7 +152,7 @@ export class MenuAdminClubsEditComponent implements OnInit {
   }
 
   get errorCp(): string {
-    let control = this.form.get('codePostale');
+    let control = this.form.get('codePostal');
     if (control!.invalid) {
       if (control!.hasError('required')) return 'code postale obligatoire';
       else if (control!.hasError('maxlength'))
@@ -171,6 +171,14 @@ export class MenuAdminClubsEditComponent implements OnInit {
     return '';
   }
   save() {
+    this.club.clubNom = this.form.controls['nomClub'].value;
+    this.club.mail = this.form.controls['mail'].value;
+    this.club.numTel = this.form.controls['numTel'].value;
+    this.club.adresse!.numero = this.form.controls['numero'].value;
+    this.club.adresse!.rue = this.form.controls['rue'].value;
+    this.club.adresse!.ville = this.form.controls['ville'].value;
+    this.club.adresse!.codePostal = this.form.controls['codePostal'].value;
+    console.log(this.club);
     this.clubService.update(this.club).subscribe((ok) => {
       console.log(this.club);
       this.router.navigate(['/menu-admin-clubs']);
