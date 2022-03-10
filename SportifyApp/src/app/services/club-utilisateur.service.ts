@@ -1,3 +1,4 @@
+import { ClubUtilisateurKey } from './../model/club-utilisateur-key';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,9 +26,35 @@ export class ClubUtilisateurService {
     );
   }
 
+  updateByIds(
+    idClub: number,
+    idUser: number,
+    ClubUtilisateur: ClubUtilisateur
+  ): Observable<ClubUtilisateur> {
+    const ClubUtilisateurEnJson = {
+      dateDebut: ClubUtilisateur.dateDebut,
+      dateFin: ClubUtilisateur.dateFin,
+    };
+
+    Object.assign(ClubUtilisateurEnJson, {
+      id: {
+        utilisateur: {
+          type: 'utilisateur',
+          id: idUser,
+        },
+        club: { type: 'club', id: idClub },
+      },
+    });
+
+    return this.http.put<ClubUtilisateur>(
+      ClubUtilisateurService.URL + '/' + idClub + '/' + idUser,
+      ClubUtilisateurEnJson
+    );
+  }
+
   update(ClubUtilisateur: ClubUtilisateur): Observable<ClubUtilisateur> {
     return this.http.put<ClubUtilisateur>(
-      ClubUtilisateurService.URL + '/' + ClubUtilisateur.id,
+      ClubUtilisateurService.URL,
       ClubUtilisateur
     );
   }
@@ -48,10 +75,28 @@ export class ClubUtilisateurService {
         },
       });
     }
-
     return this.http.post<ClubUtilisateur>(
       ClubUtilisateurService.URL,
       ClubUtilisateurEnJson
     );
+  }
+
+  private ClubUtilisateurToJson(ClubUtilisateur: ClubUtilisateur) {
+    const ClubUtilisateurEnJson = {
+      dateDebut: ClubUtilisateur.dateDebut,
+      dateFin: ClubUtilisateur.dateFin,
+    };
+    if (ClubUtilisateur.id) {
+      Object.assign(ClubUtilisateurEnJson, {
+        id: {
+          utilisateur: {
+            type: 'utilisateur',
+            id: ClubUtilisateur.id.utilisateur!.id,
+          },
+          club: { type: 'club', id: ClubUtilisateur.id.club!.id },
+        },
+      });
+    }
+    return ClubUtilisateurEnJson;
   }
 }
