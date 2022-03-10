@@ -1,0 +1,10 @@
+th {
+  background-color: #c71fe9;
+  font-size: 22px;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}

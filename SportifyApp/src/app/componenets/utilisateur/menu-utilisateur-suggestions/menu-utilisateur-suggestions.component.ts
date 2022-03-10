@@ -37,6 +37,8 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
   cuk: ClubUtilisateurKey = new ClubUtilisateurKey();
   cu: ClubUtilisateur = new ClubUtilisateur();
 
+  partenaires: Array<Utilisateur> = [];
+
   constructor(
     private compteService: CompteService,
     private utilisateurService: UtilisateurService,
@@ -104,16 +106,32 @@ export class MenuUtilisateurSuggestionsComponent implements OnInit {
   }
 
   addClub(id: number) {
+    let d: Date = new Date();
     this.clubService.get(id).subscribe((c) => {
       this.cuk.club = c;
       this.utilisateurService.get(this.utilisateur.id!).subscribe((u) => {
         this.cuk.utilisateur = u;
         this.cu.id = this.cuk;
+        this.cu.dateDebut = d;
         this.clubUtilisateurService.create(this.cu).subscribe((ok) => {
           this.afficheClub = false;
           this.afficheSport = true;
         });
       });
+    });
+  }
+
+  listUser(id: number, nom: string) {
+    this.afficheClub = false;
+    this.afficheSport = false;
+    this.nomSport = nom;
+    this.partenaires = [];
+    this.utilisateurService.getAllByIdSport(id).subscribe((res) => {
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].id != this.utilisateur.id) {
+          this.partenaires.push(res[i]);
+        }
+      }
     });
   }
 }
