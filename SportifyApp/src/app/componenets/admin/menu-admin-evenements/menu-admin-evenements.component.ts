@@ -26,7 +26,7 @@ export class MenuAdminEvenementsComponent implements OnInit {
     this.getAll();
   }
 
-  getAll(): void {
+  getAll() {
     this.evenementService.getAll().subscribe((listeEvenements) => {
       this.evenementsGetAll = listeEvenements;
 
