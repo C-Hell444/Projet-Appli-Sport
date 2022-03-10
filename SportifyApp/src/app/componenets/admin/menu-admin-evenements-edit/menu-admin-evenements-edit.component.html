@@ -121,7 +121,7 @@
         </a>
       </div>
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-        La liste des évenements
+        La liste des participants à l'évenement {{ evenement.nom }}
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
         <form
@@ -177,12 +177,12 @@
 
           <div class="col-md-12">
             <label for="validationServer03" class="form-label"
-              >Liste des membres</label
+              >Liste des participants</label
             >
             <input
               type="text"
               class="form-control is-invalid"
-              placeholder="Liste des membres"
+              placeholder="Liste des participants"
               id="mebmbre"
               required
               formControlName="membre"
