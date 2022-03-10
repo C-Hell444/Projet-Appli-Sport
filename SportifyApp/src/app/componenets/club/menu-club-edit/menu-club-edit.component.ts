@@ -47,9 +47,9 @@ export class MenuClubEditComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(200),
-          Validators.pattern(
-            /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
-          ),
+          // Validators.pattern(
+          //   /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
+          // ),
         ],
         this.checkMail()
       ),
@@ -100,7 +100,7 @@ export class MenuClubEditComponent implements OnInit {
     let control = this.form.get('mail');
     if (control!.invalid) {
       if (control!.hasError('required')) return 'mail obligatoire';
-      else if (control!.hasError('pattern')) return 'le mail est incorrecte';
+      // else if (control!.hasError('pattern')) return 'le mail est incorrecte';
       else if (control!.hasError('maxlength'))
         return 'le mail ne doit pas faire plus de 200 caracteres';
       else if (control!.hasError('mailAlreadyUsed'))
