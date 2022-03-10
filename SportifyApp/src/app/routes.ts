@@ -173,11 +173,11 @@ export const routes: Routes = [
     component: MenuAdminComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-admin-edit',
-    component: MenuAdminEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-admin-edit',
+  //   component: MenuAdminEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-admin-utilisateurs',
     component: MenuAdminUtilisateursComponent,
@@ -185,6 +185,11 @@ export const routes: Routes = [
   },
   {
     path: 'menu-admin-utilisateurs-edit',
+    component: MenuAdminUtilisateursEditComponent,
+    canActivate: [AuthenticationGardService],
+  },
+  {
+    path: 'menu-admin-utilisateurs-edit/:id',
     component: MenuAdminUtilisateursEditComponent,
     canActivate: [AuthenticationGardService],
   },
@@ -229,6 +234,11 @@ export const routes: Routes = [
     canActivate: [AuthenticationGardService],
   },
   {
+    path: 'menu-admin-equipes-edit/:id',
+    component: MenuAdminEquipesEditComponent,
+    canActivate: [AuthenticationGardService],
+  },
+  {
     path: 'menu-admin-evenements',
     component: MenuAdminEvenementsComponent,
     canActivate: [AuthenticationGardService],
@@ -239,15 +249,20 @@ export const routes: Routes = [
     canActivate: [AuthenticationGardService],
   },
   {
-    path: 'menu-admin-historique',
-    component: MenuAdminHistoriqueComponent,
+    path: 'menu-admin-evenements-edit/:id',
+    component: MenuAdminEvenementsEditComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-admin-historique-edit',
-    component: MenuAdminHistoriqueEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-admin-historique',
+  //   component: MenuAdminHistoriqueComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
+  // {
+  //   path: 'menu-admin-historique-edit',
+  //   component: MenuAdminHistoriqueEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
   {
     path: '**',
