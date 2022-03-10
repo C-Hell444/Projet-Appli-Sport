@@ -140,7 +140,14 @@
               <td>{{ m.prenom }}</td>
               <td>{{ equipeUtilisateurs[index].dateDebut }}</td>
               <td>
-                <button type="button" class="btn btn-warning">modifier</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  [routerLink]="['/menu-admin-equipes-edit', equipes[index].id]"
+                  routerLinkActive="active"
+                >
+                  modifier
+                </button>
               </td>
               <td>
                 <button

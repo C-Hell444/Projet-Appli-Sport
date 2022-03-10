@@ -143,7 +143,14 @@
                 {{ u.adresse!.ville }} {{ u.adresse!.codePostal }}
               </td>
               <td>
-                <button type="button" class="btn btn-warning">modifier</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  [routerLink]="['/menu-admin-utilisateurs-edit', u.id]"
+                  routerLinkActive="active"
+                >
+                  modifier
+                </button>
               </td>
               <td>
                 <button type="button" class="btn btn-danger">supprimer</button>

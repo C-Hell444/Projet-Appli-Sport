@@ -159,7 +159,7 @@
               </td>
               <td *ngIf="clubUtilisateur[index].dateFin == null">
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
-                {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}
+                {{ c.adresse!.codePostal }} {{ c.adresse!.ville }}
               </td>
               <td *ngIf="clubUtilisateur[index].dateFin == null">
                 <button type="button" (click)="showEquipe(c.id!, c.clubNom!)">
