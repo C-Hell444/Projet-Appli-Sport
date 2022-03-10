@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import projet.AppliSport.exception.EquipeUtilisateurException;
 import projet.AppliSport.exception.EvenementUtilisateurException;
+import projet.AppliSport.model.EquipeUtilisateur;
 import projet.AppliSport.model.EvenementUtilisateur;
 import projet.AppliSport.model.EvenementUtilisateurKey;
 import projet.AppliSport.services.EvenementUtilisateurService;
@@ -57,6 +59,18 @@ public class EvenementUtilisateurRestController {
 		return evenementUtilisateurService.createOrUpdate(evenementUtilisateur);
 	}
 
+	@PutMapping("/{idEvenement}/{idUser}")
+	@JsonView(Views.Common.class)
+	public EvenementUtilisateur update(@PathVariable("idEvenement") Long idEvenement,@PathVariable("idUser") Long idUser, @Valid @RequestBody EvenementUtilisateur evenementUtilisateur, BindingResult br) {
+		if (evenementUtilisateur.getId() == null || 
+				idEvenement != evenementUtilisateur.getId().getEvenement().getId() || 
+				idUser != evenementUtilisateur.getId().getUtilisateur().getId()||
+				br.hasErrors()) {
+			throw new EvenementUtilisateurException();
+		}
+		return evenementUtilisateurService.createOrUpdate(evenementUtilisateur);
+	}
+	
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public EvenementUtilisateur update(@PathVariable EvenementUtilisateurKey id, @Valid @RequestBody EvenementUtilisateur evenementUtilisateur, BindingResult br) {

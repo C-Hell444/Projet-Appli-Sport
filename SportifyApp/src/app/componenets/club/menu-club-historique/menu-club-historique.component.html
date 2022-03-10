@@ -1,5 +1,4 @@
 <div id="DivContenu">
-  <br /><br /><br />
   <br /><br />
   <div class="d-flex align-items-start justify-content-center">
     <div
@@ -113,40 +112,13 @@
     <p *ngIf="afficheMembres" class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
       Liste de vos membres
     </p>
-      <div *ngIf="afficheMembres" class="col-md-3 align-items-center w-75 p-3 mx-auto">
-
-        <div
-          class="nav flex-row nav-pills me-3 h3"
-          id="v-pills-tab"
-          role="tablist"
-          aria-orientation="horizontal"
-        >
-          <button
-            class="nav-link"
-            id="v-pills-settings-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-settings"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-settings"
-            aria-selected="true"
-            (click)="triDescUser()"
-          >
-            + recent
-          </button>
-          <button
-            class="nav-link"
-            id="v-pills-settings-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#v-pills-settings"
-            type="button"
-            role="tab"
-            aria-controls="v-pills-settings"
-            aria-selected="false"
-            (click)="triAscUser()"
-          >
-            + ancien
-          </button>
+    <div *ngIf="afficheMembres" class="col-md-3 align-items-center w-75 p-3 mx-auto">
+      <div class="dropdown">
+        <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
+          <ul  class="dropdown-menu">
+            <li  class="dropdown-item" (click)="triAscUser()">Récent</li>
+            <li  class="dropdown-item" (click)="triDescUser()">Ancien</li>
+          </ul>
         </div>
         <table  class="table table-striped table-hover fs-4">
           <tbody>
@@ -181,40 +153,13 @@
       <p *ngIf="afficheEquipes" class="fs-3 fw-bold align-items-start w-75 p-3 mx-auto">
         Liste de vos équipes
       </p>
-        <div *ngIf="afficheEquipes" class="col-md-3 align-items-center w-75 p-3 mx-auto">
-
-          <div
-            class="nav flex-row nav-pills me-3 h3"
-            id="v-pills-tab"
-            role="tablist"
-            aria-orientation="horizontal"
-          >
-            <button
-              class="nav-link"
-              id="v-pills-settings-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-settings"
-              aria-selected="true"
-              (click)="triDescEquipe()"
-            >
-              + recent
-            </button>
-            <button
-              class="nav-link"
-              id="v-pills-settings-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-settings"
-              aria-selected="false"
-              (click)="triAscEquipe()"
-            >
-              + ancien
-            </button>
+      <div *ngIf="afficheEquipes" class="col-md-3 align-items-center w-75 p-3 mx-auto">
+        <div class="dropdown">
+          <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
+            <ul  class="dropdown-menu">
+              <li  class="dropdown-item" (click)="triAscEquipe()">Récent</li>
+              <li  class="dropdown-item" (click)="triDescEquipe()">Ancien</li>
+            </ul>
           </div>
           <table class="table table-striped table-hover fs-4">
             <tbody>
@@ -239,41 +184,13 @@
           Liste de vos évenements
         </p>
         <div *ngIf="afficheEvents" class="col-md-3 align-items-center w-75 p-3 mx-auto">
-
-
-          <div
-            class="nav flex-row nav-pills me-3 h3"
-            id="v-pills-tab"
-            role="tablist"
-            aria-orientation="horizontal"
-          >
-            <button
-              class="nav-link"
-              id="v-pills-settings-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-settings"
-              aria-selected="true"
-              (click)="triDescEvent()"
-            >
-              + recent
-            </button>
-            <button
-              class="nav-link"
-              id="v-pills-settings-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-settings"
-              aria-selected="false"
-              (click)="triAscEvent()"
-            >
-              + ancien
-            </button>
-          </div>
+          <div class="dropdown">
+            <button type="button" class="btn  nav-link dropdown-toggle btn-lg" data-bs-toggle="dropdown">Trier</button>
+              <ul  class="dropdown-menu">
+                <li  class="dropdown-item" (click)="triAscEvent()">Récent</li>
+                <li  class="dropdown-item" (click)="triDescEvent()">Ancien</li>
+              </ul>
+            </div>
           <table  class="table table-striped table-hover fs-4">
             <tbody>
               <tr class="bg-warning text-dark">

@@ -1,0 +1,25 @@
+#menuDrop {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+#titreOnglet {
+  margin-left: 150px;
+}
+
+th {
+  background-color: #c71fe9;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+td {
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}

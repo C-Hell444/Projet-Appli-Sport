@@ -5,6 +5,7 @@ import { EvenementUtilisateurKey } from './../../../model/evenement-utilisateur-
 import { Evenement } from './../../../model/evenement';
 import { EvenementService } from './../../../services/evenement.service';
 import { EquipeService } from './../../../services/equipe.service';
+import { ClubUtilisateurService } from './../../../services/club-utilisateur.service';
 import { ClubService } from './../../../services/club.service';
 import { ClubUtilisateur } from './../../../model/club-utilisateur';
 import { Club } from './../../../model/club';
@@ -25,6 +26,7 @@ import { EquipeUtilisateur } from 'src/app/model/equipe-utilisateur';
 export class MenuUtilisateurClubsComponent implements OnInit {
   compte: Compte = new Compte();
   utilisateur: Utilisateur = new Utilisateur();
+  clubUtilisateur: Array<ClubUtilisateur> = [];
   clubs: Array<Club> = [];
   longueur: number = 0;
 
@@ -49,13 +51,18 @@ export class MenuUtilisateurClubsComponent implements OnInit {
     private equipeService: EquipeService,
     private evenementService: EvenementService,
     private equipeUtilisateurService: EquipeUtilisateurService,
-    private evenementUtilisateurService: EvenementUtilisateurService
+    private evenementUtilisateurService: EvenementUtilisateurService,
+    private clubUtilisateurService: ClubUtilisateurService
   ) {}
 
   ngOnInit(): void {
     this.clubs = [];
     this.afficheEquipe = false;
     this.afficheEvenement = false;
+    this.getAll();
+  }
+
+  getAll() {
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((result) => {
@@ -64,6 +71,7 @@ export class MenuUtilisateurClubsComponent implements OnInit {
           .getByIdWithClubUtilisateur(this.compte.id!)
           .subscribe((res) => {
             this.utilisateur = res;
+            this.clubUtilisateur = this.utilisateur.clubs!;
             this.longueur = this.utilisateur.clubs!.length;
             for (let i = 0; i < this.longueur; i++) {
               this.clubService
@@ -137,5 +145,18 @@ export class MenuUtilisateurClubsComponent implements OnInit {
         });
       });
     });
+  }
+
+  delete(cu: ClubUtilisateur) {
+    let d = new Date();
+    cu.dateFin = d;
+    this.clubUtilisateurService
+      .updateByIds(cu.id?.club?.id!, this.utilisateur.id!, cu)
+      .subscribe((ok) => {
+        cu = ok;
+        this.clubs = [];
+        this.clubUtilisateur = [];
+        this.getAll();
+      });
   }
 }

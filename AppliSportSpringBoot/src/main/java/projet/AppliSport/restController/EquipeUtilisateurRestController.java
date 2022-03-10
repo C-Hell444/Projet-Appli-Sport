@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import projet.AppliSport.exception.ClubUtilisateurException;
 import projet.AppliSport.exception.EquipeUtilisateurException;
+import projet.AppliSport.model.ClubUtilisateur;
 import projet.AppliSport.model.EquipeUtilisateur;
 import projet.AppliSport.model.EquipeUtilisateurKey;
 import projet.AppliSport.services.EquipeUtilisateurService;
@@ -60,6 +62,18 @@ public class EquipeUtilisateurRestController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public EquipeUtilisateur create(@Valid @RequestBody EquipeUtilisateur equipeUtilisateur, BindingResult br) {
 		if (br.hasErrors()) {
+			throw new EquipeUtilisateurException();
+		}
+		return equipeUtilisateurService.createOrUpdate(equipeUtilisateur);
+	}
+	
+	@PutMapping("/{idEquipe}/{idUser}")
+	@JsonView(Views.Common.class)
+	public EquipeUtilisateur update(@PathVariable("idEquipe") Long idEquipe,@PathVariable("idUser") Long idUser, @Valid @RequestBody EquipeUtilisateur equipeUtilisateur, BindingResult br) {
+		if (equipeUtilisateur.getEquipeUtilisateurKey() == null || 
+				idEquipe != equipeUtilisateur.getEquipeUtilisateurKey().getEquipe().getId() || 
+				idUser != equipeUtilisateur.getEquipeUtilisateurKey().getUtilisateur().getId()||
+				br.hasErrors()) {
 			throw new EquipeUtilisateurException();
 		}
 		return equipeUtilisateurService.createOrUpdate(equipeUtilisateur);
