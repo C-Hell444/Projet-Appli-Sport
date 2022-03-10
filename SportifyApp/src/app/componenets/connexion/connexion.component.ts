@@ -62,6 +62,7 @@ export class ConnexionComponent implements OnInit {
               // }
               this.router.navigateByUrl('/accueil');
               localStorage.setItem('type', this.compte.type!);
+              localStorage.setItem('id', this.compte.id!.toString());
             });
         },
         error: (error) => {

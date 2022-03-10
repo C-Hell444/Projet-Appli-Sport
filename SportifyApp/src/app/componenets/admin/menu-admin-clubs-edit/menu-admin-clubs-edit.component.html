@@ -92,7 +92,7 @@
       >
         Evenements
       </button>
-      <button
+      <!-- <button
         class="nav-link"
         id="v-pills-settings-tab"
         data-bs-toggle="pill"
@@ -105,7 +105,7 @@
         routerLinkActive="active"
       >
         Historique
-      </button>
+      </button> -->
     </div>
     <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
       <div class="d-flex justify-content-around">
@@ -123,62 +123,198 @@
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
         La liste des clubs
       </p>
-      <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
-        <table class="table table-striped table-hover fs-4">
-          <tbody>
-            <tr class="bg-warning text-dark">
-              <th>Nom du club</th>
-              <th>Mail</th>
-              <th>Numéro du téléphone</th>
-              <th>Sport</th>
-              <th>Adresse</th>
-              <th>Modifier</th>
-              <th>Supprimer</th>
-            </tr>
-            <!-- <tr>
-              <td>club1</td>
-              <td>mail1</td>
-              <td>tel1</td>
-              <td>sport1</td>
-              <td>Adresse1</td>
-            </tr>
-            <tr>
-              <td>club2</td>
-              <td>mail2</td>
-              <td>tel2</td>
-              <td>sport1</td>
-              <td>Adresse2</td>
-            </tr>
-            <tr>
-              <td>club3</td>
-              <td>mail3</td>
-              <td>tel3</td>
-              <td>sport3</td>
-              <td>Adresse3</td>
-            </tr>
-            <tr>
-              <td>club4</td>
-              <td>mail4</td>
-              <td>tel4</td>
-              <td>sport4</td>
-              <td>Adresse4</td>
-            </tr>
-            <tr>
-              <td>club5</td>
-              <td>mail5</td>
-              <td>tel5</td>
-              <td>sport5</td>
-              <td>Adresse5</td>
-            </tr>
-            <tr>
-              <td>club6</td>
-              <td>mail6</td>
-              <td>tel6</td>
-              <td>sport6</td>
-              <td>Adresse6</td>
-            </tr> -->
-          </tbody>
-        </table>
+      <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
+        <form
+          class="was-validated row g-3"
+          (ngSubmit)="save()"
+          [formGroup]="form"
+        >
+          <div class="col-md-12">
+            <label for="validationServer01" class="form-label"
+              >Nom du club</label
+            >
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Nom du club"
+              id="nomClub"
+              required
+              formControlName="nomClub"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['nomClub'].dirty &&
+                form.controls['nomClub'].invalid
+              "
+            >
+              {{ errorNomClub }}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label for="validationServer03" class="form-label">E-mail</label>
+            <input
+              type="email"
+              class="form-control is-invalid"
+              placeholder="E-mail"
+              id="mail"
+              required
+              formControlName="mail"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['mail'].dirty && form.controls['mail'].invalid
+              "
+            >
+              {{ errorMail }}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label for="validationServer01" class="form-label"
+              >N° de téléphone</label
+            >
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="N° de téléphone"
+              id="numTel"
+              required
+              formControlName="numTel"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['numTel'].dirty && form.controls['numTel'].invalid
+              "
+            >
+              {{ errorTel }}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label for="validationServer01" class="form-label">Sport</label>
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Sport"
+              id="sport"
+              required
+              formControlName="sport"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['sport'].dirty && form.controls['sport'].invalid
+              "
+            >
+              sport obligatoire
+            </div>
+          </div>
+
+          <div class="col-12 h4">Adresse</div>
+
+          <div class="col-md-3">
+            <label for="validationServer01" class="form-label">Numéro</label>
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Numéro"
+              id="numero"
+              required
+              formControlName="numero"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['numero'].dirty && form.controls['numero'].invalid
+              "
+            >
+              {{ errorNumero }}
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationServer01" class="form-label">Rue</label>
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Rue"
+              id="rue"
+              required
+              formControlName="rue"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="form.controls['rue'].dirty && form.controls['rue'].invalid"
+            >
+              {{ errorRue }}
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationServer01" class="form-label">ville</label>
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="ville"
+              id="ville"
+              required
+              formControlName="ville"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['ville'].dirty && form.controls['ville'].invalid
+              "
+            >
+              {{ errorVille }}
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationServer01" class="form-label"
+              >Code postale</label
+            >
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Code postale"
+              id="cp"
+              required
+              formControlName="codePostale"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['codePostale'].dirty &&
+                form.controls['codePostale'].invalid
+              "
+            >
+              {{ errorCp }}
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="form.invalid"
+            >
+              modifier
+            </button>
+            <button
+              class="btn btn-warning"
+              type="submit"
+              [routerLink]="['/menu-admin-clubs']"
+              routerLinkActive="active"
+            >
+              annuler
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

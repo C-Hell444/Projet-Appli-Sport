@@ -19,7 +19,7 @@ export class SportService {
   }
 
   public get(id: number): Observable<Sport> {
-    return this.http.get<Sport>(SportService.URL + '/' + id);
+    return this.http.get<Sport>(`${SportService.URL}/${id}`);
   }
 
   public update(sport: Sport): Observable<Sport> {

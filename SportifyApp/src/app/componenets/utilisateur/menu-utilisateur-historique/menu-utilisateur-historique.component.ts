@@ -36,6 +36,10 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
   evenements: Evenement[] = new Array<Evenement>();
   evenementClubs: Club[] = new Array<Club>();
 
+  afficheClubs: boolean = true;
+  afficheEquipes: boolean = false;
+  afficheEvents: boolean = false;
+
   constructor(
     private compteService: CompteService,
     private utilisateurService: UtilisateurService,
@@ -53,6 +57,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
   triAscClub(): void {
     this.clubsUtilisateur = [];
     this.clubs = [];
+    this.afficheClubs = true;
+    this.afficheEquipes = false;
+    this.afficheEvents = false;
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
@@ -99,6 +106,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
     this.equipesUtilisateur = [];
     this.equipes = [];
     this.equipeClubs = [];
+    this.afficheClubs = false;
+    this.afficheEquipes = true;
+    this.afficheEvents = false;
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
@@ -160,6 +170,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
     this.evenementsUtilisateur = [];
     this.evenements = [];
     this.evenementClubs = [];
+    this.afficheClubs = false;
+    this.afficheEquipes = false;
+    this.afficheEvents = true;
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {

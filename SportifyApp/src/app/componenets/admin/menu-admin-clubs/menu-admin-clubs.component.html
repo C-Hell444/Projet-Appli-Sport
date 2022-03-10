@@ -92,7 +92,7 @@
       >
         Evenements
       </button>
-      <button
+      <!-- <button
         class="nav-link"
         id="v-pills-settings-tab"
         data-bs-toggle="pill"
@@ -105,7 +105,7 @@
         routerLinkActive="active"
       >
         Historique
-      </button>
+      </button> -->
     </div>
     <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
       <div class="d-flex justify-content-around">
@@ -143,7 +143,14 @@
                 {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}
               </td>
               <td>
-                <button type="button" class="btn btn-warning">modifier</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  [routerLink]="['/menu-admin-clubs-edit', c.id]"
+                  routerLinkActive="active"
+                >
+                  modifier
+                </button>
               </td>
               <td>
                 <button

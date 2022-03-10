@@ -92,7 +92,7 @@
       >
         Evenements
       </button>
-      <button
+      <!-- <button
         class="nav-link"
         id="v-pills-settings-tab"
         data-bs-toggle="pill"
@@ -105,7 +105,7 @@
         routerLinkActive="active"
       >
         Historique
-      </button>
+      </button> -->
     </div>
     <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
       <div class="d-flex justify-content-around">
@@ -131,6 +131,7 @@
               <th>Supprimer</th>
             </tr>
             <tr *ngFor="let s of sports2">
+              <!-- <ng-container>{{ s.id }}</ng-container> -->
               <td>{{ s.nom }}</td>
               <td>
                 <ng-container *ngFor="let c of s.clubs"
@@ -138,7 +139,14 @@
                 >
               </td>
               <td>
-                <button type="button" class="btn btn-warning">modifier</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  [routerLink]="['/menu-admin-sports-edit', s.id]"
+                  routerLinkActive="active"
+                >
+                  modifier
+                </button>
               </td>
               <td>
                 <button

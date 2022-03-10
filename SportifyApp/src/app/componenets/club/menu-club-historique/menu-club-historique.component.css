@@ -9,8 +9,13 @@
 }
 
 th {
-  background-color: #c71fe9;
-  font-size: 22px;
+  background-color: #5fd11c;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+td {
+  vertical-align: middle;
 }
 
 table {

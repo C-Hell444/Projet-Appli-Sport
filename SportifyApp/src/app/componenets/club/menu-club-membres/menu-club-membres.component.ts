@@ -22,6 +22,7 @@ export class MenuClubMembresComponent implements OnInit {
   compte: Compte = new Compte();
   club: Club = new Club();
 
+  cluUtilisateur: Array<ClubUtilisateur> = [];
   membres: Array<Utilisateur> = [];
   profils: Array<Profil> = [];
   caracteristiques: Array<Caracteristique> = [];
@@ -59,6 +60,7 @@ export class MenuClubMembresComponent implements OnInit {
                   this.club.listeMembres![i].id?.utilisateur?.id!
                 )
                 .subscribe((user) => {
+                  this.cluUtilisateur.push(this.club.listeMembres![i]);
                   this.membres.push(user);
                   this.profilService
                     .getByIdWithCarac(user.profilUtilisateur?.id!)
@@ -100,6 +102,7 @@ export class MenuClubMembresComponent implements OnInit {
         this.caracteristiques = [];
         this.datesInscription = [];
         this.moyennes = [];
+        this.cluUtilisateur = [];
         this.getAll();
         console.log(cu);
       });
