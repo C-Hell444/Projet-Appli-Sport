@@ -199,12 +199,22 @@ export const routes: Routes = [
     canActivate: [AuthenticationGardService],
   },
   {
+    path: 'menu-admin-sports-edit/:id',
+    component: MenuAdminSportsEditComponent,
+    canActivate: [AuthenticationGardService],
+  },
+  {
     path: 'menu-admin-clubs',
     component: MenuAdminClubsComponent,
     canActivate: [AuthenticationGardService],
   },
   {
     path: 'menu-admin-clubs-edit',
+    component: MenuAdminClubsEditComponent,
+    canActivate: [AuthenticationGardService],
+  },
+  {
+    path: 'menu-admin-clubs-edit/:id',
     component: MenuAdminClubsEditComponent,
     canActivate: [AuthenticationGardService],
   },

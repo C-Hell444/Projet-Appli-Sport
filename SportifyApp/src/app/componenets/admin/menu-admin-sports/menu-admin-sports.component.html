@@ -131,6 +131,7 @@
               <th>Supprimer</th>
             </tr>
             <tr *ngFor="let s of sports2">
+              <!-- <ng-container>{{ s.id }}</ng-container> -->
               <td>{{ s.nom }}</td>
               <td>
                 <ng-container *ngFor="let c of s.clubs"
@@ -138,7 +139,14 @@
                 >
               </td>
               <td>
-                <button type="button" class="btn btn-warning">modifier</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  [routerLink]="['/menu-admin-sports-edit', s.id]"
+                  routerLinkActive="active"
+                >
+                  modifier
+                </button>
               </td>
               <td>
                 <button

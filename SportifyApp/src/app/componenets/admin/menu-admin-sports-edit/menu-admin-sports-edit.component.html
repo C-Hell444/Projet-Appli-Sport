@@ -123,43 +123,71 @@
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
         La liste des sports
       </p>
-      <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
-        <table class="table table-striped table-hover fs-4">
-          <tbody>
-            <tr class="bg-warning text-dark">
-              <th>Nom du sport</th>
-              <th>Nom du club</th>
-              <th>Modifier</th>
-              <th>Supprimer</th>
-            </tr>
+      <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
+        <form
+          class="was-validated row g-3"
+          (ngSubmit)="save()"
+          [formGroup]="form"
+        >
+          <div class="col-md-12">
+            <label for="validationServer01" class="form-label">Sport</label>
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Sport"
+              id="sport"
+              required
+              formControlName="sport"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['sport'].dirty && form.controls['sport'].invalid
+              "
+            >
+              {{ errorSport }}
+            </div>
+          </div>
 
-            <!-- <tr>
-              <td>sport1</td>
-              <td>club1</td>
-            </tr>
-            <tr>
-              <td>sport2</td>
-              <td>club2</td>
-            </tr>
-            <tr>
-              <td>sport3</td>
-              <td>club3</td>
-            </tr>
+          <div class="col-md-12">
+            <label for="validationServer03" class="form-label">Club</label>
+            <input
+              type="text"
+              class="form-control is-invalid"
+              placeholder="Club"
+              id="club"
+              required
+              formControlName="nomClub"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['nomClub'].dirty &&
+                form.controls['nomClub'].invalid
+              "
+            >
+              {{ errorNomClub }}
+            </div>
+          </div>
 
-            <tr>
-              <td>sport4</td>
-              <td>club4</td>
-            </tr>
-            <tr>
-              <td>sport5</td>
-              <td>club5</td>
-            </tr>
-            <tr>
-              <td>sport6</td>
-              <td>club6</td>
-            </tr> -->
-          </tbody>
-        </table>
+          <div class="col-12">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="form.invalid"
+            >
+              modifier
+            </button>
+            <button
+              class="btn btn-warning"
+              type="submit"
+              [routerLink]="['/menu-admin-sports']"
+              routerLinkActive="active"
+            >
+              annuler
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
