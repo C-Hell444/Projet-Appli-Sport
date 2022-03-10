@@ -133,12 +133,12 @@
               <th>Modifier</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let e of evenementsObservable | async">
-              <td>{{ e.nom }}</td>
-              <td>{{ e.dateDebut }}</td>
-              <td>{{ e.club }}</td>
-              <td>{{ e.participants }}</td>
-              <td>{{ e.participants }}</td>
+            <tr *ngFor="let m of membres; let index = index">
+              <td>{{ evenements[index].nom }}</td>
+              <td>{{ evenements[index].dateDebut }}</td>
+              <td>{{ evenementClubs[index].club?.clubNom }}</td>
+              <td>{{ m.nom }}</td>
+              <td>{{ m.prenom }}</td>
               <td>
                 <button type="button" class="btn btn-warning">modifier</button>
               </td>
