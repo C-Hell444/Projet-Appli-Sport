@@ -926,84 +926,84 @@ public class ConsoleService implements CommandLineRunner {
 		clubUtilisateurKey1.setUtilisateur(utilisateur1);
 		clubUtilisateur1.setClubUtilisateurKey(clubUtilisateurKey1);
 		clubUtilisateur1.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur1.setDateFin(LocalDate.parse("null"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur1);
 
 		clubUtilisateurKey2.setClub(club2);
 		clubUtilisateurKey2.setUtilisateur(utilisateur2);
 		clubUtilisateur2.setClubUtilisateurKey(clubUtilisateurKey2);
 		clubUtilisateur2.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur2.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur2);
 
 		clubUtilisateurKey3.setClub(club1);
 		clubUtilisateurKey3.setUtilisateur(utilisateur3);
 		clubUtilisateur3.setClubUtilisateurKey(clubUtilisateurKey3);
 		clubUtilisateur3.setDateDebut(LocalDate.parse("2020-03-01"));
-		clubUtilisateur3.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur3);
 
 		clubUtilisateurKey4.setClub(club2);
 		clubUtilisateurKey4.setUtilisateur(utilisateur4);
 		clubUtilisateur4.setClubUtilisateurKey(clubUtilisateurKey4);
 		clubUtilisateur4.setDateDebut(LocalDate.parse("2020-04-01"));
-		clubUtilisateur4.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur4);
 
 		clubUtilisateurKey5.setClub(club2);
 		clubUtilisateurKey5.setUtilisateur(utilisateur5);
 		clubUtilisateur5.setClubUtilisateurKey(clubUtilisateurKey5);
 		clubUtilisateur5.setDateDebut(LocalDate.parse("2020-05-01"));
-		clubUtilisateur5.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur5);
 
 		clubUtilisateurKey6.setClub(club2);
 		clubUtilisateurKey6.setUtilisateur(utilisateur6);
 		clubUtilisateur6.setClubUtilisateurKey(clubUtilisateurKey6);
 		clubUtilisateur6.setDateDebut(LocalDate.parse("2020-06-01"));
-		clubUtilisateur6.setDateFin(LocalDate.parse("null"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur6);
 		
 		clubUtilisateurKey7.setClub(club1);
 		clubUtilisateurKey7.setUtilisateur(utilisateur7);
 		clubUtilisateur7.setClubUtilisateurKey(clubUtilisateurKey7);
 		clubUtilisateur7.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur7.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur7);
 
 		clubUtilisateurKey8.setClub(club2);
 		clubUtilisateurKey8.setUtilisateur(utilisateur8);
 		clubUtilisateur8.setClubUtilisateurKey(clubUtilisateurKey8);
 		clubUtilisateur8.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur8.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur8);
 		
 		clubUtilisateurKey9.setClub(club1);
 		clubUtilisateurKey9.setUtilisateur(utilisateur9);
 		clubUtilisateur9.setClubUtilisateurKey(clubUtilisateurKey9);
 		clubUtilisateur9.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur9.setDateFin(LocalDate.parse("null"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur9);
 
 		clubUtilisateurKey10.setClub(club2);
 		clubUtilisateurKey10.setUtilisateur(utilisateur10);
 		clubUtilisateur10.setClubUtilisateurKey(clubUtilisateurKey10);
 		clubUtilisateur10.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur10.setDateFin(LocalDate.parse("null"));
+	
 		clubUtilisateurService.createOrUpdate(clubUtilisateur10);
 		
 		clubUtilisateurKey11.setClub(club1);
 		clubUtilisateurKey11.setUtilisateur(utilisateur11);
 		clubUtilisateur11.setClubUtilisateurKey(clubUtilisateurKey11);
 		clubUtilisateur11.setDateDebut(LocalDate.parse("2020-01-01"));
-		clubUtilisateur11.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur1);
 
 		clubUtilisateurKey12.setClub(club2);
 		clubUtilisateurKey12.setUtilisateur(utilisateur12);
 		clubUtilisateur12.setClubUtilisateurKey(clubUtilisateurKey12);
 		clubUtilisateur12.setDateDebut(LocalDate.parse("2020-02-01"));
-		clubUtilisateur12.setDateFin(LocalDate.parse("null"));
+		
 		clubUtilisateurService.createOrUpdate(clubUtilisateur12);
 		
 		
@@ -1015,84 +1015,84 @@ public class ConsoleService implements CommandLineRunner {
 		equipeUtilisateurKey1.setUtilisateur(utilisateur1);
 		equipeUtilisateur1.setEquipeUtilisateurKey(equipeUtilisateurKey1);
 		equipeUtilisateur1.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur1.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur1);
 
 		equipeUtilisateurKey2.setEquipe(equipe1);
 		equipeUtilisateurKey2.setUtilisateur(utilisateur2);
 		equipeUtilisateur2.setEquipeUtilisateurKey(equipeUtilisateurKey2);
 		equipeUtilisateur2.setDateDebut(LocalDate.parse("2020-02-01"));
-		equipeUtilisateur2.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur2);
 
 		equipeUtilisateurKey3.setEquipe(equipe2);
 		equipeUtilisateurKey3.setUtilisateur(utilisateur3);
 		equipeUtilisateur3.setEquipeUtilisateurKey(equipeUtilisateurKey3);
 		equipeUtilisateur3.setDateDebut(LocalDate.parse("2020-03-01"));
-		equipeUtilisateur3.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur3);
 
 		equipeUtilisateurKey4.setEquipe(equipe2);
 		equipeUtilisateurKey4.setUtilisateur(utilisateur4);
 		equipeUtilisateur4.setEquipeUtilisateurKey(equipeUtilisateurKey4);
 		equipeUtilisateur4.setDateDebut(LocalDate.parse("2020-04-01"));
-		equipeUtilisateur4.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur4);
 
 		equipeUtilisateurKey5.setEquipe(equipe3);
 		equipeUtilisateurKey5.setUtilisateur(utilisateur5);
 		equipeUtilisateur5.setEquipeUtilisateurKey(equipeUtilisateurKey5);
 		equipeUtilisateur5.setDateDebut(LocalDate.parse("2020-05-01"));
-		equipeUtilisateur5.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur5);
 
 		equipeUtilisateurKey6.setEquipe(equipe3);
 		equipeUtilisateurKey6.setUtilisateur(utilisateur6);
 		equipeUtilisateur6.setEquipeUtilisateurKey(equipeUtilisateurKey6);
 		equipeUtilisateur6.setDateDebut(LocalDate.parse("2020-06-01"));
-		equipeUtilisateur6.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur6);
 		
 		equipeUtilisateurKey7.setEquipe(equipe1);
 		equipeUtilisateurKey7.setUtilisateur(utilisateur7);
 		equipeUtilisateur7.setEquipeUtilisateurKey(equipeUtilisateurKey7);
 		equipeUtilisateur7.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur7.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur7);
 		
 		equipeUtilisateurKey8.setEquipe(equipe2);
 		equipeUtilisateurKey8.setUtilisateur(utilisateur8);
 		equipeUtilisateur8.setEquipeUtilisateurKey(equipeUtilisateurKey8);
 		equipeUtilisateur8.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur8.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur8);
 		
 		equipeUtilisateurKey9.setEquipe(equipe1);
 		equipeUtilisateurKey9.setUtilisateur(utilisateur9);
 		equipeUtilisateur9.setEquipeUtilisateurKey(equipeUtilisateurKey9);
 		equipeUtilisateur9.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur9.setDateFin(LocalDate.parse("null"));
+	
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur7);
 		
 		equipeUtilisateurKey10.setEquipe(equipe2);
 		equipeUtilisateurKey10.setUtilisateur(utilisateur10);
 		equipeUtilisateur10.setEquipeUtilisateurKey(equipeUtilisateurKey10);
 		equipeUtilisateur10.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur10.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur10);
 		
 		equipeUtilisateurKey11.setEquipe(equipe1);
 		equipeUtilisateurKey11.setUtilisateur(utilisateur11);
 		equipeUtilisateur11.setEquipeUtilisateurKey(equipeUtilisateurKey11);
 		equipeUtilisateur11.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur11.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur11);
 		
 		equipeUtilisateurKey12.setEquipe(equipe2);
 		equipeUtilisateurKey12.setUtilisateur(utilisateur12);
 		equipeUtilisateur12.setEquipeUtilisateurKey(equipeUtilisateurKey12);
 		equipeUtilisateur12.setDateDebut(LocalDate.parse("2020-01-01"));
-		equipeUtilisateur12.setDateFin(LocalDate.parse("null"));
+		
 		equipeUtilisateurService.createOrUpdate(equipeUtilisateur12);
 
 	}
