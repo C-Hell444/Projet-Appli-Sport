@@ -1,3 +1,5 @@
+import { EquipeUtilisateurService } from './../../../services/equipe-utilisateur.service';
+import { EquipeUtilisateur } from './../../../model/equipe-utilisateur';
 import { Equipe } from './../../../model/equipe';
 import { EquipeService } from './../../../services/equipe.service';
 import { UtilisateurService } from './../../../services/utilisateur.service';
@@ -16,15 +18,20 @@ export class MenuUtilisateurEquipesComponent implements OnInit {
   compte: Compte = new Compte();
   utilisateur: Utilisateur = new Utilisateur();
   equipes: Array<Equipe> = [];
+  equipeUtilisateurs: Array<EquipeUtilisateur> = [];
   longueur: number = 0;
 
   constructor(
     private compteService: CompteService,
     private utilisateurService: UtilisateurService,
-    private equipeService: EquipeService
+    private equipeService: EquipeService,
+    private equipeUtilisateurService: EquipeUtilisateurService
   ) {}
 
   ngOnInit(): void {
+    this.getAll();
+  }
+  getAll() {
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((result) => {
@@ -33,6 +40,7 @@ export class MenuUtilisateurEquipesComponent implements OnInit {
           .getByIdWithEquipeUtilisateur(this.compte.id!)
           .subscribe((res) => {
             this.utilisateur = res;
+            this.equipeUtilisateurs = this.utilisateur.equipes!;
             this.longueur = this.utilisateur.equipes!.length;
             for (let i = 0; i < this.longueur; i++) {
               this.equipeService
@@ -42,6 +50,19 @@ export class MenuUtilisateurEquipesComponent implements OnInit {
                 });
             }
           });
+      });
+  }
+
+  delete(eu: EquipeUtilisateur) {
+    let d = new Date();
+    eu.dateFin = d;
+    this.equipeUtilisateurService
+      .updateByIds(eu.id?.equipe?.id!, this.utilisateur.id!, eu)
+      .subscribe((ok) => {
+        eu = ok;
+        this.equipes = [];
+        this.equipeUtilisateurs = [];
+        this.getAll();
       });
   }
 }

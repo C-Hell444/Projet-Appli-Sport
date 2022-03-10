@@ -124,11 +124,32 @@
               <th>Nom de l'évenement</th>
               <th>Date de début de l'évenement</th>
               <th>Date de fin de l'évenement</th>
+              <th>Se désinscrire</th>
             </tr>
-            <tr *ngFor="let e of evenements">
-              <td>{{ e.nom }}</td>
-              <td>{{ e.dateDebut | date: "dd-MM-yyyy" }}</td>
-              <td>{{ e.dateFin | date: "dd-MM-yyyy" }}</td>
+            <tr *ngFor="let e of evenements; let index = index">
+              <td *ngIf="e.dateFin! < dateJour">
+                {{ e.nom }}
+              </td>
+              <td *ngIf="dates[index] > dateJour">
+                {{ e.dateDebut | date: "dd-MM-yyyy" }}
+              </td>
+              <td *ngIf="dates[index] > dateJour">
+                {{ e.dateFin | date: "dd-MM-yyyy" }}
+              </td>
+              <td *ngIf="dates[index] > dateJour">
+                <button
+                  (click)="delete(evenementUtilisateurs[index])"
+                  type="button"
+                >
+                  <img
+                    src="assets/img/supprimer.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="delete-user"
+                  />
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

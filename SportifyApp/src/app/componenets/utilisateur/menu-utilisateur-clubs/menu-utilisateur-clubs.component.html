@@ -123,13 +123,29 @@
               <th>Nom du club</th>
               <th>Sport</th>
               <th>Adresse</th>
+              <th>Se désinscire</th>
             </tr>
-            <tr *ngFor="let c of clubs">
-              <td>{{ c.clubNom }}</td>
-              <td>{{ c.sportClub?.nom }}</td>
-              <td>
+            <tr *ngFor="let c of clubs; let index = index">
+              <td *ngIf="clubUtilisateur[index].dateFin == null">
+                {{ c.clubNom }}
+              </td>
+              <td *ngIf="clubUtilisateur[index].dateFin == null">
+                {{ c.sportClub?.nom }}
+              </td>
+              <td *ngIf="clubUtilisateur[index].dateFin == null">
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
                 {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}
+              </td>
+              <td *ngIf="clubUtilisateur[index].dateFin == null">
+                <button (click)="delete(clubUtilisateur[index])" type="button">
+                  <img
+                    src="assets/img/supprimer.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="delete-user"
+                  />
+                </button>
               </td>
             </tr>
           </tbody>

@@ -123,10 +123,29 @@
             <tr class="bg-warning text-dark">
               <th>Nom de l'équipe</th>
               <th>Nom du club</th>
+              <th>Se désinscire</th>
             </tr>
-            <tr *ngFor="let e of equipes">
-              <td>{{ e.nom }}</td>
-              <td>{{ e.club?.clubNom }}</td>
+            <tr *ngFor="let e of equipes; let index = index">
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                {{ e.nom }}
+              </td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                {{ e.club?.clubNom }}
+              </td>
+              <td *ngIf="equipeUtilisateurs[index].dateFin == null">
+                <button
+                  (click)="delete(equipeUtilisateurs[index])"
+                  type="button"
+                >
+                  <img
+                    src="assets/img/supprimer.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="delete-user"
+                  />
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -31,6 +31,30 @@ export class EquipeUtilisateurService {
     );
   }
 
+  updateByIds(
+    idEquipe: number,
+    idUser: number,
+    EquipeUtilisateur: EquipeUtilisateur
+  ): Observable<EquipeUtilisateur> {
+    const EquipeUtilisateurEnJson = {
+      dateDebut: EquipeUtilisateur.dateDebut,
+      dateFin: EquipeUtilisateur.dateFin,
+    };
+
+    Object.assign(EquipeUtilisateurEnJson, {
+      id: {
+        utilisateur: {
+          type: 'utilisateur',
+          id: idUser,
+        },
+        equipe: { id: idEquipe },
+      },
+    });
+    return this.http.put<EquipeUtilisateur>(
+      EquipeUtilisateurService.URL + '/' + idEquipe + '/' + idUser,
+      EquipeUtilisateurEnJson
+    );
+  }
   update(EquipeUtilisateur: EquipeUtilisateur): Observable<EquipeUtilisateur> {
     return this.http.put<EquipeUtilisateur>(
       EquipeUtilisateurService.URL + '/' + EquipeUtilisateur.id,

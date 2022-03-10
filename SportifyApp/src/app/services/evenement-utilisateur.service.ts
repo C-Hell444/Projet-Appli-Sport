@@ -27,6 +27,30 @@ export class EvenementUtilisateurService {
     );
   }
 
+  updateByIds(
+    idEvenement: number,
+    idUser: number,
+    EvenementUtilisateur: EvenementUtilisateur
+  ): Observable<EvenementUtilisateur> {
+    const EvenementUtilisateurEnJson = {
+      dateDebut: EvenementUtilisateur.dateDebut,
+      dateFin: EvenementUtilisateur.dateFin,
+    };
+
+    Object.assign(EvenementUtilisateurEnJson, {
+      id: {
+        utilisateur: {
+          type: 'utilisateur',
+          id: idUser,
+        },
+        equipe: { id: idEvenement },
+      },
+    });
+    return this.http.put<EvenementUtilisateur>(
+      EvenementUtilisateurService.URL + '/' + idEvenement + '/' + idUser,
+      EvenementUtilisateurEnJson
+    );
+  }
   update(
     EvenementUtilisateur: EvenementUtilisateur
   ): Observable<EvenementUtilisateur> {
