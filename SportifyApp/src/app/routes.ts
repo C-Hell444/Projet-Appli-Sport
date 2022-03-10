@@ -1,3 +1,4 @@
+import { AuthenticationGardPourIncriptionEtConnexionService } from './services/authentication-gard-pour-incription-et-connexion.service';
 import { Routes } from '@angular/router';
 import { AProposComponent } from './componenets/a-propos/a-propos.component';
 import { ActualitesComponent } from './componenets/actualites/actualites.component';
@@ -57,12 +58,21 @@ export const routes: Routes = [
   { path: 'mention-legale', component: MentionLegaleComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'A-propos', component: AProposComponent },
-  { path: 'connexion', component: ConnexionComponent },
+  {
+    path: 'connexion',
+    component: ConnexionComponent,
+    canActivate: [AuthenticationGardPourIncriptionEtConnexionService],
+  },
   {
     path: 'inscription-utilisateur',
     component: InscriptionUtilisateurComponent,
+    canActivate: [AuthenticationGardPourIncriptionEtConnexionService],
   },
-  { path: 'inscription-club', component: InscriptionClubComponent },
+  {
+    path: 'inscription-club',
+    component: InscriptionClubComponent,
+    canActivate: [AuthenticationGardPourIncriptionEtConnexionService],
+  },
   {
     path: 'menu-club',
     component: MenuClubComponent,
