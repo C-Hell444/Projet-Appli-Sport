@@ -33,6 +33,7 @@ export class MenuClubEvenementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.tab = true;
+    this.getAll();
   }
 
   detail(id: number, nom: string) {
