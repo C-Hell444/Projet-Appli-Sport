@@ -16,46 +16,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuClubEvenementsComponent implements OnInit {
   compte: Compte = new Compte();
-  clubEvent: Club = new Club();
-  events: Array<Evenement> = [];
+  club: Club = new Club();
+  evenement: Evenement = new Evenement();
+  membresEvenement: Array<Utilisateur> = [];
+  longueur: number = 0;
 
-  eventUtilisateurs: Array<EvenementUtilisateur> = [];
+  tab: boolean = true;
+  nomEvenement: string = '';
 
-  eventMembres: Array<Utilisateur> = [];
   constructor(
     private compteService: CompteService,
     private clubService: ClubService,
-    private utilisateurService: UtilisateurService,
-    private evenementService: EvenementService
+    private evenementService: EvenementService,
+    private utilisateurService: UtilisateurService
   ) {}
 
   ngOnInit(): void {
+    this.tab = true;
     this.compteService
       .getType(localStorage.getItem('login')!)
-      .subscribe((resultCompte) => {
-        this.compte = resultCompte;
-        this.clubService
-          .getByIdEvenement(this.compte.id!)
-          .subscribe((resultUser) => {
-            this.clubEvent = resultUser;
-            for (let i = 0; i < this.clubEvent.evenements!.length!; i++) {
-              this.evenementService
-                .getByIdWithUtilisateurOrderByDateDebutDesc(
-                  this.clubEvent.evenements![i].id!
-                )
-                .subscribe((resultEvent) => {
-                  for (let j = 0; j < resultEvent.participants!.length!; j++) {
-                    this.events.push(this.clubEvent.evenements![i]);
-                    this.eventUtilisateurs.push(resultEvent.participants![j]);
-                    this.utilisateurService
-                      .get(resultEvent.participants![j].id?.utilisateur?.id!)
-                      .subscribe((user) => {
-                        this.eventMembres.push(user);
-                      });
-                  }
-                });
-            }
-          });
+      .subscribe((result) => {
+        this.compte = result;
+        this.clubService.getByIdEvenement(this.compte.id!).subscribe((res) => {
+          this.club = res;
+        });
       });
+  }
+
+  detail(id: number, nom: string) {
+    this.nomEvenement = nom;
+    this.tab = false;
+    this.membresEvenement = [];
+    this.evenementService.getByIdWithUtilisateur(id).subscribe((resultat) => {
+      this.evenement = resultat;
+      this.longueur = this.evenement.participants!.length;
+      for (let i = 0; i < this.longueur; i++) {
+        this.utilisateurService
+          .getByIdWithProfil(
+            this.evenement.participants![i].id?.utilisateur?.id!
+          )
+          .subscribe((user) => {
+            this.membresEvenement.push(user);
+          });
+      }
+    });
+  }
+
+  retour() {
+    this.tab = true;
   }
 }

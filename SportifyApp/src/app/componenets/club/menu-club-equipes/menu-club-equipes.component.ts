@@ -39,24 +39,6 @@ export class MenuClubEquipesComponent implements OnInit {
         this.compte = result;
         this.clubService.getByIdEquipe(this.compte.id!).subscribe((res) => {
           this.club = res;
-          // for (let i = 0; i < this.club.equipes!.length; i++) {
-          //   this.equipe = new Equipe();
-          //   this.membresEquipe = [];
-          //   this.equipeService
-          //     .getByIdWithUtilisateur(this.club.equipes![i].id!)
-          //     .subscribe((equipeUtilisateur) => {
-          //       this.equipe = equipeUtilisateur;
-          //       this.longueur = this.equipe.equipe!.length;
-          //       for (let j = 0; j < this.longueur; j++) {
-          //         this.utilisateurService
-          //           .get(this.equipe.equipe![i].id?.utilisateur?.id!)
-          //           .subscribe((user) => {
-          //             this.membresEquipe.push(user);
-          //           });
-          //       }
-          //       this.membres.push(this.membresEquipe);
-          //     });
-          // }
         });
       });
   }
