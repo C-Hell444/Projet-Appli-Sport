@@ -46,6 +46,14 @@ public class EquipeUtilisateurRestController {
 	public EquipeUtilisateur getById(@PathVariable EquipeUtilisateurKey id) {
 		return equipeUtilisateurService.getById(id);
 	}
+	
+	@GetMapping("/{id}/equipe")
+	@JsonView(Views.Common.class)
+	public List<EquipeUtilisateur> getByEquipeWithId(@PathVariable Long id) {
+		return equipeUtilisateurService.getByEquipeId(id);
+	}
+	
+	
 
 	@PostMapping("")
 	@JsonView(Views.Common.class)

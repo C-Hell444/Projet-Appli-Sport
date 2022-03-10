@@ -74,5 +74,19 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	
 	@Query("select c from Club c left join fetch c.listeMembres l where c.id=:id order by l.dateFin desc")
 	Optional<Club> findByIdWithClubUtilisateurOrderByDateFinDesc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.evenements l where c.id=:id order by l.dateDebut asc")
+	Optional<Club> findByIdWithEvenementOrderByDateDebutAsc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.evenements l where c.id=:id order by l.dateDebut desc")
+	Optional<Club> findByIdWithEvenementOrderByDateDebutDesc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.evenements l where c.id=:id order by l.dateFin asc")
+	Optional<Club> findByIdWithEvenementOrderByDateFinAsc(@Param("id") Long id);
+	
+	@Query("select c from Club c left join fetch c.evenements l where c.id=:id order by l.dateFin desc")
+	Optional<Club> findByIdWithEvenementOrderByDateFinDesc(@Param("id") Long id);
+	
+	
 
 }

@@ -161,6 +161,23 @@ public class ClubService {
 		return clubRepository.findByIdWithClubUtilisateurOrderByDateFinDesc(id).orElseThrow(ClubException::new);
 	}
 	
+	public Club getByIdWithEvenementOrderByDateDebutAsc(Long id) {
+		
+		return clubRepository.findByIdWithEvenementOrderByDateDebutAsc(id).orElseThrow(ClubException::new);
+	}
+
+	public Club getByIdWithEvenementOrderByDateDebutDesc(Long id) {
+		return clubRepository.findByIdWithEvenementOrderByDateDebutDesc(id).orElseThrow(ClubException::new);
+	}
+	
+	public Club getByIdWithEvenementOrderByDateFinAsc(Long id) {
+		return clubRepository.findByIdWithEvenementOrderByDateFinAsc(id).orElseThrow(ClubException::new);
+	}
+
+	public Club getByIdWithEvenementOrderByDateFinDesc(Long id) {
+		return clubRepository.findByIdWithEvenementOrderByDateFinDesc(id).orElseThrow(ClubException::new);
+	}
+	
 	
 	
 	private void checkdata(Club club) {

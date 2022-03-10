@@ -37,4 +37,6 @@ public interface ClubUtilisateurRepository extends JpaRepository<ClubUtilisateur
 	void deleteClubUtilisateurByClub(@Param("club") Club club);
 	
 	
+	
+	
 }

@@ -40,12 +40,14 @@ public class ClubUtilisateurRestController {
 		List<ClubUtilisateur> clubUtilisateurs = clubUtilisateurService.getAll();
 		return clubUtilisateurs;
 	}
+	
 
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public ClubUtilisateur getById(@PathVariable ClubUtilisateurKey id) {
 		return clubUtilisateurService.getById(id);
 	}
+	
 
 	@PostMapping("")
 	@JsonView(Views.Common.class)

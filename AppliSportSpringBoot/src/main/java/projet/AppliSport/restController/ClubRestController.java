@@ -33,6 +33,7 @@ import projet.AppliSport.services.EvenementService;
 import projet.AppliSport.services.SportService;
 import projet.AppliSport.services.UtilisateurService;
 import projet.AppliSport.views.Views;
+import projet.AppliSport.views.Views.ClubWithEvenement;
 
 
 
@@ -122,11 +123,7 @@ public class ClubRestController {
 		return clubService.getByIdWithEquipe(id);
 	}
 	
-	@GetMapping("/{id}/evenement")
-	@JsonView(Views.ClubWithEvenement.class)
-	public Club getByIdEvenement(@PathVariable Long id) {
-		return clubService.getByIdWithEvenement(id);
-	}
+	
 	
 	@GetMapping("/{id}/sport")
 	@JsonView(Views.ClubWithSport.class)
@@ -197,7 +194,7 @@ public class ClubRestController {
 		return clubService.getByIdWithClubUtilisateurOrderByDateDebutAsc(id);
 	}
 	
-	@GetMapping("/{id}/utilisateurdate-debut-desc")
+	@GetMapping("/{id}/utilisateur/date-debut-desc")
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdWithClubUtilisateurbOrderByDateDebutDesc(@PathVariable Long id) {
 		return clubService.getByIdWithClubUtilisateurOrderByDateDebutDesc(id);
@@ -213,6 +210,37 @@ public class ClubRestController {
 	@JsonView(Views.ClubWithClubUtilisateur.class)
 	public Club getByIdWithClubUtilisateurOrderByDateFinDesc(@PathVariable Long id) {
 		return clubService.getByIdWithClubUtilisateurOrderByDateFinDesc(id);
+	}
+	
+	// =================== Get Evenements + tri ======================== //
+	
+	@GetMapping("/{id}/evenement")
+	@JsonView(Views.ClubWithEvenement.class)
+	public Club getByIdEvenement(@PathVariable Long id) {
+		return clubService.getByIdWithEvenement(id);
+	}
+	@GetMapping("/{id}/evenement/date-debut-asc")
+	@JsonView(Views.ClubWithEvenement.class)
+	public Club getByIdWithEvenementOrderByDateDebutAsc(@PathVariable Long id) {
+		return clubService.getByIdWithEvenementOrderByDateDebutAsc(id);
+	}
+	
+	@GetMapping("/{id}/evenement/date-debut-desc")
+	@JsonView(Views.ClubWithEvenement.class)
+	public Club getByIdWithEvenementbOrderByDateDebutDesc(@PathVariable Long id) {
+		return clubService.getByIdWithEvenementOrderByDateDebutDesc(id);
+	}
+	
+	@GetMapping("/{id}/evenement/date-fin-asc")
+	@JsonView(Views.ClubWithEvenement.class)
+	public Club getByIdWithEvenementOrderByDateFinAsc(@PathVariable Long id) {
+		return clubService.getByIdWithEvenementOrderByDateFinAsc(id);
+	}
+	
+	@GetMapping("/{id}/evenement/date-fin-desc")
+	@JsonView(Views.ClubWithEvenement.class)
+	public Club getByIdWithEvenementOrderByDateFinDesc(@PathVariable Long id) {
+		return clubService.getByIdWithEvenementOrderByDateFinDesc(id);
 	}
 
 
