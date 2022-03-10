@@ -103,6 +103,7 @@
         <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
         <div><input type="text" placeholder="Saisir votre recherche" /></div>
         <a
+          *ngIf="!afficheEquipe && !afficheEvenement"
           [routerLink]="['/menu-utilisateur-clubs-edit']"
           routerLinkActive="active"
           ><img
@@ -112,17 +113,42 @@
             class="d-inline-block align-top"
             alt="tweeter"
         /></a>
+        <a *ngIf="afficheEquipe || afficheEvenement" (click)="showClub()"
+          ><img
+            src="assets/img/retour.png"
+            width="100"
+            height="100"
+            class="d-inline-block align-top"
+            alt="tweeter"
+        /></a>
       </div>
-      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+      <p
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+        *ngIf="!afficheEquipe && !afficheEvenement"
+      >
         Vous êtes inscrit aux clubs suivants
+      </p>
+      <p
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+        *ngIf="afficheEquipe"
+      >
+        Le club "{{ nom }}" peut vous proposer les équipes suivantes :
+      </p>
+      <p
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+        *ngIf="afficheEvenement"
+      >
+        Le club "{{ nom }}" peut vous proposer les évènements suivants :
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
         <table class="table table-striped table-hover fs-4">
-          <tbody>
+          <tbody *ngIf="!afficheEquipe && !afficheEvenement">
             <tr class="bg-warning text-dark">
               <th>Nom du club</th>
               <th>Sport</th>
               <th>Adresse</th>
+              <th>Liste des équipes</th>
+              <th>Liste des évènements</th>
             </tr>
             <tr *ngFor="let c of clubs">
               <td>{{ c.clubNom }}</td>
@@ -130,6 +156,71 @@
               <td>
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
                 {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}
+              </td>
+              <td>
+                <button type="button" (click)="showEquipe(c.id!, c.clubNom!)">
+                  <img
+                    src="assets/img/recherche.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="add-user"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  (click)="showEvenement(c.id!, c.clubNom!)"
+                >
+                  <img
+                    src="assets/img/recherche.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="add-user"
+                  />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="afficheEquipe">
+            <tr class="bg-warning text-dark">
+              <th>Nom de l'equipe</th>
+              <th>Rejoindre</th>
+            </tr>
+            <tr *ngFor="let e of listEquipe">
+              <td>{{ e.nom }}</td>
+              <td>
+                <button type="button" (click)="addEquipe(e.id!)">
+                  <img
+                    src="assets/img/add-user.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="add-user"
+                  />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="afficheEvenement">
+            <tr class="bg-warning text-dark">
+              <th>Nom de l'equipe</th>
+              <th>Rejoindre</th>
+            </tr>
+            <tr *ngFor="let e of listEvenement">
+              <td>{{ e.nom }}</td>
+              <td>
+                <button type="button" (click)="addEvenement(e.id!)">
+                  <img
+                    src="assets/img/add-user.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="add-user"
+                  />
+                </button>
               </td>
             </tr>
           </tbody>
