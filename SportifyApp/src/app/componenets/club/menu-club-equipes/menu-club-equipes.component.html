@@ -117,8 +117,7 @@
               <th>Liste des membres</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let e of equipeMembres; let index = index">
-              <td>{{ equipes[index].nom }}</td>
+            <tr *ngFor="let e of club.equipes; let index = index">
               <td>{{ e.nom }}</td>
               <td>
                 <button type="button" (click)="detail(e.id!, e.nom!)">
