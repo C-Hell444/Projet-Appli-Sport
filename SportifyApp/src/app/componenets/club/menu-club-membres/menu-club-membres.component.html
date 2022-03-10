@@ -104,7 +104,6 @@
               <th>Poids</th>
               <th>Date de naissance</th>
               <th>Moyenne globale des caractéristiques</th>
-              <th>Date d'inscription</th>
               <th>Adresse</th>
               <th>Chercher des membres</th>
               <th>Supprimer</th>
@@ -129,9 +128,10 @@
               <td *ngIf="cluUtilisateur![index].dateFin == null">
                 {{ moyennes[index] | number: "1.0-1" }}
               </td>
-              <td *ngIf="cluUtilisateur![index].dateFin == null">
+              <!-- <td *ngIf="cluUtilisateur![index].dateFin == null">
                 {{ cluUtilisateur[index].dateFin | date: "dd-MM-yyyy" }}
               </td>
+              -->
               <td *ngIf="cluUtilisateur![index].dateFin == null">
                 {{ m.adresse?.numero }} {{ m.adresse?.rue }}
                 {{ m.adresse?.codePostal }} {{ m.adresse?.ville }}

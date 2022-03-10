@@ -58,10 +58,7 @@ export class MenuAdminClubsEditComponent implements OnInit {
               Validators.required,
               Validators.maxLength(30),
             ]),
-            // sport: new FormControl(this.club.sportClub?.nom, [
-            // Validators.required,
-            //Validators.maxLength(30),
-            // ]),
+
             numero: new FormControl(this.club.adresse?.numero, [
               Validators.required,
               Validators.maxLength(30),
