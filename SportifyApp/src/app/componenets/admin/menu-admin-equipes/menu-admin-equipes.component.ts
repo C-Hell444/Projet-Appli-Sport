@@ -1,3 +1,8 @@
+import { Club } from 'src/app/model/club';
+import { ClubService } from 'src/app/services/club.service';
+import { EquipeUtilisateur } from './../../../model/equipe-utilisateur';
+import { Utilisateur } from 'src/app/model/utilisateur';
+import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Equipe } from 'src/app/model/equipe';
@@ -10,30 +15,42 @@ import { EquipeService } from 'src/app/services/equipe.service';
 })
 export class MenuAdminEquipesComponent implements OnInit {
   equipesObservable!: Observable<Equipe[]>;
-  equipes: Equipe[] = [];
-  equipes2: Equipe[] = [];
-  equipes3: Equipe[] = [];
-  constructor(private equipeService: EquipeService) {}
+  equipesGetAll: Array<Equipe> = [];
+  equipes: Array<Equipe> = [];
+  equipeClubs: Array<Equipe> = [];
+  equipeUtilisateurs: Array<EquipeUtilisateur> = [];
+  membres: Array<Utilisateur> = [];
+  constructor(
+    private equipeService: EquipeService,
+    private utilisateurService: UtilisateurService,
+    private clubService: ClubService
+  ) {}
 
   ngOnInit(): void {
-    this.equipeService.getAll().subscribe((ok) => {
-      this.equipes = ok;
-      for (let e1 of this.equipes) {
-        this.equipeService.getByIdWithClub(e1.id!).subscribe((r1) => {
-          this.equipes2.push(r1);
-        });
+    this.equipesObservable = this.equipeService.getAll();
+    this.equipeService.getAll().subscribe((listeEquipes) => {
+      this.equipesGetAll = listeEquipes;
 
-        this.equipeService.getByIdWithUtilisateur(e1.id!).subscribe((r2) => {
-          console.log(r2);
-          this.equipes3.push(r2);
-        });
+      for (let i = 0; i < this.equipesGetAll.length; i++) {
+        this.equipeService
+          .getByIdWithUtilisateur(this.equipesGetAll[i].id!)
+          .subscribe((resultEquipe) => {
+            for (let j = 0; j < resultEquipe.equipe!.length; j++) {
+              this.equipes.push(resultEquipe);
+              this.equipeService
+                .getByIdWithClub(this.equipesGetAll[i].id!)
+                .subscribe((resultClub) => {
+                  this.equipeClubs.push(resultClub);
+                });
+              this.equipeUtilisateurs.push(resultEquipe.equipe![j]);
+              this.utilisateurService
+                .get(resultEquipe.equipe![j].id?.utilisateur?.id!)
+                .subscribe((user) => {
+                  this.membres.push(user);
+                });
+            }
+          });
       }
-      // for (let e2 of this.equipes) {
-      //   this.equipeService.getByIdWithUtilisateur(e2.id!).subscribe((r2) => {
-      //     console.log(r2);
-      //     this.equipes3.push(r2);
-      //   });
-      // }
     });
   }
 }

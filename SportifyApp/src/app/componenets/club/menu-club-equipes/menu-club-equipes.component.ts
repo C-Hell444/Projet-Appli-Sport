@@ -1,3 +1,4 @@
+import { EquipeUtilisateur } from './../../../model/equipe-utilisateur';
 import { UtilisateurService } from './../../../services/utilisateur.service';
 import { Equipe } from './../../../model/equipe';
 import { Utilisateur } from './../../../model/utilisateur';
@@ -16,11 +17,12 @@ import { ClubService } from 'src/app/services/club.service';
 })
 export class MenuClubEquipesComponent implements OnInit {
   compte: Compte = new Compte();
-  club: Club = new Club();
-  equipe: Equipe = new Equipe();
-  membresEquipe: Array<Utilisateur> = [];
-  membres: Array<Utilisateur[]> = [];
-  longueur: number = 0;
+  clubEquipe: Club = new Club();
+  equipes: Array<Equipe> = [];
+
+  equipeUtilisateurs: Array<EquipeUtilisateur> = [];
+
+  equipeMembres: Array<Utilisateur> = [];
 
   constructor(
     private compteService: CompteService,
@@ -32,29 +34,31 @@ export class MenuClubEquipesComponent implements OnInit {
   ngOnInit(): void {
     this.compteService
       .getType(localStorage.getItem('login')!)
-      .subscribe((result) => {
-        this.compte = result;
-        this.clubService.getByIdEquipe(this.compte.id!).subscribe((res) => {
-          this.club = res;
-          // for (let i = 0; i < this.club.equipes!.length; i++) {
-          //   this.equipe = new Equipe();
-          //   this.membresEquipe = [];
-          //   this.equipeService
-          //     .getByIdWithUtilisateur(this.club.equipes![i].id!)
-          //     .subscribe((equipeUtilisateur) => {
-          //       this.equipe = equipeUtilisateur;
-          //       this.longueur = this.equipe.equipe!.length;
-          //       for (let j = 0; j < this.longueur; j++) {
-          //         this.utilisateurService
-          //           .get(this.equipe.equipe![i].id?.utilisateur?.id!)
-          //           .subscribe((user) => {
-          //             this.membresEquipe.push(user);
-          //           });
-          //       }
-          //       this.membres.push(this.membresEquipe);
-          //     });
-          // }
-        });
+      .subscribe((resultCompte) => {
+        this.compte = resultCompte;
+
+        this.clubService
+          .getByIdEquipe(this.compte.id!)
+          .subscribe((resultUser) => {
+            this.clubEquipe = resultUser;
+            for (let i = 0; i < this.clubEquipe.equipes!.length!; i++) {
+              this.equipeService
+                .getByIdWithUtilisateurOrderByDateDebutDesc(
+                  this.clubEquipe.equipes![i].id!
+                )
+                .subscribe((resultEquipe) => {
+                  for (let j = 0; j < resultEquipe.equipe?.length!; j++) {
+                    this.equipes.push(this.clubEquipe.equipes![i]);
+                    this.equipeUtilisateurs.push(resultEquipe.equipe![j]);
+                    this.utilisateurService
+                      .get(resultEquipe.equipe![j].id?.utilisateur?.id!)
+                      .subscribe((user) => {
+                        this.equipeMembres.push(user);
+                      });
+                  }
+                });
+            }
+          });
       });
   }
 }

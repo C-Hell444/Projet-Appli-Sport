@@ -104,15 +104,17 @@
               <th>Nom de l'évenement</th>
               <th>Nom du participant</th>
               <th>Prenom du participant</th>
-              <th>Date de l'évenement</th>
+              <th>Date de début de l'évenement</th>
+              <th>Date de fin de l'évenement</th>
               <th>Chercher des membres</th>
               <th>Supprimer</th>
             </tr>
-            <tr>
-              <td>évenement1</td>
-              <td>nom1</td>
-              <td>prenom1</td>
-              <td>date1</td>
+            <tr *ngFor="let e of eventMembres; let index = index">
+              <td>{{ events[index].nom }}</td>
+              <td>{{ e.nom }}</td>
+              <td>{{ e.prenom }}</td>
+              <td>{{ eventUtilisateurs[index].dateDebut }}</td>
+              <td>{{ eventUtilisateurs[index].dateFin }}</td>
               <td>
                 <button
                   type="button"

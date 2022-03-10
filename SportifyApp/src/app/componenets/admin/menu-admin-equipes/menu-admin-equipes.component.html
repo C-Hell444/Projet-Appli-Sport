@@ -129,24 +129,16 @@
               <th>Nom du club</th>
               <th>Nom du membre</th>
               <th>Prenom du membre</th>
+              <th>Date d'inscription</th>
               <th>Modifier</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let e of equipes2">
-              <td>{{ e.nom }}</td>
-              <td>{{ e.club!.clubNom }}</td>
-              <ng-container *ngFor="let e1 of equipes3">
-                <td>
-                  <ng-container *ngFor="let e2 of e1.equipe">{{
-                    e2.id!.utilisateur!.nom
-                  }}</ng-container>
-                </td>
-                <td>
-                  <ng-container *ngFor="let e2 of e1.equipe">{{
-                    e2.id!.utilisateur!.prenom
-                  }}</ng-container>
-                </td>
-              </ng-container>
+            <tr *ngFor="let m of membres; let index = index">
+              <td>{{ equipes[index].nom }}</td>
+              <td>{{ equipeClubs[index].club?.clubNom }}</td>
+              <td>{{ m.nom }}</td>
+              <td>{{ m.prenom }}</td>
+              <td>{{ equipeUtilisateurs[index].dateDebut }}</td>
               <td>
                 <button type="button" class="btn btn-warning">modifier</button>
               </td>
