@@ -33,14 +33,6 @@ export class MenuClubEvenementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.tab = true;
-    this.compteService
-      .getType(localStorage.getItem('login')!)
-      .subscribe((result) => {
-        this.compte = result;
-        this.clubService.getByIdEvenement(this.compte.id!).subscribe((res) => {
-          this.club = res;
-        });
-      });
   }
 
   detail(id: number, nom: string) {
@@ -64,5 +56,23 @@ export class MenuClubEvenementsComponent implements OnInit {
 
   retour() {
     this.tab = true;
+  }
+
+  getAll() {
+    this.compteService
+      .getType(localStorage.getItem('login')!)
+      .subscribe((result) => {
+        this.compte = result;
+        this.clubService.getByIdEvenement(this.compte.id!).subscribe((res) => {
+          this.club = res;
+        });
+      });
+  }
+
+  delete(id: number) {
+    this.evenementService.delete(id).subscribe((ok) => {
+      this.membresEvenement = [];
+      this.getAll();
+    });
   }
 }

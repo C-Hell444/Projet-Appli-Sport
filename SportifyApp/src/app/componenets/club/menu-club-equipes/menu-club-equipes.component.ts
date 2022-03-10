@@ -33,14 +33,7 @@ export class MenuClubEquipesComponent implements OnInit {
 
   ngOnInit(): void {
     this.tab = true;
-    this.compteService
-      .getType(localStorage.getItem('login')!)
-      .subscribe((result) => {
-        this.compte = result;
-        this.clubService.getByIdEquipe(this.compte.id!).subscribe((res) => {
-          this.club = res;
-        });
-      });
+    this.getAll();
   }
 
   detail(id: number, nom: string) {
@@ -62,5 +55,23 @@ export class MenuClubEquipesComponent implements OnInit {
 
   retour() {
     this.tab = true;
+  }
+
+  getAll(): void {
+    this.compteService
+      .getType(localStorage.getItem('login')!)
+      .subscribe((result) => {
+        this.compte = result;
+        this.clubService.getByIdEquipe(this.compte.id!).subscribe((res) => {
+          this.club = res;
+        });
+      });
+  }
+
+  delete(id: number) {
+    this.equipeService.delete(id).subscribe((ok) => {
+      this.membresEquipe = [];
+      this.getAll();
+    });
   }
 }
