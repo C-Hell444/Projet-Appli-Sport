@@ -15,4 +15,10 @@ export class MenuAdminUtilisateursComponent implements OnInit {
   ngOnInit(): void {
     this.utilisateursObservable = this.utilisateurService.getAll();
   }
+
+  delete(id: number) {
+    this.utilisateurService.delete(id).subscribe((ok) => {
+      this.utilisateursObservable = this.utilisateurService.getAll();
+    });
+  }
 }
