@@ -44,6 +44,7 @@ import { MenuUtilisateurEvenementsEditComponent } from './componenets/utilisateu
 import { MenuUtilisateurEvenementsComponent } from './componenets/utilisateur/menu-utilisateur-evenements/menu-utilisateur-evenements.component';
 import { MenuUtilisateurHistoriqueEditComponent } from './componenets/utilisateur/menu-utilisateur-historique-edit/menu-utilisateur-historique-edit.component';
 import { MenuUtilisateurHistoriqueComponent } from './componenets/utilisateur/menu-utilisateur-historique/menu-utilisateur-historique.component';
+import { MenuUtilisateurSuggestionsComponent } from './componenets/utilisateur/menu-utilisateur-suggestions/menu-utilisateur-suggestions.component';
 import { MenuUtilisateurComponent } from './componenets/utilisateur/menu-utilisateur/menu-utilisateur.component';
 import { AuthenticationGardService } from './services/authentication-gard.service';
 
@@ -160,6 +161,11 @@ export const routes: Routes = [
   {
     path: 'menu-utilisateur-historique-edit',
     component: MenuUtilisateurHistoriqueEditComponent,
+    canActivate: [AuthenticationGardService],
+  },
+  {
+    path: 'menu-utilisateur-suggestions',
+    component: MenuUtilisateurSuggestionsComponent,
     canActivate: [AuthenticationGardService],
   },
   {

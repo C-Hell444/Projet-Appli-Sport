@@ -82,6 +82,7 @@
       >
         Historique
       </button>
+
       <button
         class="nav-link"
         id="v-pills-settings-tab"
@@ -97,15 +98,15 @@
         Suggestions
       </button>
     </div>
-
     <div class="flex-grow-1 ms-3 align-items-center w-75 p-3 mx-auto">
       <div class="d-flex justify-content-around">
         <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
+        <div><input type="text" placeholder="Saisir votre recherche" /></div>
         <a
-          [routerLink]="['/menu-utilisateur-equipes']"
+          [routerLink]="['/menu-utilisateur-clubs-edit']"
           routerLinkActive="active"
           ><img
-            src="assets/img/retour.png"
+            src="assets/img/recherche.png"
             width="100"
             height="100"
             class="d-inline-block align-top"
@@ -113,45 +114,20 @@
         /></a>
       </div>
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-        Vous faites partie des équipes suivantes
+        Vous êtes inscrit aux clubs suivants
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
         <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
-              <th>Nom de l'équipe</th>
-              <th>Sport</th>
               <th>Nom du club</th>
+              <th>Sport</th>
+              <th>Adresse</th>
             </tr>
             <tr>
-              <td>equipe1</td>
-              <td>sport1</td>
-              <td>club1</td>
-            </tr>
-            <tr>
-              <td>equipe2</td>
-              <td>sport2</td>
-              <td>club2</td>
-            </tr>
-            <tr>
-              <td>equipe3</td>
-              <td>sport3</td>
-              <td>club3</td>
-            </tr>
-            <tr>
-              <td>equipe4</td>
-              <td>sport4</td>
-              <td>club4</td>
-            </tr>
-            <tr>
-              <td>equipe5</td>
-              <td>sport5</td>
-              <td>club5</td>
-            </tr>
-            <tr>
-              <td>equipe6</td>
-              <td>sport6</td>
-              <td>club6</td>
+              <td>clubNom</td>
+              <td>sportClub</td>
+              <td>adresse1</td>
             </tr>
           </tbody>
         </table>
@@ -159,7 +135,6 @@
     </div>
   </div>
 </div>
-
 <!-- ********************************************************** -->
 
 <div class="DivEspace3">

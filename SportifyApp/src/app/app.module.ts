@@ -53,6 +53,7 @@ import { MenuAdminEquipesEditComponent } from './componenets/admin/menu-admin-eq
 import { MenuAdminEvenementsEditComponent } from './componenets/admin/menu-admin-evenements-edit/menu-admin-evenements-edit.component';
 import { MenuAdminHistoriqueEditComponent } from './componenets/admin/menu-admin-historique-edit/menu-admin-historique-edit.component';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
+import { MenuUtilisateurSuggestionsComponent } from './componenets/utilisateur/menu-utilisateur-suggestions/menu-utilisateur-suggestions.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { AuthInterceptor } from './interceptor/auth-interceptor';
     MenuAdminEquipesEditComponent,
     MenuAdminEvenementsEditComponent,
     MenuAdminHistoriqueEditComponent,
+    MenuUtilisateurSuggestionsComponent,
   ],
   imports: [
     BrowserModule,
