@@ -51,8 +51,7 @@ export class MenuUtilisateurClubsComponent implements OnInit {
     private equipeService: EquipeService,
     private evenementService: EvenementService,
     private equipeUtilisateurService: EquipeUtilisateurService,
-    private evenementUtilisateurService: EvenementUtilisateurService
-    private clubService: ClubService,
+    private evenementUtilisateurService: EvenementUtilisateurService,
     private clubUtilisateurService: ClubUtilisateurService
   ) {}
 
