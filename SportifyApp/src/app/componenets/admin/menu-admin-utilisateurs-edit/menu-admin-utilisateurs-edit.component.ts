@@ -52,127 +52,127 @@ export class MenuAdminUtilisateursEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.utilisateurService
-          .getByIdWithProfil(params['id'])
-          .subscribe((result) => {
-            this.utilisateur = result;
-            ///////////////
-            // this.profilService
-            //   .getByIdWithCarac(this.utilisateur.profilUtilisateur?.id!)
-            //   .subscribe((resultProfil) => {
-            //     this.profil = resultProfil;
-            //     this.caracteristiqueService
-            //       .get(this.profil.caracteristique?.id!)
-            //       .subscribe((resultCarac) => (this.carac = resultCarac));
-            //   });
-            // this.utilisateurService
-            //   .getByIdWithInteret(this.compte.id!)
-            //   .subscribe((resultUtilisateurInteret) => {
-            //     this.utilisateurInteret = resultUtilisateurInteret;
-            //     this.interets = this.utilisateurInteret.interets!;
-            //   });
-            //////////////
-            this.form = new FormGroup({
-              mail: new FormControl(
-                this.utilisateur.mail,
-                [
-                  Validators.required,
-                  Validators.maxLength(200),
-                  // Validators.pattern(
-                  //   /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
-                  // ),
-                ],
-                this.checkMail()
-              ),
-              numTel: new FormControl(this.utilisateur.numTel, [
+        this.utilisateurService.get(params['id']).subscribe((result) => {
+          this.utilisateur = result;
+          ///////////////
+          // this.profilService
+          //   .getByIdWithCarac(this.utilisateur.profilUtilisateur?.id!)
+          //   .subscribe((resultProfil) => {
+          //     this.profil = resultProfil;
+          //     this.caracteristiqueService
+          //       .get(this.profil.caracteristique?.id!)
+          //       .subscribe((resultCarac) => (this.carac = resultCarac));
+          //   });
+          // this.utilisateurService
+          //   .getByIdWithInteret(this.compte.id!)
+          //   .subscribe((resultUtilisateurInteret) => {
+          //     this.utilisateurInteret = resultUtilisateurInteret;
+          //     this.interets = this.utilisateurInteret.interets!;
+          //   });
+          //////////////
+          this.form = new FormGroup({
+            mail: new FormControl(
+              this.utilisateur.mail,
+              [
                 Validators.required,
-                Validators.maxLength(30),
-                Validators.pattern(/^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$/),
-              ]),
-              nom: new FormControl(this.utilisateur.nom, [
-                Validators.required,
-                Validators.maxLength(30),
-              ]),
-              prenom: new FormControl(this.utilisateur.prenom, [
-                Validators.required,
-                Validators.maxLength(30),
-              ]),
-              sports: new FormControl(this.interets, [Validators.required]),
-              numero: new FormControl(this.utilisateur.adresse?.numero, [
-                Validators.required,
-                Validators.maxLength(30),
-              ]),
-              rue: new FormControl(this.utilisateur.adresse?.rue, [
-                Validators.required,
-                Validators.maxLength(150),
-              ]),
-              ville: new FormControl(this.utilisateur.adresse?.ville, [
-                Validators.required,
-                Validators.maxLength(100),
-              ]),
-              codePostale: new FormControl(
-                this.utilisateur.adresse?.codePostal,
-                [Validators.required, Validators.maxLength(30)]
-              ),
-              poids: new FormControl(
-                this.utilisateur.profilUtilisateur?.poids,
-                [Validators.required, Validators.min(20), Validators.max(300)]
-              ),
-              taille: new FormControl(
-                this.utilisateur.profilUtilisateur?.taille,
-                [Validators.required, Validators.min(0.5), Validators.max(3)]
-              ),
-              dateNaissance: new FormControl(
-                this.utilisateur.profilUtilisateur?.dateNaissance,
-                [Validators.required]
-              ),
-              // collectif: new FormControl(this.carac.collectif, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // creativite: new FormControl(this.carac.creativite, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // determination: new FormControl(this.carac.determination, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // patience: new FormControl(this.carac.patience, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // detente: new FormControl(this.carac.detente, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // agilite: new FormControl(this.carac.agilite, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // puissance: new FormControl(this.carac.puissance, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // vitesse: new FormControl(this.carac.vitesse, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-              // endurance: new FormControl(this.carac.endurance, [
-              //   Validators.required,
-              //   Validators.min(0),
-              //   Validators.max(10),
-              // ]),
-            });
+                Validators.maxLength(200),
+                // Validators.pattern(
+                //   /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
+                // ),
+              ],
+              this.checkMail()
+            ),
+            numTel: new FormControl(this.utilisateur.numTel, [
+              Validators.required,
+              Validators.maxLength(30),
+              Validators.pattern(/^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$/),
+            ]),
+            nom: new FormControl(this.utilisateur.nom, [
+              Validators.required,
+              Validators.maxLength(30),
+            ]),
+            prenom: new FormControl(this.utilisateur.prenom, [
+              Validators.required,
+              Validators.maxLength(30),
+            ]),
+            sports: new FormControl(this.interets, [Validators.required]),
+            numero: new FormControl(this.utilisateur.adresse?.numero, [
+              Validators.required,
+              Validators.maxLength(30),
+            ]),
+            rue: new FormControl(this.utilisateur.adresse?.rue, [
+              Validators.required,
+              Validators.maxLength(150),
+            ]),
+            ville: new FormControl(this.utilisateur.adresse?.ville, [
+              Validators.required,
+              Validators.maxLength(100),
+            ]),
+            codePostal: new FormControl(this.utilisateur.adresse?.codePostal, [
+              Validators.required,
+              Validators.maxLength(30),
+            ]),
+
+            // poids: new FormControl(
+            //   this.utilisateur.profilUtilisateur?.poids,
+            //   [Validators.required, Validators.min(20), Validators.max(300)]
+            // ),
+            // taille: new FormControl(
+            //   this.utilisateur.profilUtilisateur?.taille,
+            //   [Validators.required, Validators.min(0.5), Validators.max(3)]
+            // ),
+            // dateNaissance: new FormControl(
+            //   this.utilisateur.profilUtilisateur?.dateNaissance,
+            //   [Validators.required]
+            // ),
+
+            // collectif: new FormControl(this.carac.collectif, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // creativite: new FormControl(this.carac.creativite, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // determination: new FormControl(this.carac.determination, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // patience: new FormControl(this.carac.patience, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // detente: new FormControl(this.carac.detente, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // agilite: new FormControl(this.carac.agilite, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // puissance: new FormControl(this.carac.puissance, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // vitesse: new FormControl(this.carac.vitesse, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
+            // endurance: new FormControl(this.carac.endurance, [
+            //   Validators.required,
+            //   Validators.min(0),
+            //   Validators.max(10),
+            // ]),
           });
+        });
       }
     });
   }
@@ -401,8 +401,18 @@ export class MenuAdminUtilisateursEditComponent implements OnInit {
   }
 
   public save() {
+    this.utilisateur.nom = this.form.controls['nom'].value;
+    this.utilisateur.prenom = this.form.controls['prenom'].value;
+    this.utilisateur.mail = this.form.controls['mail'].value;
+    this.utilisateur.numTel = this.form.controls['numTel'].value;
+    this.utilisateur.adresse!.numero = this.form.controls['numero'].value;
+    this.utilisateur.adresse!.rue = this.form.controls['rue'].value;
+    this.utilisateur.adresse!.ville = this.form.controls['ville'].value;
+    this.utilisateur.adresse!.codePostal =
+      this.form.controls['codePostal'].value;
+
+    console.log(this.utilisateur);
     this.utilisateurService.update(this.utilisateur).subscribe((ok) => {
-      console.log(this.utilisateur);
       this.router.navigate(['/menu-admin-utilisateurs']);
     });
   }
