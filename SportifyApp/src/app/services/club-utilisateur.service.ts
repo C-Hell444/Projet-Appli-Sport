@@ -35,19 +35,18 @@ export class ClubUtilisateurService {
   create(ClubUtilisateur: ClubUtilisateur): Observable<ClubUtilisateur> {
     const ClubUtilisateurEnJson = {
       dateDebut: ClubUtilisateur.dateDebut,
-      dateFin: ClubUtilisateur.dateFin,
+      dateFin: null,
     };
     if (ClubUtilisateur.id) {
-      if (ClubUtilisateur.id.utilisateur) {
-        Object.assign(ClubUtilisateurEnJson, {
-          utilisateur: { id: ClubUtilisateur.id.utilisateur.id },
-        });
-      }
-      if (ClubUtilisateur.id.club) {
-        Object.assign(ClubUtilisateurEnJson, {
-          club: { id: ClubUtilisateur.id.club.id },
-        });
-      }
+      Object.assign(ClubUtilisateurEnJson, {
+        id: {
+          utilisateur: {
+            type: 'utilisateur',
+            id: ClubUtilisateur.id.utilisateur!.id,
+          },
+          club: { type: 'club', id: ClubUtilisateur.id.club!.id },
+        },
+      });
     }
 
     return this.http.post<ClubUtilisateur>(
