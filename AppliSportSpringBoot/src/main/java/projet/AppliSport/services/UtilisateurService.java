@@ -14,6 +14,7 @@ import projet.AppliSport.model.Club;
 import projet.AppliSport.model.Profil;
 import projet.AppliSport.model.Sport;
 import projet.AppliSport.model.Utilisateur;
+import projet.AppliSport.repositories.CaracteristiqueRepository;
 import projet.AppliSport.repositories.ClubUtilisateurRepository;
 import projet.AppliSport.repositories.EquipeUtilisateurRepository;
 import projet.AppliSport.repositories.EvenementUtilisateurRepository;
@@ -42,6 +43,11 @@ public class UtilisateurService {
 	
 	@Autowired
 	private ProfilRepository profilRepository;
+	
+	@Autowired
+	private ProfilService profilService;
+	
+	
 	
 	@Autowired
 	private Validator validator;
@@ -237,7 +243,7 @@ public class UtilisateurService {
 		evenementUtilisateurRepository.deleteEvenementUtilisateurByUtilisateur(utilisateurEnBase);
 		equipeUtilisateurRepository.deleteEquipeUtilisateurByUtilisateur(utilisateurEnBase);
 		interetRepository.deleteInteretByUtilisateur(utilisateurEnBase);
-		profilRepository.deleteProfilByUtilisateur(utilisateurEnBase);
+		profilService.delete(utilisateurEnBase.getProfilUtilisateur());
 		utilisateurRepository.delete(utilisateurEnBase);
 	}
 	
