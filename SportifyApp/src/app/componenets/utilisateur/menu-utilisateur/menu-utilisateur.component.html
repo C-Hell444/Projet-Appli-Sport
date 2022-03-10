@@ -1,6 +1,5 @@
 <div id="DivContenu">
-  <br /><br /><br />
-  <br /><br />
+  <br><br>
   <div class="d-flex align-items-start justify-content-center">
     <div
       class="nav flex-column nav-pills me-3 h3"
@@ -114,9 +113,13 @@
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
         Vos informations
       </p>
-      <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
-        <table class="table table-hover table-borderless fs-4">
+      <div class="col-md-3 align-items-center w-75 p-3 mx-auto rounded_corner">
+        <table class="table table-hover table-striped fs-4">
           <tbody>
+            <tr>
+              <td class="resume fst-italic fs-4 fw-bold">Infos</td>
+              <td class="resume"></td>
+            </tr>
             <tr>
               <td>Civilité:</td>
               <td>{{ utilisateurProfil.profilUtilisateur?.sexe }}</td>
@@ -138,8 +141,8 @@
               <td>{{ utilisateurProfil.numTel }}</td>
             </tr>
             <tr>
-              <td class="fst-italic fs-4 fw-bold">Adresse</td>
-              <td></td>
+              <td class="resume fst-italic fs-4 fw-bold">Adresse</td>
+              <td class="resume"></td>
             </tr>
 
             <tr>
@@ -171,8 +174,8 @@
               <td>{{ profil.dateNaissance | date: "dd-MM-yyyy" }}</td>
             </tr>
             <tr>
-              <td class="fst-italic fs-4 fw-bold">Caractéristiques</td>
-              <td></td>
+              <td class="resume fst-italic fs-4 fw-bold">Caractéristiques</td>
+              <td class="resume"></td>
             </tr>
             <tr>
               <td>Collectif :</td>
@@ -213,8 +216,8 @@
               <td>{{ carac.endurance }}</td>
             </tr>
             <tr>
-              <td class="fst-italic fs-4 fw-bold">Intérêts</td>
-              <td></td>
+              <td class="resume fst-italic fs-4 fw-bold">Intérêts</td>
+              <td class="resume"></td>
             </tr>
             <tr>
               <td>Sports :</td>
