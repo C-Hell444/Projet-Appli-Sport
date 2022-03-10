@@ -133,11 +133,11 @@
               <th>Modifier</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let c of clubs2">
+            <tr *ngFor="let c of clubs; let index = index">
               <td>{{ c.clubNom }}</td>
               <td>{{ c.mail }}</td>
               <td>{{ c.numTel }}</td>
-              <td>{{ c.sportClub!.nom }}</td>
+              <td>{{ clubs2[index].sportClub?.nom }}</td>
               <td>
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
                 {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}

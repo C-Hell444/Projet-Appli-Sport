@@ -34,6 +34,10 @@ export class MenuClubMembresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((result) => {
@@ -77,5 +81,13 @@ export class MenuClubMembresComponent implements OnInit {
             }
           });
       });
+  }
+
+  delete(id: number) {
+    this.membres = [];
+    this.profils = [];
+    this.caracteristiques = [];
+    this.datesInscription = [];
+    this.moyennes = [];
   }
 }
