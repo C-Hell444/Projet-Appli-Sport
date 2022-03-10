@@ -25,6 +25,12 @@ export class EquipeUtilisateurService {
     );
   }
 
+  getByEquipeId(id: number): Observable<EquipeUtilisateur> {
+    return this.http.get<EquipeUtilisateur>(
+      EquipeUtilisateurService.URL + '/' + id + '/equipe'
+    );
+  }
+
   update(EquipeUtilisateur: EquipeUtilisateur): Observable<EquipeUtilisateur> {
     return this.http.put<EquipeUtilisateur>(
       EquipeUtilisateurService.URL + '/' + EquipeUtilisateur.id,

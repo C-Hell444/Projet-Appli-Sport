@@ -85,9 +85,6 @@ export class ClubService {
   getByIdEquipe(id: number): Observable<Club> {
     return this.http.get<Club>(ClubService.URL + '/' + id + '/equipe');
   }
-  getByIdEvenement(id: number): Observable<Club> {
-    return this.http.get<Club>(ClubService.URL + '/' + id + '/evenement');
-  }
 
   // =================== Get By ? ======================== //
 
@@ -136,6 +133,33 @@ export class ClubService {
   getByIdUtilisateurOrderByDateFinDesc(id: number): Observable<Club> {
     return this.http.get<Club>(
       ClubService.URL + '/' + id + '/utilisateur/date-fin-desc'
+    );
+  }
+
+  // =================== Get Evenements + tri ======================== //
+
+  getByIdEvenement(id: number): Observable<Club> {
+    return this.http.get<Club>(ClubService.URL + '/' + id + '/evenement');
+  }
+
+  getByIdEvenementOrderByDateDebutAsc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/evenement/date-debut-asc'
+    );
+  }
+  getByIdEvenementOrderByDateDebutDesc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/evenement/date-debut-desc'
+    );
+  }
+  getByIdEvenementOrderByDateFinAsc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/evenement/date-fin-asc'
+    );
+  }
+  getByIdEvenementOrderByDateFinDesc(id: number): Observable<Club> {
+    return this.http.get<Club>(
+      ClubService.URL + '/' + id + '/evenement/date-fin-desc'
     );
   }
 }

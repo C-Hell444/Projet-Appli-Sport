@@ -24,18 +24,18 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
   utilisateurClub: Utilisateur = new Utilisateur();
   clubsUtilisateur: ClubUtilisateur[] = new Array<ClubUtilisateur>();
   clubs: Club[] = new Array<Club>();
-  clubLength: number[] = new Array<number>();
 
   utilisateurEquipe: Utilisateur = new Utilisateur();
   equipesUtilisateur: EquipeUtilisateur[] = new Array<EquipeUtilisateur>();
   equipes: Equipe[] = new Array<Equipe>();
-  equipeLength: number[] = new Array<number>();
+  equipeClubs: Club[] = new Array<Club>();
 
   utilisateurEvent: Utilisateur = new Utilisateur();
   evenementsUtilisateur: EvenementUtilisateur[] =
     new Array<EvenementUtilisateur>();
   evenements: Evenement[] = new Array<Evenement>();
-  evenementLength: number[] = new Array<number>();
+  evenementClubs: Club[] = new Array<Club>();
+
   constructor(
     private compteService: CompteService,
     private utilisateurService: UtilisateurService,
@@ -45,64 +45,14 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.compteService
-      .getType(localStorage.getItem('login')!)
-      .subscribe((resultCompte) => {
-        this.compte = resultCompte;
-        this.utilisateurService
-          .getByIdWithClubUtilisateurOrderByDateDebutDesc(this.compte.id!)
-          .subscribe((resultClub) => {
-            this.utilisateurClub = resultClub;
-            this.clubsUtilisateur = this.utilisateurClub.clubs!;
-            for (let i = 0; i < this.utilisateurClub.clubs?.length!; i++) {
-              this.clubService
-                .getByIdWithSport(this.utilisateurClub.clubs![i].id?.club?.id!)
-                .subscribe((club) => {
-                  this.clubs.push(club);
-                  this.clubLength.push(i);
-                });
-            }
-          });
-        this.utilisateurService
-          .getByIdWithEquipeUtilisateurOrderByDateDebutDesc(this.compte.id!)
-          .subscribe((resultEquipe) => {
-            this.utilisateurEquipe = resultEquipe;
-            this.equipesUtilisateur = this.utilisateurEquipe.equipes!;
-            for (let i = 0; i < this.utilisateurEquipe.equipes?.length!; i++) {
-              this.equipeService
-                .getByIdWithClub(
-                  this.utilisateurEquipe.equipes![i].id?.equipe?.id!
-                )
-                .subscribe((equipe) => {
-                  this.equipes.push(equipe);
-                  this.equipeLength.push(i);
-                });
-            }
-          });
-        this.utilisateurService
-          .getByIdWithEvenementUtilisateurOrderByDateDebutDesc(this.compte.id!)
-          .subscribe((resultEvenement) => {
-            this.utilisateurEvent = resultEvenement;
-            this.evenementsUtilisateur = this.utilisateurEvent.evenements!;
-            for (
-              let i = 0;
-              i < this.utilisateurEvent.evenements?.length!;
-              i++
-            ) {
-              this.evenementService
-                .getByIdWithClub(
-                  this.utilisateurEvent.evenements![i].id?.evenement?.id!
-                )
-                .subscribe((evenement) => {
-                  this.evenements.push(evenement);
-                  this.evenementLength.push(i);
-                });
-            }
-          });
-      });
+    this.triDescClub();
+    this.triDescEquipe();
+    this.triDescEvenement();
   }
 
   triAscClub(): void {
+    this.clubsUtilisateur = [];
+    this.clubs = [];
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
@@ -117,7 +67,28 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
                 .getByIdWithSport(this.utilisateurClub.clubs![i].id?.club?.id!)
                 .subscribe((club) => {
                   this.clubs.push(club);
-                  this.clubLength.push(i);
+                });
+            }
+          });
+      });
+  }
+  triDescClub(): void {
+    this.clubsUtilisateur = [];
+    this.clubs = [];
+    this.compteService
+      .getType(localStorage.getItem('login')!)
+      .subscribe((resultCompte) => {
+        this.compte = resultCompte;
+        this.utilisateurService
+          .getByIdWithClubUtilisateurOrderByDateDebutDesc(this.compte.id!)
+          .subscribe((resultClub) => {
+            this.utilisateurClub = resultClub;
+            this.clubsUtilisateur = this.utilisateurClub.clubs!;
+            for (let i = 0; i < this.utilisateurClub.clubs?.length!; i++) {
+              this.clubService
+                .getByIdWithSport(this.utilisateurClub.clubs![i].id?.club?.id!)
+                .subscribe((club) => {
+                  this.clubs.push(club);
                 });
             }
           });
@@ -125,6 +96,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
   }
 
   triAscEquipe(): void {
+    this.equipesUtilisateur = [];
+    this.equipes = [];
+    this.equipeClubs = [];
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
@@ -141,7 +115,41 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
                 )
                 .subscribe((equipe) => {
                   this.equipes.push(equipe);
-                  this.equipeLength.push(i);
+                  this.clubService
+                    .getByIdWithSport(equipe.club?.id!)
+                    .subscribe((club) => {
+                      this.equipeClubs.push(club);
+                    });
+                });
+            }
+          });
+      });
+  }
+  triDescEquipe(): void {
+    this.equipesUtilisateur = [];
+    this.equipes = [];
+    this.equipeClubs = [];
+    this.compteService
+      .getType(localStorage.getItem('login')!)
+      .subscribe((resultCompte) => {
+        this.compte = resultCompte;
+        this.utilisateurService
+          .getByIdWithEquipeUtilisateurOrderByDateDebutDesc(this.compte.id!)
+          .subscribe((resultEquipe) => {
+            this.utilisateurEquipe = resultEquipe;
+            this.equipesUtilisateur = this.utilisateurEquipe.equipes!;
+            for (let i = 0; i < this.utilisateurEquipe.equipes?.length!; i++) {
+              this.equipeService
+                .getByIdWithClub(
+                  this.utilisateurEquipe.equipes![i].id?.equipe?.id!
+                )
+                .subscribe((equipe) => {
+                  this.equipes.push(equipe);
+                  this.clubService
+                    .getByIdWithSport(equipe.club?.id!)
+                    .subscribe((club) => {
+                      this.equipeClubs.push(club);
+                    });
                 });
             }
           });
@@ -149,6 +157,9 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
   }
 
   triAscEvenement(): void {
+    this.evenementsUtilisateur = [];
+    this.evenements = [];
+    this.evenementClubs = [];
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((resultCompte) => {
@@ -169,7 +180,45 @@ export class MenuUtilisateurHistoriqueComponent implements OnInit {
                 )
                 .subscribe((evenement) => {
                   this.evenements.push(evenement);
-                  this.evenementLength.push(i);
+                  this.clubService
+                    .getByIdWithSport(evenement.club?.id!)
+                    .subscribe((club) => {
+                      this.evenementClubs.push(club);
+                    });
+                });
+            }
+          });
+      });
+  }
+  triDescEvenement(): void {
+    this.evenementsUtilisateur = [];
+    this.evenements = [];
+    this.evenementClubs = [];
+    this.compteService
+      .getType(localStorage.getItem('login')!)
+      .subscribe((resultCompte) => {
+        this.compte = resultCompte;
+        this.utilisateurService
+          .getByIdWithEvenementUtilisateurOrderByDateDebutDesc(this.compte.id!)
+          .subscribe((resultEvenement) => {
+            this.utilisateurEvent = resultEvenement;
+            this.evenementsUtilisateur = this.utilisateurEvent.evenements!;
+            for (
+              let i = 0;
+              i < this.utilisateurEvent.evenements?.length!;
+              i++
+            ) {
+              this.evenementService
+                .getByIdWithClub(
+                  this.utilisateurEvent.evenements![i].id?.evenement?.id!
+                )
+                .subscribe((evenement) => {
+                  this.evenements.push(evenement);
+                  this.clubService
+                    .getByIdWithSport(evenement.club?.id!)
+                    .subscribe((club) => {
+                      this.evenementClubs.push(club);
+                    });
                 });
             }
           });
