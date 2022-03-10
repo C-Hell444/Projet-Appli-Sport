@@ -133,11 +133,11 @@
               <th>Modifier</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let c of clubsObservable | async">
+            <tr *ngFor="let c of clubs2">
               <td>{{ c.clubNom }}</td>
               <td>{{ c.mail }}</td>
               <td>{{ c.numTel }}</td>
-              <td>{{ c.sportClub }}</td>
+              <td>{{ c.sportClub!.nom }}</td>
               <td>
                 {{ c.adresse!.numero }} {{ c.adresse!.rue }}
                 {{ c.adresse!.ville }} {{ c.adresse!.codePostal }}

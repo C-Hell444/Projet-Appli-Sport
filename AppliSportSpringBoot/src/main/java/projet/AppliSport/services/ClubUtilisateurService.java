@@ -27,7 +27,8 @@ public class ClubUtilisateurService {
 			throw new ClubUtilisateurException("clubutilisateur inconnu");
 		});
 	}
-
+	
+	
 	public List<ClubUtilisateur> getAll() {
 		return clubUtilisateurRepository.findAll();
 	}
@@ -74,5 +75,7 @@ public class ClubUtilisateurService {
 	public void deleteById(ClubUtilisateurKey clubUtilisateurKey) {
 		delete(getById(clubUtilisateurKey));
 	}
+
+	
 
 }

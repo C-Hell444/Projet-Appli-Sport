@@ -95,6 +95,7 @@ public class EquipeRestController {
 	public Equipe getById(@PathVariable Long id) {
 		return equipeService.getById(id);
 	}
+
 	
 	@GetMapping("/{id}/club")
 	@JsonView(Views.EquipeWithClub.class)

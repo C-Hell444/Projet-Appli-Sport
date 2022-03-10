@@ -98,7 +98,42 @@
       <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
         Vous êtes inscrit aux clubs suivants
       </p>
+
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
+        <div
+          class="nav flex-row nav-pills me-3 h3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="horizontal"
+        >
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="true"
+            (click)="triDescClub()"
+          >
+            + recent
+          </button>
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="false"
+            (click)="triAscClub()"
+          >
+            + ancien
+          </button>
+        </div>
+
         <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
@@ -108,16 +143,20 @@
               <th>Date d'inscription</th>
               <th>Date de désinscription</th>
             </tr>
-            <tr *ngFor="let c of clubLength">
-              <td>{{ clubs[c].clubNom }}</td>
-              <td>{{ clubs[c].sportClub?.nom }}</td>
+            <tr *ngFor="let c of clubs; let index = index">
+              <td>{{ c.clubNom }}</td>
+              <td>{{ c.sportClub?.nom }}</td>
               <td>
-                {{ clubs[c].adresse?.numero }}
-                {{ clubs[c].adresse?.rue }} {{ clubs[c].adresse?.ville }}
-                {{ clubs[c].adresse?.codePostal }}
+                {{ c.adresse?.numero }}
+                {{ c.adresse?.rue }} {{ c.adresse?.ville }}
+                {{ c.adresse?.codePostal }}
               </td>
-              <td>{{ clubsUtilisateur[c].dateDebut }}</td>
-              <td>{{ clubsUtilisateur[c].dateFin }}</td>
+              <td>
+                {{ clubsUtilisateur[index].dateDebut | date: "dd-MM-yyyy" }}
+              </td>
+              <td>
+                {{ clubsUtilisateur[index].dateFin | date: "dd-MM-yyyy" }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -129,19 +168,58 @@
         Vous faites partie des équipes suivantes
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
+        <div
+          class="nav flex-row nav-pills me-3 h3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="horizontal"
+        >
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="true"
+            (click)="triDescEquipe()"
+          >
+            + recent
+          </button>
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="false"
+            (click)="triAscEquipe()"
+          >
+            + ancien
+          </button>
+        </div>
         <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom de l'équipe</th>
-              <th>Nom du club</th>
+              <th>Club</th>
+              <th>Sport</th>
               <th>Date d'inscription</th>
               <th>Date de désinscription</th>
             </tr>
-            <tr *ngFor="let e of equipeLength">
-              <td>{{ equipes[e].nom }}</td>
-              <td>{{ equipes[e].club?.clubNom }}</td>
-              <td>{{ equipesUtilisateur[e].dateDebut }}</td>
-              <td>{{ equipesUtilisateur[e].dateFin }}</td>
+            <tr *ngFor="let e of equipeClubs; let index = index">
+              <td>{{ equipes[index].nom }}</td>
+              <td>{{ e.clubNom }}</td>
+              <td>{{ e.sportClub?.nom }}</td>
+              <td>
+                {{ equipesUtilisateur[index].dateDebut | date: "dd-MM-yyyy" }}
+              </td>
+              <td>
+                {{ equipesUtilisateur[index].dateFin | date: "dd-MM-yyyy" }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -153,19 +231,60 @@
         Vous êtes inscrit aux évenements suivants
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
+        <div
+          class="nav flex-row nav-pills me-3 h3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="horizontal"
+        >
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="true"
+            (click)="triDescEvenement()"
+          >
+            + recent
+          </button>
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="false"
+            (click)="triAscEvenement()"
+          >
+            + ancien
+          </button>
+        </div>
         <table class="table table-striped table-hover fs-4">
           <tbody>
             <tr class="bg-warning text-dark">
               <th>Nom de l'évenement</th>
               <th>Organisateur</th>
+              <th>Sport</th>
               <th>Début de l'évenement</th>
               <th>Fin de l'évenement</th>
             </tr>
-            <tr *ngFor="let e of evenementLength">
-              <td>{{ evenements[e].nom }}</td>
-              <td>{{ evenements[e].club?.clubNom }}</td>
-              <td>{{ evenementsUtilisateur[e].dateDebut }}</td>
-              <td>{{ evenementsUtilisateur[e].dateFin }}</td>
+            <tr *ngFor="let e of evenementClubs; let index = index">
+              <td>{{ evenements[index].nom }}</td>
+              <td>{{ e.clubNom }}</td>
+              <td>{{ e.sportClub?.nom }}</td>
+              <td>
+                {{
+                  evenementsUtilisateur[index].dateDebut | date: "dd-MM-yyyy"
+                }}
+              </td>
+              <td>
+                {{ evenementsUtilisateur[index].dateFin | date: "dd-MM-yyyy" }}
+              </td>
             </tr>
           </tbody>
         </table>

@@ -95,14 +95,18 @@
         Les informations de votre club
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto bg-light">
-        <form class="row g-3" (ngSubmit)="save()" [formGroup]="form">
+        <form
+          class="was-validated row g-3"
+          (ngSubmit)="save()"
+          [formGroup]="form"
+        >
           <div class="col-md-12">
             <label for="validationServer01" class="form-label"
               >Nom du club</label
             >
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="Nom du club"
               id="nomClub"
               required
@@ -110,7 +114,7 @@
               [(ngModel)]="club.clubNom"
             />
             <div
-              class="valid-feedback"
+              class="invalid-feedback"
               *ngIf="
                 form.controls['nomClub'].dirty &&
                 form.controls['nomClub'].invalid
@@ -127,13 +131,11 @@
               class="form-control is-invalid"
               placeholder="E-mail"
               id="mail"
-              aria-describedby="validationServer03Feedback"
               required
               formControlName="mail"
               [(ngModel)]="club.mail"
             />
             <div
-              id="validationServer03Feedback"
               class="invalid-feedback"
               *ngIf="
                 form.controls['mail'].dirty && form.controls['mail'].invalid
@@ -149,7 +151,7 @@
             >
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="N° de téléphone"
               id="numTel"
               required
@@ -157,7 +159,7 @@
               [(ngModel)]="club.numTel"
             />
             <div
-              class="valid-feedback"
+              class="invalid-feedback"
               *ngIf="
                 form.controls['numTel'].dirty && form.controls['numTel'].invalid
               "
@@ -170,12 +172,21 @@
             <label for="validationServer01" class="form-label">Sport</label>
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="Sport"
               id="sport"
               required
+              formControlName="sport"
               [(ngModel)]="club.sportClub!.nom"
             />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                form.controls['sport'].dirty && form.controls['sport'].invalid
+              "
+            >
+              sport obligatoire
+            </div>
           </div>
 
           <div class="col-12 h4">Adresse</div>
@@ -184,7 +195,7 @@
             <label for="validationServer01" class="form-label">Numéro</label>
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="Numéro"
               id="numero"
               required
@@ -192,7 +203,7 @@
               [(ngModel)]="club.adresse!.numero"
             />
             <div
-              class="valid-feedback"
+              class="invalid-feedback"
               *ngIf="
                 form.controls['numero'].dirty && form.controls['numero'].invalid
               "
@@ -205,7 +216,7 @@
             <label for="validationServer01" class="form-label">Rue</label>
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="Rue"
               id="rue"
               required
@@ -213,7 +224,7 @@
               [(ngModel)]="club.adresse!.rue"
             />
             <div
-              class="valid-feedback"
+              class="invalid-feedback"
               *ngIf="form.controls['rue'].dirty && form.controls['rue'].invalid"
             >
               {{ errorRue }}
@@ -224,7 +235,7 @@
             <label for="validationServer01" class="form-label">ville</label>
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="ville"
               id="ville"
               required
@@ -232,7 +243,7 @@
               [(ngModel)]="club.adresse!.ville"
             />
             <div
-              class="valid-feedback"
+              class="invalid-feedback"
               *ngIf="
                 form.controls['ville'].dirty && form.controls['ville'].invalid
               "
@@ -247,7 +258,7 @@
             >
             <input
               type="text"
-              class="form-control is-valid"
+              class="form-control is-invalid"
               placeholder="Code postale"
               id="cp"
               required
@@ -255,7 +266,7 @@
               [(ngModel)]="club.adresse!.codePostal"
             />
             <div
-              class="valid-feedback"
+              class="invalid-feedback"
               *ngIf="
                 form.controls['codePostale'].dirty &&
                 form.controls['codePostale'].invalid
@@ -265,7 +276,7 @@
             </div>
           </div>
 
-          <div class="col-1">
+          <div class="col-12">
             <button
               class="btn btn-primary"
               type="submit"
@@ -273,8 +284,6 @@
             >
               modifier
             </button>
-          </div>
-          <div class="col-1">
             <button
               class="btn btn-warning"
               type="submit"

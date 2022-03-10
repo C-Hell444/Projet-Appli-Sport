@@ -10,9 +10,18 @@ import { ClubService } from 'src/app/services/club.service';
 })
 export class MenuAdminClubsComponent implements OnInit {
   clubsObservable!: Observable<Club[]>;
+  clubs: Club[] = [];
+  clubs2: Club[] = [];
   constructor(private clubService: ClubService) {}
 
   ngOnInit(): void {
-    this.clubsObservable = this.clubService.getAll();
+    this.clubService.getAll().subscribe((ok) => {
+      this.clubs = ok;
+      for (let c of this.clubs) {
+        this.clubService.getByIdWithSport(c.id!).subscribe((res) => {
+          this.clubs2.push(res);
+        });
+      }
+    });
   }
 }

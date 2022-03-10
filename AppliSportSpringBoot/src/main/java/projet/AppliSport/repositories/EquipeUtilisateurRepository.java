@@ -20,8 +20,9 @@ public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisa
 	List<EquipeUtilisateur> findByDateDebut(LocalDate dateDebut);
 	List<EquipeUtilisateur> findByDateFin(LocalDate dateFin);
 	Optional<EquipeUtilisateur> findById(EquipeUtilisateurKey id);
-	@Query("select u from EquipeUtilisateur u left join fetch u.id.equipe where u.id=:id")
-	Optional<EquipeUtilisateur> findByIdWithEquipe(@Param("id") Long id);
+	
+	@Query("select eu from EquipeUtilisateur eu left join fetch eu.id.equipe e where e.id=:id")
+	List<EquipeUtilisateur> findByEquipeId(@Param("id") Long id);
 
 
 	
@@ -35,6 +36,8 @@ public interface EquipeUtilisateurRepository extends JpaRepository<EquipeUtilisa
 	@Modifying
 	@Query("delete from EquipeUtilisateur e where e.id.equipe=:equipe")
 	void deleteEquipeUtilisateurByEquipe(@Param("equipe") Equipe equipe);
+	
+	
 	
 	
 }

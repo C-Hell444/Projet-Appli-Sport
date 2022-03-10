@@ -38,6 +38,7 @@ export class MenuClubEditComponent implements OnInit {
         this.compte = results;
         this.clubService.getByIdWithSport(this.compte.id!).subscribe((ok) => {
           this.club = ok;
+          console.log(this.club);
         });
       });
     this.form = new FormGroup({
@@ -58,6 +59,10 @@ export class MenuClubEditComponent implements OnInit {
         Validators.pattern(/^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$/),
       ]),
       nomClub: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(30),
+      ]),
+      sport: new FormControl('', [
         Validators.required,
         Validators.maxLength(30),
       ]),
@@ -167,24 +172,9 @@ export class MenuClubEditComponent implements OnInit {
     return '';
   }
   save() {
-    let club = {
-      identifiant: this.form.get('login')?.value,
-      mdp: this.form.get('passwordGrp')?.get('password')?.value,
-      type: 'club',
-      mail: this.form.get('mail')?.value,
-      numTel: this.form.get('numTel')?.value,
-      clubNom: this.form.get('nomClub')?.value,
-      adresse: {
-        numero: this.form.get('numero')?.value,
-        rue: this.form.get('rue')?.value,
-        ville: this.form.get('ville')?.value,
-        codePostal: this.form.get('codePostale')?.value,
-      },
-    };
-
-    // console.log(club);
-    this.authService.inscriptionClub(club).subscribe((ok) => {
-      this.router.navigateByUrl('/menu-club');
+    this.clubService.update(this.club).subscribe((ok) => {
+      console.log(this.club);
+      this.router.navigate(['/menu-club']);
     });
   }
 }

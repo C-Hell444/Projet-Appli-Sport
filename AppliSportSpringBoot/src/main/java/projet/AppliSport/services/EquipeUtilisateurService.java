@@ -27,10 +27,16 @@ public class EquipeUtilisateurService {
 			throw new EquipeUtilisateurException("equipeutilisateur inconnu");
 		});
 	}
+	
+	public List<EquipeUtilisateur> getByEquipeId(Long id) {
+		return equipeUtilisateurRepository.findByEquipeId(id);
+	}
+
 
 	public List<EquipeUtilisateur> getAll() {
 		return equipeUtilisateurRepository.findAll();
 	}
+	
 
 	private void checkData(EquipeUtilisateur equipeUtilisateur) {
 		if (!validator.validate(equipeUtilisateur).isEmpty()) {
@@ -75,5 +81,8 @@ public class EquipeUtilisateurService {
 	public void deleteById(EquipeUtilisateurKey equipeUtilisateurKey) {
 		delete(getById(equipeUtilisateurKey));
 	}
+
+
+	
 
 }
