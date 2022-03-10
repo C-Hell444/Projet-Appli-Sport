@@ -132,11 +132,21 @@
               <th>Modifier</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let e of equipesObservable | async">
+            <tr *ngFor="let e of equipes2">
               <td>{{ e.nom }}</td>
-              <td>{{ e.club }}</td>
-              <td>{{ e.equipe }}</td>
-              <td>{{ e.equipe }}</td>
+              <td>{{ e.club!.clubNom }}</td>
+              <ng-container *ngFor="let e1 of equipes3">
+                <td>
+                  <ng-container *ngFor="let e2 of e1.equipe">{{
+                    e2.id!.utilisateur!.nom
+                  }}</ng-container>
+                </td>
+                <td>
+                  <ng-container *ngFor="let e2 of e1.equipe">{{
+                    e2.id!.utilisateur!.prenom
+                  }}</ng-container>
+                </td>
+              </ng-container>
               <td>
                 <button type="button" class="btn btn-warning">modifier</button>
               </td>

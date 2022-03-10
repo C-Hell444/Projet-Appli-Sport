@@ -130,9 +130,13 @@
               <th>Modifier</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let s of sportsObservable | async">
+            <tr *ngFor="let s of sports2">
               <td>{{ s.nom }}</td>
-              <td>{{ s.clubs }}</td>
+              <td>
+                <ng-container *ngFor="let c of s.clubs"
+                  >{{ c.clubNom }} ,</ng-container
+                >
+              </td>
               <td>
                 <button type="button" class="btn btn-warning">modifier</button>
               </td>
