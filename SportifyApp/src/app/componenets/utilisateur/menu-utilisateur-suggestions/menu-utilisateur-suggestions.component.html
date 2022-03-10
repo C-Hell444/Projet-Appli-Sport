@@ -103,6 +103,7 @@
         <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
         <div><input type="text" placeholder="Saisir votre recherche" /></div>
         <a
+          *ngIf="afficheSport"
           [routerLink]="['/menu-utilisateur-clubs-edit']"
           routerLinkActive="active"
           ><img
@@ -110,24 +111,80 @@
             width="100"
             height="100"
             class="d-inline-block align-top"
+            alt="recherche"
+        /></a>
+        <a *ngIf="afficheClub" (click)="backSport()"
+          ><img
+            src="assets/img/retour.png"
+            width="100"
+            height="100"
+            class="d-inline-block align-top"
             alt="tweeter"
         /></a>
       </div>
-      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
-        Vous êtes inscrit aux clubs suivants
+      <p
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+        *ngIf="afficheSport"
+      >
+        Compte tenu de vos caracteristiques, nous vous conseillons les sports
+        suivants :
+      </p>
+      <p
+        class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto"
+        *ngIf="afficheClub"
+      >
+        Les clubs suivants vous permettront de pratiquer le sport :
+        {{ nomSport }}
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
         <table class="table table-striped table-hover fs-4">
-          <tbody>
+          <tbody *ngIf="afficheSport">
+            <tr class="bg-warning text-dark">
+              <th>Nom du sport</th>
+              <th>Liste des clubs où pratiquer ce sport</th>
+            </tr>
+            <tr *ngFor="let s of sports">
+              <td>{{ s.nom }}</td>
+              <td>
+                <button type="button" (click)="listClubs(s.id!, s.nom!)">
+                  <img
+                    src="assets/img/recherche.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="add-user"
+                  />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="afficheClub">
             <tr class="bg-warning text-dark">
               <th>Nom du club</th>
-              <th>Sport</th>
+              <th>Mail</th>
+              <th>Numero de telephone</th>
               <th>Adresse</th>
+              <th>Rejoindre ce club</th>
             </tr>
-            <tr>
-              <td>clubNom</td>
-              <td>sportClub</td>
-              <td>adresse1</td>
+            <tr *ngFor="let c of clubs">
+              <td>{{ c.clubNom }}</td>
+              <td>{{ c.mail }}</td>
+              <td>{{ c.numTel }}</td>
+              <td>
+                {{ c.adresse?.numero }} {{ c.adresse?.rue }}
+                {{ c.adresse?.codePostal }} {{ c.adresse?.ville }}
+              </td>
+              <td>
+                <button type="button" (click)="addClub(c.id!)">
+                  <img
+                    src="assets/img/add-user.png"
+                    width="50"
+                    height="50"
+                    class="d-inline-block align-top"
+                    alt="add-user"
+                  />
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
