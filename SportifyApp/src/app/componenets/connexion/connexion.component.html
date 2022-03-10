@@ -40,7 +40,11 @@
     <div class="flex-grow-1 ms-3">
       <h3 class="mt-0 w-75 p-3 mx-auto">Connectez-vous à votre compte</h3>
 
-      <form class="row g-3" (ngSubmit)="save()" [formGroup]="form">
+      <form
+        class="was-validated row g-3"
+        (ngSubmit)="save()"
+        [formGroup]="form"
+      >
         <div class="col-md-12">
           <label for="validationServer03" class="form-label">Identifiant</label>
           <input
@@ -48,7 +52,6 @@
             class="form-control is-invalid"
             placeholder="identifiant"
             id="identifiant"
-            aria-describedby="validationServer03Feedback"
             required
             formControlName="login"
           />
@@ -72,7 +75,6 @@
             class="form-control is-invalid"
             placeholder="Mot de passe"
             id="password"
-            aria-describedby="validationServer05Feedback"
             required
             formControlName="password"
           />

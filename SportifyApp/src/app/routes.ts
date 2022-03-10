@@ -98,31 +98,31 @@ export const routes: Routes = [
     component: MenuClubEquipesComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-club-equipes-edit',
-    component: MenuClubEquipesEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-club-equipes-edit',
+  //   component: MenuClubEquipesEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-club-evenements',
     component: MenuClubEvenementsComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-club-evenements-edit',
-    component: MenuClubEvenementsEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-club-evenements-edit',
+  //   component: MenuClubEvenementsEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-club-historique',
     component: MenuClubHistoriqueComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-club-historique-edit',
-    component: MenuClubHistoriqueEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-club-historique-edit',
+  //   component: MenuClubHistoriqueEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-utilisateur',
     component: MenuUtilisateurComponent,
@@ -138,41 +138,41 @@ export const routes: Routes = [
     component: MenuUtilisateurClubsComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-utilisateur-clubs-edit',
-    component: MenuUtilisateurClubsEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-utilisateur-clubs-edit',
+  //   component: MenuUtilisateurClubsEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-utilisateur-equipes',
     component: MenuUtilisateurEquipesComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-utilisateur-equipes-edit',
-    component: MenuUtilisateurEquipesEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-utilisateur-equipes-edit',
+  //   component: MenuUtilisateurEquipesEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-utilisateur-evenements',
     component: MenuUtilisateurEvenementsComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-utilisateur-evenements-edit',
-    component: MenuUtilisateurEvenementsEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-utilisateur-evenements-edit',
+  //   component: MenuUtilisateurEvenementsEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-utilisateur-historique',
     component: MenuUtilisateurHistoriqueComponent,
     canActivate: [AuthenticationGardService],
   },
-  {
-    path: 'menu-utilisateur-historique-edit',
-    component: MenuUtilisateurHistoriqueEditComponent,
-    canActivate: [AuthenticationGardService],
-  },
+  // {
+  //   path: 'menu-utilisateur-historique-edit',
+  //   component: MenuUtilisateurHistoriqueEditComponent,
+  //   canActivate: [AuthenticationGardService],
+  // },
   {
     path: 'menu-utilisateur-suggestions',
     component: MenuUtilisateurSuggestionsComponent,
