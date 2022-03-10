@@ -12,7 +12,6 @@ import { EvenementService } from 'src/app/services/evenement.service';
   styleUrls: ['./menu-admin-evenements.component.css'],
 })
 export class MenuAdminEvenementsComponent implements OnInit {
-  evenementsObservable!: Observable<Evenement[]>;
   evenementsGetAll: Array<Evenement> = [];
   evenements: Array<Evenement> = [];
   evenementClubs: Array<Evenement> = [];
@@ -24,8 +23,10 @@ export class MenuAdminEvenementsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.evenementsObservable = this.evenementService.getAll();
-    this.evenementsObservable = this.evenementService.getAll();
+    this.getAll();
+  }
+
+  getAll(): void {
     this.evenementService.getAll().subscribe((listeEvenements) => {
       this.evenementsGetAll = listeEvenements;
 
@@ -49,6 +50,17 @@ export class MenuAdminEvenementsComponent implements OnInit {
             }
           });
       }
+    });
+  }
+
+  delete(id: number) {
+    this.evenementService.delete(id).subscribe((ok) => {
+      this.evenementsGetAll = [];
+      this.evenements = [];
+      this.evenementClubs = [];
+      this.evenementUtilisateurs = [];
+      this.membres = [];
+      this.getAll();
     });
   }
 }

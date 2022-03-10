@@ -27,7 +27,10 @@ export class MenuAdminEquipesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.equipesObservable = this.equipeService.getAll();
+    this.getAll();
+  }
+
+  getAll(): void {
     this.equipeService.getAll().subscribe((listeEquipes) => {
       this.equipesGetAll = listeEquipes;
 
@@ -51,6 +54,17 @@ export class MenuAdminEquipesComponent implements OnInit {
             }
           });
       }
+    });
+  }
+
+  delete(id: number) {
+    this.equipeService.delete(id).subscribe((ok) => {
+      this.equipesGetAll = [];
+      this.equipes = [];
+      this.equipeClubs = [];
+      this.equipeUtilisateurs = [];
+      this.membres = [];
+      this.getAll();
     });
   }
 }

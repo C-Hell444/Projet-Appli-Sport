@@ -118,7 +118,7 @@
               <td>
                 {{ m.profilUtilisateur?.dateNaissance | date: "dd-MM-yyyy" }}
               </td>
-              <td>{{ moyennes[index] }}</td>
+              <td>{{ moyennes[index] | number: "1.0-1" }}</td>
               <td>{{ datesInscription[index] | date: "dd-MM-yyyy" }}</td>
               <td>
                 {{ m.adresse?.numero }} {{ m.adresse?.rue }}

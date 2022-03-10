@@ -146,7 +146,13 @@
                 <button type="button" class="btn btn-warning">modifier</button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger">supprimer</button>
+                <button
+                  (click)="delete(c.id!)"
+                  type="button"
+                  class="btn btn-danger"
+                >
+                  supprimer
+                </button>
               </td>
             </tr>
             <!-- <tr>
