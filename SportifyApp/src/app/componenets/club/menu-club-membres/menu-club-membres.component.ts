@@ -1,3 +1,4 @@
+import { CaracteristiqueService } from './../../../services/caracteristique.service';
 import { ProfilService } from './../../../services/profil.service';
 import { Profil } from './../../../model/profil';
 import { UtilisateurService } from './../../../services/utilisateur.service';
@@ -28,7 +29,8 @@ export class MenuClubMembresComponent implements OnInit {
     private compteService: CompteService,
     private clubService: ClubService,
     private utilisateurService: UtilisateurService,
-    private profilService: ProfilService
+    private profilService: ProfilService,
+    private caracteristiqueService: CaracteristiqueService
   ) {}
 
   ngOnInit(): void {
@@ -49,23 +51,27 @@ export class MenuClubMembresComponent implements OnInit {
                 )
                 .subscribe((user) => {
                   this.membres.push(user);
-                  this.profils.push(user.profilUtilisateur!);
                   this.profilService
-                    .getByIdWithCarac(this.profils[i].id!)
+                    .getByIdWithCarac(user.profilUtilisateur?.id!)
                     .subscribe((profilCarac) => {
-                      this.caracteristiques.push(profilCarac.caracteristique!);
-                      this.moyennes.push(
-                        (this.caracteristiques[i].agilite! +
-                          this.caracteristiques[i].collectif! +
-                          this.caracteristiques[i].creativite! +
-                          this.caracteristiques[i].detente! +
-                          this.caracteristiques[i].determination! +
-                          this.caracteristiques[i].endurance! +
-                          this.caracteristiques[i].patience! +
-                          this.caracteristiques[i].puissance! +
-                          this.caracteristiques[i].vitesse!) /
-                          9
-                      );
+                      this.profils.push(profilCarac);
+                      this.caracteristiqueService
+                        .get(profilCarac.caracteristique!.id!)
+                        .subscribe((c) => {
+                          this.caracteristiques.push(c);
+                          this.moyennes.push(
+                            (c.agilite! +
+                              c.collectif! +
+                              c.creativite! +
+                              c.detente! +
+                              c.determination! +
+                              c.endurance! +
+                              c.patience! +
+                              c.puissance! +
+                              c.vitesse!) /
+                              9
+                          );
+                        });
                     });
                 });
             }

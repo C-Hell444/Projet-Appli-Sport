@@ -83,7 +83,10 @@
       <div class="d-flex justify-content-around">
         <p class="fs-1 align-items-center w-75 p-3 mx-auto">Bonjour</p>
         <div><input type="text" placeholder="saisir votre recherche" /></div>
-        <a [routerLink]="['/menu-club-equipes-edit']" routerLinkActive="active"
+        <a
+          [routerLink]="['/menu-club-equipes-edit']"
+          routerLinkActive="active"
+          *ngIf="tab"
           ><img
             src="assets/img/recherche.png"
             width="100"
@@ -91,32 +94,33 @@
             class="d-inline-block align-top"
             alt="tweeter"
         /></a>
+        <a *ngIf="!tab" (click)="retour()"
+          ><img
+            src="assets/img/retour.png"
+            width="100"
+            height="100"
+            class="d-inline-block align-top"
+            alt="recherche"
+        /></a>
       </div>
-      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto">
+      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto" *ngIf="tab">
         Liste de vos équipes
+      </p>
+      <p class="fs-3 fw-bold align-items-center w-75 p-3 mx-auto" *ngIf="!tab">
+        Liste des membres de : {{ nomEquipe }}
       </p>
       <div class="col-md-3 align-items-center w-75 p-3 mx-auto">
         <table class="table table-striped table-hover fs-4">
-          <tbody>
+          <tbody *ngIf="tab">
             <tr class="bg-warning text-dark">
               <th>Nom de l'équipe</th>
-              <th>Nom du membre</th>
-              <th>Prenom du membre</th>
-              <th>Date d'inscription du membre</th>
-              <th>Chercher des membres</th>
+              <th>Liste des membres</th>
               <th>Supprimer</th>
             </tr>
             <tr *ngFor="let e of club.equipes; let index = index">
               <td>{{ e.nom }}</td>
-              <td>nom</td>
-              <td>prenom1</td>
-              <td>date d'inscription1</td>
               <td>
-                <button
-                  type="button"
-                  [routerLink]="['/menu-club-equipes-edit']"
-                  routerLinkActive="active"
-                >
+                <button type="button" (click)="detail(e.id!, e.nom!)">
                   <img
                     src="assets/img/recherche.png"
                     width="50"
@@ -142,42 +146,29 @@
                 </button>
               </td>
             </tr>
-            <!-- <tr>
-              <td>equipe1</td>
-              <td>nom1</td>
-              <td>prenom1</td>
-              <td>date d'inscription1</td>
+          </tbody>
+          <tbody *ngIf="!tab">
+            <tr class="bg-warning text-dark">
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Date de naissance</th>
+              <th>Taille</th>
+              <th>Poids</th>
+              <th>Adresse</th>
             </tr>
-            <tr>
-              <td>equipe2</td>
-              <td>nom2</td>
-              <td>prenom2</td>
-              <td>date d'inscription2</td>
+            <tr *ngFor="let m of membresEquipe">
+              <td>{{ m.nom }}</td>
+              <td>{{ m.prenom }}</td>
+              <td>
+                {{ m.profilUtilisateur?.dateNaissance | date: "dd-MM-yyyy" }}
+              </td>
+              <td>{{ m.profilUtilisateur?.taille }} m</td>
+              <td>{{ m.profilUtilisateur?.poids }} kg</td>
+              <td>
+                {{ m.adresse?.numero }} {{ m.adresse?.rue }}
+                {{ m.adresse?.codePostal }} {{ m.adresse?.ville }}
+              </td>
             </tr>
-            <tr>
-              <td>equipe3</td>
-              <td>nom3</td>
-              <td>prenom3</td>
-              <td>date d'inscription3</td>
-            </tr>
-            <tr>
-              <td>equipe4</td>
-              <td>nom4</td>
-              <td>prenom4</td>
-              <td>date d'inscription4</td>
-            </tr>
-            <tr>
-              <td>equipe5</td>
-              <td>nom5</td>
-              <td>prenom5</td>
-              <td>date d'inscription5</td>
-            </tr>
-            <tr>
-              <td>equipe6</td>
-              <td>nom6</td>
-              <td>prenom6</td>
-              <td>date d'inscription6</td>
-            </tr> -->
           </tbody>
         </table>
       </div>

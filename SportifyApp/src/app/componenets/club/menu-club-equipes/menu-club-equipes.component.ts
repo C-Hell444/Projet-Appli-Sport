@@ -19,8 +19,10 @@ export class MenuClubEquipesComponent implements OnInit {
   club: Club = new Club();
   equipe: Equipe = new Equipe();
   membresEquipe: Array<Utilisateur> = [];
-  membres: Array<Utilisateur[]> = [];
   longueur: number = 0;
+
+  tab: boolean = true;
+  nomEquipe: string = '';
 
   constructor(
     private compteService: CompteService,
@@ -30,6 +32,7 @@ export class MenuClubEquipesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.tab = true;
     this.compteService
       .getType(localStorage.getItem('login')!)
       .subscribe((result) => {
@@ -56,5 +59,26 @@ export class MenuClubEquipesComponent implements OnInit {
           // }
         });
       });
+  }
+
+  detail(id: number, nom: string) {
+    this.nomEquipe = nom;
+    this.tab = false;
+    this.membresEquipe = [];
+    this.equipeService.getByIdWithUtilisateur(id).subscribe((resultat) => {
+      this.equipe = resultat;
+      this.longueur = this.equipe.equipe!.length;
+      for (let i = 0; i < this.longueur; i++) {
+        this.utilisateurService
+          .getByIdWithProfil(this.equipe.equipe![i].id?.utilisateur?.id!)
+          .subscribe((user) => {
+            this.membresEquipe.push(user);
+          });
+      }
+    });
+  }
+
+  retour() {
+    this.tab = true;
   }
 }
