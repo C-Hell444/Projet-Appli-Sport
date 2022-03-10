@@ -40,7 +40,11 @@
     <div class="flex-grow-1 ms-3">
       <h3 class="mt-0 w-75 p-3 mx-auto">Création de votre compte</h3>
 
-      <form class="row g-3" (ngSubmit)="save()" [formGroup]="form">
+      <form
+        class="was-validated row g-3"
+        (ngSubmit)="save()"
+        [formGroup]="form"
+      >
         <div class="col-md-12 d-flex justify-content-between">
           <label for="validationServer00" class="form-label h6"
             >Vous créez un compte en tant que
@@ -76,14 +80,14 @@
           <label for="validationServer01" class="form-label">Nom du club</label>
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="Nom du club"
             id="nomClub"
             required
             formControlName="nomClub"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="
               form.controls['nomClub'].dirty && form.controls['nomClub'].invalid
             "
@@ -108,14 +112,14 @@
           <label for="validationServer01" class="form-label">Identifiant</label>
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="Identifiant"
             id="identifiant"
             required
             formControlName="login"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="
               form.controls['login'].dirty && form.controls['login'].invalid
             "
@@ -201,14 +205,14 @@
           >
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="N° de téléphone"
             id="numTel"
             required
             formControlName="numTel"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="
               form.controls['numTel'].dirty && form.controls['numTel'].invalid
             "
@@ -223,14 +227,14 @@
           <label for="validationServer01" class="form-label">Numéro</label>
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="Numéro"
             id="numero"
             required
             formControlName="numero"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="
               form.controls['numero'].dirty && form.controls['numero'].invalid
             "
@@ -243,14 +247,14 @@
           <label for="validationServer01" class="form-label">Rue</label>
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="Rue"
             id="rue"
             required
             formControlName="rue"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="form.controls['rue'].dirty && form.controls['rue'].invalid"
           >
             {{ errorRue }}
@@ -261,14 +265,14 @@
           <label for="validationServer01" class="form-label">ville</label>
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="ville"
             id="ville"
             required
             formControlName="ville"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="
               form.controls['ville'].dirty && form.controls['ville'].invalid
             "
@@ -283,14 +287,14 @@
           >
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control is-invalid"
             placeholder="Code postale"
             id="cp"
             required
             formControlName="codePostale"
           />
           <div
-            class="valid-feedback"
+            class="invalid-feedback"
             *ngIf="
               form.controls['codePostale'].dirty &&
               form.controls['codePostale'].invalid
