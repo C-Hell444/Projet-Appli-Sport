@@ -19,6 +19,10 @@ export class MenuAdminSportsComponent implements OnInit {
   constructor(private sportService: SportService) {}
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
     this.sportService.getAll().subscribe((ok) => {
       this.sports = ok;
       for (let s of this.sports) {
@@ -26,6 +30,14 @@ export class MenuAdminSportsComponent implements OnInit {
           this.sports2.push(res);
         });
       }
+    });
+  }
+
+  delete(id: number) {
+    this.sportService.delete(id).subscribe((ok) => {
+      this.sports = [];
+      this.sports2 = [];
+      this.getAll();
     });
   }
 }
