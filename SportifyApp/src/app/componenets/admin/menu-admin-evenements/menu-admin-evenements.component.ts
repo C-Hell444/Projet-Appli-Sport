@@ -23,10 +23,6 @@ export class MenuAdminEvenementsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAll();
-  }
-
-  getAll(): void {
     this.evenementService.getAll().subscribe((listeEvenements) => {
       this.evenementsGetAll = listeEvenements;
 
